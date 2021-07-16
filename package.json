@@ -1,0 +1,95 @@
+{
+  "name": "graasp-chatbox",
+  "version": "0.1.0",
+  "main": "dist/index.js",
+  "module": "dist/index.modern.js",
+  "source": "src/index.ts",
+  "repository": "graasp/graasp-chatbox",
+  "author": "Kim Lan Phan Hoang",
+  "license": "MIT",
+  "engines": {
+    "node": ">=10"
+  },
+  "scripts": {
+    "build": "microbundle-crl --no-compress --format modern,cjs",
+    "start": "microbundle-crl watch --no-compress --format modern,cjs",
+    "prepare": "run-s build",
+    "lint": "eslint .",
+    "prettier:check": "prettier --check \"{src,example}/**/*.{js,ts,tsx}\"",
+    "prettier:write": "prettier --write \"{src,example}/**/*.{js,ts,tsx}\"",
+    "pretest": "cd example && yarn",
+    "test": "run-s test:unit test:lint test:build",
+    "test:build": "run-s build",
+    "test:lint": "eslint .",
+    "test:unit": "cross-env CI=1 react-scripts test --env=jsdom",
+    "test:watch": "react-scripts test --env=jsdom",
+    "hooks:uninstall": "node node_modules/husky/husky.js uninstall",
+    "hooks:install": "node node_modules/husky/husky.js install",
+    "predeploy": "cd example && yarn install && yarn run build",
+    "release": "standard-version"
+  },
+  "peerDependencies": {
+    "@material-ui/core": "4.11.0",
+    "@material-ui/icons": "4.9.1",
+    "@material-ui/lab": "4.0.0-alpha.58",
+    "react": "^16.13.1",
+    "react-dom": "16.13.1"
+  },
+  "localDependencies": {
+    "react": "./example/node_modules/react",
+    "react-dom": "./example/node_modules/react-dom",
+    "react-scripts": "./example/node_modules/react-scripts"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "11.0.0",
+    "@commitlint/config-conventional": "11.0.0",
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.5.0",
+    "@testing-library/user-event": "^7.2.1",
+    "@types/jest": "^25.1.4",
+    "@types/node": "^12.12.38",
+    "@types/react": "^16.9.27",
+    "@types/react-dom": "^16.9.7",
+    "@typescript-eslint/eslint-plugin": "^2.26.0",
+    "@typescript-eslint/parser": "^2.26.0",
+    "babel-eslint": "^10.0.3",
+    "cross-env": "^7.0.2",
+    "enzyme": "3.11.0",
+    "enzyme-adapter-react-16": "1.15.5",
+    "enzyme-to-json": "3.6.1",
+    "eslint": "^6.8.0",
+    "eslint-config-prettier": "^6.7.0",
+    "eslint-config-standard": "^14.1.0",
+    "eslint-config-standard-react": "^9.2.0",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-node": "^11.0.0",
+    "eslint-plugin-prettier": "^3.1.1",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-react": "^7.17.0",
+    "eslint-plugin-react-app": "6.2.2",
+    "eslint-plugin-standard": "^4.0.1",
+    "husky": "4.3.0",
+    "microbundle-crl": "^0.13.10",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^2.0.4",
+    "standard-version": "8.0.2",
+    "typescript": "^3.7.5"
+  },
+  "files": [
+    "dist"
+  ],
+  "jest": {
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
+    ],
+    "moduleNameMapper": {
+      "@material-ui/core/(.*)": "<rootDir>/example/node_modules/@material-ui/core/$1",
+      "@material-ui/icons/(.*)": "<rootDir>/example/node_modules/@material-ui/icons/$1",
+      "@material-ui/lab/(.*)": "<rootDir>/example/node_modules/@material-ui/lab/$1",
+      "immutable": "<rootDir>/node_modules/immutable",
+      "^react$": "<rootDir>/example/node_modules/react",
+      "^react-dom$": "<rootDir>/example/node_modules/react-dom",
+      "^react-dom/(.*)": "<rootDir>/example/node_modules/react-dom/$1"
+    }
+  }
+}
