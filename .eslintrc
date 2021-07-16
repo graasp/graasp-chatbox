@@ -1,53 +1,48 @@
 {
-  "extends": ["react-app", "airbnb", "prettier"],
-  "plugins": ["import", "jsx-a11y", "react"],
+  "parser": "@typescript-eslint/parser",
+  "extends": [
+    "standard",
+    "standard-react",
+    "plugin:prettier/recommended",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended",
+    "prettier"
+  ],
   "env": {
-    "browser": true,
-    "node": true,
-    "mocha": true,
-    "jest": true
+    "node": true
   },
-  "globals": {
-    "cy": true,
-    "Cypress": true
+  "parserOptions": {
+    "ecmaVersion": 2020,
+    "ecmaFeatures": {
+      "legacyDecorators": true,
+      "jsx": true
+    }
   },
-  "parser": "babel-eslint",
+  "settings": {
+    "react": {
+      "version": "17"
+    }
+  },
+  "ignorePatterns": ["dist"],
   "rules": {
-    "no-underscore-dangle": [
-      "error",
-      {
-        "allow": ["_id", "__REDUX_DEVTOOLS_EXTENSION__"]
+    "space-before-function-paren": 0,
+    "react/prop-types": 0,
+    "react/jsx-handler-names": 0,
+    "react/jsx-fragments": 0,
+    "react/no-unused-prop-types": 0,
+    "import/export": 0,
+    // disable the rule for all files
+    "@typescript-eslint/explicit-function-return-type": "off",
+    "no-use-before-define": 0,
+    "@typescript-eslint/no-use-before-define": ["error"],
+  },
+  "overrides": [
+    {
+      // enable the rule specifically for TypeScript files
+      "files": ["*.ts", "*.tsx"],
+      "rules": {
+        "@typescript-eslint/explicit-function-return-type": ["error"]
       }
-    ],
-    "jsx-a11y/anchor-is-valid": [
-      "error",
-      {
-        "components": ["Link"],
-        "specialLink": ["to", "hrefLeft", "hrefRight"],
-        "aspects": ["noHref", "invalidHref", "preferButton"]
-      }
-    ],
-    "react/jsx-filename-extension": [
-      1,
-      {
-        "extensions": [".js", ".jsx"]
-      }
-    ],
-    "import/no-named-as-default": 0,
-    "react/static-property-placement": [
-      "error",
-      "property assignment",
-      {
-        "childContextTypes": "static public field",
-        "contextTypes": "static public field",
-        "contextType": "static public field",
-        "defaultProps": "static public field",
-        "displayName": "static public field",
-        "propTypes": "static public field"
-      }
-    ],
-    "react/state-in-constructor": ["error", "never"],
-    "no-console": [1, { "allow": ["error"] }],
-    "no-restricted-syntax": "off"
-  }
+    }
+  ]
 }

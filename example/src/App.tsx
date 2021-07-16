@@ -1,10 +1,8 @@
-import React from 'react'
-import Chatbox from '@graasp/ui'
+import Chatbox from '@graasp/ui';
 // import '@graasp/ui/dist/index.css'
 
 const App = () => {
+  return <Chatbox />;
+};
 
-  return <Chatbox />
-}
-
-export default App
+export default App;

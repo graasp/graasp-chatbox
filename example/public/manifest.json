@@ -1,6 +1,6 @@
 {
-  "short_name": "graasp-ui",
-  "name": "graasp-ui",
+  "short_name": "@graasp/chatbox",
+  "name": "@graasp/chatbox",
   "icons": [
     {
       "src": "favicon.ico",
