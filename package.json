@@ -39,17 +39,29 @@
     "react-dom": "16.13.1"
   },
   "localDependencies": {
+    "@material-ui/core": "./example/node_modules/@material-ui/core",
+    "@material-ui/icons": "./example/node_modules/@material-ui/icons",
+    "@material-ui/lab": "./example/node_modules/@material-ui/lab",
     "react": "./example/node_modules/react",
     "react-dom": "./example/node_modules/react-dom",
     "react-scripts": "./example/node_modules/react-scripts"
   },
+  "dependencies": {
+    "@graasp/ui": "git://github.com/graasp/graasp-ui#33/loaderTs",
+    "clsx": "1.1.1",
+    "pretty-quick": "3.1.1"
+  },
   "devDependencies": {
     "@commitlint/cli": "12.1.4",
     "@commitlint/config-conventional": "12.1.4",
+    "@material-ui/core": "./example/node_modules/@material-ui/core",
+    "@material-ui/icons": "./example/node_modules/@material-ui/icons",
+    "@material-ui/lab": "./example/node_modules/@material-ui/lab",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^12.0.0",
     "@testing-library/user-event": "^13.1.9",
     "@types/jest": "^26.0.24",
+    "@types/material-ui": "0.21.9",
     "@types/node": "^16.3.2",
     "@types/react": "^17.0.14",
     "@types/react-dom": "^17.0.9",
@@ -94,8 +106,5 @@
       "^react-dom$": "<rootDir>/example/node_modules/react-dom",
       "^react-dom/(.*)": "<rootDir>/example/node_modules/react-dom/$1"
     }
-  },
-  "dependencies": {
-    "pretty-quick": "3.1.1"
   }
 }
