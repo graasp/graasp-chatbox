@@ -1,8 +1,8 @@
-import Chatbox from '@graasp/ui';
+import Chatbox from '@graasp/chatbox';
 // import '@graasp/ui/dist/index.css'
 
 const App = () => {
-  return <Chatbox />;
+  return <Chatbox id="24" />;
 };
 
 export default App;

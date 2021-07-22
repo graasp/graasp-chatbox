@@ -1,0 +1,1 @@
+export const DEFAULT_CHATBOX_HEIGHT = 600;
