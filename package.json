@@ -20,7 +20,8 @@
     "build": "microbundle-crl --no-compress --format modern,cjs",
     "start": "microbundle-crl watch --no-compress --format modern,cjs",
     "start:example": "yarn workspace graasp-chatbox-example start",
-    "prepare": "run-s build",
+    "prepack": "run-s build",
+    "prepare": "yarn prepack",
     "lint": "eslint .",
     "prettier:check": "prettier --check \"{src,example}/**/*.{js,ts,tsx}\"",
     "prettier:write": "prettier --write \"{src,example}/**/*.{js,ts,tsx}\"",
@@ -111,5 +112,8 @@
       "^react-dom/(.*)": "<rootDir>/example/node_modules/react-dom/$1"
     }
   },
-  "packageManager": "yarn@3.0.1-rc.1"
+  "packageManager": "yarn@3.0.1-rc.1",
+  "resolutions": {
+    "graasp-compose": "portal:/Users/kim/git/ddddddd/graasp-compose"
+  }
 }
