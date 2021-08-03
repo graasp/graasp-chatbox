@@ -1,11 +1,14 @@
 import React, { FC, Fragment } from 'react';
 import Container from '@material-ui/core/Container';
-import { Loader } from '@graasp/ui';
 import Messages from './Messages';
 import { makeStyles } from '@material-ui/core/styles';
 import Input from './Input';
 import Header from './Header';
 import { DEFAULT_CHATBOX_HEIGHT } from '../constants';
+
+// todo: this should change once graasp-ui is completely using typescript
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const { Loader } = require('@graasp/ui');
 
 type Props = {
   id: string;

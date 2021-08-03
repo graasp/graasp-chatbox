@@ -7,6 +7,9 @@
   "repository": "graasp/graasp-chatbox",
   "author": "Kim Lan Phan Hoang",
   "license": "MIT",
+  "workspaces": [
+    "example"
+  ],
   "engines": {
     "node": ">=10"
   },
@@ -16,6 +19,7 @@
     "post-commit": "git status",
     "build": "microbundle-crl --no-compress --format modern,cjs",
     "start": "microbundle-crl watch --no-compress --format modern,cjs",
+    "start:example": "yarn workspace graasp-chatbox-example start",
     "prepare": "run-s build",
     "lint": "eslint .",
     "prettier:check": "prettier --check \"{src,example}/**/*.{js,ts,tsx}\"",
@@ -47,7 +51,7 @@
     "react-scripts": "./example/node_modules/react-scripts"
   },
   "dependencies": {
-    "@graasp/ui": "git://github.com/graasp/graasp-ui#33/loaderTs",
+    "@graasp/ui": "git://github.com/graasp/graasp-ui#39/yarn2",
     "clsx": "1.1.1",
     "pretty-quick": "3.1.1"
   },
@@ -106,5 +110,6 @@
       "^react-dom$": "<rootDir>/example/node_modules/react-dom",
       "^react-dom/(.*)": "<rootDir>/example/node_modules/react-dom/$1"
     }
-  }
+  },
+  "packageManager": "yarn@3.0.1-rc.1"
 }
