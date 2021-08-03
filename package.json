@@ -7,6 +7,9 @@
   "repository": "graasp/graasp-chatbox",
   "author": "Kim Lan Phan Hoang",
   "license": "MIT",
+  "workspaces": [
+    "example"
+  ],
   "engines": {
     "node": ">=10"
   },
@@ -16,7 +19,9 @@
     "post-commit": "git status",
     "build": "microbundle-crl --no-compress --format modern,cjs",
     "start": "microbundle-crl watch --no-compress --format modern,cjs",
-    "prepare": "run-s build",
+    "start:example": "yarn workspace graasp-chatbox-example start",
+    "prepack": "run-s build",
+    "prepare": "yarn prepack",
     "lint": "eslint .",
     "prettier:check": "prettier --check \"{src,example}/**/*.{js,ts,tsx}\"",
     "prettier:write": "prettier --write \"{src,example}/**/*.{js,ts,tsx}\"",
@@ -32,6 +37,7 @@
     "release": "standard-version"
   },
   "peerDependencies": {
+    "@graasp/ui": "git://github.com/graasp/graasp-ui#39/yarn2",
     "@material-ui/core": "4.11.0",
     "@material-ui/icons": "4.9.1",
     "@material-ui/lab": "4.0.0-alpha.58",
@@ -47,7 +53,6 @@
     "react-scripts": "./example/node_modules/react-scripts"
   },
   "dependencies": {
-    "@graasp/ui": "git://github.com/graasp/graasp-ui#33/loaderTs",
     "clsx": "1.1.1",
     "pretty-quick": "3.1.1"
   },
@@ -106,5 +111,9 @@
       "^react-dom$": "<rootDir>/example/node_modules/react-dom",
       "^react-dom/(.*)": "<rootDir>/example/node_modules/react-dom/$1"
     }
+  },
+  "packageManager": "yarn@3.0.1-rc.1",
+  "resolutions": {
+    "graasp-compose": "portal:/Users/kim/git/ddddddd/graasp-compose"
   }
 }
