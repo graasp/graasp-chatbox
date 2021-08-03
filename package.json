@@ -17,8 +17,8 @@
     "commit-msg": "commitlint --edit $1",
     "pre-commit": "pretty-quick && yarn lint",
     "post-commit": "git status",
-    "build": "microbundle-crl --no-compress --format modern,cjs",
-    "start": "microbundle-crl watch --no-compress --format modern,cjs",
+    "build": "microbundle-crl --external @material-ui/styles --no-compress --format modern,cjs",
+    "start": "microbundle-crl watch --external @material-ui/styles --no-compress --format modern,cjs",
     "start:example": "yarn workspace graasp-chatbox-example start",
     "prepack": "run-s build",
     "prepare": "yarn prepack",
@@ -37,17 +37,14 @@
     "release": "standard-version"
   },
   "peerDependencies": {
-    "@graasp/ui": "git://github.com/graasp/graasp-ui#39/yarn2",
-    "@material-ui/core": "4.11.0",
-    "@material-ui/icons": "4.9.1",
-    "@material-ui/lab": "4.0.0-alpha.58",
+    "@graasp/ui": "*",
+    "@material-ui/core": "*",
+    "@material-ui/icons": "*",
+    "@material-ui/lab": "*",
     "react": "^16.13.1",
     "react-dom": "16.13.1"
   },
   "localDependencies": {
-    "@material-ui/core": "./example/node_modules/@material-ui/core",
-    "@material-ui/icons": "./example/node_modules/@material-ui/icons",
-    "@material-ui/lab": "./example/node_modules/@material-ui/lab",
     "react": "./example/node_modules/react",
     "react-dom": "./example/node_modules/react-dom",
     "react-scripts": "./example/node_modules/react-scripts"

@@ -4,7 +4,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import grey from '@material-ui/core/colors/grey';
 import clsx from 'clsx';
-import type { MessageType } from '../types';
+import type { ChatMessage } from '../types';
 
 const useStyles = makeStyles((theme) => ({
   message: {
@@ -21,14 +21,14 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 type Props = {
-  message: MessageType;
+  message: ChatMessage;
 };
 
 const Message: FC<Props> = ({ message }) => {
-  const { userId, text } = message;
+  const { creator, body } = message;
   const classes = useStyles();
 
-  const isOwnMessage = userId === 'me';
+  const isOwnMessage = creator === 'me';
   const align = isOwnMessage ? 'flex-end' : null;
 
   return (
@@ -37,8 +37,8 @@ const Message: FC<Props> = ({ message }) => {
       className={clsx(classes.message, { [classes.own]: isOwnMessage })}
       alignSelf={align}
     >
-      {!isOwnMessage && <Typography variant="caption">{userId}</Typography>}
-      <Typography variant="body2">{text}</Typography>
+      {!isOwnMessage && <Typography variant="caption">{creator}</Typography>}
+      <Typography variant="body2">{body}</Typography>
     </Box>
   );
 };

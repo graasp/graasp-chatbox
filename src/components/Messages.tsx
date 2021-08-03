@@ -2,19 +2,20 @@ import React, { FC, useRef, useEffect } from 'react';
 import Box from '@material-ui/core/Box';
 import { makeStyles } from '@material-ui/core/styles';
 import Message from './Message';
-import type { MessageType } from '../types';
+import type { ChatMessage } from '../types';
 
 type Props = {
-  messages: MessageType[];
+  messages?: ChatMessage[];
 };
 
 const useStyles = makeStyles(() => ({
   wrapper: {
-    overflowY: 'scroll',
+    overflowY: 'auto',
     height: '90%',
     flexDirection: 'column',
     alignItems: 'flex-start',
     display: 'flex',
+    justifyContent: 'flex-end',
   },
 }));
 
@@ -38,8 +39,9 @@ const Messages: FC<Props> = ({ messages }) => {
       {...{ ref: boxRef }}
       className={classes.wrapper}
     >
-      {messages.map((message) => (
-        <Message message={message} key={message.id} />
+      {messages?.map((message) => (
+        // todo: apply key
+        <Message message={message} />
       ))}
     </Box>
   );
