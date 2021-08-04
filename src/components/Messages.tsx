@@ -1,16 +1,17 @@
 import React, { FC, useRef, useEffect } from 'react';
 import Box from '@material-ui/core/Box';
 import { makeStyles } from '@material-ui/core/styles';
+import { List, Record } from 'immutable';
 import Message from './Message';
 import type { ChatMessage } from '../types';
 
 type Props = {
-  messages?: ChatMessage[];
+  messages?: List<Record<ChatMessage>>;
 };
 
 const useStyles = makeStyles(() => ({
   wrapper: {
-    overflowY: 'auto',
+    overflowY: 'scroll',
     height: '90%',
     flexDirection: 'column',
     alignItems: 'flex-start',

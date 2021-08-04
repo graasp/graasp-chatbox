@@ -1,5 +1,6 @@
 import React, { FC } from 'react';
 import Box from '@material-ui/core/Box';
+import { Record } from 'immutable';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import grey from '@material-ui/core/colors/grey';
@@ -21,13 +22,12 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 type Props = {
-  message: ChatMessage;
+  message: Record<ChatMessage>;
 };
 
 const Message: FC<Props> = ({ message }) => {
-  const { creator, body } = message;
   const classes = useStyles();
-
+  const creator = message.get('creator');
   const isOwnMessage = creator === 'me';
   const align = isOwnMessage ? 'flex-end' : null;
 
@@ -38,7 +38,7 @@ const Message: FC<Props> = ({ message }) => {
       alignSelf={align}
     >
       {!isOwnMessage && <Typography variant="caption">{creator}</Typography>}
-      <Typography variant="body2">{body}</Typography>
+      <Typography variant="body2">{message.get('body')}</Typography>
     </Box>
   );
 };
