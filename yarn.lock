@@ -2020,7 +2020,7 @@ __metadata:
     eslint-plugin-react-app: ^6.0.0
     eslint-plugin-standard: ^5.0.0
     husky: 7.0.1
-    immutable: 4.0.0-rc.14
+    immutable: 4.0.0-rc.12
     npm-run-all: ^4.1.5
     prettier: ^2.0.4
     pretty-quick: 3.1.1
@@ -9322,6 +9322,13 @@ fsevents@^1.2.7:
   version: 8.0.1
   resolution: "immer@npm:8.0.1"
   checksum: 63d875c04882b862481a0a692816e5982975a47a57619698bc1bb52963ad3b624911991708b2b81a7af6fdac15083d408e43932d83a6a61216e5a4503efd4095
+  languageName: node
+  linkType: hard
+
+"immutable@npm:4.0.0-rc.12":
+  version: 4.0.0-rc.12
+  resolution: "immutable@npm:4.0.0-rc.12"
+  checksum: 69f5292e5683738e3f674ea5be1d0b4ffd3ef6215757c81009295f092966f546380a41c0df1203753cfd11f2389fefc16ba5935e5828d42948c6504001482328
   languageName: node
   linkType: hard
 
