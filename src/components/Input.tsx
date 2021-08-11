@@ -50,7 +50,7 @@ const Input: FC<Props> = ({ chatId, placeholder, sendMessageFunction }) => {
         placeholder={placeholder || t('Type something…')}
       />
       <IconButton onClick={onClick}>
-        <SendIcon />
+        <SendIcon color="primary" />
       </IconButton>
     </Box>
   );

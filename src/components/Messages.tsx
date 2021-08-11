@@ -1,16 +1,17 @@
 import React, { FC, useRef, useEffect } from 'react';
 import Box from '@material-ui/core/Box';
 import { makeStyles } from '@material-ui/core/styles';
-import { List } from 'immutable';
+import { List, Record } from 'immutable';
 import Message from './Message';
-import type { ChatMessage } from '../types';
+import type { ChatMessage, Member } from '../types';
 
 type Props = {
   messages?: List<ChatMessage>;
   height?: number;
+  currentMember: Record<Member>;
 };
 
-const Messages: FC<Props> = ({ messages, height }) => {
+const Messages: FC<Props> = ({ messages, height, currentMember }) => {
   const ref = useRef<HTMLDivElement>(null);
 
   const useStyles = makeStyles(() => ({
@@ -41,7 +42,7 @@ const Messages: FC<Props> = ({ messages, height }) => {
       <Box className={classes.messagesContainer}>
         {messages?.map((message) => (
           // todo: apply key
-          <Message message={message} />
+          <Message currentMember={currentMember} message={message} />
         ))}
       </Box>
     </div>
