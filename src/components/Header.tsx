@@ -1,4 +1,5 @@
 import React, { FC } from 'react';
+import { useTranslation } from 'react-i18next';
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -26,6 +27,7 @@ type Props = {
 
 const Header: FC<Props> = ({ title }) => {
   const classes = useStyles();
+  const { t } = useTranslation();
 
   return (
     <div className={classes.root}>
@@ -33,7 +35,7 @@ const Header: FC<Props> = ({ title }) => {
         <Toolbar>
           <ChatIcon className={classes.icon} />
           <Typography variant="h6" className={classes.title}>
-            {title || 'Chatbox'}
+            {title || t('Chatbox')}
           </Typography>
         </Toolbar>
       </AppBar>

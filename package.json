@@ -48,7 +48,9 @@
   },
   "dependencies": {
     "clsx": "1.1.1",
-    "immutable": "4.0.0-rc.12"
+    "i18next": "20.4.0",
+    "immutable": "4.0.0-rc.12",
+    "react-i18next": "11.11.4"
   },
   "devDependencies": {
     "@commitlint/cli": "12.1.4",

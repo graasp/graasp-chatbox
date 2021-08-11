@@ -7,44 +7,44 @@ import type { ChatMessage } from '../types';
 
 type Props = {
   messages?: List<ChatMessage>;
+  height?: number;
 };
 
-const useStyles = makeStyles(() => ({
-  wrapper: {
-    overflowY: 'scroll',
-    height: '90%',
-    flexDirection: 'column',
-    alignItems: 'flex-start',
-    display: 'flex',
-    justifyContent: 'flex-end',
-  },
-}));
+const Messages: FC<Props> = ({ messages, height }) => {
+  const ref = useRef<HTMLDivElement>(null);
 
-const Messages: FC<Props> = ({ messages }) => {
-  const boxRef = useRef<HTMLDivElement>();
+  const useStyles = makeStyles(() => ({
+    container: {
+      overflowY: 'scroll',
+      height,
+    },
+    messagesContainer: {
+      flexDirection: 'column',
+      alignItems: 'flex-start',
+      display: 'flex',
+      justifyContent: 'flex-end',
+    },
+  }));
 
   const classes = useStyles();
 
-  // scroll down to last message
+  // scroll down to last message at start and on new message
   useEffect(() => {
-    if (boxRef?.current) {
+    if (ref?.current) {
       // really big number to scroll down
-      boxRef.current.scrollTop = 99999;
+      ref.current.scrollTop = 99999;
     }
-  }, [boxRef]);
+  }, [ref, messages]);
 
   return (
-    <Box
-      // hack to use ref
-      // https://github.com/mui-org/material-ui/issues/17010#issuecomment-615577360
-      {...{ ref: boxRef }}
-      className={classes.wrapper}
-    >
-      {messages?.map((message) => (
-        // todo: apply key
-        <Message message={message} />
-      ))}
-    </Box>
+    <div className={classes.container} ref={ref}>
+      <Box className={classes.messagesContainer}>
+        {messages?.map((message) => (
+          // todo: apply key
+          <Message message={message} />
+        ))}
+      </Box>
+    </div>
   );
 };
 

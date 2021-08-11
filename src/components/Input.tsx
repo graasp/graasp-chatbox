@@ -2,6 +2,7 @@ import React, { FC, useRef } from 'react';
 import IconButton from '@material-ui/core/IconButton';
 import TextField from '@material-ui/core/TextField';
 import Box from '@material-ui/core/Box';
+import { useTranslation } from 'react-i18next';
 import SendIcon from '@material-ui/icons/Send';
 import { makeStyles } from '@material-ui/core/styles';
 import { PartialChatMessage } from '../types';
@@ -23,13 +24,15 @@ const useStyles = makeStyles((theme) => ({
 const Input: FC<Props> = ({ chatId, placeholder, sendMessageFunction }) => {
   const classes = useStyles();
   const textRef = useRef<HTMLInputElement>();
+  const { t } = useTranslation();
 
   const onClick = (): void => {
-    const text = textRef?.current?.value;
-    if (!text) {
-      return;
+    if (textRef?.current?.value) {
+      const text = textRef?.current?.value;
+      sendMessageFunction?.({ chatId, body: text });
+      // reset input content
+      textRef.current.value = '';
     }
-    return sendMessageFunction?.({ chatId, body: text });
   };
 
   return (
@@ -44,7 +47,7 @@ const Input: FC<Props> = ({ chatId, placeholder, sendMessageFunction }) => {
         id="outlined-basic"
         variant="outlined"
         fullWidth
-        placeholder={placeholder || 'Type something...'}
+        placeholder={placeholder || t('Type something…')}
       />
       <IconButton onClick={onClick}>
         <SendIcon />

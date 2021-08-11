@@ -37,7 +37,7 @@ const Chatbox: FC<Props> = ({
     <Fragment>
       <Header />
       <Container maxWidth="md" className={classes.container}>
-        <Messages messages={messages} />
+        <Messages messages={messages} height={height} />
         <Input sendMessageFunction={sendMessageFunction} chatId={chatId} />
       </Container>
     </Fragment>
