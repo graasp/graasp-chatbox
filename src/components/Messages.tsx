@@ -24,6 +24,7 @@ const Messages: FC<Props> = ({ messages, height, currentMember }) => {
       alignItems: 'flex-start',
       display: 'flex',
       justifyContent: 'flex-end',
+      height: '100%',
     },
   }));
 

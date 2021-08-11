@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Input: FC<Props> = ({ chatId, placeholder, sendMessageFunction }) => {
+const Input: FC<Props> = ({ id, chatId, placeholder, sendMessageFunction }) => {
   const classes = useStyles();
   const textRef = useRef<HTMLInputElement>();
   const { t } = useTranslation();
@@ -41,6 +41,7 @@ const Input: FC<Props> = ({ chatId, placeholder, sendMessageFunction }) => {
       className={classes.wrapper}
       justifyContent="center"
       alignItems="center"
+      id={id}
     >
       <TextField
         inputRef={textRef}

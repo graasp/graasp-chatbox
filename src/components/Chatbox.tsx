@@ -9,7 +9,8 @@ import { DEFAULT_CHATBOX_HEIGHT, INPUT_HEIGHT } from '../constants';
 import type { ChatMessage, Member, PartialChatMessage } from '../types';
 
 type Props = {
-  id: string;
+  id?: string;
+  sendMessageBoxId?: string;
   height?: number;
   messages?: List<ChatMessage>;
   isLoading?: boolean;
@@ -20,6 +21,8 @@ type Props = {
 };
 
 const Chatbox: FC<Props> = ({
+  id,
+  sendMessageBoxId,
   height = DEFAULT_CHATBOX_HEIGHT,
   sendMessageFunction,
   messages,
@@ -41,13 +44,17 @@ const Chatbox: FC<Props> = ({
   return (
     <Fragment>
       {showHeader && <Header />}
-      <Container maxWidth="md" className={classes.container}>
+      <Container id={id} maxWidth="md" className={classes.container}>
         <Messages
           currentMember={currentMember}
           messages={messages}
           height={height - INPUT_HEIGHT}
         />
-        <Input sendMessageFunction={sendMessageFunction} chatId={chatId} />
+        <Input
+          id={sendMessageBoxId}
+          sendMessageFunction={sendMessageFunction}
+          chatId={chatId}
+        />
       </Container>
     </Fragment>
   );
