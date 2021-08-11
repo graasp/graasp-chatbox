@@ -1,6 +1,7 @@
 import resolve from '@rollup/plugin-node-resolve';
 import typescript from '@rollup/plugin-typescript';
 import peerDepsExternal from 'rollup-plugin-peer-deps-external';
+import commonjs from '@rollup/plugin-commonjs';
 
 export default {
   input: './src/index.ts',
@@ -14,13 +15,14 @@ export default {
       extensions: ['.js', '.jsx', '.ts', '.tsx'],
     }),
     typescript({ tsconfig: './tsconfig.json', sourceMap: false }),
+    commonjs(),
   ],
   external: [
-    'react',
-    'react-dom',
     '@material-ui/core',
     '@material-ui/icons',
     '@material-ui/lab',
     '@material-ui/styles',
+    'react',
+    'react-dom',
   ],
 };

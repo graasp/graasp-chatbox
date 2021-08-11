@@ -1,12 +1,12 @@
 import React, { FC, useRef, useEffect } from 'react';
 import Box from '@material-ui/core/Box';
 import { makeStyles } from '@material-ui/core/styles';
-import { List, Record } from 'immutable';
+import { List } from 'immutable';
 import Message from './Message';
 import type { ChatMessage } from '../types';
 
 type Props = {
-  messages?: List<Record<ChatMessage>>;
+  messages?: List<ChatMessage>;
 };
 
 const useStyles = makeStyles(() => ({
