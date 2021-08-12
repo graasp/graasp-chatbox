@@ -4,6 +4,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import { List } from 'immutable';
 import Message from './Message';
 import type { ChatMessage, ImmutableMember } from '../types';
+import { BIG_NUMBER } from '../constants';
 
 type Props = {
   messages?: List<ChatMessage>;
@@ -33,7 +34,7 @@ const Messages: FC<Props> = ({ messages, height, currentMember }) => {
   useEffect(() => {
     if (ref?.current) {
       // really big number to scroll down
-      ref.current.scrollTop = Number.POSITIVE_INFINITY;
+      ref.current.scrollTop = BIG_NUMBER;
     }
   }, [ref, messages]);
 
