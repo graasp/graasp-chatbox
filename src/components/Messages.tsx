@@ -16,7 +16,7 @@ const Messages: FC<Props> = ({ messages, height, currentMember }) => {
 
   const useStyles = makeStyles(() => ({
     container: {
-      overflowY: 'scroll',
+      overflowY: 'auto',
       height,
     },
     messagesContainer: {
@@ -24,7 +24,6 @@ const Messages: FC<Props> = ({ messages, height, currentMember }) => {
       alignItems: 'flex-start',
       display: 'flex',
       justifyContent: 'flex-end',
-      height: '100%',
     },
   }));
 
