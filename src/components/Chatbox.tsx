@@ -1,12 +1,16 @@
 import React, { FC, Fragment } from 'react';
 import Container from '@material-ui/core/Container';
 import { makeStyles } from '@material-ui/core/styles';
+import { List } from 'immutable';
 import Messages from './Messages';
-import { List, Record } from 'immutable';
 import Input from './Input';
 import Header from './Header';
 import { DEFAULT_CHATBOX_HEIGHT, INPUT_HEIGHT } from '../constants';
-import type { ChatMessage, Member, PartialChatMessage } from '../types';
+import type {
+  ChatMessage,
+  ImmutableMember,
+  PartialChatMessage,
+} from '../types';
 
 type Props = {
   id?: string;
@@ -17,7 +21,7 @@ type Props = {
   sendMessageFunction?: (message: PartialChatMessage) => void;
   chatId: string;
   showHeader?: boolean;
-  currentMember: Record<Member>;
+  currentMember: ImmutableMember;
 };
 
 const Chatbox: FC<Props> = ({

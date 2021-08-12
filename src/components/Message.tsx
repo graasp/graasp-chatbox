@@ -1,11 +1,10 @@
 import React, { FC } from 'react';
 import Box from '@material-ui/core/Box';
-import { Record } from 'immutable';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import grey from '@material-ui/core/colors/grey';
 import clsx from 'clsx';
-import type { ChatMessage, Member } from '../types';
+import type { ChatMessage, ImmutableMember } from '../types';
 
 const useStyles = makeStyles((theme) => ({
   message: {
@@ -23,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
 
 type Props = {
   message: ChatMessage;
-  currentMember: Record<Member>;
+  currentMember: ImmutableMember;
 };
 
 const Message: FC<Props> = ({ message, currentMember }) => {

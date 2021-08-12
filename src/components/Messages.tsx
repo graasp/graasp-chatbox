@@ -1,14 +1,14 @@
 import React, { FC, useRef, useEffect } from 'react';
 import Box from '@material-ui/core/Box';
 import { makeStyles } from '@material-ui/core/styles';
-import { List, Record } from 'immutable';
+import { List } from 'immutable';
 import Message from './Message';
-import type { ChatMessage, Member } from '../types';
+import type { ChatMessage, ImmutableMember } from '../types';
 
 type Props = {
   messages?: List<ChatMessage>;
   height?: number;
-  currentMember: Record<Member>;
+  currentMember: ImmutableMember;
 };
 
 const Messages: FC<Props> = ({ messages, height, currentMember }) => {
@@ -34,7 +34,7 @@ const Messages: FC<Props> = ({ messages, height, currentMember }) => {
   useEffect(() => {
     if (ref?.current) {
       // really big number to scroll down
-      ref.current.scrollTop = 99999;
+      ref.current.scrollTop = Number.POSITIVE_INFINITY;
     }
   }, [ref, messages]);
 
