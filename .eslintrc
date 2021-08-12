@@ -34,7 +34,7 @@
     // disable the rule for all files
     "@typescript-eslint/explicit-function-return-type": "off",
     "no-use-before-define": 0,
-    "@typescript-eslint/no-use-before-define": ["error"],
+    "@typescript-eslint/no-use-before-define": ["error"]
   },
   "overrides": [
     {

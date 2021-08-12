@@ -1,47 +1,52 @@
 import React, { FC, useRef, useEffect } from 'react';
 import Box from '@material-ui/core/Box';
 import { makeStyles } from '@material-ui/core/styles';
+import { List } from 'immutable';
 import Message from './Message';
-import type { MessageType } from '../types';
+import type { ChatMessage, ImmutableMember } from '../types';
+import { BIG_NUMBER } from '../constants';
 
 type Props = {
-  messages: MessageType[];
+  messages?: List<ChatMessage>;
+  height?: number;
+  currentMember: ImmutableMember;
 };
 
-const useStyles = makeStyles(() => ({
-  wrapper: {
-    overflowY: 'scroll',
-    height: '90%',
-    flexDirection: 'column',
-    alignItems: 'flex-start',
-    display: 'flex',
-  },
-}));
+const Messages: FC<Props> = ({ messages, height, currentMember }) => {
+  const ref = useRef<HTMLDivElement>(null);
 
-const Messages: FC<Props> = ({ messages }) => {
-  const boxRef = useRef<HTMLDivElement>();
+  const useStyles = makeStyles(() => ({
+    container: {
+      overflowY: 'auto',
+      height,
+    },
+    messagesContainer: {
+      flexDirection: 'column',
+      alignItems: 'flex-start',
+      display: 'flex',
+      justifyContent: 'flex-end',
+    },
+  }));
 
   const classes = useStyles();
 
-  // scroll down to last message
+  // scroll down to last message at start and on new message
   useEffect(() => {
-    if (boxRef?.current) {
+    if (ref?.current) {
       // really big number to scroll down
-      boxRef.current.scrollTop = 99999;
+      ref.current.scrollTop = BIG_NUMBER;
     }
-  }, [boxRef]);
+  }, [ref, messages]);
 
   return (
-    <Box
-      // hack to use ref
-      // https://github.com/mui-org/material-ui/issues/17010#issuecomment-615577360
-      {...{ ref: boxRef }}
-      className={classes.wrapper}
-    >
-      {messages.map((message) => (
-        <Message message={message} key={message.id} />
-      ))}
-    </Box>
+    <div className={classes.container} ref={ref}>
+      <Box className={classes.messagesContainer}>
+        {messages?.map((message) => (
+          // todo: apply key
+          <Message currentMember={currentMember} message={message} />
+        ))}
+      </Box>
+    </div>
   );
 };
 

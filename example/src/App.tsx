@@ -1,8 +1,12 @@
-import Chatbox from '@graasp/chatbox';
-// import '@graasp/ui/dist/index.css'
+import Chatbox, { ImmutableMember } from '@graasp/chatbox';
 
 const App = () => {
-  return <Chatbox id="24" />;
+  const member = new ImmutableMember({
+    name: 'kim',
+    id: 'kim-id',
+  });
+  const chatId = 'chat-id';
+  return <Chatbox chatId={chatId} showHeader currentMember={member} />;
 };
 
 export default App;

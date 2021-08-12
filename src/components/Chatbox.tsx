@@ -1,56 +1,64 @@
 import React, { FC, Fragment } from 'react';
 import Container from '@material-ui/core/Container';
-import { Loader } from '@graasp/ui';
-import Messages from './Messages';
 import { makeStyles } from '@material-ui/core/styles';
+import { List } from 'immutable';
+import Messages from './Messages';
 import Input from './Input';
 import Header from './Header';
-import { DEFAULT_CHATBOX_HEIGHT } from '../constants';
+import { DEFAULT_CHATBOX_HEIGHT, INPUT_HEIGHT } from '../constants';
+import type {
+  ChatMessage,
+  ImmutableMember,
+  PartialChatMessage,
+} from '../types';
 
 type Props = {
-  id: string;
+  id?: string;
+  sendMessageBoxId?: string;
   height?: number;
+  messages?: List<ChatMessage>;
+  isLoading?: boolean;
+  sendMessageFunction?: (message: PartialChatMessage) => void;
+  chatId: string;
+  showHeader?: boolean;
+  currentMember: ImmutableMember;
 };
 
-const Chatbox: FC<Props> = ({ height }) => {
-  const useStyles = makeStyles(() => ({
+const Chatbox: FC<Props> = ({
+  id,
+  sendMessageBoxId,
+  height = DEFAULT_CHATBOX_HEIGHT,
+  sendMessageFunction,
+  messages,
+  isLoading,
+  chatId,
+  showHeader = false,
+  currentMember,
+}) => {
+  const useStyles = makeStyles((theme) => ({
     container: {
       height: height || DEFAULT_CHATBOX_HEIGHT,
+      padding: theme.spacing(0, 1),
     },
   }));
   const classes = useStyles();
-
-  // todo: get data from call
-  const { data: messages, isLoading } = {
-    data: [
-      { id: '1', userId: 'me', text: 'a message' },
-      { id: '2', userId: 'me', text: 'a message' },
-      { id: '3', userId: 'another me', text: 'a message' },
-      { id: '4', userId: 'me', text: 'a message' },
-      { id: '5', userId: 'me', text: 'a message' },
-      { id: '6', userId: 'anotmer', text: 'a message for you to be aware' },
-      { id: '7', userId: 'me', text: 'a message' },
-      { id: '11', userId: 'me', text: 'a message' },
-      { id: '21', userId: 'me', text: 'a message' },
-      { id: '31', userId: 'another me', text: 'a message' },
-      { id: '41', userId: 'me', text: 'a message' },
-      { id: '51', userId: 'me', text: 'a message' },
-      { id: '61', userId: 'anotmer', text: 'a message for you to be aware' },
-      { id: '71', userId: 'me', text: 'a message' },
-    ],
-    isLoading: false,
-  };
-
   if (isLoading) {
-    return <Loader />;
+    return null;
   }
-
   return (
     <Fragment>
-      <Header />
-      <Container maxWidth="md" className={classes.container}>
-        <Messages messages={messages} />
-        <Input />
+      {showHeader && <Header />}
+      <Container id={id} maxWidth="md" className={classes.container}>
+        <Messages
+          currentMember={currentMember}
+          messages={messages}
+          height={height - INPUT_HEIGHT}
+        />
+        <Input
+          id={sendMessageBoxId}
+          sendMessageFunction={sendMessageFunction}
+          chatId={chatId}
+        />
       </Container>
     </Fragment>
   );

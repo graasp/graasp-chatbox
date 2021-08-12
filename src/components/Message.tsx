@@ -4,13 +4,13 @@ import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import grey from '@material-ui/core/colors/grey';
 import clsx from 'clsx';
-import type { MessageType } from '../types';
+import type { ChatMessage, ImmutableMember } from '../types';
 
 const useStyles = makeStyles((theme) => ({
   message: {
     background: grey[100],
     borderRadius: '5px',
-    margin: theme.spacing(1),
+    margin: theme.spacing(1, 0),
     padding: theme.spacing(0.5, 1, 1),
     maxWidth: '80%',
     width: 'fit-content',
@@ -21,14 +21,14 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 type Props = {
-  message: MessageType;
+  message: ChatMessage;
+  currentMember: ImmutableMember;
 };
 
-const Message: FC<Props> = ({ message }) => {
-  const { userId, text } = message;
+const Message: FC<Props> = ({ message, currentMember }) => {
   const classes = useStyles();
-
-  const isOwnMessage = userId === 'me';
+  const creator = message.creator;
+  const isOwnMessage = creator === currentMember.get('id');
   const align = isOwnMessage ? 'flex-end' : null;
 
   return (
@@ -37,8 +37,8 @@ const Message: FC<Props> = ({ message }) => {
       className={clsx(classes.message, { [classes.own]: isOwnMessage })}
       alignSelf={align}
     >
-      {!isOwnMessage && <Typography variant="caption">{userId}</Typography>}
-      <Typography variant="body2">{text}</Typography>
+      {!isOwnMessage && <Typography variant="caption">{creator}</Typography>}
+      <Typography variant="body2">{message.body}</Typography>
     </Box>
   );
 };
