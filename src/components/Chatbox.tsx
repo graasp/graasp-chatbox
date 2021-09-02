@@ -9,6 +9,7 @@ import { DEFAULT_CHATBOX_HEIGHT, INPUT_HEIGHT } from '../constants';
 import type {
   ChatMessage,
   ImmutableMember,
+  Member,
   PartialChatMessage,
 } from '../types';
 
@@ -22,6 +23,7 @@ type Props = {
   chatId: string;
   showHeader?: boolean;
   currentMember: ImmutableMember;
+  members?: List<Member>;
 };
 
 const Chatbox: FC<Props> = ({
@@ -34,6 +36,7 @@ const Chatbox: FC<Props> = ({
   chatId,
   showHeader = false,
   currentMember,
+  members,
 }) => {
   const useStyles = makeStyles((theme) => ({
     container: {
@@ -50,6 +53,7 @@ const Chatbox: FC<Props> = ({
       {showHeader && <Header />}
       <Container id={id} maxWidth="md" className={classes.container}>
         <Messages
+          members={members}
           currentMember={currentMember}
           messages={messages}
           height={height - INPUT_HEIGHT}

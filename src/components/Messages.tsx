@@ -1,18 +1,21 @@
 import React, { FC, useRef, useEffect } from 'react';
 import Box from '@material-ui/core/Box';
 import { makeStyles } from '@material-ui/core/styles';
+import moment from 'moment';
 import { List } from 'immutable';
+import Date from './Date';
 import Message from './Message';
-import type { ChatMessage, ImmutableMember } from '../types';
+import type { ChatMessage, ImmutableMember, Member } from '../types';
 import { BIG_NUMBER } from '../constants';
 
 type Props = {
   messages?: List<ChatMessage>;
   height?: number;
   currentMember: ImmutableMember;
+  members?: List<Member>;
 };
 
-const Messages: FC<Props> = ({ messages, height, currentMember }) => {
+const Messages: FC<Props> = ({ messages, height, currentMember, members }) => {
   const ref = useRef<HTMLDivElement>(null);
 
   const useStyles = makeStyles(() => ({
@@ -38,12 +41,28 @@ const Messages: FC<Props> = ({ messages, height, currentMember }) => {
     }
   }, [ref, messages]);
 
+  const messagesByDay = messages
+    ?.groupBy(({ createdAt }: ChatMessage) =>
+      moment(createdAt).format('DD MMM YYYY'),
+    )
+    // transform to array to avoid printing the first key
+    .toArray();
+
   return (
     <div className={classes.container} ref={ref}>
       <Box className={classes.messagesContainer}>
-        {messages?.map((message) => (
-          // todo: apply key
-          <Message currentMember={currentMember} message={message} />
+        {messagesByDay?.map(([date, m]) => (
+          <>
+            <Date date={date} />
+            {m?.map((message: ChatMessage) => (
+              // todo: apply key
+              <Message
+                currentMember={currentMember}
+                message={message}
+                member={members?.find(({ id }) => id === message.creator)}
+              />
+            ))}
+          </>
         ))}
       </Box>
     </div>
