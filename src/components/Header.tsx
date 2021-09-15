@@ -5,6 +5,7 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import ChatIcon from '@material-ui/icons/Chat';
+import { HEADER_HEIGHT } from '../constants';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -18,6 +19,9 @@ const useStyles = makeStyles((theme) => ({
   },
   icon: {
     marginRight: theme.spacing(2),
+  },
+  spacing: {
+    height: HEADER_HEIGHT,
   },
 }));
 
@@ -39,6 +43,7 @@ const Header: FC<Props> = ({ title }) => {
           </Typography>
         </Toolbar>
       </AppBar>
+      <div className={classes.spacing} />
     </div>
   );
 };

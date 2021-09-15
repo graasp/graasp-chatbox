@@ -6,7 +6,7 @@ import { List } from 'immutable';
 import Date from './Date';
 import Message from './Message';
 import type { ChatMessage, ImmutableMember, Member } from '../types';
-import { BIG_NUMBER } from '../constants';
+import { BIG_NUMBER, DEFAULT_DATE_FORMAT } from '../constants';
 
 type Props = {
   messages?: List<ChatMessage>;
@@ -43,7 +43,7 @@ const Messages: FC<Props> = ({ messages, height, currentMember, members }) => {
 
   const messagesByDay = messages
     ?.groupBy(({ createdAt }: ChatMessage) =>
-      moment(createdAt).format('DD MMM YYYY'),
+      moment(createdAt).format(DEFAULT_DATE_FORMAT),
     )
     // transform to array to avoid printing the first key
     .toArray();
