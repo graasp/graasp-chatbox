@@ -1,4 +1,4 @@
-import React, { FC, Fragment } from 'react';
+import { FC, Fragment } from 'react';
 import Container from '@material-ui/core/Container';
 import { makeStyles } from '@material-ui/core/styles';
 import { List } from 'immutable';

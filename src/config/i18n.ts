@@ -19,9 +19,6 @@ i18n.use(initReactI18next).init({
     escapeValue: false,
     formatSeparator: ',',
   },
-  react: {
-    wait: true,
-  },
 });
 
 const langs = {

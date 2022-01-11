@@ -7,6 +7,7 @@ export default {
   input: './src/index.ts',
   output: {
     dir: './dist',
+    format: 'cjs',
   },
   plugins: [
     peerDepsExternal(),
@@ -14,7 +15,11 @@ export default {
       mainFields: ['module', 'main', 'jsnext:main', 'browser'],
       extensions: ['.js', '.jsx', '.ts', '.tsx'],
     }),
-    typescript({ tsconfig: './tsconfig.json', sourceMap: false }),
+    typescript({
+      tsconfig: './tsconfig.json',
+      sourceMap: false,
+      exclude: ['**/*.test.ts', '**/*.test.tsx'],
+    }),
     commonjs(),
   ],
   external: [
