@@ -6,12 +6,7 @@ import Messages from './Messages';
 import Input from './Input';
 import Header from './Header';
 import { DEFAULT_CHATBOX_HEIGHT, INPUT_HEIGHT } from '../constants';
-import type {
-  ChatMessage,
-  ImmutableMember,
-  Member,
-  PartialChatMessage,
-} from '../types';
+import type { ChatMessage, ImmutableMember, Member, PartialChatMessage } from '../types';
 
 type Props = {
   id?: string;

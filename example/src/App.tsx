@@ -1,43 +1,13 @@
-import Chatbox, { ChatMessage, ImmutableMember } from '@graasp/chatbox';
-import { List } from 'immutable';
+import { queryClient, QueryClientProvider, ReactQueryDevtools } from './config/queryClient';
+import { ENV, NODE_ENV } from "./config/constants";
+import ChatboxWrapper from "./components/ChatboxWrapper";
 
 const App = () => {
-  const member = new ImmutableMember({
-    name: 'kim',
-    id: 'kim-id',
-  });
-  const members = [
-    member,
-    {
-      name: 'bob',
-      id: 'bob-id',
-    },
-  ];
-  const chatId = 'chat-id';
-
-  const chatMessages: ChatMessage[] = [
-    {
-      chatId,
-      creator: member.id,
-      createdAt: new Date().toString(),
-      body: 'hello',
-    },
-    {
-      chatId,
-      creator: members[1].id,
-      createdAt: new Date().toString(),
-      body: 'hello',
-    },
-  ];
-
   return (
-    <Chatbox
-      chatId={chatId}
-      showHeader
-      currentMember={member}
-      messages={List(chatMessages)}
-      members={List(members)}
-    />
+    <QueryClientProvider client={queryClient}>
+      <ChatboxWrapper />
+      {NODE_ENV === ENV.DEVELOPMENT && <ReactQueryDevtools />}
+    </QueryClientProvider>
   );
 };
 
