@@ -52,7 +52,7 @@ const Message: FC<Props> = ({ message, currentMember, member }) => {
       {!isOwnMessage && (
         <Typography variant="subtitle2">{`${creatorName}`}</Typography>
       )}
-      <Typography variant="body1">{message.body}</Typography>
+      {message.body.split('\n').map((line) => <Typography variant="body1">{line}<br /></Typography>)}
       <Typography variant="caption" className={classes.time}>
         {time}
       </Typography>
