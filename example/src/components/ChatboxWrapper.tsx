@@ -1,6 +1,10 @@
 import { FC } from 'react';
-import { List } from "immutable";
-import Chatbox, { ChatMessage, PartialChatMessage, ImmutableMember } from "@graasp/chatbox";
+import { List } from 'immutable';
+import Chatbox, {
+  ChatMessage,
+  PartialChatMessage,
+  ImmutableMember,
+} from '@graasp/chatbox';
 import { MUTATION_KEYS } from '@graasp/query-client';
 import { useMutation, hooks } from '../config/queryClient';
 
@@ -25,10 +29,13 @@ const ChatboxWrapper: FC<Props> = () => {
 
   // use kooks
   const { data: chat } = hooks.useItemChat(chatId);
-  const { mutate: sendMessage }: { mutate: (message: PartialChatMessage) => void } = useMutation(MUTATION_KEYS.POST_ITEM_CHAT_MESSAGE);
-
   // get chat messages
   const chatMessages = chat?.get('messages') as ChatMessage[];
+  const {
+    mutate: sendMessage,
+  }: { mutate: (message: PartialChatMessage) => void } = useMutation(
+    MUTATION_KEYS.POST_ITEM_CHAT_MESSAGE,
+  );
 
   return (
     <Chatbox

@@ -3,7 +3,11 @@
     "outDir": "dist",
     "rootDir": "./src",
     "module": "esnext",
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "moduleResolution": "node",
     "jsx": "react-jsx",
     "sourceMap": true,
@@ -28,6 +32,18 @@
     "noEmit": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["src", "index.ts"],
-  "exclude": ["node_modules", "dist", "example"]
+  "include": [
+    "src",
+    "index.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist",
+    "example"
+  ],
+  "references": [
+    {
+      "path": "./cypress"
+    }
+  ]
 }

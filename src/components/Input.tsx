@@ -6,6 +6,7 @@ import { useTranslation } from 'react-i18next';
 import SendIcon from '@material-ui/icons/Send';
 import { makeStyles } from '@material-ui/core/styles';
 import { PartialChatMessage } from '../types';
+import { inputTextFieldCypress, sendButtonCypress } from '../config/selectors';
 
 type Props = {
   sendMessageFunction?: (body: PartialChatMessage) => void;
@@ -35,21 +36,23 @@ const Input: FC<Props> = ({ id, chatId, placeholder, sendMessageFunction }) => {
   };
 
   // controlled input onChange handler
-  const onChange = (event: ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => {
+  const onChange = (
+    event: ChangeEvent<HTMLTextAreaElement | HTMLInputElement>,
+  ): void => {
     const newValue: string = event.target.value;
     setTextInput(newValue);
-  }
+  };
 
   // catch {enter} key press to send messages
   const keyDown = (e: React.KeyboardEvent<HTMLDivElement>): void => {
     // let user insert a new line with shift+enter
-    if (e.key === "Enter" && !e.shiftKey) {
+    if (e.key === 'Enter' && !e.shiftKey) {
       // do not propagate keypress event when only enter is pressed
-      e.preventDefault()
+      e.preventDefault();
       // send message
       onClick();
     }
-  }
+  };
 
   return (
     <Box
@@ -60,6 +63,7 @@ const Input: FC<Props> = ({ id, chatId, placeholder, sendMessageFunction }) => {
       id={id}
     >
       <TextField
+        data-cy={inputTextFieldCypress}
         id="outlined-basic"
         value={textInput}
         onChange={onChange}
@@ -69,7 +73,7 @@ const Input: FC<Props> = ({ id, chatId, placeholder, sendMessageFunction }) => {
         multiline
         placeholder={placeholder || t('Type something…')}
       />
-      <IconButton onClick={onClick}>
+      <IconButton data-cy={sendButtonCypress} onClick={onClick}>
         <SendIcon color="primary" />
       </IconButton>
     </Box>
