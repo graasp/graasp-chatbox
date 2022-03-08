@@ -1,8 +1,0 @@
-{
-  "compilerOptions": {
-    "rootDir": ".",
-    "outDir": "../../build/common",
-    "resolveJsonModule": true,
-    "composite": true
-  }
-}

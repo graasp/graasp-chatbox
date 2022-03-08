@@ -6,7 +6,11 @@ import { useTranslation } from 'react-i18next';
 import SendIcon from '@material-ui/icons/Send';
 import { makeStyles } from '@material-ui/core/styles';
 import { PartialChatMessage } from '../types';
-import { inputTextFieldCypress, sendButtonCypress } from '../config/selectors';
+import {
+  inputTextFieldCypress,
+  inputTextFieldTextAreaCypress,
+  sendButtonCypress,
+} from '../config/selectors';
 
 type Props = {
   sendMessageFunction?: (body: PartialChatMessage) => void;
@@ -64,7 +68,7 @@ const Input: FC<Props> = ({ id, chatId, placeholder, sendMessageFunction }) => {
     >
       <TextField
         data-cy={inputTextFieldCypress}
-        id="outlined-basic"
+        id={inputTextFieldTextAreaCypress}
         value={textInput}
         onChange={onChange}
         onKeyDown={keyDown}

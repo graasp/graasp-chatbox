@@ -1,7 +1,6 @@
 {
   "compilerOptions": {
     "outDir": "dist",
-    "rootDir": "./src",
     "module": "esnext",
     "lib": [
       "dom",
@@ -40,10 +39,5 @@
     "node_modules",
     "dist",
     "example"
-  ],
-  "references": [
-    {
-      "path": "./cypress"
-    }
   ]
 }

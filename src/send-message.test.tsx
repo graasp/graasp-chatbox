@@ -3,7 +3,7 @@ import Chatbox from './components/Chatbox';
 import {
   dataCyWrapper,
   inputTextFieldCypress,
-  messageIdCyWrapper,
+  inputTextFieldTextAreaCypress,
   sendButtonCypress,
 } from './config/selectors';
 import { List } from 'immutable';
@@ -11,13 +11,13 @@ import { ImmutableMember, Member } from './index';
 import {
   CHAT_ID,
   CHAT_MESSAGES,
+  resetChatMessages,
   sendMessage,
 } from '../cypress/fixtures/chat_messages';
 import { MEMBERS } from '../cypress/fixtures/members';
 
-describe('Sending message', () => {
-  it('enters message', () => {
-    const inputText = 'Hello there';
+describe('Enter text', () => {
+  beforeEach(() => {
     mount(
       <Chatbox
         chatId={CHAT_ID}
@@ -27,28 +27,62 @@ describe('Sending message', () => {
         sendMessageFunction={sendMessage}
       />,
     );
-    cy.get(dataCyWrapper(inputTextFieldCypress)).type(inputText);
-    cy.get(dataCyWrapper(sendButtonCypress)).click();
+  });
+
+  it('should enter text', () => {
+    const inputText = 'Hello there';
+
+    cy.get(`#${inputTextFieldTextAreaCypress}`)
+      .type(inputText)
+      .should('contain.value', inputText);
+  });
+
+  it('should add a new line', () => {
+    const inputText = 'Hello there';
+    cy.get(`#${inputTextFieldTextAreaCypress}`)
+      .type(inputText)
+      .type('{shift}{enter}{shift}')
+      .should('contain', '\n');
+  });
+});
+
+describe('Send message', () => {
+  beforeEach(() => {
+    resetChatMessages();
+  });
+
+  it('should send a message with click', () => {
+    const inputText = 'Hello there';
+    const sendMessageSpy = cy.spy(sendMessage).as('spyMethod');
     mount(
       <Chatbox
         chatId={CHAT_ID}
         currentMember={new ImmutableMember(MEMBERS.ANNA)}
         members={List(Object.values(MEMBERS) as Member[])}
         messages={List(CHAT_MESSAGES)}
-        sendMessageFunction={sendMessage}
+        sendMessageFunction={sendMessageSpy}
       />,
-    ).then(({ rerender }) => {
-      rerender(
-        <Chatbox
-          chatId={CHAT_ID}
-          currentMember={new ImmutableMember(MEMBERS.ANNA)}
-          members={List(Object.values(MEMBERS) as Member[])}
-          messages={List(CHAT_MESSAGES)}
-          sendMessageFunction={sendMessage}
-        />,
-      );
-    });
-    const latestId = CHAT_MESSAGES.at(-1)?.id;
-    cy.get(dataCyWrapper(messageIdCyWrapper(latestId))).should('exist');
+    );
+    cy.get(dataCyWrapper(inputTextFieldCypress)).type(inputText);
+    cy.get(dataCyWrapper(sendButtonCypress)).click();
+    cy.get('@spyMethod').should('have.been.called');
+  });
+
+  it('should send a message with enter', function () {
+    const inputText = 'Hello there';
+    const sendMessageSpy = cy.spy(sendMessage).as('spyMethod');
+    mount(
+      <Chatbox
+        chatId={CHAT_ID}
+        currentMember={new ImmutableMember(MEMBERS.ANNA)}
+        members={List(Object.values(MEMBERS) as Member[])}
+        messages={List(CHAT_MESSAGES)}
+        sendMessageFunction={sendMessageSpy}
+      />,
+    );
+    cy.get(dataCyWrapper(inputTextFieldCypress))
+      .type(inputText)
+      .type('{enter}');
+    cy.get('@spyMethod').should('have.been.called');
   });
 });
