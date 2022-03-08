@@ -4,13 +4,14 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "react-scripts start",
+    "start": "env-cmd -f .env.local react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
   "dependencies": {
     "@graasp/chatbox": "link:..",
+    "@graasp/query-client": "github:graasp/graasp-query-client",
     "@material-ui/core": "4.12.3",
     "@material-ui/icons": "4.11.2",
     "@material-ui/lab": "4.0.0-alpha.60",

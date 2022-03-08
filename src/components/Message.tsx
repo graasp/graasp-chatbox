@@ -8,6 +8,7 @@ import clsx from 'clsx';
 import truncate from 'lodash.truncate';
 import type { ChatMessage, ImmutableMember, Member } from '../types';
 import { DEFAULT_USER_NAME, MAX_USERNAME_LENGTH } from '../constants';
+import { messageIdCyWrapper } from '../config/selectors';
 
 const useStyles = makeStyles((theme) => ({
   message: {
@@ -24,6 +25,9 @@ const useStyles = makeStyles((theme) => ({
   },
   time: {
     float: 'right',
+  },
+  messageText: {
+    whiteSpace: 'pre-line',
   },
 }));
 
@@ -48,11 +52,14 @@ const Message: FC<Props> = ({ message, currentMember, member }) => {
       p={1}
       className={clsx(classes.message, { [classes.own]: isOwnMessage })}
       alignSelf={align}
+      data-cy={messageIdCyWrapper(message.id)}
     >
       {!isOwnMessage && (
         <Typography variant="subtitle2">{`${creatorName}`}</Typography>
       )}
-      <Typography variant="body1">{message.body}</Typography>
+      <Typography className={classes.messageText} variant="body1">
+        {message.body}
+      </Typography>
       <Typography variant="caption" className={classes.time}>
         {time}
       </Typography>

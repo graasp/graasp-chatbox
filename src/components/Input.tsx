@@ -1,4 +1,4 @@
-import { FC, useRef } from 'react';
+import React, { ChangeEvent, FC, useState } from 'react';
 import IconButton from '@material-ui/core/IconButton';
 import TextField from '@material-ui/core/TextField';
 import Box from '@material-ui/core/Box';
@@ -6,6 +6,11 @@ import { useTranslation } from 'react-i18next';
 import SendIcon from '@material-ui/icons/Send';
 import { makeStyles } from '@material-ui/core/styles';
 import { PartialChatMessage } from '../types';
+import {
+  inputTextFieldCypress,
+  inputTextFieldTextAreaCypress,
+  sendButtonCypress,
+} from '../config/selectors';
 
 type Props = {
   sendMessageFunction?: (body: PartialChatMessage) => void;
@@ -23,15 +28,33 @@ const useStyles = makeStyles((theme) => ({
 
 const Input: FC<Props> = ({ id, chatId, placeholder, sendMessageFunction }) => {
   const classes = useStyles();
-  const textRef = useRef<HTMLInputElement>();
+  const [textInput, setTextInput] = useState('');
   const { t } = useTranslation();
 
   const onClick = (): void => {
-    if (textRef?.current?.value) {
-      const text = textRef?.current?.value;
-      sendMessageFunction?.({ chatId, body: text });
+    if (textInput) {
+      sendMessageFunction?.({ chatId, body: textInput });
       // reset input content
-      textRef.current.value = '';
+      setTextInput('');
+    }
+  };
+
+  // controlled input onChange handler
+  const onChange = (
+    event: ChangeEvent<HTMLTextAreaElement | HTMLInputElement>,
+  ): void => {
+    const newValue: string = event.target.value;
+    setTextInput(newValue);
+  };
+
+  // catch {enter} key press to send messages
+  const keyDown = (e: React.KeyboardEvent<HTMLDivElement>): void => {
+    // let user insert a new line with shift+enter
+    if (e.key === 'Enter' && !e.shiftKey) {
+      // do not propagate keypress event when only enter is pressed
+      e.preventDefault();
+      // send message
+      onClick();
     }
   };
 
@@ -44,13 +67,17 @@ const Input: FC<Props> = ({ id, chatId, placeholder, sendMessageFunction }) => {
       id={id}
     >
       <TextField
-        inputRef={textRef}
-        id="outlined-basic"
+        data-cy={inputTextFieldCypress}
+        id={inputTextFieldTextAreaCypress}
+        value={textInput}
+        onChange={onChange}
+        onKeyDown={keyDown}
         variant="outlined"
         fullWidth
+        multiline
         placeholder={placeholder || t('Type something…')}
       />
-      <IconButton onClick={onClick}>
+      <IconButton data-cy={sendButtonCypress} onClick={onClick}>
         <SendIcon color="primary" />
       </IconButton>
     </Box>

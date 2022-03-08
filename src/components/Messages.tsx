@@ -1,4 +1,4 @@
-import { FC, useRef, useEffect } from 'react';
+import { FC, useRef, useEffect, Fragment } from 'react';
 import Box from '@material-ui/core/Box';
 import { makeStyles } from '@material-ui/core/styles';
 import moment from 'moment';
@@ -52,17 +52,17 @@ const Messages: FC<Props> = ({ messages, height, currentMember, members }) => {
     <div className={classes.container} ref={ref}>
       <Box className={classes.messagesContainer}>
         {messagesByDay?.map(([date, m]) => (
-          <>
+          <Fragment key={date}>
             <Date date={date} />
             {m?.map((message: ChatMessage) => (
-              // todo: apply key
               <Message
+                key={message.id}
                 currentMember={currentMember}
                 message={message}
                 member={members?.find(({ id }) => id === message.creator)}
               />
             ))}
-          </>
+          </Fragment>
         ))}
       </Box>
     </div>

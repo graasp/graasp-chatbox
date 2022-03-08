@@ -6,6 +6,7 @@ export type PartialChatMessage = {
 };
 
 export type ChatMessage = {
+  id: string;
   chatId: string;
   creator: string;
   createdAt: string;
@@ -16,6 +17,7 @@ export type Member = {
   id: string;
   name: string;
 };
+
 export class ImmutableMember extends Record({
   id: '',
   name: '',
