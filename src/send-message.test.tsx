@@ -8,12 +8,7 @@ import {
 } from './config/selectors';
 import { List } from 'immutable';
 import { ImmutableMember, Member } from './index';
-import {
-  CHAT_ID,
-  CHAT_MESSAGES,
-  resetChatMessages,
-  sendMessage,
-} from '../cypress/fixtures/chat_messages';
+import { CHAT_ID, CHAT_MESSAGES } from '../cypress/fixtures/chat_messages';
 import { MEMBERS } from '../cypress/fixtures/members';
 
 describe('Enter text', () => {
@@ -24,7 +19,6 @@ describe('Enter text', () => {
         currentMember={new ImmutableMember(MEMBERS.ANNA)}
         members={List(Object.values(MEMBERS) as Member[])}
         messages={List(CHAT_MESSAGES)}
-        sendMessageFunction={sendMessage}
       />,
     );
   });
@@ -47,13 +41,9 @@ describe('Enter text', () => {
 });
 
 describe('Send message', () => {
-  beforeEach(() => {
-    resetChatMessages();
-  });
-
   it('should send a message with click', () => {
     const inputText = 'Hello there';
-    const sendMessageSpy = cy.spy(sendMessage).as('spyMethod');
+    const sendMessageSpy = cy.spy(() => {}).as('spyMethod');
     mount(
       <Chatbox
         chatId={CHAT_ID}
@@ -70,7 +60,7 @@ describe('Send message', () => {
 
   it('should send a message with enter', function () {
     const inputText = 'Hello there';
-    const sendMessageSpy = cy.spy(sendMessage).as('spyMethod');
+    const sendMessageSpy = cy.spy(() => {}).as('spyMethod');
     mount(
       <Chatbox
         chatId={CHAT_ID}

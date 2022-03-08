@@ -3,7 +3,7 @@ import { CURRENT_MEMBER, MEMBERS } from './members';
 
 export const CHAT_ID = v4();
 
-const INIT_CHAT_MESSAGES = [
+export const CHAT_MESSAGES = [
   {
     id: v4(),
     chatId: CHAT_ID,
@@ -19,25 +19,3 @@ const INIT_CHAT_MESSAGES = [
     body: 'And here a text with 2\n\nLine breaks',
   },
 ];
-
-export let CHAT_MESSAGES = INIT_CHAT_MESSAGES;
-
-export const resetChatMessages = () =>
-  (CHAT_MESSAGES = [...INIT_CHAT_MESSAGES]);
-
-export const sendMessage = ({
-  chatId,
-  body,
-}: {
-  chatId: string;
-  body: string;
-}): void => {
-  const newMessage = {
-    id: v4(),
-    chatId,
-    creator: CURRENT_MEMBER.id,
-    createdAt: new Date().toISOString(),
-    body,
-  };
-  CHAT_MESSAGES = [...CHAT_MESSAGES, newMessage];
-};

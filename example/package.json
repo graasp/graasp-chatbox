@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "@graasp/chatbox": "link:..",
-    "@graasp/query-client": "github:graasp/graasp-query-client#68b7524267a09d2e46d567029124ad33b38a3229",
+    "@graasp/query-client": "github:graasp/graasp-query-client",
     "@material-ui/core": "4.12.3",
     "@material-ui/icons": "4.11.2",
     "@material-ui/lab": "4.0.0-alpha.60",

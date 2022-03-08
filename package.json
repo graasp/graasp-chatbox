@@ -36,7 +36,8 @@
     "hooks:install": "husky install",
     "predeploy": "cd example && yarn install && yarn build",
     "release": "standard-version",
-    "cypress": "cypress open-ct"
+    "cypress": "cypress open-ct",
+    "cypress:ci": "cypress run-ct"
   },
   "peerDependencies": {
     "@material-ui/core": "*",
