@@ -1,5 +1,5 @@
 build
 public
 coverage
-src/serviceWorker.js
 cypress/integration/examples
+cypress/plugins/
