@@ -43,7 +43,7 @@ describe('Enter text', () => {
 describe('Send message', () => {
   it('should send a message with click', () => {
     const inputText = 'Hello there';
-    const sendMessageSpy = cy.spy(() => {}).as('spyMethod');
+    const sendMessageSpy = cy.spy(() => null).as('spyMethod');
     mount(
       <Chatbox
         chatId={CHAT_ID}
@@ -60,7 +60,7 @@ describe('Send message', () => {
 
   it('should send a message with enter', function () {
     const inputText = 'Hello there';
-    const sendMessageSpy = cy.spy(() => {}).as('spyMethod');
+    const sendMessageSpy = cy.spy(() => null).as('spyMethod');
     mount(
       <Chatbox
         chatId={CHAT_ID}

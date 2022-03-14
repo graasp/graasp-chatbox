@@ -8,6 +8,7 @@ import Chatbox, {
 } from '@graasp/chatbox';
 import { MUTATION_KEYS } from '@graasp/query-client';
 import { useMutation, hooks } from '../config/queryClient';
+import { PartialNewChatMessage } from '../../../src';
 
 type Props = {};
 
@@ -31,8 +32,18 @@ const ChatboxWrapper: FC<Props> = () => {
 
   const {
     mutate: sendMessage,
-  }: { mutate: (message: PartialChatMessage) => void } = useMutation(
+  }: { mutate: (message: PartialNewChatMessage) => void } = useMutation(
     MUTATION_KEYS.POST_ITEM_CHAT_MESSAGE,
+  );
+  const {
+    mutate: deleteMessage,
+  }: { mutate: (message: PartialChatMessage) => void } = useMutation(
+    MUTATION_KEYS.DELETE_ITEM_CHAT_MESSAGE,
+  );
+  const {
+    mutate: editMessage,
+  }: { mutate: (message: PartialChatMessage) => void } = useMutation(
+    MUTATION_KEYS.PATCH_ITEM_CHAT_MESSAGE,
   );
 
   return (
@@ -43,6 +54,8 @@ const ChatboxWrapper: FC<Props> = () => {
       members={members}
       messages={List(chatMessages)}
       sendMessageFunction={sendMessage}
+      deleteMessageFunction={deleteMessage}
+      editMessageFunction={editMessage}
     />
   );
 };

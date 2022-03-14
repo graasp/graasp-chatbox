@@ -9,6 +9,7 @@ export const CHAT_MESSAGES = [
     chatId: CHAT_ID,
     creator: CURRENT_MEMBER.id,
     createdAt: new Date().toISOString(),
+    updatedAt: '',
     body: 'Some text\nOn multiple lines',
   },
   {
@@ -16,6 +17,7 @@ export const CHAT_MESSAGES = [
     chatId: CHAT_ID,
     creator: MEMBERS.BOB.id,
     createdAt: new Date().toISOString(),
+    updatedAt: '',
     body: 'And here a text with 2\n\nLine breaks',
   },
 ];

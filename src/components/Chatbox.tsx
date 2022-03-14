@@ -1,17 +1,23 @@
-import { FC, Fragment } from 'react';
+import { FC, Fragment, useState } from 'react';
 import Container from '@material-ui/core/Container';
 import { makeStyles } from '@material-ui/core/styles';
 import { List } from 'immutable';
 import Messages from './Messages';
-import Input from './Input';
 import Header from './Header';
-import { DEFAULT_CHATBOX_HEIGHT, INPUT_HEIGHT } from '../constants';
+import {
+  DEFAULT_CHATBOX_HEIGHT,
+  EDIT_BANNER_HEIGHT,
+  INITIAL_EDITING,
+  INPUT_HEIGHT,
+} from '../constants';
 import type {
   ChatMessage,
   ImmutableMember,
   Member,
   PartialChatMessage,
+  PartialNewChatMessage,
 } from '../types';
+import InputBar from './InputBar';
 
 type Props = {
   id?: string;
@@ -19,7 +25,9 @@ type Props = {
   height?: number;
   messages?: List<ChatMessage>;
   isLoading?: boolean;
-  sendMessageFunction?: (message: PartialChatMessage) => void;
+  sendMessageFunction?: (message: PartialNewChatMessage) => void;
+  deleteMessageFunction?: (message: PartialChatMessage) => void;
+  editMessageFunction?: (message: PartialChatMessage) => void;
   chatId: string;
   showHeader?: boolean;
   currentMember: ImmutableMember;
@@ -31,6 +39,8 @@ const Chatbox: FC<Props> = ({
   sendMessageBoxId,
   height = DEFAULT_CHATBOX_HEIGHT,
   sendMessageFunction,
+  deleteMessageFunction,
+  editMessageFunction,
   messages,
   isLoading,
   chatId,
@@ -45,6 +55,8 @@ const Chatbox: FC<Props> = ({
     },
   }));
   const classes = useStyles();
+  const [editing, setEditing] = useState(INITIAL_EDITING);
+
   if (isLoading) {
     return null;
   }
@@ -56,12 +68,21 @@ const Chatbox: FC<Props> = ({
           members={members}
           currentMember={currentMember}
           messages={messages}
-          height={height - INPUT_HEIGHT}
+          height={
+            height - INPUT_HEIGHT - (editing.open ? EDIT_BANNER_HEIGHT : 0)
+          }
+          editingProps={editing}
+          setEditing={setEditing}
+          deleteMessageFunction={deleteMessageFunction}
+          editMessageFunction={editMessageFunction}
         />
-        <Input
-          id={sendMessageBoxId}
-          sendMessageFunction={sendMessageFunction}
+        <InputBar
           chatId={chatId}
+          editingProps={editing}
+          setEditing={setEditing}
+          sendMessageBoxId={sendMessageBoxId}
+          sendMessageFunction={sendMessageFunction}
+          editMessageFunction={editMessageFunction}
         />
       </Container>
     </Fragment>

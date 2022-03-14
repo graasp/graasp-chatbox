@@ -1,34 +1,46 @@
-import React, { ChangeEvent, FC, useState } from 'react';
+import React, { ChangeEvent, FC, RefObject } from 'react';
 import IconButton from '@material-ui/core/IconButton';
 import TextField from '@material-ui/core/TextField';
 import Box from '@material-ui/core/Box';
 import { useTranslation } from 'react-i18next';
 import SendIcon from '@material-ui/icons/Send';
 import { makeStyles } from '@material-ui/core/styles';
-import { PartialChatMessage } from '../types';
+import { PartialNewChatMessage } from '../types';
 import {
   inputTextFieldCypress,
   inputTextFieldTextAreaCypress,
   sendButtonCypress,
 } from '../config/selectors';
+import { MAX_ROWS_INPUT } from '../constants';
 
 type Props = {
-  sendMessageFunction?: (body: PartialChatMessage) => void;
   id?: string;
-  placeholder?: string;
+  inputRef: RefObject<HTMLDivElement>;
   chatId: string;
+  placeholder?: string;
+  textInput: string;
+  setTextInput: (newText: string) => void;
+  sendMessageFunction?: (body: PartialNewChatMessage) => void;
 };
 
 const useStyles = makeStyles((theme) => ({
   wrapper: {
     width: '100%',
-    margin: theme.spacing(1, 'auto'),
+    marginBottom: theme.spacing(1),
   },
 }));
 
-const Input: FC<Props> = ({ id, chatId, placeholder, sendMessageFunction }) => {
+const Input: FC<Props> = ({
+  id,
+  inputRef,
+  chatId,
+  textInput,
+  setTextInput,
+  placeholder,
+  sendMessageFunction,
+}) => {
   const classes = useStyles();
-  const [textInput, setTextInput] = useState('');
+
   const { t } = useTranslation();
 
   const onClick = (): void => {
@@ -69,12 +81,14 @@ const Input: FC<Props> = ({ id, chatId, placeholder, sendMessageFunction }) => {
       <TextField
         data-cy={inputTextFieldCypress}
         id={inputTextFieldTextAreaCypress}
+        inputRef={inputRef}
         value={textInput}
         onChange={onChange}
         onKeyDown={keyDown}
         variant="outlined"
         fullWidth
         multiline
+        maxRows={MAX_ROWS_INPUT}
         placeholder={placeholder || t('Type something…')}
       />
       <IconButton data-cy={sendButtonCypress} onClick={onClick}>

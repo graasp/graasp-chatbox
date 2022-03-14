@@ -61,7 +61,7 @@ const Message: FC<Props> = ({ message, currentMember, member }) => {
         {message.body}
       </Typography>
       <Typography variant="caption" className={classes.time}>
-        {time}
+        {`${message.updatedAt ? 'modified' : ''} ${time}`}
       </Typography>
     </Box>
   );

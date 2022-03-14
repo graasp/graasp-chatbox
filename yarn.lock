@@ -2098,9 +2098,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@graasp/query-client@github:graasp/graasp-query-client#8f8d830e1258d5a42dc978e59f9a1cf11e3b18f2":
+"@graasp/query-client@github:graasp/graasp-query-client#5fa5bc1fc466156d2606a109538add147fdab9d5":
   version: 0.1.0
-  resolution: "@graasp/query-client@https://github.com/graasp/graasp-query-client.git#commit=8f8d830e1258d5a42dc978e59f9a1cf11e3b18f2"
+  resolution: "@graasp/query-client@https://github.com/graasp/graasp-query-client.git#commit=5fa5bc1fc466156d2606a109538add147fdab9d5"
   dependencies:
     "@graasp/translations": "github:graasp/graasp-translations.git"
     axios: 0.24.0
@@ -2113,7 +2113,7 @@ __metadata:
     uuid: 8.3.2
   peerDependencies:
     react: ^17.0.0
-  checksum: 2961c9b5751d5db5f7f52c3ce81d8091bb211c111ad403c0c98ea59405349cc61cf8e1175078d32e894fd1a5ac10d86b086cb5f5ee6030ab482a851e7171d660
+  checksum: 99faff43c7cfc2b29d5a01c97e8211b1ff48dc690916d3bbec57a011992b34ae8385baa63553d582b16783dfe675e1c136d4fe5e54beb258863bcd7be64c8ad4
   languageName: node
   linkType: hard
 
@@ -11082,7 +11082,7 @@ __metadata:
   dependencies:
     "@babel/plugin-syntax-object-rest-spread": ^7.8.3
     "@graasp/chatbox": "link:.."
-    "@graasp/query-client": "github:graasp/graasp-query-client#8f8d830e1258d5a42dc978e59f9a1cf11e3b18f2"
+    "@graasp/query-client": "github:graasp/graasp-query-client#5fa5bc1fc466156d2606a109538add147fdab9d5"
     "@material-ui/core": 4.12.3
     "@material-ui/icons": 4.11.2
     "@material-ui/lab": 4.0.0-alpha.60

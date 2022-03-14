@@ -1,8 +1,20 @@
 import { Record } from 'immutable';
 
-export type PartialChatMessage = {
+export type EditingProp = {
+  open: boolean;
+  id: string;
+  body: string;
+};
+
+export type PartialNewChatMessage = {
   chatId: string;
   body: string;
+};
+
+export type PartialChatMessage = {
+  chatId: string;
+  messageId: string;
+  body?: string;
 };
 
 export type ChatMessage = {
@@ -10,6 +22,7 @@ export type ChatMessage = {
   chatId: string;
   creator: string;
   createdAt: string;
+  updatedAt: string;
   body: string;
 };
 
