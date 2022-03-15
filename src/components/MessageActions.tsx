@@ -1,5 +1,5 @@
 import React, { FC, useState } from 'react';
-import { ChatMessage, EditingProp, PartialChatMessage } from '../types';
+import { ChatMessage, PartialChatMessage } from '../types';
 import {
   IconButton,
   ListItemIcon,
@@ -17,11 +17,11 @@ import {
 import { LIST_ICON_MIN_WIDTH } from '../constants';
 import { useTranslation } from 'react-i18next';
 import { CHATBOX } from '@graasp/translations';
+import { useEditingContext } from '../context/EditingContext';
 
 type Props = {
   message: ChatMessage;
   deleteMessageFunction?: (message: PartialChatMessage) => void;
-  setEditing: (editing: EditingProp) => void;
 };
 
 const useStyles = makeStyles(() => ({
@@ -33,15 +33,12 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-const MessageActions: FC<Props> = ({
-  message,
-  deleteMessageFunction,
-  setEditing,
-}) => {
+const MessageActions: FC<Props> = ({ message, deleteMessageFunction }) => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [menuAnchor, setMenuAnchor] = useState<HTMLElement | null>(null);
   const classes = useStyles();
   const { t } = useTranslation();
+  const { setEditing } = useEditingContext();
 
   const handleOnClickMenu = (e: React.MouseEvent<HTMLButtonElement>): void => {
     setMenuAnchor(e.currentTarget);

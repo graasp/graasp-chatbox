@@ -1,4 +1,4 @@
-import { FC, Fragment, useState } from 'react';
+import { FC, Fragment } from 'react';
 import Container from '@material-ui/core/Container';
 import { makeStyles } from '@material-ui/core/styles';
 import { List } from 'immutable';
@@ -7,7 +7,6 @@ import Header from './Header';
 import {
   DEFAULT_CHATBOX_HEIGHT,
   EDIT_BANNER_HEIGHT,
-  INITIAL_EDITING,
   INPUT_HEIGHT,
 } from '../constants';
 import type {
@@ -20,6 +19,10 @@ import type {
 import InputBar from './InputBar';
 import { I18nextProvider } from 'react-i18next';
 import buildI18n from '@graasp/translations';
+import {
+  EditingContextProvider,
+  useEditingContext,
+} from '../context/EditingContext';
 
 type Props = {
   id?: string;
@@ -59,7 +62,7 @@ const Chatbox: FC<Props> = ({
     },
   }));
   const classes = useStyles();
-  const [editing, setEditing] = useState(INITIAL_EDITING);
+  const { editing } = useEditingContext();
   const i18n = buildI18n('chatbox');
   i18n.changeLanguage(lang);
 
@@ -68,33 +71,31 @@ const Chatbox: FC<Props> = ({
   }
   return (
     <I18nextProvider i18n={i18n}>
-      <Fragment>
-        {showHeader && <Header />}
-        <Container id={id} maxWidth="md" className={classes.container}>
-          <Messages
-            members={members}
-            currentMember={currentMember}
-            messages={messages}
-            // height is the height given as a prop minus the fixed height of the
-            // input minus the height of the editing banner when it is open
-            height={
-              height - INPUT_HEIGHT - (editing.open ? EDIT_BANNER_HEIGHT : 0)
-            }
-            editingProps={editing}
-            setEditing={setEditing}
-            deleteMessageFunction={deleteMessageFunction}
-            editMessageFunction={editMessageFunction}
-          />
-          <InputBar
-            chatId={chatId}
-            editingProps={editing}
-            setEditing={setEditing}
-            sendMessageBoxId={sendMessageBoxId}
-            sendMessageFunction={sendMessageFunction}
-            editMessageFunction={editMessageFunction}
-          />
-        </Container>
-      </Fragment>
+      <EditingContextProvider>
+        <Fragment>
+          {showHeader && <Header />}
+          <Container id={id} maxWidth="md" className={classes.container}>
+            <Messages
+              members={members}
+              currentMember={currentMember}
+              messages={messages}
+              // height is the height given as a prop minus the fixed height of the
+              // input minus the height of the editing banner when it is open
+              height={
+                height - INPUT_HEIGHT - (editing.open ? EDIT_BANNER_HEIGHT : 0)
+              }
+              deleteMessageFunction={deleteMessageFunction}
+              editMessageFunction={editMessageFunction}
+            />
+            <InputBar
+              chatId={chatId}
+              sendMessageBoxId={sendMessageBoxId}
+              sendMessageFunction={sendMessageFunction}
+              editMessageFunction={editMessageFunction}
+            />
+          </Container>
+        </Fragment>
+      </EditingContextProvider>
     </I18nextProvider>
   );
 };

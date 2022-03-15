@@ -8,7 +8,7 @@ export const MAX_USERNAME_LENGTH = 30;
 export const DEFAULT_DATE_FORMAT = 'DD MMM YYYY';
 export const HEADER_HEIGHT = 64;
 export const LIST_ICON_MIN_WIDTH = 30;
-export const INITIAL_EDITING = {
+export const INITIAL_EDITING_PROPS = {
   open: false,
   id: '',
   body: '',

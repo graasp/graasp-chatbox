@@ -7,7 +7,6 @@ import Date from './Date';
 import Message from './Message';
 import type {
   ChatMessage,
-  EditingProp,
   ImmutableMember,
   Member,
   PartialChatMessage,
@@ -15,14 +14,13 @@ import type {
 import { BIG_NUMBER, DEFAULT_DATE_FORMAT } from '../constants';
 import MessageActions from './MessageActions';
 import clsx from 'clsx';
+import { useEditingContext } from '../context/EditingContext';
 
 type Props = {
   messages?: List<ChatMessage>;
   height?: number;
   currentMember: ImmutableMember;
   members?: List<Member>;
-  editingProps: EditingProp;
-  setEditing: (edit: EditingProp) => void;
   deleteMessageFunction?: (message: PartialChatMessage) => void;
   editMessageFunction?: (message: PartialChatMessage) => void;
 };
@@ -33,10 +31,9 @@ const Messages: FC<Props> = ({
   currentMember,
   members,
   deleteMessageFunction,
-  editingProps,
-  setEditing,
 }) => {
   const ref = useRef<HTMLDivElement>(null);
+  const editing = useEditingContext()?.editing;
 
   const useStyles = makeStyles(() => ({
     container: {
@@ -75,7 +72,7 @@ const Messages: FC<Props> = ({
       // really big number to scroll down
       ref.current.scrollTop = BIG_NUMBER;
     }
-  }, [ref, messages, editingProps]);
+  }, [ref, messages, editing]);
 
   const isOwn = (message: ChatMessage): boolean =>
     message.creator === currentMember.get('id');
@@ -113,7 +110,6 @@ const Messages: FC<Props> = ({
                     <MessageActions
                       message={message}
                       deleteMessageFunction={deleteMessageFunction}
-                      setEditing={setEditing}
                     />
                   )}
                 </Box>
