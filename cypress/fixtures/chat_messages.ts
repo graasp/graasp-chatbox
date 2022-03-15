@@ -21,3 +21,6 @@ export const CHAT_MESSAGES = [
     body: 'And here a text with 2\n\nLine breaks',
   },
 ];
+
+export const spyMethod = (name: string): Cypress.Agent<sinon.SinonSpy> =>
+  cy.spy(() => null).as(name);

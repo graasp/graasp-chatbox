@@ -9,6 +9,8 @@ import truncate from 'lodash.truncate';
 import type { ChatMessage, ImmutableMember, Member } from '../types';
 import { DEFAULT_USER_NAME, MAX_USERNAME_LENGTH } from '../constants';
 import { messageIdCyWrapper } from '../config/selectors';
+import { CHATBOX } from '@graasp/translations';
+import { useTranslation } from 'react-i18next';
 
 const useStyles = makeStyles((theme) => ({
   message: {
@@ -39,6 +41,7 @@ type Props = {
 
 const Message: FC<Props> = ({ message, currentMember, member }) => {
   const classes = useStyles();
+  const { t } = useTranslation();
   const creator = message.creator;
   const isOwnMessage = creator === currentMember.get('id');
   const align = isOwnMessage ? 'flex-end' : null;
@@ -61,7 +64,9 @@ const Message: FC<Props> = ({ message, currentMember, member }) => {
         {message.body}
       </Typography>
       <Typography variant="caption" className={classes.time}>
-        {`${message.updatedAt ? 'modified' : ''} ${time}`}
+        {`${
+          message.updatedAt ? t(CHATBOX.MESSAGE_MODIFIED_INDICATOR) : ''
+        } ${time}`}
       </Typography>
     </Box>
   );

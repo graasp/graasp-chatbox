@@ -15,6 +15,7 @@ type Props = {};
 const ChatboxWrapper: FC<Props> = () => {
   // this is the id of the item to which the chat is attached (folder, document ...)
   const chatId = '39370f67-2153-4ab9-9679-b1966542d27d';
+  const lang = 'fr';
 
   // use kooks
   const { data: currentMember } = hooks.useCurrentMember();
@@ -48,6 +49,7 @@ const ChatboxWrapper: FC<Props> = () => {
 
   return (
     <Chatbox
+      lang={lang}
       chatId={chatId}
       showHeader
       currentMember={member}

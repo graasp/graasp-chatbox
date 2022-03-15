@@ -14,6 +14,7 @@ import type {
 } from '../types';
 import { BIG_NUMBER, DEFAULT_DATE_FORMAT } from '../constants';
 import MessageActions from './MessageActions';
+import clsx from 'clsx';
 
 type Props = {
   messages?: List<ChatMessage>;
@@ -58,6 +59,12 @@ const Messages: FC<Props> = ({
       alignContent: 'stretch',
       display: 'flex',
     },
+    alignLeft: {
+      justifyContent: 'flex-start',
+    },
+    alignRight: {
+      justifyContent: 'flex-end',
+    },
   }));
 
   const classes = useStyles();
@@ -70,15 +77,8 @@ const Messages: FC<Props> = ({
     }
   }, [ref, messages, editingProps]);
 
-  const isOwn = (message: ChatMessage): boolean => {
-    const creator = message.creator;
-    return creator === currentMember.get('id');
-  };
-
-  const getAlignment = (message: ChatMessage): string | null => {
-    const isOwnMessage = isOwn(message);
-    return isOwnMessage ? 'flex-end' : 'flex-start';
-  };
+  const isOwn = (message: ChatMessage): boolean =>
+    message.creator === currentMember.get('id');
 
   const messagesByDay = messages
     ?.groupBy(({ createdAt }: ChatMessage) =>
@@ -93,27 +93,32 @@ const Messages: FC<Props> = ({
         {messagesByDay?.map(([date, m]) => (
           <Fragment key={date}>
             <Date date={date} />
-            {m?.map((message: ChatMessage) => (
-              <Box
-                key={message.id}
-                className={classes.singleMessageContainer}
-                alignSelf={getAlignment(message)}
-                justifyContent={getAlignment(message)}
-              >
-                <Message
-                  currentMember={currentMember}
-                  message={message}
-                  member={members?.find(({ id }) => id === message.creator)}
-                />
-                {isOwn(message) && (
-                  <MessageActions
+            {m?.map((message: ChatMessage) => {
+              const isOwnMessage = isOwn(message);
+              return (
+                <Box
+                  key={message.id}
+                  className={clsx(classes.singleMessageContainer, {
+                    // align message to the correct side
+                    [classes.alignRight]: isOwnMessage,
+                    [classes.alignLeft]: !isOwnMessage,
+                  })}
+                >
+                  <Message
+                    currentMember={currentMember}
                     message={message}
-                    deleteMessageFunction={deleteMessageFunction}
-                    setEditing={setEditing}
+                    member={members?.find(({ id }) => id === message.creator)}
                   />
-                )}
-              </Box>
-            ))}
+                  {isOwn(message) && (
+                    <MessageActions
+                      message={message}
+                      deleteMessageFunction={deleteMessageFunction}
+                      setEditing={setEditing}
+                    />
+                  )}
+                </Box>
+              );
+            })}
           </Fragment>
         ))}
       </Box>

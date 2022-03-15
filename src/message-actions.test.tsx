@@ -1,6 +1,10 @@
 import { mount } from '@cypress/react';
 import Chatbox from './components/Chatbox';
-import { CHAT_ID, CHAT_MESSAGES } from '../cypress/fixtures/chat_messages';
+import {
+  CHAT_ID,
+  CHAT_MESSAGES,
+  spyMethod,
+} from '../cypress/fixtures/chat_messages';
 import { ImmutableMember, Member } from './types';
 import { MEMBERS } from '../cypress/fixtures/members';
 import { List } from 'immutable';
@@ -39,7 +43,7 @@ describe('Message actions', () => {
 
 describe('Delete action', () => {
   it('should delete message', () => {
-    const deleteMessageSpy = cy.spy(() => null).as('spyMethod');
+    const deleteMessageSpy = spyMethod('spyMethod');
     mount(
       <Chatbox
         chatId={CHAT_ID}
@@ -59,8 +63,8 @@ describe('Delete action', () => {
 
 describe('Edit action', () => {
   beforeEach(() => {
-    const editMessageSpy = cy.spy(() => null).as('editSpyMethod');
-    const sendMessageSpy = cy.spy(() => null).as('sendSpyMethod');
+    const editMessageSpy = spyMethod('editSpyMethod');
+    const sendMessageSpy = spyMethod('sendSpyMethod');
     mount(
       <Chatbox
         chatId={CHAT_ID}

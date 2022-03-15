@@ -12,6 +12,7 @@ import {
   sendButtonCypress,
 } from '../config/selectors';
 import { MAX_ROWS_INPUT } from '../constants';
+import { CHATBOX } from '@graasp/translations';
 
 type Props = {
   id?: string;
@@ -89,7 +90,7 @@ const Input: FC<Props> = ({
         fullWidth
         multiline
         maxRows={MAX_ROWS_INPUT}
-        placeholder={placeholder || t('Type something…')}
+        placeholder={placeholder || t(CHATBOX.INPUT_FIELD_PLACEHOLDER)}
       />
       <IconButton data-cy={sendButtonCypress} onClick={onClick}>
         <SendIcon color="primary" />

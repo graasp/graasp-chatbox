@@ -2035,6 +2035,7 @@ __metadata:
     "@cypress/instrument-cra": 1.4.0
     "@cypress/react": 5.10.3
     "@cypress/webpack-dev-server": 1.7.0
+    "@graasp/translations": "github:graasp/graasp-translations#c52c6793bd6a5c5708d92ef82bc57da84c86e942"
     "@material-ui/core": 4.12.3
     "@material-ui/icons": 4.11.2
     "@material-ui/lab": 4.0.0-alpha.60
@@ -2071,7 +2072,7 @@ __metadata:
     eslint-plugin-react-app: ^6.2.2
     eslint-plugin-standard: ^5.0.0
     husky: 7.0.4
-    i18next: 21.6.5
+    i18next: 21.6.11
     immutable: 4.0.0
     jest: 27.4.7
     lodash.truncate: 4.4.2
@@ -2114,6 +2115,15 @@ __metadata:
   peerDependencies:
     react: ^17.0.0
   checksum: 99faff43c7cfc2b29d5a01c97e8211b1ff48dc690916d3bbec57a011992b34ae8385baa63553d582b16783dfe675e1c136d4fe5e54beb258863bcd7be64c8ad4
+  languageName: node
+  linkType: hard
+
+"@graasp/translations@github:graasp/graasp-translations#c52c6793bd6a5c5708d92ef82bc57da84c86e942":
+  version: 0.1.0
+  resolution: "@graasp/translations@https://github.com/graasp/graasp-translations.git#commit=c52c6793bd6a5c5708d92ef82bc57da84c86e942"
+  dependencies:
+    i18next: 21.6.11
+  checksum: 55413bc3963c63850fba70e88e6cefa8db27370e99f13c71878bee16ef5131ffc2e89036fae57cc07dac685cb640c14221498c42e405f0f5bdeb431e2ebd1049
   languageName: node
   linkType: hard
 
@@ -11689,15 +11699,6 @@ __metadata:
   dependencies:
     "@babel/runtime": ^7.12.0
   checksum: 42716a7519d6066a8c9400639ab80fba0b568ae02205b1155ec9c4e627704bb2181dd182ff5eb0c91f6c67c8038ddd0754214e1932de5699d488c21ffd617c5e
-  languageName: node
-  linkType: hard
-
-"i18next@npm:21.6.5":
-  version: 21.6.5
-  resolution: "i18next@npm:21.6.5"
-  dependencies:
-    "@babel/runtime": ^7.12.0
-  checksum: 1897f751d346c692cae70e977f64982862114fc0453a75fe89f31b8029cf39606aa663f33495172eccb02c9297a089110f14a11e38be3e66092c0510ab616a06
   languageName: node
   linkType: hard
 

@@ -9,10 +9,11 @@ import {
   editBannerCloseButtonCypress,
   editBannerCypress,
 } from '../config/selectors';
+import { CHATBOX } from '@graasp/translations';
+import { useTranslation } from 'react-i18next';
 
 const useStyles = makeStyles((theme) => ({
   container: {
-    paddingLeft: theme.spacing(0.5),
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
@@ -27,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
     color: theme.palette.primary.main,
   },
   editIcon: {
-    padding: '12px 12px 12px 0',
+    padding: theme.spacing(1),
   },
   oldTextPreview: {
     whiteSpace: 'nowrap',
@@ -44,6 +45,7 @@ type Props = {
 
 const EditBanner: FC<Props> = ({ open, onClose, editedText }) => {
   const classes = useStyles();
+  const { t } = useTranslation();
   if (!open) {
     return null;
   }
@@ -59,7 +61,7 @@ const EditBanner: FC<Props> = ({ open, onClose, editedText }) => {
         />
         <Box className={classes.editContainer}>
           <Typography className={classes.oldTextLabel} variant="subtitle2">
-            Editing Message
+            {t(CHATBOX.EDITING_MESSAGE_LABEL)}
           </Typography>
           <Typography className={classes.oldTextPreview}>
             {editedText}

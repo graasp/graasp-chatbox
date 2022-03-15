@@ -18,6 +18,8 @@ import type {
   PartialNewChatMessage,
 } from '../types';
 import InputBar from './InputBar';
+import { I18nextProvider } from 'react-i18next';
+import buildI18n from '@graasp/translations';
 
 type Props = {
   id?: string;
@@ -30,6 +32,7 @@ type Props = {
   editMessageFunction?: (message: PartialChatMessage) => void;
   chatId: string;
   showHeader?: boolean;
+  lang?: string;
   currentMember: ImmutableMember;
   members?: List<Member>;
 };
@@ -45,6 +48,7 @@ const Chatbox: FC<Props> = ({
   isLoading,
   chatId,
   showHeader = false,
+  lang = 'en',
   currentMember,
   members,
 }) => {
@@ -56,36 +60,42 @@ const Chatbox: FC<Props> = ({
   }));
   const classes = useStyles();
   const [editing, setEditing] = useState(INITIAL_EDITING);
+  const i18n = buildI18n('chatbox');
+  i18n.changeLanguage(lang);
 
   if (isLoading) {
     return null;
   }
   return (
-    <Fragment>
-      {showHeader && <Header />}
-      <Container id={id} maxWidth="md" className={classes.container}>
-        <Messages
-          members={members}
-          currentMember={currentMember}
-          messages={messages}
-          height={
-            height - INPUT_HEIGHT - (editing.open ? EDIT_BANNER_HEIGHT : 0)
-          }
-          editingProps={editing}
-          setEditing={setEditing}
-          deleteMessageFunction={deleteMessageFunction}
-          editMessageFunction={editMessageFunction}
-        />
-        <InputBar
-          chatId={chatId}
-          editingProps={editing}
-          setEditing={setEditing}
-          sendMessageBoxId={sendMessageBoxId}
-          sendMessageFunction={sendMessageFunction}
-          editMessageFunction={editMessageFunction}
-        />
-      </Container>
-    </Fragment>
+    <I18nextProvider i18n={i18n}>
+      <Fragment>
+        {showHeader && <Header />}
+        <Container id={id} maxWidth="md" className={classes.container}>
+          <Messages
+            members={members}
+            currentMember={currentMember}
+            messages={messages}
+            // height is the height given as a prop minus the fixed height of the
+            // input minus the height of the editing banner when it is open
+            height={
+              height - INPUT_HEIGHT - (editing.open ? EDIT_BANNER_HEIGHT : 0)
+            }
+            editingProps={editing}
+            setEditing={setEditing}
+            deleteMessageFunction={deleteMessageFunction}
+            editMessageFunction={editMessageFunction}
+          />
+          <InputBar
+            chatId={chatId}
+            editingProps={editing}
+            setEditing={setEditing}
+            sendMessageBoxId={sendMessageBoxId}
+            sendMessageFunction={sendMessageFunction}
+            editMessageFunction={editMessageFunction}
+          />
+        </Container>
+      </Fragment>
+    </I18nextProvider>
   );
 };
 

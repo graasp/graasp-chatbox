@@ -14,6 +14,9 @@ import {
   editMenuItemCypress,
   messageActionsButtonCypress,
 } from '../config/selectors';
+import { LIST_ICON_MIN_WIDTH } from '../constants';
+import { useTranslation } from 'react-i18next';
+import { CHATBOX } from '@graasp/translations';
 
 type Props = {
   message: ChatMessage;
@@ -25,7 +28,7 @@ const useStyles = makeStyles(() => ({
   menu: {
     // reduce min width of icons in list to make more compact
     '&.MuiListItemIcon-root': {
-      minWidth: '30px',
+      minWidth: LIST_ICON_MIN_WIDTH,
     },
   },
 }));
@@ -38,6 +41,7 @@ const MessageActions: FC<Props> = ({
   const [menuOpen, setMenuOpen] = useState(false);
   const [menuAnchor, setMenuAnchor] = useState<HTMLElement | null>(null);
   const classes = useStyles();
+  const { t } = useTranslation();
 
   const handleOnClickMenu = (e: React.MouseEvent<HTMLButtonElement>): void => {
     setMenuAnchor(e.currentTarget);
@@ -92,7 +96,7 @@ const MessageActions: FC<Props> = ({
           <ListItemIcon className={classes.menu}>
             <Edit color={'primary'} />
           </ListItemIcon>
-          <ListItemText>Edit</ListItemText>
+          <ListItemText>{t(CHATBOX.EDIT_BUTTON)}</ListItemText>
         </MenuItem>
         <MenuItem
           data-cy={deleteMenuItemCypress}
@@ -102,7 +106,9 @@ const MessageActions: FC<Props> = ({
           <ListItemIcon className={classes.menu}>
             <Delete color={'secondary'} />
           </ListItemIcon>
-          <ListItemText color={'secondary'}>Delete</ListItemText>
+          <ListItemText color={'secondary'}>
+            {t(CHATBOX.DELETE_BUTTON)}
+          </ListItemText>
         </MenuItem>
       </Menu>
     </>
