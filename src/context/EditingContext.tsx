@@ -7,8 +7,8 @@ export type EditingContextType = {
   body: string;
   messageId: string;
   editing: EditingProp;
-  openEdit: (id: string, body: string) => void;
-  closeEdit: () => void;
+  enableEdit: (id: string, body: string) => void;
+  cancelEdit: () => void;
 };
 
 export const EditingContext = React.createContext<EditingContextType>({
@@ -16,8 +16,8 @@ export const EditingContext = React.createContext<EditingContextType>({
   body: '',
   messageId: '',
   editing: INITIAL_EDITING_PROPS,
-  openEdit: () => null,
-  closeEdit: () => null,
+  enableEdit: () => null,
+  cancelEdit: () => null,
 });
 
 type Props = {
@@ -29,13 +29,13 @@ export const EditingContextProvider: FC<Props> = ({ children }) => {
   const open = editing.open;
   const body = editing.body;
   const messageId = editing.id;
-  const openEdit = (id: string, body: string): void =>
+  const enableEdit = (id: string, body: string): void =>
     setEditing({ id, open: true, body });
-  const closeEdit = (): void => setEditing(INITIAL_EDITING_PROPS);
+  const cancelEdit = (): void => setEditing(INITIAL_EDITING_PROPS);
 
   return (
     <EditingContext.Provider
-      value={{ open, body, messageId, editing, openEdit, closeEdit }}
+      value={{ open, body, messageId, editing, enableEdit, cancelEdit }}
     >
       {children}
     </EditingContext.Provider>

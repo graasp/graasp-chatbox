@@ -42,7 +42,7 @@ const Messages: FC<Props> = ({
   const useStyles = makeStyles(() => ({
     container: {
       overflowY: 'auto',
-      // reduce the height of the messages box when the editing banner is opn
+      // reduce the height of the messages box when the editing banner is open
       height: height - (open ? EDIT_BANNER_HEIGHT : 0),
     },
     messagesContainer: {

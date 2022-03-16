@@ -38,7 +38,7 @@ const MessageActions: FC<Props> = ({ message, deleteMessageFunction }) => {
   const [menuAnchor, setMenuAnchor] = useState<HTMLElement | null>(null);
   const classes = useStyles();
   const { t } = useTranslation();
-  const { openEdit } = useEditingContext();
+  const { enableEdit } = useEditingContext();
 
   const handleOnClickMenu = (e: React.MouseEvent<HTMLButtonElement>): void => {
     setMenuAnchor(e.currentTarget);
@@ -55,7 +55,7 @@ const MessageActions: FC<Props> = ({ message, deleteMessageFunction }) => {
   };
 
   const handleEditMessage = (): void => {
-    openEdit(message.id, message.body);
+    enableEdit(message.id, message.body);
     handleOnCloseMenu();
   };
 

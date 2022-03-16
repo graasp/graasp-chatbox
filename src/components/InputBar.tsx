@@ -26,7 +26,7 @@ const InputBar: FC<Props> = ({
   editMessageFunction,
 }) => {
   const classes = useStyles();
-  const { open, body, messageId, closeEdit } = useEditingContext();
+  const { open, body, messageId, cancelEdit } = useEditingContext();
   const [textInput, setTextInput] = useState(open ? body : '');
   const inputRef = useRef<HTMLDivElement>(null);
 
@@ -40,7 +40,7 @@ const InputBar: FC<Props> = ({
   }, [open, messageId]);
 
   const handleOnCloseEditingBanner = (): void => {
-    closeEdit();
+    cancelEdit();
     setTextInput('');
   };
 
@@ -55,7 +55,7 @@ const InputBar: FC<Props> = ({
       sendMessageFunction?.({ chatId, body: textInput });
     }
     // reset editing
-    closeEdit();
+    cancelEdit();
   };
 
   return (
