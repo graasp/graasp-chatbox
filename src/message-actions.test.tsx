@@ -6,13 +6,14 @@ import {
   spyMethod,
 } from '../cypress/fixtures/chat_messages';
 import { ImmutableMember, Member } from './types';
-import { MEMBERS } from '../cypress/fixtures/members';
+import { CURRENT_MEMBER, MEMBERS } from '../cypress/fixtures/members';
 import { List } from 'immutable';
 import {
   dataCyWrapper,
   deleteMenuItemCypress,
   editBannerCloseButtonCypress,
   editBannerCypress,
+  editBannerOldTextCypress,
   editMenuItemCypress,
   inputTextFieldTextAreaCypress,
   messageActionsButtonCypress,
@@ -31,11 +32,13 @@ describe('Message actions', () => {
   });
 
   it('should display message actions', () => {
-    cy.get(dataCyWrapper(messageActionsButtonCypress)).should('be.visible');
+    cy.get(dataCyWrapper(messageActionsButtonCypress)).each(($el) =>
+      cy.wrap($el).should('be.visible'),
+    );
   });
 
   it('should open menu', () => {
-    cy.get(dataCyWrapper(messageActionsButtonCypress)).click();
+    cy.get(dataCyWrapper(messageActionsButtonCypress)).first().click();
     cy.get(dataCyWrapper(deleteMenuItemCypress)).should('be.visible');
     cy.get(dataCyWrapper(deleteMenuItemCypress)).should('be.visible');
   });
@@ -54,6 +57,7 @@ describe('Delete action', () => {
       />,
     );
     cy.get(dataCyWrapper(messageActionsButtonCypress))
+      .first()
       .click()
       .get(dataCyWrapper(deleteMenuItemCypress))
       .click();
@@ -78,6 +82,7 @@ describe('Edit action', () => {
 
     // open menu and click 'edit'
     cy.get(dataCyWrapper(messageActionsButtonCypress))
+      .first()
       .click()
       .get(dataCyWrapper(editMenuItemCypress))
       .click();
@@ -111,5 +116,31 @@ describe('Edit action', () => {
       .type('{enter}');
     cy.get('@editSpyMethod').should('have.been.called');
     cy.get('@sendSpyMethod').should('not.have.been.called');
+  });
+
+  it('should change edited text when new message is edited', () => {
+    const firstMessageIndex = 0;
+    const secondMessageIndex = 1;
+    cy.get(dataCyWrapper(editBannerOldTextCypress)).should(
+      'contain.text',
+      CHAT_MESSAGES.filter((m) => m.creator === CURRENT_MEMBER.id)[
+        firstMessageIndex
+      ].body,
+    );
+    cy.get(dataCyWrapper(messageActionsButtonCypress))
+      .eq(secondMessageIndex)
+      .click();
+    cy.get(dataCyWrapper(editMenuItemCypress)).click();
+    const oldTextMessage = CHAT_MESSAGES.filter(
+      (m) => m.creator === CURRENT_MEMBER.id,
+    )[secondMessageIndex].body;
+    cy.get(dataCyWrapper(editBannerOldTextCypress)).should(
+      'contain.text',
+      oldTextMessage,
+    );
+    cy.get(`#${inputTextFieldTextAreaCypress}`).should(
+      'have.value',
+      oldTextMessage,
+    );
   });
 });

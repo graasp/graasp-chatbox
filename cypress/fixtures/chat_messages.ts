@@ -20,6 +20,14 @@ export const CHAT_MESSAGES = [
     updatedAt: '',
     body: 'And here a text with 2\n\nLine breaks',
   },
+  {
+    id: v4(),
+    chatId: CHAT_ID,
+    creator: CURRENT_MEMBER.id,
+    createdAt: new Date().toISOString(),
+    updatedAt: '',
+    body: 'Message',
+  },
 ];
 
 export const spyMethod = (name: string): Cypress.Agent<sinon.SinonSpy> =>

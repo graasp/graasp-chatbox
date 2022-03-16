@@ -4,7 +4,6 @@ import { PartialChatMessage, PartialNewChatMessage } from '../types';
 import EditBanner from './EditBanner';
 import { makeStyles } from '@material-ui/core/styles';
 import Box from '@material-ui/core/Box';
-import { INITIAL_EDITING_PROPS } from '../constants';
 import { useEditingContext } from '../context/EditingContext';
 
 const useStyles = makeStyles(() => ({
@@ -27,28 +26,28 @@ const InputBar: FC<Props> = ({
   editMessageFunction,
 }) => {
   const classes = useStyles();
-  const { editing, setEditing } = useEditingContext();
-  const [textInput, setTextInput] = useState(editing.open ? editing.body : '');
+  const { open, body, messageId, closeEdit } = useEditingContext();
+  const [textInput, setTextInput] = useState(open ? body : '');
   const inputRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     // when in editing mode, seed the textfield with the old message body
-    setTextInput(editing.open ? editing.body : '');
+    setTextInput(open ? body : '');
     // focus the input field
-    if (editing.open) {
+    if (open) {
       inputRef.current?.focus();
     }
-  }, [editing.open]);
+  }, [open, messageId]);
 
   const handleOnCloseEditingBanner = (): void => {
-    setEditing(INITIAL_EDITING_PROPS);
+    closeEdit();
     setTextInput('');
   };
 
   const handleSendMessageFunction = (): void => {
-    if (editing.open) {
+    if (open) {
       editMessageFunction?.({
-        messageId: editing.id,
+        messageId,
         chatId,
         body: textInput,
       });
@@ -56,16 +55,12 @@ const InputBar: FC<Props> = ({
       sendMessageFunction?.({ chatId, body: textInput });
     }
     // reset editing
-    setEditing(INITIAL_EDITING_PROPS);
+    closeEdit();
   };
 
   return (
     <Box className={classes.wrapper}>
-      <EditBanner
-        open={editing.open}
-        onClose={handleOnCloseEditingBanner}
-        editedText={editing.body}
-      />
+      <EditBanner onClose={handleOnCloseEditingBanner} editedText={body} />
       <Input
         id={sendMessageBoxId}
         inputRef={inputRef}

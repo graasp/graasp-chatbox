@@ -8,9 +8,11 @@ import { Divider, SvgIcon } from '@material-ui/core';
 import {
   editBannerCloseButtonCypress,
   editBannerCypress,
+  editBannerOldTextCypress,
 } from '../config/selectors';
 import { CHATBOX } from '@graasp/translations';
 import { useTranslation } from 'react-i18next';
+import { useEditingContext } from '../context/EditingContext';
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -38,13 +40,13 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 type Props = {
-  open: boolean;
   onClose: () => void;
   editedText?: string;
 };
 
-const EditBanner: FC<Props> = ({ open, onClose, editedText }) => {
+const EditBanner: FC<Props> = ({ onClose, editedText }) => {
   const classes = useStyles();
+  const { open } = useEditingContext();
   const { t } = useTranslation();
   if (!open) {
     return null;
@@ -63,7 +65,10 @@ const EditBanner: FC<Props> = ({ open, onClose, editedText }) => {
           <Typography className={classes.oldTextLabel} variant="subtitle2">
             {t(CHATBOX.EDITING_MESSAGE_LABEL)}
           </Typography>
-          <Typography className={classes.oldTextPreview}>
+          <Typography
+            className={classes.oldTextPreview}
+            data-cy={editBannerOldTextCypress}
+          >
             {editedText}
           </Typography>
         </Box>

@@ -4,11 +4,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import { List } from 'immutable';
 import Messages from './Messages';
 import Header from './Header';
-import {
-  DEFAULT_CHATBOX_HEIGHT,
-  EDIT_BANNER_HEIGHT,
-  INPUT_HEIGHT,
-} from '../constants';
+import { DEFAULT_CHATBOX_HEIGHT, INPUT_HEIGHT } from '../constants';
 import type {
   ChatMessage,
   ImmutableMember,
@@ -18,11 +14,8 @@ import type {
 } from '../types';
 import InputBar from './InputBar';
 import { I18nextProvider } from 'react-i18next';
-import buildI18n from '@graasp/translations';
-import {
-  EditingContextProvider,
-  useEditingContext,
-} from '../context/EditingContext';
+import buildI18n, { namespaces, langs } from '@graasp/translations';
+import { EditingContextProvider } from '../context/EditingContext';
 
 type Props = {
   id?: string;
@@ -51,7 +44,7 @@ const Chatbox: FC<Props> = ({
   isLoading,
   chatId,
   showHeader = false,
-  lang = 'en',
+  lang = langs.en,
   currentMember,
   members,
 }) => {
@@ -62,8 +55,7 @@ const Chatbox: FC<Props> = ({
     },
   }));
   const classes = useStyles();
-  const { editing } = useEditingContext();
-  const i18n = buildI18n('chatbox');
+  const i18n = buildI18n(namespaces.chatbox);
   i18n.changeLanguage(lang);
 
   if (isLoading) {
@@ -79,11 +71,7 @@ const Chatbox: FC<Props> = ({
               members={members}
               currentMember={currentMember}
               messages={messages}
-              // height is the height given as a prop minus the fixed height of the
-              // input minus the height of the editing banner when it is open
-              height={
-                height - INPUT_HEIGHT - (editing.open ? EDIT_BANNER_HEIGHT : 0)
-              }
+              height={height - INPUT_HEIGHT}
               deleteMessageFunction={deleteMessageFunction}
               editMessageFunction={editMessageFunction}
             />

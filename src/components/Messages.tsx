@@ -11,14 +11,18 @@ import type {
   Member,
   PartialChatMessage,
 } from '../types';
-import { BIG_NUMBER, DEFAULT_DATE_FORMAT } from '../constants';
+import {
+  BIG_NUMBER,
+  DEFAULT_DATE_FORMAT,
+  EDIT_BANNER_HEIGHT,
+} from '../constants';
 import MessageActions from './MessageActions';
 import clsx from 'clsx';
 import { useEditingContext } from '../context/EditingContext';
 
 type Props = {
   messages?: List<ChatMessage>;
-  height?: number;
+  height: number;
   currentMember: ImmutableMember;
   members?: List<Member>;
   deleteMessageFunction?: (message: PartialChatMessage) => void;
@@ -33,12 +37,13 @@ const Messages: FC<Props> = ({
   deleteMessageFunction,
 }) => {
   const ref = useRef<HTMLDivElement>(null);
-  const editing = useEditingContext()?.editing;
+  const { open } = useEditingContext();
 
   const useStyles = makeStyles(() => ({
     container: {
       overflowY: 'auto',
-      height,
+      // reduce the height of the messages box when the editing banner is opn
+      height: height - (open ? EDIT_BANNER_HEIGHT : 0),
     },
     messagesContainer: {
       flexDirection: 'column',
@@ -72,7 +77,7 @@ const Messages: FC<Props> = ({
       // really big number to scroll down
       ref.current.scrollTop = BIG_NUMBER;
     }
-  }, [ref, messages, editing]);
+  }, [ref, messages, open]);
 
   const isOwn = (message: ChatMessage): boolean =>
     message.creator === currentMember.get('id');
@@ -106,7 +111,7 @@ const Messages: FC<Props> = ({
                     message={message}
                     member={members?.find(({ id }) => id === message.creator)}
                   />
-                  {isOwn(message) && (
+                  {isOwnMessage && (
                     <MessageActions
                       message={message}
                       deleteMessageFunction={deleteMessageFunction}
