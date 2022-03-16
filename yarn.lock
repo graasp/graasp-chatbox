@@ -2035,7 +2035,7 @@ __metadata:
     "@cypress/instrument-cra": 1.4.0
     "@cypress/react": 5.10.3
     "@cypress/webpack-dev-server": 1.7.0
-    "@graasp/translations": "github:graasp/graasp-translations"
+    "@graasp/translations": "github:graasp/graasp-translations#229363f42b37a41c1416a4f91a12b9eb07a6a1f4"
     "@material-ui/core": 4.12.3
     "@material-ui/icons": 4.11.2
     "@material-ui/lab": 4.0.0-alpha.60
@@ -2118,7 +2118,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@graasp/translations@github:graasp/graasp-translations, @graasp/translations@github:graasp/graasp-translations.git":
+"@graasp/translations@github:graasp/graasp-translations#229363f42b37a41c1416a4f91a12b9eb07a6a1f4":
+  version: 0.1.0
+  resolution: "@graasp/translations@https://github.com/graasp/graasp-translations.git#commit=229363f42b37a41c1416a4f91a12b9eb07a6a1f4"
+  dependencies:
+    i18next: 21.6.11
+  checksum: 3f14874488b867ae1d6436e7fc44fbf6b104d0aeefbb1d32fc18161997e2dcffca96ec8bfa13587cd798ad0d67a0cdaa40db5c6d167d506ce99995f5dca9c1b7
+  languageName: node
+  linkType: hard
+
+"@graasp/translations@github:graasp/graasp-translations.git":
   version: 0.1.0
   resolution: "@graasp/translations@https://github.com/graasp/graasp-translations.git#commit=452c17c0b4b5a5e216b8d647a9f821071b179213"
   dependencies:
