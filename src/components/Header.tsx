@@ -6,6 +6,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import ChatIcon from '@material-ui/icons/Chat';
 import { HEADER_HEIGHT } from '../constants';
+import { CHATBOX } from '@graasp/translations';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -39,7 +40,7 @@ const Header: FC<Props> = ({ title }) => {
         <Toolbar>
           <ChatIcon className={classes.icon} />
           <Typography variant="h6" className={classes.title}>
-            {title || t('Chatbox')}
+            {title || t(CHATBOX.CHATBOX_HEADER)}
           </Typography>
         </Toolbar>
       </AppBar>
