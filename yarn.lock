@@ -2035,7 +2035,7 @@ __metadata:
     "@cypress/instrument-cra": 1.4.0
     "@cypress/react": 5.10.3
     "@cypress/webpack-dev-server": 1.7.0
-    "@graasp/translations": "github:graasp/graasp-translations#229363f42b37a41c1416a4f91a12b9eb07a6a1f4"
+    "@graasp/translations": "github:graasp/graasp-translations.git"
     "@material-ui/core": 4.12.3
     "@material-ui/icons": 4.11.2
     "@material-ui/lab": 4.0.0-alpha.60
@@ -2094,8 +2094,14 @@ __metadata:
     "@material-ui/core": "*"
     "@material-ui/icons": "*"
     "@material-ui/lab": "*"
+    "@testing-library/dom": "*"
+    eslint: "*"
+    html-webpack-plugin: "*"
     react: "*"
     react-dom: "*"
+    tslib: "*"
+    webpack: "*"
+    webpack-dev-server: "*"
   languageName: unknown
   linkType: soft
 
@@ -2115,15 +2121,6 @@ __metadata:
   peerDependencies:
     react: ^17.0.0
   checksum: 99faff43c7cfc2b29d5a01c97e8211b1ff48dc690916d3bbec57a011992b34ae8385baa63553d582b16783dfe675e1c136d4fe5e54beb258863bcd7be64c8ad4
-  languageName: node
-  linkType: hard
-
-"@graasp/translations@github:graasp/graasp-translations#229363f42b37a41c1416a4f91a12b9eb07a6a1f4":
-  version: 0.1.0
-  resolution: "@graasp/translations@https://github.com/graasp/graasp-translations.git#commit=229363f42b37a41c1416a4f91a12b9eb07a6a1f4"
-  dependencies:
-    i18next: 21.6.11
-  checksum: 3f14874488b867ae1d6436e7fc44fbf6b104d0aeefbb1d32fc18161997e2dcffca96ec8bfa13587cd798ad0d67a0cdaa40db5c6d167d506ce99995f5dca9c1b7
   languageName: node
   linkType: hard
 
@@ -3763,12 +3760,6 @@ __metadata:
   checksum: 86e9ff9731798e12bc2afe0304678918769633b531dcf6397f86af81718fb7930ef8648e894eeb3718fc6eab6eb885cfb9b82a44d1d74e10951ee11ebc4643ae
   languageName: node
   linkType: hard
-
-"@types/react@link:../node_modules/@types/react::locator=graasp-chatbox-example%40workspace%3Aexample":
-  version: 0.0.0-use.local
-  resolution: "@types/react@link:../node_modules/@types/react::locator=graasp-chatbox-example%40workspace%3Aexample"
-  languageName: node
-  linkType: soft
 
 "@types/react@npm:*, @types/react@npm:^17.0.38":
   version: 17.0.39
@@ -11101,13 +11092,15 @@ __metadata:
     "@testing-library/user-event": "link:../node_modules/@testing-library/user-event"
     "@types/jest": "link:../node_modules/@types/jest"
     "@types/node": "link:../node_modules/@types/node"
-    "@types/react": "link:../node_modules/@types/react"
     "@types/react-dom": "link:../node_modules/@types/react-dom"
     immutable: 4.0.0
     react: 17.0.2
     react-dom: 17.0.2
     react-scripts: 5.0.0
     typescript: 4.3.5
+  peerDependencies:
+    "@babel/core": "*"
+    "@types/react": "*"
   languageName: unknown
   linkType: soft
 

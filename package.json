@@ -43,11 +43,17 @@
     "@material-ui/core": "*",
     "@material-ui/icons": "*",
     "@material-ui/lab": "*",
+    "@testing-library/dom": "*",
+    "eslint": "*",
+    "html-webpack-plugin": "*",
     "react": "*",
-    "react-dom": "*"
+    "react-dom": "*",
+    "tslib": "*",
+    "webpack": "*",
+    "webpack-dev-server": "*"
   },
   "dependencies": {
-    "@graasp/translations": "github:graasp/graasp-translations#229363f42b37a41c1416a4f91a12b9eb07a6a1f4",
+    "@graasp/translations": "github:graasp/graasp-translations.git",
     "clsx": "1.1.1",
     "i18next": "21.6.11",
     "immutable": "4.0.0",
