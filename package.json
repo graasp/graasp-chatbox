@@ -46,8 +46,7 @@
     "@testing-library/dom": "*",
     "eslint": "*",
     "react": "*",
-    "react-dom": "*",
-    "tslib": "*"
+    "react-dom": "*"
   },
   "dependencies": {
     "@graasp/translations": "github:graasp/graasp-translations.git",
@@ -113,6 +112,7 @@
     "standard-version": "9.3.2",
     "ts-jest": "27.1.2",
     "ts-loader": "9.2.7",
+    "tslib": "2.3.1",
     "typescript": "4.3.5"
   },
   "files": [
