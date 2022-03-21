@@ -11,6 +11,9 @@ import { DEFAULT_USER_NAME, MAX_USERNAME_LENGTH } from '../constants';
 import { messageIdCyWrapper } from '../config/selectors';
 import { CHATBOX } from '@graasp/translations';
 import { useTranslation } from 'react-i18next';
+import { Avatar } from '@graasp/ui';
+import { Variant } from '@graasp/ui/dist/types';
+import { useHooksContext } from '../context/HooksContext';
 
 const useStyles = makeStyles((theme) => ({
   message: {
@@ -31,6 +34,18 @@ const useStyles = makeStyles((theme) => ({
   messageText: {
     whiteSpace: 'pre-line',
   },
+  avatarContainer: {
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'flex-start',
+    width: '100%',
+  },
+  avatar: {
+    marginRight: theme.spacing(1),
+    maxWidth: 20,
+    maxHeight: 20,
+  },
 }));
 
 type Props = {
@@ -42,6 +57,7 @@ type Props = {
 const Message: FC<Props> = ({ message, currentMember, member }) => {
   const classes = useStyles();
   const { t } = useTranslation();
+  const { useAvatarHook } = useHooksContext();
   const creator = message.creator;
   const isOwnMessage = creator === currentMember.get('id');
   const align = isOwnMessage ? 'flex-end' : null;
@@ -58,7 +74,21 @@ const Message: FC<Props> = ({ message, currentMember, member }) => {
       data-cy={messageIdCyWrapper(message.id)}
     >
       {!isOwnMessage && (
-        <Typography variant="subtitle2">{`${creatorName}`}</Typography>
+        <Box className={classes.avatarContainer}>
+          {member?.id && useAvatarHook && (
+            <Avatar
+              className={classes.avatar}
+              id={member?.id}
+              // todo: is it important to have the extra info ?
+              extra={{}}
+              variant={'circle' as Variant}
+              alt={creatorName}
+              component="avatar"
+              useAvatar={useAvatarHook}
+            />
+          )}
+          <Typography variant="subtitle2">{`${creatorName}`}</Typography>
+        </Box>
       )}
       <Typography className={classes.messageText} variant="body1">
         {message.body}
