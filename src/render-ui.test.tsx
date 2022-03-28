@@ -19,8 +19,7 @@ describe('Render Avatar', () => {
   });
 
   it('should call avatar hook', () => {
-    const mockUseAvatarHookName = 'useAvatarHook';
-    const fakeHook = mockUseAvatar(mockUseAvatarHookName);
+    const { hook: fakeHook, name: fakeHookName } = mockUseAvatar();
     mount(
       <Chatbox
         chatId={CHAT_ID}
@@ -30,6 +29,6 @@ describe('Render Avatar', () => {
         useAvatarHook={fakeHook}
       />,
     );
-    cy.get(`@${mockUseAvatarHookName}`).should('have.been.called');
+    cy.get(`@${fakeHookName}`).should('have.been.called');
   });
 });

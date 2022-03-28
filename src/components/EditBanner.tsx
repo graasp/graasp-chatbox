@@ -58,8 +58,8 @@ const EditBanner: FC<Props> = ({ onClose, editedText }) => {
         <SvgIcon
           className={classes.editIcon}
           component={Edit}
-          fontSize={'small'}
-          color={'primary'}
+          fontSize="small"
+          color="primary"
         />
         <Box className={classes.editContainer}>
           <Typography className={classes.oldTextLabel} variant="subtitle2">
@@ -75,7 +75,7 @@ const EditBanner: FC<Props> = ({ onClose, editedText }) => {
         <IconButton data-cy={editBannerCloseButtonCypress} onClick={onClose}>
           <Close
             // todo: change to secondary once Graasp has one
-            color={'primary'}
+            color="primary"
           />
         </IconButton>
       </Box>

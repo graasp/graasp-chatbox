@@ -1,5 +1,12 @@
-export const mockUseAvatar = (name: string): Cypress.Agent<sinon.SinonSpy> =>
-  cy
+type SpyHookType = {
+  hook: Cypress.Agent<sinon.SinonSpy>;
+  name: string;
+};
+
+const USE_AVATAR_HOOK_NAME = 'useAvatarHook';
+
+export const mockUseAvatar = (): SpyHookType => ({
+  hook: cy
     .spy(() => {
       return {
         data: new Blob(['someText']),
@@ -7,4 +14,6 @@ export const mockUseAvatar = (name: string): Cypress.Agent<sinon.SinonSpy> =>
         isFetching: false,
       };
     })
-    .as(name);
+    .as(USE_AVATAR_HOOK_NAME),
+  name: USE_AVATAR_HOOK_NAME,
+});
