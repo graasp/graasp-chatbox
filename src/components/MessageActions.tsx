@@ -86,7 +86,7 @@ const MessageActions: FC<Props> = ({ message, deleteMessageFunction }) => {
           dense
         >
           <ListItemIcon className={classes.menu}>
-            <Edit color={'primary'} />
+            <Edit color="primary" />
           </ListItemIcon>
           <ListItemText>{t(CHATBOX.EDIT_BUTTON)}</ListItemText>
         </MenuItem>
@@ -96,11 +96,12 @@ const MessageActions: FC<Props> = ({ message, deleteMessageFunction }) => {
           dense
         >
           <ListItemIcon className={classes.menu}>
-            <Delete color={'secondary'} />
+            <Delete
+              // todo: change to secondary once Graasp has one
+              color="primary"
+            />
           </ListItemIcon>
-          <ListItemText color={'secondary'}>
-            {t(CHATBOX.DELETE_BUTTON)}
-          </ListItemText>
+          <ListItemText>{t(CHATBOX.DELETE_BUTTON)}</ListItemText>
         </MenuItem>
       </Menu>
     </>

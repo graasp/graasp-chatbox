@@ -1,4 +1,5 @@
 import { Record } from 'immutable';
+import { UUID } from '@graasp/ui/dist/types';
 
 export type EditingProp = {
   open: boolean;
@@ -36,3 +37,5 @@ export class ImmutableMember extends Record({
   name: '',
   type: '',
 }) {}
+
+export type AvatarHookType = (id?: UUID, size?: string) => unknown;

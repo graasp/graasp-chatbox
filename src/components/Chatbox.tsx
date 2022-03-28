@@ -16,6 +16,8 @@ import InputBar from './InputBar';
 import { I18nextProvider } from 'react-i18next';
 import buildI18n, { namespaces, langs } from '@graasp/translations';
 import { EditingContextProvider } from '../context/EditingContext';
+import { HooksContextProvider } from '../context/HooksContext';
+import { AvatarHookType } from '../types';
 
 type Props = {
   id?: string;
@@ -26,6 +28,7 @@ type Props = {
   sendMessageFunction?: (message: PartialNewChatMessage) => void;
   deleteMessageFunction?: (message: PartialChatMessage) => void;
   editMessageFunction?: (message: PartialChatMessage) => void;
+  useAvatarHook?: AvatarHookType;
   chatId: string;
   showHeader?: boolean;
   lang?: string;
@@ -40,6 +43,7 @@ const Chatbox: FC<Props> = ({
   sendMessageFunction,
   deleteMessageFunction,
   editMessageFunction,
+  useAvatarHook,
   messages,
   isLoading,
   chatId,
@@ -64,25 +68,27 @@ const Chatbox: FC<Props> = ({
   return (
     <I18nextProvider i18n={i18n}>
       <EditingContextProvider>
-        <Fragment>
-          {showHeader && <Header />}
-          <Container id={id} maxWidth="md" className={classes.container}>
-            <Messages
-              members={members}
-              currentMember={currentMember}
-              messages={messages}
-              height={height - INPUT_HEIGHT}
-              deleteMessageFunction={deleteMessageFunction}
-              editMessageFunction={editMessageFunction}
-            />
-            <InputBar
-              chatId={chatId}
-              sendMessageBoxId={sendMessageBoxId}
-              sendMessageFunction={sendMessageFunction}
-              editMessageFunction={editMessageFunction}
-            />
-          </Container>
-        </Fragment>
+        <HooksContextProvider useAvatarHook={useAvatarHook}>
+          <Fragment>
+            {showHeader && <Header />}
+            <Container id={id} maxWidth="md" className={classes.container}>
+              <Messages
+                members={members}
+                currentMember={currentMember}
+                messages={messages}
+                height={height - INPUT_HEIGHT}
+                deleteMessageFunction={deleteMessageFunction}
+                editMessageFunction={editMessageFunction}
+              />
+              <InputBar
+                chatId={chatId}
+                sendMessageBoxId={sendMessageBoxId}
+                sendMessageFunction={sendMessageFunction}
+                editMessageFunction={editMessageFunction}
+              />
+            </Container>
+          </Fragment>
+        </HooksContextProvider>
       </EditingContextProvider>
     </I18nextProvider>
   );

@@ -30,7 +30,7 @@ const useStyles = makeStyles((theme) => ({
     color: theme.palette.primary.main,
   },
   editIcon: {
-    padding: theme.spacing(1),
+    margin: theme.spacing(1),
   },
   oldTextPreview: {
     whiteSpace: 'nowrap',
@@ -58,8 +58,8 @@ const EditBanner: FC<Props> = ({ onClose, editedText }) => {
         <SvgIcon
           className={classes.editIcon}
           component={Edit}
-          fontSize={'small'}
-          color={'primary'}
+          fontSize="small"
+          color="primary"
         />
         <Box className={classes.editContainer}>
           <Typography className={classes.oldTextLabel} variant="subtitle2">
@@ -73,7 +73,10 @@ const EditBanner: FC<Props> = ({ onClose, editedText }) => {
           </Typography>
         </Box>
         <IconButton data-cy={editBannerCloseButtonCypress} onClick={onClose}>
-          <Close color={'secondary'} />
+          <Close
+            // todo: change to secondary once Graasp has one
+            color="primary"
+          />
         </IconButton>
       </Box>
     </>

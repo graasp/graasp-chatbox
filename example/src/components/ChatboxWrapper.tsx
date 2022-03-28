@@ -58,6 +58,7 @@ const ChatboxWrapper: FC<Props> = () => {
       sendMessageFunction={sendMessage}
       deleteMessageFunction={deleteMessage}
       editMessageFunction={editMessage}
+      useAvatarHook={hooks.useAvatar}
     />
   );
 };
