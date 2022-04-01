@@ -5,6 +5,7 @@ import { ImmutableMember, Member } from './types';
 import { MEMBERS } from '../cypress/fixtures/members';
 import { List } from 'immutable';
 import { mockUseAvatar } from '../cypress/fixtures/mockHooks';
+import { inputTextFieldTextAreaCypress } from './config/selectors';
 
 describe('Render Avatar', () => {
   beforeEach(() => {
@@ -30,5 +31,20 @@ describe('Render Avatar', () => {
       />,
     );
     cy.get(`@${fakeHookName}`).should('have.been.called');
+  });
+});
+
+describe('Autofocus on first render', () => {
+  it('should autofocus on open', () => {
+    mount(
+      <Chatbox
+        chatId={CHAT_ID}
+        currentMember={new ImmutableMember(MEMBERS.ANNA)}
+        members={List(Object.values(MEMBERS) as Member[])}
+        messages={List(CHAT_MESSAGES)}
+      />,
+    ).then(() =>
+      cy.get(`#${inputTextFieldTextAreaCypress}`).should('be.focused'),
+    );
   });
 });

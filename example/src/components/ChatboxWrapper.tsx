@@ -9,6 +9,7 @@ import Chatbox, {
 import { MUTATION_KEYS } from '@graasp/query-client';
 import { useMutation, hooks } from '../config/queryClient';
 import { PartialNewChatMessage } from '../../../src';
+import { AvatarHookType } from '../../../src/types';
 
 type Props = {};
 
@@ -58,7 +59,7 @@ const ChatboxWrapper: FC<Props> = () => {
       sendMessageFunction={sendMessage}
       deleteMessageFunction={deleteMessage}
       editMessageFunction={editMessage}
-      useAvatarHook={hooks.useAvatar}
+      useAvatarHook={hooks.useAvatar as AvatarHookType}
     />
   );
 };
