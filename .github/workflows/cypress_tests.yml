@@ -7,7 +7,7 @@ jobs:
       - name: checkout
         uses: actions/checkout@v2
 
-      - name: Component tests 🧪
+      - name: component tests 🧪
         uses: cypress-io/github-action@v2
         with:
           # to run component tests we need to use "cypress run-ct"
@@ -19,7 +19,7 @@ jobs:
       # after the test run completes
       # store videos and any screenshots
       # NOTE: screenshots will be generated only if a test failed
-      - name: Upload screenshots on failure
+      - name: upload screenshots
         uses: actions/upload-artifact@v2
         if: failure()
         with:
@@ -27,7 +27,7 @@ jobs:
           path: cypress/screenshots
       # Test run video was always captured, so this action uses "always()" condition
       # Make sure that the "video" setting in cypress.config is set to true, otherwise there will be no videos
-      - name: Upload videos
+      - name: upload videos
         uses: actions/upload-artifact@v2
         if: always()
         with:
