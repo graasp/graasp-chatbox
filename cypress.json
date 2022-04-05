@@ -1,4 +1,7 @@
 {
+  "chromeWebSecurity": false,
+  "baseUrl": "http://localhost:3000",
+  "video": false,
   "component": {
     "testFiles": "**/*.test.{js,ts,jsx,tsx}",
     "componentFolder": "src",
