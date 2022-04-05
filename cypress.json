@@ -7,8 +7,5 @@
     "componentFolder": "src",
     "viewportWidth": 500,
     "viewportHeight": 700
-  },
-  "env": {
-    "DEBUG": "cypress:*"
   }
 }

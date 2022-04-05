@@ -10,21 +10,16 @@ jobs:
       - name: install
         run: YARN_CHECKSUM_BEHAVIOR=update yarn
 
-      - name: test
-        run: yarn cypress run-ct
-        env:
-          DEBUG: cypress:*
-
       - name: Run Component tests 🧪
         uses: cypress-io/github-action@v2
+        env:
+          DEBUG: cypress:*
         with:
           install: false
           # to run component tests we need to use "cypress run-ct"
           command: yarn cypress run-ct
           browser: chrome
           headless: true
-          runTests: true
-          spec: src/**/*.test.*
 
       # after the test run completes
       # store videos and any screenshots
