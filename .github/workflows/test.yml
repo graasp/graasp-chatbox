@@ -9,8 +9,6 @@ jobs:
 
       - name: install
         run: YARN_CHECKSUM_BEHAVIOR=update yarn
-        
-      - uses: cypress-io/github-action@v2
 
       - name: Run Component tests 🧪
         uses: cypress-io/github-action@v2
