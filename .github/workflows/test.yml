@@ -7,11 +7,17 @@ jobs:
       - name: checkout
         uses: actions/checkout@v2
 
+      - name: install
+        run: YARN_CHECKSUM_BEHAVIOR=update yarn
+        
+      - uses: cypress-io/github-action@v2
+
       - name: Run Component tests 🧪
         uses: cypress-io/github-action@v2
         with:
+          install: false
           # to run component tests we need to use "cypress run-ct"
-          command: yarn cypress run-ct
+          command: DEBUG=cypress:* yarn cypress run-ct
           browser: chrome
           headless: true
 
