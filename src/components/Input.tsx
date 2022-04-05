@@ -1,4 +1,4 @@
-import React, { ChangeEvent, FC, RefObject } from 'react';
+import React, { ChangeEvent, FC, RefObject, useEffect } from 'react';
 import IconButton from '@material-ui/core/IconButton';
 import TextField from '@material-ui/core/TextField';
 import Box from '@material-ui/core/Box';
@@ -43,6 +43,11 @@ const Input: FC<Props> = ({
   const classes = useStyles();
 
   const { t } = useTranslation();
+
+  // autofocus on first render
+  useEffect(() => {
+    inputRef.current?.focus();
+  }, []);
 
   const onClick = (): void => {
     if (textInput) {
