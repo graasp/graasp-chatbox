@@ -12,14 +12,13 @@ jobs:
 
       - name: Run Component tests 🧪
         uses: cypress-io/github-action@v2
-        env:
-          DEBUG: cypress:*
         with:
           install: false
           # to run component tests we need to use "cypress run-ct"
           command: yarn cypress run-ct
           browser: chrome
           headless: true
+          quiet: true
 
       # after the test run completes
       # store videos and any screenshots
