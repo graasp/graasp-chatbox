@@ -10,6 +10,11 @@ jobs:
       - name: install
         run: YARN_CHECKSUM_BEHAVIOR=update yarn
 
+      - name: test
+        run: yarn cypress run-ct
+        env:
+          DEBUG: cypress:*
+
       - name: Run Component tests 🧪
         uses: cypress-io/github-action@v2
         with:
