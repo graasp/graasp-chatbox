@@ -18,6 +18,8 @@ jobs:
           command: yarn cypress run-ct
           browser: chrome
           headless: true
+          runTests: true
+          spec: src/**/*.test.*
 
       # after the test run completes
       # store videos and any screenshots
