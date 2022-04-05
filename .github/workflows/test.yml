@@ -15,7 +15,7 @@ jobs:
         with:
           install: false
           # to run component tests we need to use "cypress run-ct"
-          command: DEBUG=cypress:* yarn cypress run-ct
+          command: yarn cypress run-ct
           browser: chrome
           headless: true
 
