@@ -1,10 +1,10 @@
-import { FC, Fragment } from 'react';
+import { FC } from 'react';
 import Container from '@material-ui/core/Container';
 import { makeStyles } from '@material-ui/core/styles';
 import { List } from 'immutable';
 import Messages from './Messages';
 import Header from './Header';
-import { DEFAULT_CHATBOX_HEIGHT, INPUT_HEIGHT } from '../constants';
+import { DEFAULT_CHATBOX_HEIGHT } from '../constants';
 import type {
   ChatMessage,
   ImmutableMember,
@@ -18,6 +18,8 @@ import buildI18n, { namespaces, langs } from '@graasp/translations';
 import { EditingContextProvider } from '../context/EditingContext';
 import { HooksContextProvider } from '../context/HooksContext';
 import { AvatarHookType } from '../types';
+import { MessagesContextProvider } from '../context/MessagesContext';
+import ExportChat from './ExportChat';
 
 type Props = {
   id?: string;
@@ -31,6 +33,7 @@ type Props = {
   useAvatarHook?: AvatarHookType;
   chatId: string;
   showHeader?: boolean;
+  showAdminTools?: boolean;
   lang?: string;
   currentMember: ImmutableMember;
   members?: List<Member>;
@@ -48,14 +51,21 @@ const Chatbox: FC<Props> = ({
   isLoading,
   chatId,
   showHeader = false,
+  showAdminTools = false,
   lang = langs.en,
   currentMember,
   members,
 }) => {
   const useStyles = makeStyles((theme) => ({
     container: {
+      display: 'flex',
+      flexDirection: 'column',
       height: height || DEFAULT_CHATBOX_HEIGHT,
       padding: theme.spacing(0, 1),
+    },
+    chatboxFrame: {
+      display: 'flex',
+      flexDirection: 'column',
     },
   }));
   const classes = useStyles();
@@ -69,25 +79,31 @@ const Chatbox: FC<Props> = ({
     <I18nextProvider i18n={i18n}>
       <EditingContextProvider>
         <HooksContextProvider useAvatarHook={useAvatarHook}>
-          <Fragment>
-            {showHeader && <Header />}
-            <Container id={id} maxWidth="md" className={classes.container}>
-              <Messages
-                members={members}
-                currentMember={currentMember}
-                messages={messages}
-                height={height - INPUT_HEIGHT}
-                deleteMessageFunction={deleteMessageFunction}
-                editMessageFunction={editMessageFunction}
-              />
-              <InputBar
-                chatId={chatId}
-                sendMessageBoxId={sendMessageBoxId}
-                sendMessageFunction={sendMessageFunction}
-                editMessageFunction={editMessageFunction}
-              />
+          <MessagesContextProvider
+            messages={messages}
+            chatId={chatId}
+            members={members}
+          >
+            <Container className={classes.chatboxFrame}>
+              {showHeader && <Header />}
+              <Container id={id} maxWidth="md" className={classes.container}>
+                <Messages
+                  members={members}
+                  currentMember={currentMember}
+                  messages={messages}
+                  deleteMessageFunction={deleteMessageFunction}
+                  editMessageFunction={editMessageFunction}
+                />
+                <InputBar
+                  chatId={chatId}
+                  sendMessageBoxId={sendMessageBoxId}
+                  sendMessageFunction={sendMessageFunction}
+                  editMessageFunction={editMessageFunction}
+                />
+                {showAdminTools && <ExportChat variant="button" />}
+              </Container>
             </Container>
-          </Fragment>
+          </MessagesContextProvider>
         </HooksContextProvider>
       </EditingContextProvider>
     </I18nextProvider>

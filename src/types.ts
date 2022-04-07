@@ -18,14 +18,18 @@ export type PartialChatMessage = {
   body?: string;
 };
 
-export type ChatMessage = {
+export interface ChatMessage {
   id: string;
   chatId: string;
   creator: string;
   createdAt: string;
   updatedAt: string;
   body: string;
-};
+}
+
+export interface ExportedChatMessage extends ChatMessage {
+  creatorName: string;
+}
 
 export type Member = {
   id: string;

@@ -14,7 +14,7 @@ import type {
 import {
   BIG_NUMBER,
   DEFAULT_DATE_FORMAT,
-  EDIT_BANNER_HEIGHT,
+  MESSAGE_CONTAINER_GROW_FACTOR,
 } from '../constants';
 import MessageActions from './MessageActions';
 import clsx from 'clsx';
@@ -22,7 +22,6 @@ import { useEditingContext } from '../context/EditingContext';
 
 type Props = {
   messages?: List<ChatMessage>;
-  height: number;
   currentMember: ImmutableMember;
   members?: List<Member>;
   deleteMessageFunction?: (message: PartialChatMessage) => void;
@@ -31,7 +30,6 @@ type Props = {
 
 const Messages: FC<Props> = ({
   messages,
-  height,
   currentMember,
   members,
   deleteMessageFunction,
@@ -42,24 +40,27 @@ const Messages: FC<Props> = ({
   const useStyles = makeStyles(() => ({
     container: {
       overflowY: 'auto',
-      // reduce the height of the messages box when the editing banner is open
-      height: height - (open ? EDIT_BANNER_HEIGHT : 0),
+      display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'end',
+      // make sure the container grows even if there is no
+      flexGrow: MESSAGE_CONTAINER_GROW_FACTOR,
     },
     messagesContainer: {
+      display: 'flex',
       flexDirection: 'column',
       alignItems: 'flex-start',
-      display: 'flex',
       justifyContent: 'flex-end',
     },
     singleMessageContainer: {
       // make sure that the box container takes the most space
       width: '100%',
+      display: 'flex',
       // used to place actions on the left of the message
       flexDirection: 'row',
       // center button with message box
       alignItems: 'center',
       alignContent: 'stretch',
-      display: 'flex',
     },
     alignLeft: {
       justifyContent: 'flex-start',
