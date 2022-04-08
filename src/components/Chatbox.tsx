@@ -60,12 +60,15 @@ const Chatbox: FC<Props> = ({
     container: {
       display: 'flex',
       flexDirection: 'column',
-      height: height || DEFAULT_CHATBOX_HEIGHT,
       padding: theme.spacing(0, 1),
     },
     chatboxFrame: {
+      height: height || DEFAULT_CHATBOX_HEIGHT,
       display: 'flex',
       flexDirection: 'column',
+      justifyContent: 'end',
+      // add padding only on bottom
+      padding: theme.spacing(0, 0, 1, 0),
     },
   }));
   const classes = useStyles();
