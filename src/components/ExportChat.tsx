@@ -81,15 +81,17 @@ const ExportChat: FC<Props> = ({ variant = ExportChatVariants.ICON }) => {
   };
 
   return (
-    <CsvLink
-      className={classes.link}
-      headers={EXPORT_CSV_HEADERS}
-      data={csvMessages}
-      filename={filename}
-      onClick={onClick}
-    >
-      {getContent(variant)}
-    </CsvLink>
+    <div>
+      <CsvLink
+        className={classes.link}
+        headers={EXPORT_CSV_HEADERS}
+        data={csvMessages}
+        filename={filename}
+        onClick={onClick}
+      >
+        {getContent(variant)}
+      </CsvLink>
+    </div>
   );
 };
 

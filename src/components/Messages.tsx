@@ -11,11 +11,7 @@ import type {
   Member,
   PartialChatMessage,
 } from '../types';
-import {
-  BIG_NUMBER,
-  DEFAULT_DATE_FORMAT,
-  MESSAGE_CONTAINER_GROW_FACTOR,
-} from '../constants';
+import { BIG_NUMBER, DEFAULT_DATE_FORMAT } from '../constants';
 import MessageActions from './MessageActions';
 import clsx from 'clsx';
 import { useEditingContext } from '../context/EditingContext';
@@ -24,14 +20,15 @@ type Props = {
   messages?: List<ChatMessage>;
   currentMember: ImmutableMember;
   members?: List<Member>;
+  height: number;
   deleteMessageFunction?: (message: PartialChatMessage) => void;
-  editMessageFunction?: (message: PartialChatMessage) => void;
 };
 
 const Messages: FC<Props> = ({
   messages,
   currentMember,
   members,
+  height,
   deleteMessageFunction,
 }) => {
   const ref = useRef<HTMLDivElement>(null);
@@ -40,11 +37,7 @@ const Messages: FC<Props> = ({
   const useStyles = makeStyles(() => ({
     container: {
       overflowY: 'auto',
-      display: 'flex',
-      flexDirection: 'column',
-      justifyContent: 'end',
-      // make sure the container grows even if there is no
-      flexGrow: MESSAGE_CONTAINER_GROW_FACTOR,
+      height: height,
     },
     messagesContainer: {
       display: 'flex',

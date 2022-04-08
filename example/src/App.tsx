@@ -3,13 +3,13 @@ import {
   QueryClientProvider,
   ReactQueryDevtools,
 } from './config/queryClient';
-import ChatboxWrapper from './components/ChatboxWrapper';
+import ChatboxTest from './components/ChatboxTest';
 
 const App = () => {
   return (
     <QueryClientProvider client={queryClient}>
-      <ChatboxWrapper />
-      <ReactQueryDevtools />
+      <ChatboxTest />
+      <ReactQueryDevtools position="bottom-right" />
     </QueryClientProvider>
   );
 };

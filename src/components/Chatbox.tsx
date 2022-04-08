@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, useEffect, useMemo, useRef, useState } from 'react';
 import Container from '@material-ui/core/Container';
 import { makeStyles } from '@material-ui/core/styles';
 import { List } from 'immutable';
@@ -61,23 +61,30 @@ const Chatbox: FC<Props> = ({
       display: 'flex',
       flexDirection: 'column',
       padding: theme.spacing(0, 1),
-    },
-    chatboxFrame: {
       height: height || DEFAULT_CHATBOX_HEIGHT,
-      display: 'flex',
-      flexDirection: 'column',
-      justifyContent: 'end',
-      // add padding only on bottom
-      padding: theme.spacing(0, 0, 1, 0),
+    },
+    bottomContainer: {
+      boxSizing: 'border-box',
+      paddingBottom: theme.spacing(1),
     },
   }));
   const classes = useStyles();
-  const i18n = buildI18n(namespaces.chatbox);
-  i18n.changeLanguage(lang);
+  const i18n = useMemo(() => {
+    const i18nInstance = buildI18n(namespaces.chatbox);
+    i18nInstance.changeLanguage(lang);
+    return i18nInstance;
+  }, [lang]);
+  const ref = useRef<HTMLDivElement>(null);
+  const [inputBarHeight, setInputBarHeight] = useState(0);
+
+  useEffect(() => {
+    setInputBarHeight(ref.current?.clientHeight || 0);
+  }, [showAdminTools, ref]);
 
   if (isLoading) {
     return null;
   }
+
   return (
     <I18nextProvider i18n={i18n}>
       <EditingContextProvider>
@@ -87,25 +94,27 @@ const Chatbox: FC<Props> = ({
             chatId={chatId}
             members={members}
           >
-            <Container className={classes.chatboxFrame}>
+            <>
               {showHeader && <Header />}
               <Container id={id} maxWidth="md" className={classes.container}>
                 <Messages
                   members={members}
                   currentMember={currentMember}
                   messages={messages}
+                  height={height - inputBarHeight}
                   deleteMessageFunction={deleteMessageFunction}
-                  editMessageFunction={editMessageFunction}
                 />
-                <InputBar
-                  chatId={chatId}
-                  sendMessageBoxId={sendMessageBoxId}
-                  sendMessageFunction={sendMessageFunction}
-                  editMessageFunction={editMessageFunction}
-                />
-                {showAdminTools && <ExportChat variant="button" />}
+                <div ref={ref} className={classes.bottomContainer}>
+                  <InputBar
+                    chatId={chatId}
+                    sendMessageBoxId={sendMessageBoxId}
+                    sendMessageFunction={sendMessageFunction}
+                    editMessageFunction={editMessageFunction}
+                  />
+                  {showAdminTools && <ExportChat variant="button" />}
+                </div>
               </Container>
-            </Container>
+            </>
           </MessagesContextProvider>
         </HooksContextProvider>
       </EditingContextProvider>

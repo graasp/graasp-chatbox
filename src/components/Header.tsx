@@ -37,7 +37,7 @@ const Header: FC<Props> = ({ title }) => {
 
   return (
     <div className={classes.root}>
-      <AppBar position="relative">
+      <AppBar position="fixed">
         <Toolbar>
           <ChatIcon className={classes.icon} />
           <Typography variant="h6" className={classes.title}>
