@@ -38,17 +38,21 @@ const ChatboxWrapper: FC<Props> = ({
 
   const [windowHeight, setWindowHeight] = useState(window.innerHeight);
 
-  useEffect(() => {
-    const handleResize = () => {
-      setWindowHeight(window.innerHeight);
-    };
-    window.addEventListener('resize', handleResize);
+  useEffect(
+    () => {
+      const handleResize = () => {
+        setWindowHeight(window.innerHeight);
+      };
+      window.addEventListener('resize', handleResize);
 
-    // cleanup eventListener
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  });
+      // cleanup eventListener
+      return () => {
+        window.removeEventListener('resize', handleResize);
+      };
+    },
+    // only run on first render
+    [],
+  );
 
   const member = new ImmutableMember(currentMember);
   const members = hooks.useMembers(memberIds).data as List<Member>;

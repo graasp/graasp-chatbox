@@ -15,6 +15,7 @@ import { BIG_NUMBER, DEFAULT_DATE_FORMAT } from '../constants';
 import MessageActions from './MessageActions';
 import clsx from 'clsx';
 import { useEditingContext } from '../context/EditingContext';
+import { messagesContainerCypress } from '../config/selectors';
 
 type Props = {
   messages?: List<ChatMessage>;
@@ -84,7 +85,11 @@ const Messages: FC<Props> = ({
     .toArray();
 
   return (
-    <div className={classes.container} ref={ref}>
+    <div
+      className={classes.container}
+      ref={ref}
+      data-cy={messagesContainerCypress}
+    >
       <Box className={classes.messagesContainer}>
         {messagesByDay?.map(([date, m]) => (
           <Fragment key={date}>

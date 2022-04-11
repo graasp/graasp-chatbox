@@ -12,6 +12,7 @@ import { GetApp } from '@material-ui/icons';
 import moment from 'moment';
 import { useTranslation } from 'react-i18next';
 import { makeStyles } from '@material-ui/core/styles';
+import { exportChatButtonCypress } from '../config/selectors';
 
 const useStyles = makeStyles({
   link: {
@@ -83,6 +84,7 @@ const ExportChat: FC<Props> = ({ variant = ExportChatVariants.ICON }) => {
   return (
     <div>
       <CsvLink
+        data-cy={exportChatButtonCypress}
         className={classes.link}
         headers={EXPORT_CSV_HEADERS}
         data={csvMessages}

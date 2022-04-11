@@ -4,7 +4,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import { List } from 'immutable';
 import Messages from './Messages';
 import Header from './Header';
-import { DEFAULT_CHATBOX_HEIGHT } from '../constants';
+import { DEFAULT_CHATBOX_HEIGHT, SAFETY_MARGIN } from '../constants';
 import type {
   ChatMessage,
   ImmutableMember,
@@ -101,7 +101,7 @@ const Chatbox: FC<Props> = ({
                   members={members}
                   currentMember={currentMember}
                   messages={messages}
-                  height={height - inputBarHeight}
+                  height={height - inputBarHeight - SAFETY_MARGIN}
                   deleteMessageFunction={deleteMessageFunction}
                 />
                 <div ref={ref} className={classes.bottomContainer}>
