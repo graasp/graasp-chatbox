@@ -5,5 +5,6 @@ export type {
   ChatMessage,
   PartialNewChatMessage,
   PartialChatMessage,
+  AvatarHookType,
 } from './types';
 export { ImmutableMember } from './types';

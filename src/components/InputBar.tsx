@@ -5,6 +5,7 @@ import EditBanner from './EditBanner';
 import { makeStyles } from '@material-ui/core/styles';
 import Box from '@material-ui/core/Box';
 import { useEditingContext } from '../context/EditingContext';
+import { useMessagesContext } from '../context/MessagesContext';
 
 const useStyles = makeStyles(() => ({
   wrapper: {
@@ -13,14 +14,12 @@ const useStyles = makeStyles(() => ({
 }));
 
 type Props = {
-  chatId: string;
   sendMessageBoxId?: string;
   sendMessageFunction?: (message: PartialNewChatMessage) => void;
   editMessageFunction?: (message: PartialChatMessage) => void;
 };
 
 const InputBar: FC<Props> = ({
-  chatId,
   sendMessageBoxId,
   sendMessageFunction,
   editMessageFunction,
@@ -29,6 +28,7 @@ const InputBar: FC<Props> = ({
   const { open, body, messageId, cancelEdit } = useEditingContext();
   const [textInput, setTextInput] = useState(open ? body : '');
   const inputRef = useRef<HTMLDivElement>(null);
+  const { chatId } = useMessagesContext();
 
   useEffect(() => {
     // when in editing mode, seed the textfield with the old message body
@@ -67,7 +67,6 @@ const InputBar: FC<Props> = ({
         textInput={textInput}
         setTextInput={setTextInput}
         sendMessageFunction={handleSendMessageFunction}
-        chatId={chatId}
       />
     </Box>
   );

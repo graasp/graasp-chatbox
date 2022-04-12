@@ -2052,6 +2052,7 @@ __metadata:
     "@types/material-ui": 0.21.12
     "@types/node": 17.0.8
     "@types/react": 17.0.0
+    "@types/react-csv": 1.1.2
     "@types/react-dom": 17.0.11
     "@types/uuid": 8.3.4
     "@typescript-eslint/eslint-plugin": 5.9.0
@@ -2080,6 +2081,7 @@ __metadata:
     moment: 2.29.1
     prettier: 2.5.1
     react: 17.0.2
+    react-csv: 2.2.2
     react-dom: 17.0.2
     react-i18next: 11.15.3
     react-scripts: 4.0.3
@@ -2877,13 +2879,23 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@npmcli/move-file@npm:^1.0.1, @npmcli/move-file@npm:^1.1.2":
+"@npmcli/move-file@npm:^1.0.1":
   version: 1.1.2
   resolution: "@npmcli/move-file@npm:1.1.2"
   dependencies:
     mkdirp: ^1.0.4
     rimraf: ^3.0.2
   checksum: c96381d4a37448ea280951e46233f7e541058cf57a57d4094dd4bdcaae43fa5872b5f2eb6bfb004591a68e29c5877abe3cdc210cb3588cbf20ab2877f31a7de7
+  languageName: node
+  linkType: hard
+
+"@npmcli/move-file@npm:^2.0.0":
+  version: 2.0.0
+  resolution: "@npmcli/move-file@npm:2.0.0"
+  dependencies:
+    mkdirp: ^1.0.4
+    rimraf: ^3.0.2
+  checksum: 1388777b507b0c592d53f41b9d182e1a8de7763bc625fc07999b8edbc22325f074e5b3ec90af79c89d6987fdb2325bc66d59f483258543c14a43661621f841b0
   languageName: node
   linkType: hard
 
@@ -3270,8 +3282,8 @@ __metadata:
   linkType: hard
 
 "@testing-library/dom@npm:^8.0.0":
-  version: 8.12.0
-  resolution: "@testing-library/dom@npm:8.12.0"
+  version: 8.13.0
+  resolution: "@testing-library/dom@npm:8.13.0"
   dependencies:
     "@babel/code-frame": ^7.10.4
     "@babel/runtime": ^7.12.5
@@ -3281,7 +3293,7 @@ __metadata:
     dom-accessibility-api: ^0.5.9
     lz-string: ^1.4.4
     pretty-format: ^27.0.2
-  checksum: 2bbf5fa5c1e883571c440ccee76c0568fa5153b43c097456dd7146797256687352bfca9db574e0e78a022ce14722a6acaaba5f680ee16b95e12405501713d34d
+  checksum: 880f1872b9949800d4444e3bdbd03df86d6f41ec7c27136dff1da29e87d2df2d7ee904afcdf895ffce351c25bd12119117eae023354d50e707ad56d43b2ed3ed
   languageName: node
   linkType: hard
 
@@ -3807,6 +3819,15 @@ __metadata:
   dependencies:
     "@types/react": "*"
   checksum: f0216424eed2008845acdca7565d661ed67310cf16179da7cdc97056070552f77bb7bad6d5beb3598a46b7322dfa29e29945259d834d529c3d68c75afea9a8dc
+  languageName: node
+  linkType: hard
+
+"@types/react-csv@npm:1.1.2":
+  version: 1.1.2
+  resolution: "@types/react-csv@npm:1.1.2"
+  dependencies:
+    "@types/react": "*"
+  checksum: 0c69c969544cfbbf9b921e3bc8933d83a976af6edd1e126098467d47bb1e3f5c49b1aa6ecd3d5ec0b713c08ec5371ded4db121a91929ace893ef06d200557f49
   languageName: node
   linkType: hard
 
@@ -6486,11 +6507,11 @@ __metadata:
   linkType: hard
 
 "cacache@npm:^16.0.2":
-  version: 16.0.3
-  resolution: "cacache@npm:16.0.3"
+  version: 16.0.4
+  resolution: "cacache@npm:16.0.4"
   dependencies:
     "@npmcli/fs": ^2.1.0
-    "@npmcli/move-file": ^1.1.2
+    "@npmcli/move-file": ^2.0.0
     chownr: ^2.0.0
     fs-minipass: ^2.1.0
     glob: ^7.2.0
@@ -6504,10 +6525,10 @@ __metadata:
     p-map: ^4.0.0
     promise-inflight: ^1.0.1
     rimraf: ^3.0.2
-    ssri: ^8.0.1
+    ssri: ^9.0.0
     tar: ^6.1.11
     unique-filename: ^1.1.1
-  checksum: 9bb9a0bd1b8bee3284c6fa9dcb4b28a62b528dd181f7cd482319611b5d6df295a3594dcefc24d1a4f16162bac50d6facc183ed21935f3d09af6d16f620ea54d3
+  checksum: f5ddd45e5b1ff5001f9d1fcbc95f1dc210e6b04fbaf92782dd16a514e9a8082efba6eac43dac3d881e2ab5829f5ad857d7deda58cbef235e93d075e8f378214a
   languageName: node
   linkType: hard
 
@@ -9030,9 +9051,9 @@ __metadata:
   linkType: hard
 
 "electron-to-chromium@npm:^1.3.564, electron-to-chromium@npm:^1.4.84":
-  version: 1.4.103
-  resolution: "electron-to-chromium@npm:1.4.103"
-  checksum: ae5783cafb1f49e92946416fafc5af45d85e5a6847ce00f4cf4b4d2e54bca1d27b26699ea2cedf5b700c1a0190329e7ec20dc06198daa9f0c343044bc074ae75
+  version: 1.4.104
+  resolution: "electron-to-chromium@npm:1.4.104"
+  checksum: 2570bcc175261b3c2780a788a18e8de86e11e4688a889ee7ea46322b6a78034895a4d7a352c2c332831cd16f78338a687f15e19caf08d5bd708c0721e1f10262
   languageName: node
   linkType: hard
 
@@ -9547,7 +9568,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-module-utils@npm:^2.7.2":
+"eslint-module-utils@npm:^2.7.2, eslint-module-utils@npm:^2.7.3":
   version: 2.7.3
   resolution: "eslint-module-utils@npm:2.7.3"
   dependencies:
@@ -9606,7 +9627,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-plugin-import@npm:2.25.4, eslint-plugin-import@npm:2.x, eslint-plugin-import@npm:^2.22.1, eslint-plugin-import@npm:^2.25.3":
+"eslint-plugin-import@npm:2.25.4":
   version: 2.25.4
   resolution: "eslint-plugin-import@npm:2.25.4"
   dependencies:
@@ -9626,6 +9647,29 @@ __metadata:
   peerDependencies:
     eslint: ^2 || ^3 || ^4 || ^5 || ^6 || ^7.2.0 || ^8
   checksum: 0af24f5c7c6ca692f42e3947127f0ae7dfe44f1e02740f7cbe988b510a9c52bab0065d7df04e2d953dcc88a4595a00cbdcf14018acf8cd75cfd47b72efcbb734
+  languageName: node
+  linkType: hard
+
+"eslint-plugin-import@npm:2.x, eslint-plugin-import@npm:^2.22.1, eslint-plugin-import@npm:^2.25.3":
+  version: 2.26.0
+  resolution: "eslint-plugin-import@npm:2.26.0"
+  dependencies:
+    array-includes: ^3.1.4
+    array.prototype.flat: ^1.2.5
+    debug: ^2.6.9
+    doctrine: ^2.1.0
+    eslint-import-resolver-node: ^0.3.6
+    eslint-module-utils: ^2.7.3
+    has: ^1.0.3
+    is-core-module: ^2.8.1
+    is-glob: ^4.0.3
+    minimatch: ^3.1.2
+    object.values: ^1.1.5
+    resolve: ^1.22.0
+    tsconfig-paths: ^3.14.1
+  peerDependencies:
+    eslint: ^2 || ^3 || ^4 || ^5 || ^6 || ^7.2.0 || ^8
+  checksum: 0bf77ad80339554481eafa2b1967449e1f816b94c7a6f9614ce33fb4083c4e6c050f10d241dd50b4975d47922880a34de1e42ea9d8e6fd663ebb768baa67e655
   languageName: node
   linkType: hard
 
@@ -14801,8 +14845,8 @@ __metadata:
   linkType: hard
 
 "make-fetch-happen@npm:^10.0.3":
-  version: 10.1.1
-  resolution: "make-fetch-happen@npm:10.1.1"
+  version: 10.1.2
+  resolution: "make-fetch-happen@npm:10.1.2"
   dependencies:
     agentkeepalive: ^4.2.1
     cacache: ^16.0.2
@@ -14819,8 +14863,8 @@ __metadata:
     negotiator: ^0.6.3
     promise-retry: ^2.0.1
     socks-proxy-agent: ^6.1.1
-    ssri: ^8.0.1
-  checksum: 3f1b0acc2032061a01bb44458e07bbd5721e3fbfb5a1620eef38e7c7d022f2141373fc41a8056685441c70444d94e1479485492ac6e9e8ad5de87ea29ca9d9e4
+    ssri: ^9.0.0
+  checksum: 42825d119a7e4f5b1a8e7048a86d328cd36bb1ff875d155ce7079d9a0afdd310c198fb310096af358cfa9ecdf643cecf960380686792457dccb36e17efe89eb0
   languageName: node
   linkType: hard
 
@@ -16734,13 +16778,13 @@ __metadata:
   linkType: hard
 
 "postcss-custom-properties@npm:^12.1.5":
-  version: 12.1.5
-  resolution: "postcss-custom-properties@npm:12.1.5"
+  version: 12.1.6
+  resolution: "postcss-custom-properties@npm:12.1.6"
   dependencies:
     postcss-value-parser: ^4.2.0
   peerDependencies:
     postcss: ^8.4
-  checksum: de43ef9fe8f61fc3d2eccb45e1d7359ce69908732bfd8e0155c5ad29b1caff2586f1e77a246c46748233b39020b41b4ea756da977ab5625449689bd953fa25b5
+  checksum: ec31ed03f337d90716aa90a9d697f06d6196e7b986d563b1dc0f66577427dabd23cf077c43e8e53c081fd8b329c0dec943b85a84df256fdce0bebffc1b471ab4
   languageName: node
   linkType: hard
 
@@ -18608,6 +18652,13 @@ __metadata:
   peerDependencies:
     react: ^16.13.1 || ^17.0.0
   checksum: 9676e9611998f58e43ae76721f33b80eb95be37ad3937de0fd4f623ac5e7c72573d45cc36ca5e0c6b9d494a09a8aea1aea7ba8ae5ad0ebb2b692837ef78a561e
+  languageName: node
+  linkType: hard
+
+"react-csv@npm:2.2.2":
+  version: 2.2.2
+  resolution: "react-csv@npm:2.2.2"
+  checksum: a6ffabd67fc9ba1478b003977923cfa3ccdd9553ac5edcc3824b4a5ea849b87cb2acfcc0781b0cd0a259bf56e6a7dfd35cfc307576aa51819fc5a32b03118fab
   languageName: node
   linkType: hard
 
@@ -20599,6 +20650,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"ssri@npm:^9.0.0":
+  version: 9.0.0
+  resolution: "ssri@npm:9.0.0"
+  dependencies:
+    minipass: ^3.1.1
+  checksum: bf33174232d07cc64e77ab1c51b55d28352273380c503d35642a19627e88a2c5f160039bb0a28608a353485075dda084dbf0390c7070f9f284559eb71d01b84b
+  languageName: node
+  linkType: hard
+
 "stable@npm:^0.1.8":
   version: 0.1.8
   resolution: "stable@npm:0.1.8"
@@ -21639,7 +21699,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tsconfig-paths@npm:^3.12.0":
+"tsconfig-paths@npm:^3.12.0, tsconfig-paths@npm:^3.14.1":
   version: 3.14.1
   resolution: "tsconfig-paths@npm:3.14.1"
   dependencies:

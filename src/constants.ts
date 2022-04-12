@@ -3,9 +3,11 @@ export const INPUT_HEIGHT = 120;
 export const EDIT_BANNER_HEIGHT = 58;
 export const MAX_ROWS_INPUT = 4;
 export const BIG_NUMBER = 9999;
+export const SAFETY_MARGIN = 12;
 export const DEFAULT_USER_NAME = 'Anonymous';
 export const MAX_USERNAME_LENGTH = 30;
 export const DEFAULT_DATE_FORMAT = 'DD MMM YYYY';
+export const EXPORT_DATE_FORMAT = 'YYYY-MM-DD';
 export const HEADER_HEIGHT = 64;
 export const LIST_ICON_MIN_WIDTH = 30;
 export const INITIAL_EDITING_PROPS = {
@@ -13,3 +15,13 @@ export const INITIAL_EDITING_PROPS = {
   id: '',
   body: '',
 };
+
+export const EXPORT_CSV_HEADERS = [
+  { label: 'message_id', key: 'id' },
+  { label: 'item_id', key: 'chatId' },
+  { label: 'created_at', key: 'createdAt' },
+  { label: 'updated_at', key: 'updatedAt' },
+  { label: 'creator_id', key: 'creator' },
+  { label: 'creator_name', key: 'creatorName' },
+  { label: 'message_content', key: 'body' },
+];

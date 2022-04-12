@@ -2,64 +2,55 @@ import { FC, useRef, useEffect, Fragment } from 'react';
 import Box from '@material-ui/core/Box';
 import { makeStyles } from '@material-ui/core/styles';
 import moment from 'moment';
-import { List } from 'immutable';
 import Date from './Date';
 import Message from './Message';
 import type {
   ChatMessage,
   ImmutableMember,
-  Member,
   PartialChatMessage,
 } from '../types';
-import {
-  BIG_NUMBER,
-  DEFAULT_DATE_FORMAT,
-  EDIT_BANNER_HEIGHT,
-} from '../constants';
+import { BIG_NUMBER, DEFAULT_DATE_FORMAT } from '../constants';
 import MessageActions from './MessageActions';
 import clsx from 'clsx';
 import { useEditingContext } from '../context/EditingContext';
+import { messagesContainerCypress } from '../config/selectors';
+import { useMessagesContext } from '../context/MessagesContext';
 
 type Props = {
-  messages?: List<ChatMessage>;
-  height: number;
   currentMember: ImmutableMember;
-  members?: List<Member>;
+  height: number;
   deleteMessageFunction?: (message: PartialChatMessage) => void;
-  editMessageFunction?: (message: PartialChatMessage) => void;
 };
 
 const Messages: FC<Props> = ({
-  messages,
-  height,
   currentMember,
-  members,
+  height,
   deleteMessageFunction,
 }) => {
   const ref = useRef<HTMLDivElement>(null);
   const { open } = useEditingContext();
+  const { messages, members } = useMessagesContext();
 
   const useStyles = makeStyles(() => ({
     container: {
       overflowY: 'auto',
-      // reduce the height of the messages box when the editing banner is open
-      height: height - (open ? EDIT_BANNER_HEIGHT : 0),
+      height: height,
     },
     messagesContainer: {
+      display: 'flex',
       flexDirection: 'column',
       alignItems: 'flex-start',
-      display: 'flex',
       justifyContent: 'flex-end',
     },
     singleMessageContainer: {
       // make sure that the box container takes the most space
       width: '100%',
+      display: 'flex',
       // used to place actions on the left of the message
       flexDirection: 'row',
       // center button with message box
       alignItems: 'center',
       alignContent: 'stretch',
-      display: 'flex',
     },
     alignLeft: {
       justifyContent: 'flex-start',
@@ -90,7 +81,11 @@ const Messages: FC<Props> = ({
     .toArray();
 
   return (
-    <div className={classes.container} ref={ref}>
+    <div
+      className={classes.container}
+      ref={ref}
+      data-cy={messagesContainerCypress}
+    >
       <Box className={classes.messagesContainer}>
         {messagesByDay?.map(([date, m]) => (
           <Fragment key={date}>

@@ -6,6 +6,8 @@ export const deleteMenuItemCypress = 'deleteMenuItemCypress';
 export const editBannerCypress = 'editBannerCypress';
 export const editBannerOldTextCypress = 'editBannerOldTextCypress';
 export const editBannerCloseButtonCypress = 'editBannerCloseButtonCypress';
+export const exportChatButtonCypress = 'exportChatButtonCypress';
+export const messagesContainerCypress = 'messagesContainerCypress';
 export const inputTextFieldTextAreaCypress = 'inputTextFieldTextArea';
 
 export const messageIdCyWrapper = (id: string): string => `message-${id}`;

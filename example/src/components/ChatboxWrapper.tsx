@@ -1,23 +1,30 @@
-import { FC } from 'react';
+import { FC, useEffect, useState } from 'react';
 import { List } from 'immutable';
 import Chatbox, {
   ChatMessage,
   PartialChatMessage,
   ImmutableMember,
   Member,
+  AvatarHookType,
 } from '@graasp/chatbox';
 import { MUTATION_KEYS } from '@graasp/query-client';
 import { useMutation, hooks } from '../config/queryClient';
 import { PartialNewChatMessage } from '../../../src';
-import { AvatarHookType } from '../../../src/types';
+import { DEFAULT_LANG, HEADER_SIZE } from '../config/constants';
 
-type Props = {};
+type Props = {
+  chatId: string;
+  lang?: string;
+  showHeader?: boolean;
+  showAdminTools?: boolean;
+};
 
-const ChatboxWrapper: FC<Props> = () => {
-  // this is the id of the item to which the chat is attached (folder, document ...)
-  const chatId = '39370f67-2153-4ab9-9679-b1966542d27d';
-  const lang = 'fr';
-
+const ChatboxWrapper: FC<Props> = ({
+  chatId,
+  lang = DEFAULT_LANG,
+  showHeader = true,
+  showAdminTools = false,
+}) => {
   // use kooks
   const { data: currentMember } = hooks.useCurrentMember();
   const { data: chat } = hooks.useItemChat(chatId);
@@ -27,6 +34,24 @@ const ChatboxWrapper: FC<Props> = () => {
   // get id of member that posted messages in the chat
   const memberIds = Array.from(
     new Set(chatMessages?.map(({ creator }: { creator: string }) => creator)),
+  );
+
+  const [windowHeight, setWindowHeight] = useState(window.innerHeight);
+
+  useEffect(
+    () => {
+      const handleResize = () => {
+        setWindowHeight(window.innerHeight);
+      };
+      window.addEventListener('resize', handleResize);
+
+      // cleanup eventListener
+      return () => {
+        window.removeEventListener('resize', handleResize);
+      };
+    },
+    // only run on first render
+    [],
   );
 
   const member = new ImmutableMember(currentMember);
@@ -52,7 +77,9 @@ const ChatboxWrapper: FC<Props> = () => {
     <Chatbox
       lang={lang}
       chatId={chatId}
-      showHeader
+      height={windowHeight - (showHeader ? HEADER_SIZE : 0)}
+      showHeader={showHeader}
+      showAdminTools={showAdminTools}
       currentMember={member}
       members={members}
       messages={List(chatMessages)}
