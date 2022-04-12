@@ -90,23 +90,20 @@ const Chatbox: FC<Props> = ({
       <EditingContextProvider>
         <HooksContextProvider useAvatarHook={useAvatarHook}>
           <MessagesContextProvider
-            messages={messages}
             chatId={chatId}
             members={members}
+            messages={messages}
           >
             <>
               {showHeader && <Header />}
               <Container id={id} maxWidth="md" className={classes.container}>
                 <Messages
-                  members={members}
                   currentMember={currentMember}
-                  messages={messages}
                   height={height - inputBarHeight - SAFETY_MARGIN}
                   deleteMessageFunction={deleteMessageFunction}
                 />
                 <div ref={ref} className={classes.bottomContainer}>
                   <InputBar
-                    chatId={chatId}
                     sendMessageBoxId={sendMessageBoxId}
                     sendMessageFunction={sendMessageFunction}
                     editMessageFunction={editMessageFunction}

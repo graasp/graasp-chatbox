@@ -2,13 +2,11 @@ import { FC, useRef, useEffect, Fragment } from 'react';
 import Box from '@material-ui/core/Box';
 import { makeStyles } from '@material-ui/core/styles';
 import moment from 'moment';
-import { List } from 'immutable';
 import Date from './Date';
 import Message from './Message';
 import type {
   ChatMessage,
   ImmutableMember,
-  Member,
   PartialChatMessage,
 } from '../types';
 import { BIG_NUMBER, DEFAULT_DATE_FORMAT } from '../constants';
@@ -16,24 +14,22 @@ import MessageActions from './MessageActions';
 import clsx from 'clsx';
 import { useEditingContext } from '../context/EditingContext';
 import { messagesContainerCypress } from '../config/selectors';
+import { useMessagesContext } from '../context/MessagesContext';
 
 type Props = {
-  messages?: List<ChatMessage>;
   currentMember: ImmutableMember;
-  members?: List<Member>;
   height: number;
   deleteMessageFunction?: (message: PartialChatMessage) => void;
 };
 
 const Messages: FC<Props> = ({
-  messages,
   currentMember,
-  members,
   height,
   deleteMessageFunction,
 }) => {
   const ref = useRef<HTMLDivElement>(null);
   const { open } = useEditingContext();
+  const { messages, members } = useMessagesContext();
 
   const useStyles = makeStyles(() => ({
     container: {

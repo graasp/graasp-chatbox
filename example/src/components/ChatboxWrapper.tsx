@@ -10,7 +10,7 @@ import Chatbox, {
 import { MUTATION_KEYS } from '@graasp/query-client';
 import { useMutation, hooks } from '../config/queryClient';
 import { PartialNewChatMessage } from '../../../src';
-import { HEADER_SIZE } from '../config/constants';
+import { DEFAULT_LANG, HEADER_SIZE } from '../config/constants';
 
 type Props = {
   chatId: string;
@@ -21,7 +21,7 @@ type Props = {
 
 const ChatboxWrapper: FC<Props> = ({
   chatId,
-  lang = 'en',
+  lang = DEFAULT_LANG,
   showHeader = true,
   showAdminTools = false,
 }) => {

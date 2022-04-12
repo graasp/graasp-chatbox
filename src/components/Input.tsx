@@ -13,11 +13,11 @@ import {
 } from '../config/selectors';
 import { MAX_ROWS_INPUT } from '../constants';
 import { CHATBOX } from '@graasp/translations';
+import { useMessagesContext } from '../context/MessagesContext';
 
 type Props = {
   id?: string;
   inputRef: RefObject<HTMLDivElement>;
-  chatId: string;
   placeholder?: string;
   textInput: string;
   setTextInput: (newText: string) => void;
@@ -34,13 +34,13 @@ const useStyles = makeStyles((theme) => ({
 const Input: FC<Props> = ({
   id,
   inputRef,
-  chatId,
   textInput,
   setTextInput,
   placeholder,
   sendMessageFunction,
 }) => {
   const classes = useStyles();
+  const { chatId } = useMessagesContext();
 
   const { t } = useTranslation();
 
