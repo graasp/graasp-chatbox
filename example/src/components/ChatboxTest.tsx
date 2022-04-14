@@ -43,7 +43,7 @@ const ChatboxTest: FC<Props> = () => {
         className={classes.testContainer}
         container
         item
-        justify="flex-end"
+        justifyContent="flex-end"
         direction="column"
         xs
         spacing={2}

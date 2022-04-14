@@ -25,3 +25,6 @@ export const EXPORT_CSV_HEADERS = [
   { label: 'creator_name', key: 'creatorName' },
   { label: 'message_content', key: 'body' },
 ];
+
+export const ICON_VARIANT = 'icon';
+export const BUTTON_VARIANT = 'button';

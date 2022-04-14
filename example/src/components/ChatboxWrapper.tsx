@@ -11,6 +11,7 @@ import { MUTATION_KEYS } from '@graasp/query-client';
 import { useMutation, hooks } from '../config/queryClient';
 import { PartialNewChatMessage } from '../../../src';
 import { DEFAULT_LANG, HEADER_SIZE } from '../config/constants';
+import { ClearChatHookType } from '../../../src/types';
 
 type Props = {
   chatId: string;
@@ -72,6 +73,9 @@ const ChatboxWrapper: FC<Props> = ({
   }: { mutate: (message: PartialChatMessage) => void } = useMutation(
     MUTATION_KEYS.PATCH_ITEM_CHAT_MESSAGE,
   );
+  const { mutate: clearChat }: { mutate: ClearChatHookType } = useMutation(
+    MUTATION_KEYS.CLEAR_ITEM_CHAT,
+  );
 
   return (
     <Chatbox
@@ -86,6 +90,7 @@ const ChatboxWrapper: FC<Props> = ({
       sendMessageFunction={sendMessage}
       deleteMessageFunction={deleteMessage}
       editMessageFunction={editMessage}
+      clearChatFunction={clearChat}
       useAvatarHook={hooks.useAvatar as AvatarHookType}
     />
   );
