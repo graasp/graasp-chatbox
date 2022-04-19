@@ -6,7 +6,11 @@ export const deleteMenuItemCypress = 'deleteMenuItemCypress';
 export const editBannerCypress = 'editBannerCypress';
 export const editBannerOldTextCypress = 'editBannerOldTextCypress';
 export const editBannerCloseButtonCypress = 'editBannerCloseButtonCypress';
+export const adminToolsContainerCypress = 'adminToolsContainerCypress';
 export const exportChatButtonCypress = 'exportChatButtonCypress';
+export const clearChatButtonCypress = 'clearChatButtonCypress';
+export const cancelDialogButtonCypress = 'cancelDialogButtonCypress';
+export const confirmDialogButtonCypress = 'confirmDialogButtonCypress';
 export const messagesContainerCypress = 'messagesContainerCypress';
 export const inputTextFieldTextAreaCypress = 'inputTextFieldTextArea';
 

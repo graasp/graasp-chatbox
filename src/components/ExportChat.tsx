@@ -74,11 +74,16 @@ const ExportChat: FC<Props> = ({ variant = ToolVariants.ICON }) => {
   return (
     <CsvLink
       data-cy={exportChatButtonCypress}
+      // add a property to pass the fileName
+      // this property will have a value after clicking the button
+      data-cy-filename={filename}
       className={classes.link}
       headers={EXPORT_CSV_HEADERS}
       data={csvMessages}
       filename={filename}
       onClick={onClick}
+      // this removes the BOM for better parsing
+      uFEFF={false}
     >
       {getContent(variant)}
     </CsvLink>

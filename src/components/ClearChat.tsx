@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { useHooksContext } from '../context/HooksContext';
 import { useMessagesContext } from '../context/MessagesContext';
 import { Button } from '@graasp/ui';
+import { clearChatButtonCypress } from '../config/selectors';
 
 const ClearChat: FC = () => {
   const [openConfirmation, setOpenConfirmation] = useState(false);
@@ -17,7 +18,10 @@ const ClearChat: FC = () => {
 
   return (
     <>
-      <Button onClick={(): void => setOpenConfirmation(true)}>
+      <Button
+        dataCy={clearChatButtonCypress}
+        onClick={(): void => setOpenConfirmation(true)}
+      >
         {t('Clear Chat')}
       </Button>
       <ConfirmationDialog

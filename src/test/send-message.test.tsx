@@ -1,19 +1,19 @@
 import { mount } from '@cypress/react';
-import Chatbox from './components/Chatbox';
+import Chatbox from '../components/Chatbox';
 import {
   dataCyWrapper,
   inputTextFieldCypress,
   inputTextFieldTextAreaCypress,
   sendButtonCypress,
-} from './config/selectors';
+} from '../config/selectors';
 import { List } from 'immutable';
-import { ImmutableMember, Member } from './index';
+import { ImmutableMember, Member } from '../index';
 import {
   CHAT_ID,
   CHAT_MESSAGES,
   spyMethod,
-} from '../cypress/fixtures/chat_messages';
-import { MEMBERS } from '../cypress/fixtures/members';
+} from '../../cypress/fixtures/chat_messages';
+import { MEMBERS } from '../../cypress/fixtures/members';
 
 describe('Enter text', () => {
   beforeEach(() => {
