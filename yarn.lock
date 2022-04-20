@@ -2035,7 +2035,7 @@ __metadata:
     "@cypress/react": 5.12.4
     "@cypress/webpack-dev-server": 1.8.4
     "@graasp/translations": "github:graasp/graasp-translations.git"
-    "@graasp/ui": "github:graasp/graasp-ui#114/addDataCyProp"
+    "@graasp/ui": "github:graasp/graasp-ui"
     "@material-ui/core": 4.12.4
     "@material-ui/icons": 4.11.2
     "@material-ui/lab": 4.0.0-alpha.60
@@ -2133,9 +2133,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@graasp/ui@github:graasp/graasp-ui#114/addDataCyProp":
+"@graasp/ui@github:graasp/graasp-ui":
   version: 0.2.0
-  resolution: "@graasp/ui@https://github.com/graasp/graasp-ui.git#commit=c957e05969f8ffcb09dce888c1d4c1d7317aad70"
+  resolution: "@graasp/ui@https://github.com/graasp/graasp-ui.git#commit=f698030e5aaaaeb6a7e27e055fd2f53dd8addc9f"
   dependencies:
     "@graasp/utils": "github:graasp/graasp-utils.git"
     clsx: 1.1.1
