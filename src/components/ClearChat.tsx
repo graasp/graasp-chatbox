@@ -33,7 +33,7 @@ const ClearChat: FC = () => {
           <Box display="flex" flexDirection="column" alignItems="center">
             <Typography>
               {t(
-                'Do you want to clear all messages from this chat? This action is non-reversible. Use the button bellow if you want to make a backup.',
+                'Do you want to clear all messages from this chat? This action is non-reversible. Use the button below if you want to make a backup.',
               )}
             </Typography>
             <ExportChat variant="button" text="Save Chat" />
