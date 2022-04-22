@@ -5,6 +5,8 @@ import { useHooksContext } from '../context/HooksContext';
 import { useMessagesContext } from '../context/MessagesContext';
 import { Button } from '@graasp/ui';
 import { clearChatButtonCypress } from '../config/selectors';
+import { Box, Typography } from '@material-ui/core';
+import ExportChat from './ExportChat';
 
 const ClearChat: FC = () => {
   const [openConfirmation, setOpenConfirmation] = useState(false);
@@ -27,9 +29,16 @@ const ClearChat: FC = () => {
       <ConfirmationDialog
         open={openConfirmation}
         title={t('Clear Chat Confirmation')}
-        content={t(
-          'Do you want to clear all messages from this chat ? This action is non-reversible. Make sure you have a backup in case you want to save these messages.',
-        )}
+        content={
+          <Box display="flex" flexDirection="column" alignItems="center">
+            <Typography>
+              {t(
+                'Do you want to clear all messages from this chat? This action is non-reversible. Use the button bellow if you want to make a backup.',
+              )}
+            </Typography>
+            <ExportChat variant="button" text="Save Chat" />
+          </Box>
+        }
         onConfirm={(): void => {
           setOpenConfirmation(false);
           handleClearChat();

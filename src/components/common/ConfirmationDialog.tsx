@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, ReactElement } from 'react';
 import {
   Dialog,
   DialogActions,
@@ -15,7 +15,7 @@ import {
 type Props = {
   open: boolean;
   title: string;
-  content: string;
+  content: ReactElement<unknown> | string;
   onConfirm: () => void;
   onCancel: () => void;
 };

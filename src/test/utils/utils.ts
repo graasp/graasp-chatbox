@@ -3,7 +3,6 @@ import Papa from 'papaparse';
 import { EXPORT_CSV_HEADERS } from '../../constants';
 
 const validateCsvData = (data: unknown[], numMessages: number): void => {
-  console.log(data);
   expect(data).to.have.length(numMessages);
 };
 

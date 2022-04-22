@@ -58,7 +58,6 @@ describe('Admin tools', () => {
     cy.get(dataCyWrapper(exportChatButtonCypress))
       .should('have.attr', 'data-cy-filename')
       .then((filename) => {
-        console.log('filename:', filename);
         verifyDownloadedChat(filename.toString(), CHAT_MESSAGES.length);
       });
   });
@@ -71,7 +70,7 @@ describe('Admin tools', () => {
   });
 
   it('should show clear chat button', () => {
-    const clearChatSpy = spyMethod('spyMethod');
+    const clearChatSpy = spyMethod('clearChatSpy');
     mount(
       <Chatbox
         chatId={CHAT_ID}
@@ -93,6 +92,6 @@ describe('Admin tools', () => {
       // validate popup
       .click();
     // check that spy method has been called
-    cy.get('@spyMethod').should('have.been.called');
+    cy.get('@clearChatSpy').should('have.been.called');
   });
 });

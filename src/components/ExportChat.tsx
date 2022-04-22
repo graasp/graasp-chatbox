@@ -24,9 +24,10 @@ const useStyles = makeStyles({
 
 type Props = {
   variant?: ToolVariantsType;
+  text?: string;
 };
 
-const ExportChat: FC<Props> = ({ variant = ToolVariants.ICON }) => {
+const ExportChat: FC<Props> = ({ variant = ToolVariants.ICON, text }) => {
   const { messages, chatId, members } = useMessagesContext();
   const [filename, setFilename] = useState('');
   const { t } = useTranslation();
@@ -65,7 +66,7 @@ const ExportChat: FC<Props> = ({ variant = ToolVariants.ICON }) => {
           </IconButton>
         );
       case ToolVariants.BUTTON:
-        return <Button>{t('Download Chat')}</Button>;
+        return <Button>{text || t('Download Chat')}</Button>;
       default:
         return null;
     }
