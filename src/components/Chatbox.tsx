@@ -7,6 +7,7 @@ import Header from './Header';
 import { DEFAULT_CHATBOX_HEIGHT, SAFETY_MARGIN } from '../constants';
 import type {
   ChatMessage,
+  ClearChatHookType,
   ImmutableMember,
   Member,
   PartialChatMessage,
@@ -19,7 +20,7 @@ import { EditingContextProvider } from '../context/EditingContext';
 import { HooksContextProvider } from '../context/HooksContext';
 import { AvatarHookType } from '../types';
 import { MessagesContextProvider } from '../context/MessagesContext';
-import ExportChat from './ExportChat';
+import AdminTools from './AdminTools';
 
 type Props = {
   id?: string;
@@ -30,6 +31,7 @@ type Props = {
   sendMessageFunction?: (message: PartialNewChatMessage) => void;
   deleteMessageFunction?: (message: PartialChatMessage) => void;
   editMessageFunction?: (message: PartialChatMessage) => void;
+  clearChatFunction?: ClearChatHookType;
   useAvatarHook?: AvatarHookType;
   chatId: string;
   showHeader?: boolean;
@@ -46,6 +48,7 @@ const Chatbox: FC<Props> = ({
   sendMessageFunction,
   deleteMessageFunction,
   editMessageFunction,
+  clearChatFunction,
   useAvatarHook,
   messages,
   isLoading,
@@ -88,7 +91,10 @@ const Chatbox: FC<Props> = ({
   return (
     <I18nextProvider i18n={i18n}>
       <EditingContextProvider>
-        <HooksContextProvider useAvatarHook={useAvatarHook}>
+        <HooksContextProvider
+          useAvatarHook={useAvatarHook}
+          clearChatHook={clearChatFunction}
+        >
           <MessagesContextProvider
             chatId={chatId}
             members={members}
@@ -108,7 +114,7 @@ const Chatbox: FC<Props> = ({
                     sendMessageFunction={sendMessageFunction}
                     editMessageFunction={editMessageFunction}
                   />
-                  {showAdminTools && <ExportChat variant="button" />}
+                  {showAdminTools && <AdminTools variant="button" />}
                 </div>
               </Container>
             </>

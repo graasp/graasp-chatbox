@@ -1,17 +1,17 @@
 import { mount } from '@cypress/react';
-import Chatbox from './components/Chatbox';
-import { CHAT_ID, CHAT_MESSAGES } from '../cypress/fixtures/chat_messages';
-import { ImmutableMember, Member } from './types';
-import { MEMBERS } from '../cypress/fixtures/members';
+import Chatbox from '../components/Chatbox';
+import { CHAT_ID, CHAT_MESSAGES } from '../../cypress/fixtures/chat_messages';
+import { ImmutableMember, Member } from '../types';
+import { MEMBERS } from '../../cypress/fixtures/members';
 import { List } from 'immutable';
-import { mockUseAvatar } from '../cypress/fixtures/mockHooks';
+import { mockUseAvatar } from '../../cypress/fixtures/mockHooks';
 import {
   dataCyWrapper,
   exportChatButtonCypress,
   inputTextFieldTextAreaCypress,
   messageIdCyWrapper,
   messagesContainerCypress,
-} from './config/selectors';
+} from '../config/selectors';
 import { v4 } from 'uuid';
 
 describe('Render Avatar', () => {

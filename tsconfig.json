@@ -33,11 +33,13 @@
   },
   "include": [
     "src",
-    "index.ts"
+    "index.ts",
+    "node_modules/cypress/types/cypress-global-vars.d.ts"
   ],
   "exclude": [
     "node_modules",
     "dist",
-    "example"
+    "example",
+    "src/test/*"
   ]
 }

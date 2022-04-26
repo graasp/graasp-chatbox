@@ -1,12 +1,12 @@
 import { mount } from '@cypress/react';
-import Chatbox from './components/Chatbox';
+import Chatbox from '../components/Chatbox';
 import {
   CHAT_ID,
   CHAT_MESSAGES,
   spyMethod,
-} from '../cypress/fixtures/chat_messages';
-import { ImmutableMember, Member } from './types';
-import { CURRENT_MEMBER, MEMBERS } from '../cypress/fixtures/members';
+} from '../../cypress/fixtures/chat_messages';
+import { ImmutableMember, Member } from '../types';
+import { CURRENT_MEMBER, MEMBERS } from '../../cypress/fixtures/members';
 import { List } from 'immutable';
 import {
   dataCyWrapper,
@@ -17,7 +17,7 @@ import {
   editMenuItemCypress,
   inputTextFieldTextAreaCypress,
   messageActionsButtonCypress,
-} from './config/selectors';
+} from '../config/selectors';
 
 describe('Message actions', () => {
   beforeEach(() => {
