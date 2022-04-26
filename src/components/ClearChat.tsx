@@ -36,7 +36,7 @@ const ClearChat: FC = () => {
                 'Do you want to clear all messages from this chat? This action is non-reversible. Use the button below if you want to make a backup.',
               )}
             </Typography>
-            <ExportChat variant="button" text="Save Chat" />
+            <ExportChat variant="button" text={t('Save Chat')} />
           </Box>
         }
         onConfirm={(): void => {

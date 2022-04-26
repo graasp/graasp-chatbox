@@ -95,7 +95,10 @@ const Message: FC<Props> = ({ message, currentMember, member }) => {
       </Typography>
       <Typography variant="caption" className={classes.time}>
         {`${
-          message.updatedAt ? t(CHATBOX.MESSAGE_MODIFIED_INDICATOR) : ''
+          // when the createdAt and updatedAt times are different it means the message has been modified
+          message.updatedAt !== message.createdAt
+            ? t(CHATBOX.MESSAGE_MODIFIED_INDICATOR)
+            : ''
         } ${time}`}
       </Typography>
     </Box>
