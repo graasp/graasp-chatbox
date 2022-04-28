@@ -18,12 +18,14 @@ import { useMessagesContext } from '../context/MessagesContext';
 
 type Props = {
   currentMember: ImmutableMember;
+  isAdmin?: boolean;
   height: number;
   deleteMessageFunction?: (message: PartialChatMessage) => void;
 };
 
 const Messages: FC<Props> = ({
   currentMember,
+  isAdmin = false,
   height,
   deleteMessageFunction,
 }) => {
@@ -106,7 +108,7 @@ const Messages: FC<Props> = ({
                     message={message}
                     member={members?.find(({ id }) => id === message.creator)}
                   />
-                  {isOwnMessage && (
+                  {(isOwnMessage || isAdmin) && (
                     <MessageActions
                       message={message}
                       deleteMessageFunction={deleteMessageFunction}

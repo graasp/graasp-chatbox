@@ -16,6 +16,8 @@ type Props = {
   open: boolean;
   title: string;
   content: ReactElement<unknown> | string;
+  confirmText?: string;
+  cancelText?: string;
   onConfirm: () => void;
   onCancel: () => void;
 };
@@ -24,6 +26,8 @@ const ConfirmationDialog: FC<Props> = ({
   open,
   title,
   content,
+  confirmText,
+  cancelText,
   onConfirm,
   onCancel,
 }) => {
@@ -35,14 +39,18 @@ const ConfirmationDialog: FC<Props> = ({
       <DialogContent>{content}</DialogContent>
       <DialogActions>
         <Button
-          variant="outlined"
+          variant="contained"
           onClick={onCancel}
           dataCy={cancelDialogButtonCypress}
         >
-          {t('Cancel')}
+          {cancelText || t('Cancel')}
         </Button>
-        <Button onClick={onConfirm} dataCy={confirmDialogButtonCypress}>
-          {t('Confirm')}
+        <Button
+          variant="outlined"
+          onClick={onConfirm}
+          dataCy={confirmDialogButtonCypress}
+        >
+          {confirmText || t('Confirm')}
         </Button>
       </DialogActions>
     </Dialog>
