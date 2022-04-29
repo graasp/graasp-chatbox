@@ -35,8 +35,8 @@ const ChatboxTest: FC<Props> = () => {
   const [lang, setLang] = useState(DEFAULT_LANG);
   const [chatId, setChatId] = useState(DEFAULT_CHAT_ID);
 
+  // adapt the width of the chatbox to simulate the width used on Graasp
   const onCheckPanelWidth = (e: React.ChangeEvent<HTMLInputElement>) => {
-    console.log(e.target.value);
     if (Number(e.target.value) === 0) {
       setTestWidth(GRAASP_PANEL_WIDTH);
     } else {
