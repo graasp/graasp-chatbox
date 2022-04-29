@@ -111,6 +111,7 @@ const Messages: FC<Props> = ({
                   {(isOwnMessage || isAdmin) && (
                     <MessageActions
                       message={message}
+                      isOwn={isOwnMessage}
                       deleteMessageFunction={deleteMessageFunction}
                     />
                   )}

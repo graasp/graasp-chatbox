@@ -21,6 +21,7 @@ import { useEditingContext } from '../context/EditingContext';
 
 type Props = {
   message: ChatMessage;
+  isOwn?: boolean;
   deleteMessageFunction?: (message: PartialChatMessage) => void;
 };
 
@@ -33,7 +34,11 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-const MessageActions: FC<Props> = ({ message, deleteMessageFunction }) => {
+const MessageActions: FC<Props> = ({
+  message,
+  deleteMessageFunction,
+  isOwn = false,
+}) => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [menuAnchor, setMenuAnchor] = useState<HTMLElement | null>(null);
   const classes = useStyles();
@@ -80,16 +85,21 @@ const MessageActions: FC<Props> = ({ message, deleteMessageFunction }) => {
           horizontal: 'right',
         }}
       >
-        <MenuItem
-          data-cy={editMenuItemCypress}
-          onClick={handleEditMessage}
-          dense
-        >
-          <ListItemIcon className={classes.menu}>
-            <Edit color="primary" />
-          </ListItemIcon>
-          <ListItemText>{t(CHATBOX.EDIT_BUTTON)}</ListItemText>
-        </MenuItem>
+        {
+          // only show the edit button on own messages
+          isOwn && (
+            <MenuItem
+              data-cy={editMenuItemCypress}
+              onClick={handleEditMessage}
+              dense
+            >
+              <ListItemIcon className={classes.menu}>
+                <Edit color="primary" />
+              </ListItemIcon>
+              <ListItemText>{t(CHATBOX.EDIT_BUTTON)}</ListItemText>
+            </MenuItem>
+          )
+        }
         <MenuItem
           data-cy={deleteMenuItemCypress}
           onClick={handleDeleteMessage}
