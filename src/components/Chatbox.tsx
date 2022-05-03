@@ -105,6 +105,7 @@ const Chatbox: FC<Props> = ({
               <Container id={id} maxWidth="md" className={classes.container}>
                 <Messages
                   currentMember={currentMember}
+                  isAdmin={showAdminTools}
                   height={height - inputBarHeight - SAFETY_MARGIN}
                   deleteMessageFunction={deleteMessageFunction}
                 />
@@ -114,7 +115,7 @@ const Chatbox: FC<Props> = ({
                     sendMessageFunction={sendMessageFunction}
                     editMessageFunction={editMessageFunction}
                   />
-                  {showAdminTools && <AdminTools variant="button" />}
+                  {showAdminTools && <AdminTools variant="icon" />}
                 </div>
               </Container>
             </>

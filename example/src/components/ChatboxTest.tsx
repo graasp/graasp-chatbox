@@ -1,4 +1,4 @@
-import { FC, useState } from 'react';
+import React, { FC, useState } from 'react';
 import {
   Checkbox,
   FormControl,
@@ -12,7 +12,11 @@ import {
   Typography,
 } from '@material-ui/core';
 import ChatboxWrapper from './ChatboxWrapper';
-import { DEFAULT_CHAT_ID, DEFAULT_LANG } from '../config/constants';
+import {
+  DEFAULT_CHAT_ID,
+  DEFAULT_LANG,
+  GRAASP_PANEL_WIDTH,
+} from '../config/constants';
 
 const useStyles = makeStyles((theme) => ({
   testContainer: {
@@ -26,12 +30,23 @@ type Props = {};
 const ChatboxTest: FC<Props> = () => {
   const classes = useStyles();
   const [showTools, setShowTools] = useState(false);
+  const [testWidth, setTestWidth] = useState(GRAASP_PANEL_WIDTH);
   const [showHeader, setShowHeader] = useState(false);
   const [lang, setLang] = useState(DEFAULT_LANG);
   const [chatId, setChatId] = useState(DEFAULT_CHAT_ID);
+
+  // adapt the width of the chatbox to simulate the width used on Graasp
+  const onCheckPanelWidth = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (Number(e.target.value) === 0) {
+      setTestWidth(GRAASP_PANEL_WIDTH);
+    } else {
+      setTestWidth(0);
+    }
+  };
+
   return (
     <Grid container direction="row">
-      <Grid item xs>
+      <Grid item style={{ width: testWidth || 'auto' }}>
         <ChatboxWrapper
           chatId={chatId}
           lang={lang}
@@ -100,6 +115,16 @@ const ChatboxTest: FC<Props> = () => {
                 />
               }
               label={'Show Admin tools'}
+            />
+            <FormControlLabel
+              control={
+                <Checkbox
+                  checked={Boolean(testWidth)}
+                  value={testWidth}
+                  onChange={onCheckPanelWidth}
+                />
+              }
+              label={'Use Graasp Panel Width'}
             />
           </FormControl>
         </Grid>

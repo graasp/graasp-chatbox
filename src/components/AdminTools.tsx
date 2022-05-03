@@ -13,7 +13,7 @@ const AdminTools: FC<Props> = ({ variant = ToolVariants.BUTTON }) => {
   return (
     <Box flexDirection="row" data-cy={adminToolsContainerCypress}>
       <ExportChat variant={variant} />
-      <ClearChat />
+      <ClearChat variant={variant} />
     </Box>
   );
 };

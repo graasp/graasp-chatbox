@@ -1,31 +1,65 @@
-import { FC, useState } from 'react';
+import { FC, ReactElement, useState } from 'react';
 import ConfirmationDialog from './common/ConfirmationDialog';
 import { useTranslation } from 'react-i18next';
 import { useHooksContext } from '../context/HooksContext';
 import { useMessagesContext } from '../context/MessagesContext';
 import { Button } from '@graasp/ui';
 import { clearChatButtonCypress } from '../config/selectors';
-import { Box, Typography } from '@material-ui/core';
+import { Box, Tooltip, Typography } from '@material-ui/core';
 import ExportChat from './ExportChat';
+import { ToolVariants, ToolVariantsType } from '../types';
+import IconButton from '@material-ui/core/IconButton';
+import { DeleteForever } from '@material-ui/icons';
 
-const ClearChat: FC = () => {
+type Prop = {
+  variant?: ToolVariantsType;
+};
+
+const ClearChat: FC<Prop> = ({ variant = ToolVariants.BUTTON }) => {
   const [openConfirmation, setOpenConfirmation] = useState(false);
   const { t } = useTranslation();
   const { clearChatHook: clearChat } = useHooksContext();
-  const { chatId } = useMessagesContext();
+  const { chatId, messages } = useMessagesContext();
+
+  if (!clearChat || !messages || !messages?.size) {
+    return null;
+  }
 
   const handleClearChat = (): void => {
     clearChat?.(chatId);
   };
 
+  const getContent = (contentType: ToolVariantsType): ReactElement => {
+    const text = t('Clear Chat');
+
+    switch (contentType) {
+      case ToolVariants.ICON:
+        return (
+          <Tooltip title={text}>
+            <IconButton
+              data-cy={clearChatButtonCypress}
+              onClick={(): void => setOpenConfirmation(true)}
+            >
+              <DeleteForever color="primary" />
+            </IconButton>
+          </Tooltip>
+        );
+      case ToolVariants.BUTTON:
+        return (
+          <Button
+            variant="outlined"
+            dataCy={clearChatButtonCypress}
+            onClick={(): void => setOpenConfirmation(true)}
+          >
+            {text}
+          </Button>
+        );
+    }
+  };
+
   return (
     <>
-      <Button
-        dataCy={clearChatButtonCypress}
-        onClick={(): void => setOpenConfirmation(true)}
-      >
-        {t('Clear Chat')}
-      </Button>
+      {getContent(variant)}
       <ConfirmationDialog
         open={openConfirmation}
         title={t('Clear Chat Confirmation')}
@@ -39,6 +73,7 @@ const ClearChat: FC = () => {
             <ExportChat variant="button" text={t('Save Chat')} />
           </Box>
         }
+        confirmText={t('Clear Chat')}
         onConfirm={(): void => {
           setOpenConfirmation(false);
           handleClearChat();

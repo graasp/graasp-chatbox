@@ -7,7 +7,7 @@ import {
   EXPORT_DATE_FORMAT,
 } from '../constants';
 import { ExportedChatMessage, ToolVariants, ToolVariantsType } from '../types';
-import { IconButton } from '@material-ui/core';
+import { IconButton, Tooltip } from '@material-ui/core';
 import { GetApp } from '@material-ui/icons';
 import moment from 'moment';
 import { useTranslation } from 'react-i18next';
@@ -58,15 +58,18 @@ const ExportChat: FC<Props> = ({ variant = ToolVariants.ICON, text }) => {
   };
 
   const getContent = (variant: ToolVariantsType): ReactElement | null => {
+    const contentText: string = text || t('Download Chat');
     switch (variant) {
       case ToolVariants.ICON:
         return (
-          <IconButton>
-            <GetApp color="secondary" />
-          </IconButton>
+          <Tooltip title={contentText}>
+            <IconButton>
+              <GetApp color="primary" />
+            </IconButton>
+          </Tooltip>
         );
       case ToolVariants.BUTTON:
-        return <Button>{text || t('Download Chat')}</Button>;
+        return <Button variant="outlined">{contentText}</Button>;
       default:
         return null;
     }
