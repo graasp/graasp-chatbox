@@ -45,10 +45,6 @@ const useStyles = makeStyles(() => ({
     '& tr:nth-child(even)': {
       backgroundColor: 'lightgray',
     },
-    '& input[type="checkbox"]': {
-      color: 'blue',
-      backgroundColor: 'blue',
-    },
   },
 }));
 
