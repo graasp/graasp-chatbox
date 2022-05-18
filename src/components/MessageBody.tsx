@@ -28,6 +28,8 @@ const useStyles = makeStyles(() => ({
       wordWrap: 'break-word',
       whiteSpace: 'pre-wrap',
       fontSize: '90%',
+      fontFamily:
+        'ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace',
     },
     '& blockquote': {
       borderLeft: 'solid darkgray 4px',
