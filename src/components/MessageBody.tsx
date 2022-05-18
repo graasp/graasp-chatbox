@@ -10,10 +10,12 @@ const useStyles = makeStyles(() => ({
     '& *': {
       marginBlockStart: '4px',
       marginBlockEnd: '4px',
+      fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif',
     },
     '& p': {
       lineHeight: '1.5',
       fontSize: '1rem',
+      fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif',
     },
     '& ul': {
       // define offset for list
@@ -47,7 +49,6 @@ const useStyles = makeStyles(() => ({
       color: 'blue',
       backgroundColor: 'blue',
     },
-    margin: '4px',
   },
 }));
 
