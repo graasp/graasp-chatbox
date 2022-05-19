@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: '5px',
     margin: theme.spacing(1, 0),
     padding: theme.spacing(0.5, 1, 0),
-    maxWidth: '80%',
+    maxWidth: '60%',
     width: 'fit-content',
     minWidth: 100,
     // wrap text at box limit

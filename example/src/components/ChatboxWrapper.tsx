@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from 'react';
+import { FC } from 'react';
 import { List } from 'immutable';
 import Chatbox, {
   ChatMessage,
@@ -10,7 +10,7 @@ import Chatbox, {
 import { MUTATION_KEYS } from '@graasp/query-client';
 import { useMutation, hooks } from '../config/queryClient';
 import { PartialNewChatMessage } from '../../../src';
-import { DEFAULT_LANG, HEADER_SIZE } from '../config/constants';
+import { DEFAULT_LANG } from '../config/constants';
 import { ClearChatHookType } from '../../../src/types';
 
 type Props = {
@@ -35,24 +35,6 @@ const ChatboxWrapper: FC<Props> = ({
   // get id of member that posted messages in the chat
   const memberIds = Array.from(
     new Set(chatMessages?.map(({ creator }: { creator: string }) => creator)),
-  );
-
-  const [windowHeight, setWindowHeight] = useState(window.innerHeight);
-
-  useEffect(
-    () => {
-      const handleResize = () => {
-        setWindowHeight(window.innerHeight);
-      };
-      window.addEventListener('resize', handleResize);
-
-      // cleanup eventListener
-      return () => {
-        window.removeEventListener('resize', handleResize);
-      };
-    },
-    // only run on first render
-    [],
   );
 
   const member = new ImmutableMember(currentMember);
@@ -81,7 +63,6 @@ const ChatboxWrapper: FC<Props> = ({
     <Chatbox
       lang={lang}
       chatId={chatId}
-      height={windowHeight - (showHeader ? HEADER_SIZE : 0)}
       showHeader={showHeader}
       showAdminTools={showAdminTools}
       currentMember={member}
