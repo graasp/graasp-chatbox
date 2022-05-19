@@ -23,7 +23,7 @@ type Props = {
 const ChatboxWrapper: FC<Props> = ({
   chatId,
   lang = DEFAULT_LANG,
-  showHeader = true,
+  showHeader = false,
   showAdminTools = false,
 }) => {
   // use kooks

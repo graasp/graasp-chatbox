@@ -55,12 +55,11 @@ const Chatbox: FC<Props> = ({
   currentMember,
   members,
 }) => {
-  const useStyles = makeStyles((theme) => ({
+  const useStyles = makeStyles(() => ({
     chatboxContainer: {
       // set height of full container
       height: 'calc(100vh - 16px)',
       minHeight: '0px',
-      padding: theme.spacing(0, 1),
       display: 'flex',
       flexDirection: 'column',
     },
