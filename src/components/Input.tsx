@@ -7,6 +7,7 @@ import SendIcon from '@material-ui/icons/Send';
 import { makeStyles } from '@material-ui/core/styles';
 import { PartialNewChatMessage } from '../types';
 import {
+  charCounterCypress,
   inputTextFieldCypress,
   inputTextFieldTextAreaCypress,
   sendButtonCypress,
@@ -125,6 +126,7 @@ const Input: FC<Props> = ({
           [classes.textTooLong]: isMessageTooLong,
         })}
         variant="caption"
+        data-cy={charCounterCypress}
       >
         {textInput
           ? textInput.length +

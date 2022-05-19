@@ -13,6 +13,7 @@ export const cancelDialogButtonCypress = 'cancelDialogButtonCypress';
 export const confirmDialogButtonCypress = 'confirmDialogButtonCypress';
 export const messagesContainerCypress = 'messagesContainerCypress';
 export const inputTextFieldTextAreaCypress = 'inputTextFieldTextArea';
+export const charCounterCypress = 'charCounterCypress';
 
 export const messageIdCyWrapper = (id: string): string => `message-${id}`;
 
