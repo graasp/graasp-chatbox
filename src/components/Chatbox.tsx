@@ -1,5 +1,4 @@
 import { FC, useMemo } from 'react';
-import Container from '@material-ui/core/Container';
 import { makeStyles } from '@material-ui/core/styles';
 import { List } from 'immutable';
 import Messages from './Messages';
@@ -57,15 +56,20 @@ const Chatbox: FC<Props> = ({
   members,
 }) => {
   const useStyles = makeStyles((theme) => ({
-    container: {
+    chatboxContainer: {
+      // set height of full container
+      height: 'calc(100vh - 16px)',
+      minHeight: '0px',
+      padding: theme.spacing(0, 1),
       display: 'flex',
       flexDirection: 'column',
-      padding: theme.spacing(0, 1),
-      height: 'calc(100vh - 16px)',
+    },
+    container: {
       minHeight: '0px',
     },
     bottomContainer: {
-      boxSizing: 'border-box',
+      // no flex growing -> keep container at bottom of window
+      flex: 'none',
     },
   }));
   const classes = useStyles();
@@ -93,19 +97,21 @@ const Chatbox: FC<Props> = ({
           >
             <>
               {showHeader && <Header />}
-              <Container id={id} maxWidth="md" className={classes.container}>
+              <div className={classes.chatboxContainer} id={id}>
                 <Messages
                   currentMember={currentMember}
                   isAdmin={showAdminTools}
                   deleteMessageFunction={deleteMessageFunction}
                 />
-                <InputBar
-                  sendMessageBoxId={sendMessageBoxId}
-                  sendMessageFunction={sendMessageFunction}
-                  editMessageFunction={editMessageFunction}
-                />
-                {showAdminTools && <AdminTools variant="icon" />}
-              </Container>
+                <div className={classes.bottomContainer}>
+                  <InputBar
+                    sendMessageBoxId={sendMessageBoxId}
+                    sendMessageFunction={sendMessageFunction}
+                    editMessageFunction={editMessageFunction}
+                  />
+                  {showAdminTools && <AdminTools variant="icon" />}
+                </div>
+              </div>
             </>
           </MessagesContextProvider>
         </HooksContextProvider>

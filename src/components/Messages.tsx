@@ -32,8 +32,11 @@ const Messages: FC<Props> = ({
   const { messages, members } = useMessagesContext();
 
   const useStyles = makeStyles(() => ({
+    // used in accordance with the main container (input + scroll window)
     container: {
       overflowY: 'auto',
+      // grow container to push input at bottom of window
+      flex: 1,
       minHeight: '0px',
     },
     messagesContainer: {
