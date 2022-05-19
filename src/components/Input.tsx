@@ -11,9 +11,11 @@ import {
   inputTextFieldTextAreaCypress,
   sendButtonCypress,
 } from '../config/selectors';
-import { MAX_ROWS_INPUT } from '../constants';
+import { MAX_MESSAGE_LENGTH_HARD, MAX_ROWS_INPUT } from '../constants';
 import { CHATBOX } from '@graasp/translations';
 import { useMessagesContext } from '../context/MessagesContext';
+import { Typography } from '@material-ui/core';
+import clsx from 'clsx';
 
 type Props = {
   id?: string;
@@ -27,7 +29,15 @@ type Props = {
 const useStyles = makeStyles((theme) => ({
   wrapper: {
     width: '100%',
+  },
+  textLength: {
+    whiteSpace: 'pre',
+    paddingLeft: theme.spacing(1),
     marginBottom: theme.spacing(1),
+    color: 'gray',
+  },
+  textTooLong: {
+    color: 'red !important',
   },
 }));
 
@@ -43,6 +53,8 @@ const Input: FC<Props> = ({
   const { chatId } = useMessagesContext();
 
   const { t } = useTranslation();
+
+  const isMessageTooLong = textInput.length > MAX_MESSAGE_LENGTH_HARD;
 
   // autofocus on first render
   useEffect(() => {
@@ -71,36 +83,55 @@ const Input: FC<Props> = ({
     if (e.key === 'Enter' && !e.shiftKey) {
       // do not propagate keypress event when only enter is pressed
       e.preventDefault();
-      // send message
-      onClick();
+      if (!isMessageTooLong) {
+        // send message
+        onClick();
+      }
     }
   };
 
   return (
-    <Box
-      display="flex"
-      className={classes.wrapper}
-      justifyContent="center"
-      alignItems="center"
-      id={id}
-    >
-      <TextField
-        data-cy={inputTextFieldCypress}
-        id={inputTextFieldTextAreaCypress}
-        inputRef={inputRef}
-        value={textInput}
-        onChange={onChange}
-        onKeyDown={keyDown}
-        variant="outlined"
-        fullWidth
-        multiline
-        maxRows={MAX_ROWS_INPUT}
-        placeholder={placeholder || t(CHATBOX.INPUT_FIELD_PLACEHOLDER)}
-      />
-      <IconButton data-cy={sendButtonCypress} onClick={onClick}>
-        <SendIcon color="primary" />
-      </IconButton>
-    </Box>
+    <div>
+      <Box
+        display="flex"
+        className={classes.wrapper}
+        justifyContent="center"
+        alignItems="flex-end"
+        id={id}
+      >
+        <TextField
+          data-cy={inputTextFieldCypress}
+          id={inputTextFieldTextAreaCypress}
+          inputRef={inputRef}
+          value={textInput}
+          onChange={onChange}
+          onKeyDown={keyDown}
+          variant="outlined"
+          fullWidth
+          multiline
+          maxRows={MAX_ROWS_INPUT}
+          placeholder={placeholder || t(CHATBOX.INPUT_FIELD_PLACEHOLDER)}
+        />
+        <IconButton
+          data-cy={sendButtonCypress}
+          onClick={onClick}
+          disabled={isMessageTooLong}
+        >
+          <SendIcon color={isMessageTooLong ? 'disabled' : 'primary'} />
+        </IconButton>
+      </Box>
+      <Typography
+        className={clsx(classes.textLength, {
+          [classes.textTooLong]: isMessageTooLong,
+        })}
+        variant="caption"
+      >
+        {textInput
+          ? textInput.length +
+            (isMessageTooLong ? ` (max. ${MAX_MESSAGE_LENGTH_HARD} chars)` : '')
+          : ' '}
+      </Typography>
+    </div>
   );
 };
 
