@@ -55,8 +55,6 @@ const ChatboxTest: FC<Props> = () => {
     },
     chatInputBox: {
       backgroundColor: 'white',
-      // borderRadius: '8px',
-      // border: 'solid red 2px',
     },
   }));
 
