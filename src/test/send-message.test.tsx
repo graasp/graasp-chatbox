@@ -17,7 +17,7 @@ import {
   spyMethod,
 } from '../../cypress/fixtures/chat_messages';
 import { MEMBERS } from '../../cypress/fixtures/members';
-import { MAX_MESSAGE_LENGTH_HARD } from '../constants';
+import { HARD_MAX_MESSAGE_LENGTH } from '../constants';
 
 describe('Enter text', () => {
   beforeEach(() => {
@@ -121,7 +121,7 @@ describe('Message Length', () => {
       LONG_COMMENT.replace('\n', '{shift}{enter}'),
       { delay: 0 },
     );
-    if (LONG_COMMENT.length > MAX_MESSAGE_LENGTH_HARD) {
+    if (LONG_COMMENT.length > HARD_MAX_MESSAGE_LENGTH) {
       cy.get(dataCyWrapper(sendButtonCypress)).should('be.disabled');
       cy.get(dataCyWrapper(charCounterCypress)).should(
         'contain.text',

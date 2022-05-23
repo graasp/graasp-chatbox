@@ -1,19 +1,19 @@
 export const sendButtonCypress = 'sendButton';
 export const inputTextFieldCypress = 'inputTextField';
-export const messageActionsButtonCypress = 'messageActionsButtonCypress';
-export const editMenuItemCypress = 'editMenuItemCypress';
-export const deleteMenuItemCypress = 'deleteMenuItemCypress';
-export const editBannerCypress = 'editBannerCypress';
-export const editBannerOldTextCypress = 'editBannerOldTextCypress';
-export const editBannerCloseButtonCypress = 'editBannerCloseButtonCypress';
-export const adminToolsContainerCypress = 'adminToolsContainerCypress';
-export const exportChatButtonCypress = 'exportChatButtonCypress';
-export const clearChatButtonCypress = 'clearChatButtonCypress';
-export const cancelDialogButtonCypress = 'cancelDialogButtonCypress';
-export const confirmDialogButtonCypress = 'confirmDialogButtonCypress';
-export const messagesContainerCypress = 'messagesContainerCypress';
+export const messageActionsButtonCypress = 'messageActionsButton';
+export const editMenuItemCypress = 'editMenuItem';
+export const deleteMenuItemCypress = 'deleteMenuItem';
+export const editBannerCypress = 'editBanner';
+export const editBannerOldTextCypress = 'editBannerOldText';
+export const editBannerCloseButtonCypress = 'editBannerCloseButton';
+export const adminToolsContainerCypress = 'adminToolsContainer';
+export const exportChatButtonCypress = 'exportChatButton';
+export const clearChatButtonCypress = 'clearChatButton';
+export const cancelDialogButtonCypress = 'cancelDialogButton';
+export const confirmDialogButtonCypress = 'confirmDialogButton';
+export const messagesContainerCypress = 'messagesContainer';
 export const inputTextFieldTextAreaCypress = 'inputTextFieldTextArea';
-export const charCounterCypress = 'charCounterCypress';
+export const charCounterCypress = 'charCounter';
 
 export const messageIdCyWrapper = (id: string): string => `message-${id}`;
 
