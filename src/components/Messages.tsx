@@ -9,7 +9,7 @@ import type {
   ImmutableMember,
   PartialChatMessage,
 } from '../types';
-import { BIG_NUMBER, DEFAULT_DATE_FORMAT } from '../constants';
+import { DEFAULT_DATE_FORMAT, SAFETY_MARGIN } from '../constants';
 import MessageActions from './MessageActions';
 import clsx from 'clsx';
 import { useEditingContext } from '../context/EditingContext';
@@ -19,14 +19,12 @@ import { useMessagesContext } from '../context/MessagesContext';
 type Props = {
   currentMember: ImmutableMember;
   isAdmin?: boolean;
-  height: number;
   deleteMessageFunction?: (message: PartialChatMessage) => void;
 };
 
 const Messages: FC<Props> = ({
   currentMember,
   isAdmin = false,
-  height,
   deleteMessageFunction,
 }) => {
   const ref = useRef<HTMLDivElement>(null);
@@ -34,9 +32,12 @@ const Messages: FC<Props> = ({
   const { messages, members } = useMessagesContext();
 
   const useStyles = makeStyles(() => ({
+    // used in accordance with the main container (input + scroll window)
     container: {
       overflowY: 'auto',
-      height: height,
+      // grow container to push input at bottom of window
+      flex: 1,
+      minHeight: '0px',
     },
     messagesContainer: {
       display: 'flex',
@@ -67,8 +68,12 @@ const Messages: FC<Props> = ({
   // scroll down to last message at start, on new message and on editing message
   useEffect(() => {
     if (ref?.current) {
-      // really big number to scroll down
-      ref.current.scrollTop = BIG_NUMBER;
+      // temporarily hide the scroll bars when scrolling the container
+      ref.current.style.overflowY = 'hidden';
+      // scroll down the height of the container + some margin to make sure we are at the bottom
+      ref.current.scrollTop = ref.current.scrollHeight + SAFETY_MARGIN;
+      // re-activate scroll
+      ref.current.style.overflowY = 'auto';
     }
   }, [ref, messages, open]);
 

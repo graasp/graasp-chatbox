@@ -1,10 +1,8 @@
-import { FC, useEffect, useMemo, useRef, useState } from 'react';
-import Container from '@material-ui/core/Container';
+import { FC, useMemo } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { List } from 'immutable';
 import Messages from './Messages';
 import Header from './Header';
-import { DEFAULT_CHATBOX_HEIGHT, SAFETY_MARGIN } from '../constants';
 import type {
   ChatMessage,
   ClearChatHookType,
@@ -25,7 +23,6 @@ import AdminTools from './AdminTools';
 type Props = {
   id?: string;
   sendMessageBoxId?: string;
-  height?: number;
   messages?: List<ChatMessage>;
   isLoading?: boolean;
   sendMessageFunction?: (message: PartialNewChatMessage) => void;
@@ -44,7 +41,6 @@ type Props = {
 const Chatbox: FC<Props> = ({
   id,
   sendMessageBoxId,
-  height = DEFAULT_CHATBOX_HEIGHT,
   sendMessageFunction,
   deleteMessageFunction,
   editMessageFunction,
@@ -59,16 +55,20 @@ const Chatbox: FC<Props> = ({
   currentMember,
   members,
 }) => {
-  const useStyles = makeStyles((theme) => ({
-    container: {
+  const useStyles = makeStyles(() => ({
+    chatboxContainer: {
+      // set height of full container
+      height: 'calc(100vh - 16px)',
+      minHeight: '0px',
       display: 'flex',
       flexDirection: 'column',
-      padding: theme.spacing(0, 1),
-      height: height || DEFAULT_CHATBOX_HEIGHT,
+    },
+    container: {
+      minHeight: '0px',
     },
     bottomContainer: {
-      boxSizing: 'border-box',
-      paddingBottom: theme.spacing(1),
+      // no flex growing -> keep container at bottom of window
+      flex: 'none',
     },
   }));
   const classes = useStyles();
@@ -77,12 +77,6 @@ const Chatbox: FC<Props> = ({
     i18nInstance.changeLanguage(lang);
     return i18nInstance;
   }, [lang]);
-  const ref = useRef<HTMLDivElement>(null);
-  const [inputBarHeight, setInputBarHeight] = useState(0);
-
-  useEffect(() => {
-    setInputBarHeight(ref.current?.clientHeight || 0);
-  }, [showAdminTools, ref]);
 
   if (isLoading) {
     return null;
@@ -102,14 +96,13 @@ const Chatbox: FC<Props> = ({
           >
             <>
               {showHeader && <Header />}
-              <Container id={id} maxWidth="md" className={classes.container}>
+              <div className={classes.chatboxContainer} id={id}>
                 <Messages
                   currentMember={currentMember}
                   isAdmin={showAdminTools}
-                  height={height - inputBarHeight - SAFETY_MARGIN}
                   deleteMessageFunction={deleteMessageFunction}
                 />
-                <div ref={ref} className={classes.bottomContainer}>
+                <div className={classes.bottomContainer}>
                   <InputBar
                     sendMessageBoxId={sendMessageBoxId}
                     sendMessageFunction={sendMessageFunction}
@@ -117,7 +110,7 @@ const Chatbox: FC<Props> = ({
                   />
                   {showAdminTools && <AdminTools variant="icon" />}
                 </div>
-              </Container>
+              </div>
             </>
           </MessagesContextProvider>
         </HooksContextProvider>

@@ -18,6 +18,7 @@ import {
   inputTextFieldTextAreaCypress,
   messageActionsButtonCypress,
 } from '../config/selectors';
+import { SIDE_PANE_HEIGHT, SIDE_PANE_WIDTH } from '../constants';
 
 describe('Message actions', () => {
   beforeEach(() => {
@@ -67,6 +68,8 @@ describe('Delete action', () => {
 
 describe('Edit action', () => {
   beforeEach(() => {
+    // set the viewport to a narrower width
+    cy.viewport(SIDE_PANE_WIDTH, SIDE_PANE_HEIGHT);
     const editMessageSpy = spyMethod('editSpyMethod');
     const sendMessageSpy = spyMethod('sendSpyMethod');
     mount(

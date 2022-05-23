@@ -14,6 +14,7 @@ import { useTranslation } from 'react-i18next';
 import { Avatar } from '@graasp/ui';
 import { Variant } from '@graasp/ui/dist/types';
 import { useHooksContext } from '../context/HooksContext';
+import MessageBody from './MessageBody';
 
 const useStyles = makeStyles((theme) => ({
   message: {
@@ -21,9 +22,11 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: '5px',
     margin: theme.spacing(1, 0),
     padding: theme.spacing(0.5, 1, 0),
-    maxWidth: '80%',
+    maxWidth: '70%',
     width: 'fit-content',
     minWidth: 100,
+    // wrap text at box limit
+    wordBreak: 'break-word',
   },
   own: {
     background: grey[300],
@@ -90,9 +93,7 @@ const Message: FC<Props> = ({ message, currentMember, member }) => {
           <Typography variant="subtitle2">{`${creatorName}`}</Typography>
         </Box>
       )}
-      <Typography className={classes.messageText} variant="body1">
-        {message.body}
-      </Typography>
+      <MessageBody messageBody={message.body} />
       <Typography variant="caption" className={classes.time}>
         {`${
           // when the createdAt and updatedAt times are different it means the message has been modified
