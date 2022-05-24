@@ -25,6 +25,8 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'column',
     alignItems: 'left',
     width: '100%',
+    // magic to ensure that the container does not overflow its intended space
+    minWidth: '0px',
   },
   oldTextLabel: {
     color: theme.palette.primary.main,

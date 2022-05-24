@@ -37,6 +37,7 @@ export const CHAT_MESSAGES = [
     body: 'Message',
   },
 ];
+
 export const SHORT_COMMENT = 'Hello how are you ?';
 export const LONG_COMMENT = `# Test Title
 
@@ -96,10 +97,13 @@ Hello, i want you to by me:
   - Milk
 - Bread
 
+
 > A quote
 
 And also don't forget to checkout [our awesome platform](https://graasp.org)
+
 A lengthy response to the previous message that i think a lot of people will like to read, since it really goes in deep into the topic.
+
 \`some code\`
 
 ## Table

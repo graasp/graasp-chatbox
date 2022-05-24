@@ -5,7 +5,7 @@
   "component": {
     "testFiles": "**/*.test.{js,ts,jsx,tsx}",
     "componentFolder": "src",
-    "viewportWidth": 500,
-    "viewportHeight": 700
+    "viewportWidth": 290,
+    "viewportHeight": 800
   }
 }
