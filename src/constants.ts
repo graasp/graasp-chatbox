@@ -6,6 +6,7 @@ export const BIG_NUMBER = 9999;
 export const SAFETY_MARGIN = 64;
 export const DEFAULT_USER_NAME = 'Anonymous';
 export const MAX_USERNAME_LENGTH = 30;
+export const HARD_MAX_MESSAGE_LENGTH = 500;
 export const DEFAULT_DATE_FORMAT = 'DD MMM YYYY';
 export const EXPORT_DATE_FORMAT = 'YYYY-MM-DD';
 export const HEADER_HEIGHT = 64;
