@@ -1,11 +1,32 @@
-import { FC } from 'react';
-import ReactMarkdown from 'react-markdown';
-import remarkGfm from 'remark-gfm';
+import Highlight, { Language, defaultProps } from 'prism-react-renderer';
+import vsLight from 'prism-react-renderer/themes/vsLight';
 import remarkBreaks from 'remark-breaks';
+import remarkGfm from 'remark-gfm';
+
+import { FC, ReactElement } from 'react';
+import ReactMarkdown from 'react-markdown';
+import { CodeProps } from 'react-markdown/lib/ast-to-react';
+
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
   messageParagraphs: {
+    '& .prism-code': {
+      fontFamily:
+        'ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace',
+      // margin: theme.spacing(1),
+      backgroundColor: 'transparent !important',
+      fontSize: '0.9rem',
+      padding: theme.spacing(1),
+    },
+    '& :last-child': {
+      marginBottom: 0,
+    },
+    '& div.token-line': {
+      marginBlockStart: 0,
+      fontFamily:
+        'ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace',
+    },
     // set margins for all elements
     '& *': {
       marginBlockStart: theme.spacing(1),
@@ -29,6 +50,12 @@ const useStyles = makeStyles((theme) => ({
       fontSize: '90%',
       fontFamily:
         'ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace',
+    },
+    '& pre': {
+      margin: theme.spacing(1, 2),
+      backgroundColor: 'rgba(197, 197, 197, 0.37)',
+      // border: 'solid 1px silver',
+      borderRadius: theme.spacing(1),
     },
     '& blockquote': {
       borderLeft: 'solid darkgray 4px',
@@ -56,6 +83,58 @@ type Props = {
   messageBody: string;
 };
 
+const renderCode = ({
+  inline,
+  className: classNameInit,
+  children: codeContent,
+  ...props
+}: CodeProps): ReactElement => {
+  const match = /language-(\w+)/.exec(classNameInit || '');
+  return !inline && match ? (
+    <Highlight
+      {...defaultProps}
+      theme={vsLight}
+      code={String(codeContent).replace(/\n$/, '')}
+      language={match[1] as Language}
+      {...props}
+    >
+      {({
+        className,
+        style,
+        tokens,
+        getLineProps,
+        getTokenProps,
+      }): ReactElement => (
+        <div className={className} style={style}>
+          {tokens.map((line, i) => (
+            // eslint-disable-next-line react/jsx-key
+            <div
+              {...getLineProps({
+                line,
+                key: i,
+              })}
+            >
+              {line.map((token, key) => (
+                // eslint-disable-next-line react/jsx-key
+                <span
+                  {...getTokenProps({
+                    token,
+                    key,
+                  })}
+                />
+              ))}
+            </div>
+          ))}
+        </div>
+      )}
+    </Highlight>
+  ) : (
+    <code className={classNameInit} {...props}>
+      {codeContent}
+    </code>
+  );
+};
+
 const MessageBody: FC<Props> = ({ messageBody }) => {
   const classes = useStyles();
   return (
@@ -63,6 +142,9 @@ const MessageBody: FC<Props> = ({ messageBody }) => {
       linkTarget="_blank"
       className={classes.messageParagraphs}
       remarkPlugins={[remarkGfm, remarkBreaks]}
+      components={{
+        code: renderCode,
+      }}
     >
       {messageBody}
     </ReactMarkdown>
