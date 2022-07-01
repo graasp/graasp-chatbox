@@ -4,11 +4,11 @@ import { FC, ReactElement, useState } from 'react';
 import { CSVLink as CsvLink } from 'react-csv';
 import { useTranslation } from 'react-i18next';
 
-import { Button } from '@graasp/ui';
-
 import { IconButton, Tooltip } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { GetApp } from '@material-ui/icons';
+
+import { Button } from '@graasp/ui';
 
 import { exportChatButtonCypress } from '../config/selectors';
 import {

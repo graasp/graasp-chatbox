@@ -1,14 +1,14 @@
 import { FC } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { CHATBOX } from '@graasp/translations';
-
 import { Divider, SvgIcon } from '@material-ui/core';
 import Box from '@material-ui/core/Box';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import { Close, Edit } from '@material-ui/icons';
+
+import { CHATBOX } from '@graasp/translations';
 
 import {
   editBannerCloseButtonCypress,

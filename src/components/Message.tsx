@@ -5,14 +5,14 @@ import moment from 'moment';
 import { FC } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { CHATBOX } from '@graasp/translations';
-import { Avatar } from '@graasp/ui';
-import { Variant } from '@graasp/ui/dist/types';
-
 import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
 import grey from '@material-ui/core/colors/grey';
 import { makeStyles } from '@material-ui/core/styles';
+
+import { CHATBOX } from '@graasp/translations';
+import { Avatar } from '@graasp/ui';
+import { Variant } from '@graasp/ui/dist/types';
 
 import { messageIdCyWrapper } from '../config/selectors';
 import { DEFAULT_USER_NAME, MAX_USERNAME_LENGTH } from '../constants';

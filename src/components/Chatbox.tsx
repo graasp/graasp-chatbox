@@ -3,9 +3,9 @@ import { List } from 'immutable';
 import { FC, useMemo } from 'react';
 import { I18nextProvider } from 'react-i18next';
 
-import buildI18n, { langs, namespaces } from '@graasp/translations';
-
 import { makeStyles } from '@material-ui/core/styles';
+
+import buildI18n, { langs, namespaces } from '@graasp/translations';
 
 import { EditingContextProvider } from '../context/EditingContext';
 import { HooksContextProvider } from '../context/HooksContext';

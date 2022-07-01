@@ -1,14 +1,14 @@
 import { FC, ReactElement } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { Button } from '@graasp/ui';
-
 import {
   Dialog,
   DialogActions,
   DialogContent,
   DialogTitle,
 } from '@material-ui/core';
+
+import { Button } from '@graasp/ui';
 
 import {
   cancelDialogButtonCypress,

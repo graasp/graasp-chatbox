@@ -11,27 +11,25 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
   messageParagraphs: {
-    '& .prism-code': {
-      fontFamily:
-        'ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace',
-      // margin: theme.spacing(1),
-      backgroundColor: 'transparent !important',
-      fontSize: '0.9rem',
-      padding: theme.spacing(1),
-    },
+    fontFamily: theme.typography.fontFamily,
     '& :last-child': {
-      marginBottom: 0,
+      // marginBottom: 0,
     },
-    '& div.token-line': {
+    '& *': {
       marginBlockStart: 0,
+      marginBlockEnd: 0,
+    },
+    '& div.prism-code': {
       fontFamily:
         'ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace',
+      margin: theme.spacing(1),
+      backgroundColor: 'transparent',
+      fontSize: '0.8rem',
+      padding: theme.spacing(1, 0),
     },
     // set margins for all elements
-    '& *': {
-      marginBlockStart: theme.spacing(1),
-      marginBlockEnd: theme.spacing(1),
-      fontFamily: theme.typography.fontFamily,
+    '& h1, p': {
+      marginTop: theme.spacing(1),
     },
     '& p': {
       lineHeight: '1.5',
@@ -52,7 +50,7 @@ const useStyles = makeStyles((theme) => ({
         'ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace',
     },
     '& pre': {
-      margin: theme.spacing(1, 2),
+      margin: theme.spacing(1, 1),
       backgroundColor: 'rgba(197, 197, 197, 0.37)',
       // border: 'solid 1px silver',
       borderRadius: theme.spacing(1),
@@ -62,6 +60,7 @@ const useStyles = makeStyles((theme) => ({
       color: 'darkgray',
       marginLeft: '0',
       paddingLeft: theme.spacing(2),
+      marginInlineEnd: theme.spacing(1),
     },
     '& table, th, td, tr': {
       border: 'solid black 1px ',
@@ -89,7 +88,7 @@ const renderCode = ({
   children: codeContent,
   ...props
 }: CodeProps): ReactElement => {
-  const match = /language-(\w+)/.exec(classNameInit || '');
+  const match = (classNameInit || '').match(/language-(\w+)/);
   return !inline && match ? (
     <Highlight
       {...defaultProps}
@@ -98,14 +97,8 @@ const renderCode = ({
       language={match[1] as Language}
       {...props}
     >
-      {({
-        className,
-        style,
-        tokens,
-        getLineProps,
-        getTokenProps,
-      }): ReactElement => (
-        <div className={className} style={style}>
+      {({ className, tokens, getLineProps, getTokenProps }): ReactElement => (
+        <div className={className}>
           {tokens.map((line, i) => (
             // eslint-disable-next-line react/jsx-key
             <div

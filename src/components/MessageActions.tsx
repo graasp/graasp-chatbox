@@ -1,8 +1,6 @@
 import React, { FC, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { CHATBOX } from '@graasp/translations';
-
 import {
   IconButton,
   ListItemIcon,
@@ -12,6 +10,8 @@ import {
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { Delete, Edit, MoreVert } from '@material-ui/icons';
+
+import { CHATBOX } from '@graasp/translations';
 
 import {
   deleteMenuItemCypress,

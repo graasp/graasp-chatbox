@@ -3,7 +3,7 @@
   "tabWidth": 2,
   "semi": true,
   "singleQuote": true,
-  "importOrder": ["^react", "^@?graasp*", "^@?material*", "^@.*", "^[./]"],
+  "importOrder": ["^@(?!graasp|material)(.*)", "^react", "^@?material(.*)", "^@?graasp(.*)", "^[./]"],
   "importOrderSeparation": true,
   "importOrderSortSpecifiers": true
 }

@@ -1,11 +1,11 @@
 import { FC, ReactElement, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { Button } from '@graasp/ui';
-
 import { Box, Tooltip, Typography } from '@material-ui/core';
 import IconButton from '@material-ui/core/IconButton';
 import { DeleteForever } from '@material-ui/icons';
+
+import { Button } from '@graasp/ui';
 
 import { clearChatButtonCypress } from '../config/selectors';
 import { useHooksContext } from '../context/HooksContext';

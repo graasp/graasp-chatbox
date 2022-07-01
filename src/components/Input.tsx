@@ -9,14 +9,14 @@ import React, {
 } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { CHATBOX } from '@graasp/translations';
-
 import { Typography } from '@material-ui/core';
 import Box from '@material-ui/core/Box';
 import IconButton from '@material-ui/core/IconButton';
 import TextField from '@material-ui/core/TextField';
 import { makeStyles } from '@material-ui/core/styles';
 import SendIcon from '@material-ui/icons/Send';
+
+import { CHATBOX } from '@graasp/translations';
 
 import {
   charCounterCypress,
