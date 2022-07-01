@@ -1,3 +1,5 @@
+import clsx from 'clsx';
+
 import React, {
   ChangeEvent,
   FC,
@@ -5,13 +7,17 @@ import React, {
   RefObject,
   useEffect,
 } from 'react';
+import { useTranslation } from 'react-i18next';
+
+import { CHATBOX } from '@graasp/translations';
+
+import { Typography } from '@material-ui/core';
+import Box from '@material-ui/core/Box';
 import IconButton from '@material-ui/core/IconButton';
 import TextField from '@material-ui/core/TextField';
-import Box from '@material-ui/core/Box';
-import { useTranslation } from 'react-i18next';
-import SendIcon from '@material-ui/icons/Send';
 import { makeStyles } from '@material-ui/core/styles';
-import { PartialNewChatMessage } from '../types';
+import SendIcon from '@material-ui/icons/Send';
+
 import {
   charCounterCypress,
   inputTextFieldCypress,
@@ -19,10 +25,8 @@ import {
   sendButtonCypress,
 } from '../config/selectors';
 import { HARD_MAX_MESSAGE_LENGTH, MAX_ROWS_INPUT } from '../constants';
-import { CHATBOX } from '@graasp/translations';
 import { useMessagesContext } from '../context/MessagesContext';
-import { Typography } from '@material-ui/core';
-import clsx from 'clsx';
+import { PartialNewChatMessage } from '../types';
 
 type Props = {
   id?: string;

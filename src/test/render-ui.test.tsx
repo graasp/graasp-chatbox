@@ -1,10 +1,12 @@
-import { mount } from '@cypress/react';
-import Chatbox from '../components/Chatbox';
-import { CHAT_ID, CHAT_MESSAGES } from '../../cypress/fixtures/chat_messages';
-import { ImmutableMember, Member } from '../types';
-import { MEMBERS } from '../../cypress/fixtures/members';
 import { List } from 'immutable';
+import { v4 } from 'uuid';
+
+import { mount } from '@cypress/react';
+
+import { CHAT_ID, CHAT_MESSAGES } from '../../cypress/fixtures/chat_messages';
+import { MEMBERS } from '../../cypress/fixtures/members';
 import { mockUseAvatar } from '../../cypress/fixtures/mockHooks';
+import Chatbox from '../components/Chatbox';
 import {
   dataCyWrapper,
   exportChatButtonCypress,
@@ -12,7 +14,7 @@ import {
   messageIdCyWrapper,
   messagesContainerCypress,
 } from '../config/selectors';
-import { v4 } from 'uuid';
+import { ImmutableMember, Member } from '../types';
 
 describe('Render Avatar', () => {
   beforeEach(() => {

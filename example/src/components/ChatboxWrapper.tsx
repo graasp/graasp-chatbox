@@ -1,17 +1,20 @@
-import { FC } from 'react';
 import { List } from 'immutable';
+
+import { FC } from 'react';
+
 import Chatbox, {
+  AvatarHookType,
   ChatMessage,
-  PartialChatMessage,
   ImmutableMember,
   Member,
-  AvatarHookType,
+  PartialChatMessage,
 } from '@graasp/chatbox';
 import { MUTATION_KEYS } from '@graasp/query-client';
-import { useMutation, hooks } from '../config/queryClient';
+
 import { PartialNewChatMessage } from '../../../src';
-import { DEFAULT_LANG } from '../config/constants';
 import { ClearChatHookType } from '../../../src/types';
+import { DEFAULT_LANG } from '../config/constants';
+import { hooks, useMutation } from '../config/queryClient';
 
 type Props = {
   chatId: string;

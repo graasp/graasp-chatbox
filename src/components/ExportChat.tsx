@@ -1,19 +1,23 @@
+import moment from 'moment';
+
 import { FC, ReactElement, useState } from 'react';
 import { CSVLink as CsvLink } from 'react-csv';
-import { useMessagesContext } from '../context/MessagesContext';
+import { useTranslation } from 'react-i18next';
+
+import { Button } from '@graasp/ui';
+
+import { IconButton, Tooltip } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
+import { GetApp } from '@material-ui/icons';
+
+import { exportChatButtonCypress } from '../config/selectors';
 import {
   DEFAULT_USER_NAME,
   EXPORT_CSV_HEADERS,
   EXPORT_DATE_FORMAT,
 } from '../constants';
+import { useMessagesContext } from '../context/MessagesContext';
 import { ExportedChatMessage, ToolVariants, ToolVariantsType } from '../types';
-import { IconButton, Tooltip } from '@material-ui/core';
-import { GetApp } from '@material-ui/icons';
-import moment from 'moment';
-import { useTranslation } from 'react-i18next';
-import { makeStyles } from '@material-ui/core/styles';
-import { exportChatButtonCypress } from '../config/selectors';
-import { Button } from '@graasp/ui';
 
 const useStyles = makeStyles({
   link: {

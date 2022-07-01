@@ -1,17 +1,20 @@
 import { FC } from 'react';
-import Box from '@material-ui/core/Box';
-import { makeStyles } from '@material-ui/core/styles';
-import IconButton from '@material-ui/core/IconButton';
-import { Close, Edit } from '@material-ui/icons';
-import Typography from '@material-ui/core/Typography';
+import { useTranslation } from 'react-i18next';
+
+import { CHATBOX } from '@graasp/translations';
+
 import { Divider, SvgIcon } from '@material-ui/core';
+import Box from '@material-ui/core/Box';
+import IconButton from '@material-ui/core/IconButton';
+import Typography from '@material-ui/core/Typography';
+import { makeStyles } from '@material-ui/core/styles';
+import { Close, Edit } from '@material-ui/icons';
+
 import {
   editBannerCloseButtonCypress,
   editBannerCypress,
   editBannerOldTextCypress,
 } from '../config/selectors';
-import { CHATBOX } from '@graasp/translations';
-import { useTranslation } from 'react-i18next';
 import { useEditingContext } from '../context/EditingContext';
 
 const useStyles = makeStyles((theme) => ({

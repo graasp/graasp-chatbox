@@ -1,5 +1,7 @@
 import { Record } from 'immutable';
+
 import { UUID } from '@graasp/ui/dist/types';
+
 import { BUTTON_VARIANT, ICON_VARIANT } from './constants';
 
 export type EditingProp = {

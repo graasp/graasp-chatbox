@@ -1,6 +1,8 @@
-import React, { FC, ReactElement } from 'react';
-import { ChatMessage, Member } from '../types';
 import { List } from 'immutable';
+
+import React, { FC, ReactElement } from 'react';
+
+import { ChatMessage, Member } from '../types';
 
 export const MessagesContext = React.createContext({
   chatId: '',

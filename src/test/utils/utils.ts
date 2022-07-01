@@ -1,5 +1,6 @@
-import path from 'path';
 import Papa from 'papaparse';
+import path from 'path';
+
 import { EXPORT_CSV_HEADERS } from '../../constants';
 
 const validateCsvData = (data: unknown[], numMessages: number): void => {

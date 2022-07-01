@@ -1,20 +1,23 @@
-import { FC, useRef, useEffect, Fragment } from 'react';
+import clsx from 'clsx';
+import moment from 'moment';
+
+import { FC, Fragment, useEffect, useRef } from 'react';
+
 import Box from '@material-ui/core/Box';
 import { makeStyles } from '@material-ui/core/styles';
-import moment from 'moment';
-import Date from './Date';
-import Message from './Message';
+
+import { messagesContainerCypress } from '../config/selectors';
+import { DEFAULT_DATE_FORMAT, SAFETY_MARGIN } from '../constants';
+import { useEditingContext } from '../context/EditingContext';
+import { useMessagesContext } from '../context/MessagesContext';
 import type {
   ChatMessage,
   ImmutableMember,
   PartialChatMessage,
 } from '../types';
-import { DEFAULT_DATE_FORMAT, SAFETY_MARGIN } from '../constants';
+import Date from './Date';
+import Message from './Message';
 import MessageActions from './MessageActions';
-import clsx from 'clsx';
-import { useEditingContext } from '../context/EditingContext';
-import { messagesContainerCypress } from '../config/selectors';
-import { useMessagesContext } from '../context/MessagesContext';
 
 type Props = {
   currentMember: ImmutableMember;

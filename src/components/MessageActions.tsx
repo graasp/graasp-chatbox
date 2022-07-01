@@ -1,5 +1,8 @@
 import React, { FC, useState } from 'react';
-import { ChatMessage, PartialChatMessage } from '../types';
+import { useTranslation } from 'react-i18next';
+
+import { CHATBOX } from '@graasp/translations';
+
 import {
   IconButton,
   ListItemIcon,
@@ -7,17 +10,17 @@ import {
   Menu,
   MenuItem,
 } from '@material-ui/core';
-import { Delete, Edit, MoreVert } from '@material-ui/icons';
 import { makeStyles } from '@material-ui/core/styles';
+import { Delete, Edit, MoreVert } from '@material-ui/icons';
+
 import {
   deleteMenuItemCypress,
   editMenuItemCypress,
   messageActionsButtonCypress,
 } from '../config/selectors';
 import { LIST_ICON_MIN_WIDTH } from '../constants';
-import { useTranslation } from 'react-i18next';
-import { CHATBOX } from '@graasp/translations';
 import { useEditingContext } from '../context/EditingContext';
+import { ChatMessage, PartialChatMessage } from '../types';
 
 type Props = {
   message: ChatMessage;
