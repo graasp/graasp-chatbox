@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
       lineHeight: '1.5',
       fontSize: '1rem',
     },
-    '& ul': {
+    '& ul, ol': {
       // define offset for list
       paddingInlineStart: theme.spacing(2),
     },
@@ -45,6 +45,9 @@ const useStyles = makeStyles((theme) => ({
     // alternate background colors in table rows
     '& tr:nth-child(even)': {
       backgroundColor: 'lightgray',
+    },
+    '& img': {
+      maxWidth: '100%',
     },
   },
 }));
