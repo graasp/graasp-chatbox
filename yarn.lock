@@ -2370,7 +2370,7 @@ __metadata:
     "@cypress/react": 5.12.4
     "@cypress/webpack-dev-server": 1.8.4
     "@graasp/translations": "github:graasp/graasp-translations.git"
-    "@graasp/ui": "github:graasp/graasp-ui#134/optionalDep"
+    "@graasp/ui": "github:graasp/graasp-ui"
     "@material-ui/core": 4.12.4
     "@material-ui/icons": 4.11.2
     "@material-ui/lab": 4.0.0-alpha.60
@@ -2475,9 +2475,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@graasp/ui@github:graasp/graasp-ui#134/optionalDep":
+"@graasp/ui@github:graasp/graasp-ui":
   version: 0.2.0
-  resolution: "@graasp/ui@https://github.com/graasp/graasp-ui.git#commit=adfa1f0c4b54f108a1e50bc000e1e5f820846d6c"
+  resolution: "@graasp/ui@https://github.com/graasp/graasp-ui.git#commit=8eb647326b8495f1b2f906cfbde19344ce67a3eb"
   dependencies:
     "@graasp/utils": "github:graasp/graasp-utils.git"
     clsx: 1.1.1
@@ -2507,7 +2507,7 @@ __metadata:
       optional: true
     ag-grid-react:
       optional: true
-  checksum: d9dd7cc73d7649463a3754ead720a90d4559c54d64a5129db89f06f1f2503219e1df04a9142a54c272c2b2ab5ae3324f08df24d41ad620763ad21acf4ce7be84
+  checksum: 6c15365bd05fe649a8ff0e2f6eb10c8b17855f29861e798aaab74bf83d54a71f73ca486a78321f888230870df0d7a0f83a19304df313e2dc5367b84b1336d635
   languageName: node
   linkType: hard
 

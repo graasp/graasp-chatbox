@@ -50,7 +50,7 @@
   },
   "dependencies": {
     "@graasp/translations": "github:graasp/graasp-translations.git",
-    "@graasp/ui": "github:graasp/graasp-ui#134/optionalDep",
+    "@graasp/ui": "github:graasp/graasp-ui",
     "clsx": "1.1.1",
     "i18next": "21.6.11",
     "immutable": "4.0.0",

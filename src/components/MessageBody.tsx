@@ -12,9 +12,6 @@ import { makeStyles } from '@material-ui/core/styles';
 const useStyles = makeStyles((theme) => ({
   messageParagraphs: {
     fontFamily: theme.typography.fontFamily,
-    '& :last-child': {
-      // marginBottom: 0,
-    },
     '& *': {
       marginBlockStart: 0,
       marginBlockEnd: 0,
