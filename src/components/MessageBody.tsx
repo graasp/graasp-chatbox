@@ -1,22 +1,38 @@
-import { FC } from 'react';
-import ReactMarkdown from 'react-markdown';
-import remarkGfm from 'remark-gfm';
+import Highlight, { Language, defaultProps } from 'prism-react-renderer';
+import vsLight from 'prism-react-renderer/themes/vsLight';
 import remarkBreaks from 'remark-breaks';
+import remarkGfm from 'remark-gfm';
+
+import { FC, ReactElement } from 'react';
+import ReactMarkdown from 'react-markdown';
+import { CodeProps } from 'react-markdown/lib/ast-to-react';
+
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
   messageParagraphs: {
-    // set margins for all elements
+    fontFamily: theme.typography.fontFamily,
     '& *': {
-      marginBlockStart: theme.spacing(1),
-      marginBlockEnd: theme.spacing(1),
-      fontFamily: theme.typography.fontFamily,
+      marginBlockStart: 0,
+      marginBlockEnd: 0,
+    },
+    '& div.prism-code': {
+      fontFamily:
+        'ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace',
+      margin: theme.spacing(1),
+      backgroundColor: 'transparent',
+      fontSize: '0.8rem',
+      padding: theme.spacing(1, 0),
+    },
+    // set margins for all elements
+    '& h1, p': {
+      marginTop: theme.spacing(1),
     },
     '& p': {
       lineHeight: '1.5',
       fontSize: '1rem',
     },
-    '& ul': {
+    '& ul, ol': {
       // define offset for list
       paddingInlineStart: theme.spacing(2),
     },
@@ -30,11 +46,18 @@ const useStyles = makeStyles((theme) => ({
       fontFamily:
         'ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace',
     },
+    '& pre': {
+      margin: theme.spacing(1, 1),
+      backgroundColor: 'rgba(197, 197, 197, 0.37)',
+      // border: 'solid 1px silver',
+      borderRadius: theme.spacing(1),
+    },
     '& blockquote': {
       borderLeft: 'solid darkgray 4px',
       color: 'darkgray',
       marginLeft: '0',
       paddingLeft: theme.spacing(2),
+      marginInlineEnd: theme.spacing(1),
     },
     '& table, th, td, tr': {
       border: 'solid black 1px ',
@@ -46,11 +69,60 @@ const useStyles = makeStyles((theme) => ({
     '& tr:nth-child(even)': {
       backgroundColor: 'lightgray',
     },
+    '& img': {
+      maxWidth: '100%',
+    },
   },
 }));
 
 type Props = {
   messageBody: string;
+};
+
+const renderCode = ({
+  inline,
+  className: classNameInit,
+  children: codeContent,
+  ...props
+}: CodeProps): ReactElement => {
+  const match = (classNameInit || '').match(/language-(\w+)/);
+  return !inline && match ? (
+    <Highlight
+      {...defaultProps}
+      theme={vsLight}
+      code={String(codeContent).replace(/\n$/, '')}
+      language={match[1] as Language}
+      {...props}
+    >
+      {({ className, tokens, getLineProps, getTokenProps }): ReactElement => (
+        <div className={className}>
+          {tokens.map((line, i) => (
+            // eslint-disable-next-line react/jsx-key
+            <div
+              {...getLineProps({
+                line,
+                key: i,
+              })}
+            >
+              {line.map((token, key) => (
+                // eslint-disable-next-line react/jsx-key
+                <span
+                  {...getTokenProps({
+                    token,
+                    key,
+                  })}
+                />
+              ))}
+            </div>
+          ))}
+        </div>
+      )}
+    </Highlight>
+  ) : (
+    <code className={classNameInit} {...props}>
+      {codeContent}
+    </code>
+  );
 };
 
 const MessageBody: FC<Props> = ({ messageBody }) => {
@@ -60,6 +132,9 @@ const MessageBody: FC<Props> = ({ messageBody }) => {
       linkTarget="_blank"
       className={classes.messageParagraphs}
       remarkPlugins={[remarkGfm, remarkBreaks]}
+      components={{
+        code: renderCode,
+      }}
     >
       {messageBody}
     </ReactMarkdown>

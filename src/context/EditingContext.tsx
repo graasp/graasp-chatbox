@@ -1,4 +1,5 @@
 import React, { FC, ReactElement, useState } from 'react';
+
 import { INITIAL_EDITING_PROPS } from '../constants';
 import { EditingProp } from '../types';
 

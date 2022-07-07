@@ -1,15 +1,18 @@
 import { FC, ReactElement, useState } from 'react';
-import ConfirmationDialog from './common/ConfirmationDialog';
 import { useTranslation } from 'react-i18next';
-import { useHooksContext } from '../context/HooksContext';
-import { useMessagesContext } from '../context/MessagesContext';
-import { Button } from '@graasp/ui';
-import { clearChatButtonCypress } from '../config/selectors';
+
 import { Box, Tooltip, Typography } from '@material-ui/core';
-import ExportChat from './ExportChat';
-import { ToolVariants, ToolVariantsType } from '../types';
 import IconButton from '@material-ui/core/IconButton';
 import { DeleteForever } from '@material-ui/icons';
+
+import { Button } from '@graasp/ui';
+
+import { clearChatButtonCypress } from '../config/selectors';
+import { useHooksContext } from '../context/HooksContext';
+import { useMessagesContext } from '../context/MessagesContext';
+import { ToolVariants, ToolVariantsType } from '../types';
+import ExportChat from './ExportChat';
+import ConfirmationDialog from './common/ConfirmationDialog';
 
 type Prop = {
   variant?: ToolVariantsType;

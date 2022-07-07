@@ -1,9 +1,11 @@
 import { FC } from 'react';
-import ExportChat from './ExportChat';
+
+import Box from '@material-ui/core/Box';
+
+import { adminToolsContainerCypress } from '../config/selectors';
 import { ToolVariants, ToolVariantsType } from '../types';
 import ClearChat from './ClearChat';
-import Box from '@material-ui/core/Box';
-import { adminToolsContainerCypress } from '../config/selectors';
+import ExportChat from './ExportChat';
 
 type Props = {
   variant?: ToolVariantsType;

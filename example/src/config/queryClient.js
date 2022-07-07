@@ -1,4 +1,5 @@
 import { configureQueryClient } from '@graasp/query-client';
+
 import { API_HOST } from './constants';
 
 const {

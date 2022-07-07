@@ -1,19 +1,23 @@
-import { FC } from 'react';
-import Box from '@material-ui/core/Box';
-import moment from 'moment';
-import { makeStyles } from '@material-ui/core/styles';
-import Typography from '@material-ui/core/Typography';
-import grey from '@material-ui/core/colors/grey';
 import clsx from 'clsx';
 import truncate from 'lodash.truncate';
-import type { ChatMessage, ImmutableMember, Member } from '../types';
-import { DEFAULT_USER_NAME, MAX_USERNAME_LENGTH } from '../constants';
-import { messageIdCyWrapper } from '../config/selectors';
-import { CHATBOX } from '@graasp/translations';
+import moment from 'moment';
+
+import { FC } from 'react';
 import { useTranslation } from 'react-i18next';
+
+import Box from '@material-ui/core/Box';
+import Typography from '@material-ui/core/Typography';
+import grey from '@material-ui/core/colors/grey';
+import { makeStyles } from '@material-ui/core/styles';
+
+import { CHATBOX } from '@graasp/translations';
 import { Avatar } from '@graasp/ui';
 import { Variant } from '@graasp/ui/dist/types';
+
+import { messageIdCyWrapper } from '../config/selectors';
+import { DEFAULT_USER_NAME, MAX_USERNAME_LENGTH } from '../constants';
 import { useHooksContext } from '../context/HooksContext';
+import type { ChatMessage, ImmutableMember, Member } from '../types';
 import MessageBody from './MessageBody';
 
 const useStyles = makeStyles((theme) => ({

@@ -1,22 +1,24 @@
 import { FC, useState } from 'react';
+
 import {
   Checkbox,
   FormControl,
   FormControlLabel,
   FormLabel,
-  makeStyles,
   Radio,
   RadioGroup,
   Slider,
   TextField,
   Typography,
+  makeStyles,
 } from '@material-ui/core';
-import ChatboxWrapper from './ChatboxWrapper';
+
 import {
   DEFAULT_CHAT_ID,
   DEFAULT_LANG,
   GRAASP_PANEL_WIDTH,
 } from '../config/constants';
+import ChatboxWrapper from './ChatboxWrapper';
 
 type Props = {};
 

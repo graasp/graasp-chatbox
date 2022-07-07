@@ -1,8 +1,15 @@
-import { FC, useMemo } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
 import { List } from 'immutable';
-import Messages from './Messages';
-import Header from './Header';
+
+import { FC, useMemo } from 'react';
+import { I18nextProvider } from 'react-i18next';
+
+import { makeStyles } from '@material-ui/core/styles';
+
+import buildI18n, { langs, namespaces } from '@graasp/translations';
+
+import { EditingContextProvider } from '../context/EditingContext';
+import { HooksContextProvider } from '../context/HooksContext';
+import { MessagesContextProvider } from '../context/MessagesContext';
 import type {
   ChatMessage,
   ClearChatHookType,
@@ -11,14 +18,11 @@ import type {
   PartialChatMessage,
   PartialNewChatMessage,
 } from '../types';
-import InputBar from './InputBar';
-import { I18nextProvider } from 'react-i18next';
-import buildI18n, { namespaces, langs } from '@graasp/translations';
-import { EditingContextProvider } from '../context/EditingContext';
-import { HooksContextProvider } from '../context/HooksContext';
 import { AvatarHookType } from '../types';
-import { MessagesContextProvider } from '../context/MessagesContext';
 import AdminTools from './AdminTools';
+import Header from './Header';
+import InputBar from './InputBar';
+import Messages from './Messages';
 
 type Props = {
   id?: string;

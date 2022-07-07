@@ -1,4 +1,5 @@
 import React, { FC, ReactElement } from 'react';
+
 import { AvatarHookType, ClearChatHookType } from '../types';
 
 export const HooksContext = React.createContext({});

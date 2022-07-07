@@ -1,11 +1,13 @@
 import { FC, useEffect, useRef, useState } from 'react';
-import Input from './Input';
-import { PartialChatMessage, PartialNewChatMessage } from '../types';
-import EditBanner from './EditBanner';
-import { makeStyles } from '@material-ui/core/styles';
+
 import Box from '@material-ui/core/Box';
+import { makeStyles } from '@material-ui/core/styles';
+
 import { useEditingContext } from '../context/EditingContext';
 import { useMessagesContext } from '../context/MessagesContext';
+import { PartialChatMessage, PartialNewChatMessage } from '../types';
+import EditBanner from './EditBanner';
+import Input from './Input';
 
 const useStyles = makeStyles(() => ({
   wrapper: {

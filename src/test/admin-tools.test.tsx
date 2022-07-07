@@ -1,13 +1,14 @@
+import { List } from 'immutable';
+
 import { mount } from '@cypress/react';
-import Chatbox from '../components/Chatbox';
+
 import {
   CHAT_ID,
   CHAT_MESSAGES,
   spyMethod,
 } from '../../cypress/fixtures/chat_messages';
-import { ImmutableMember, Member } from '../types';
 import { MEMBERS } from '../../cypress/fixtures/members';
-import { List } from 'immutable';
+import Chatbox from '../components/Chatbox';
 import {
   adminToolsContainerCypress,
   cancelDialogButtonCypress,
@@ -16,6 +17,7 @@ import {
   dataCyWrapper,
   exportChatButtonCypress,
 } from '../config/selectors';
+import { ImmutableMember, Member } from '../types';
 import { verifyDownloadedChat } from './utils/utils';
 
 const mountChatbox = (showTools: boolean, emptyData = false): void => {

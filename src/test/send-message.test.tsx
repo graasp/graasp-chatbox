@@ -1,14 +1,7 @@
-import { mount } from '@cypress/react';
-import Chatbox from '../components/Chatbox';
-import {
-  charCounterCypress,
-  dataCyWrapper,
-  inputTextFieldCypress,
-  inputTextFieldTextAreaCypress,
-  sendButtonCypress,
-} from '../config/selectors';
 import { List } from 'immutable';
-import { ImmutableMember, Member } from '../index';
+
+import { mount } from '@cypress/react';
+
 import {
   CHAT_ID,
   CHAT_MESSAGES,
@@ -17,7 +10,16 @@ import {
   spyMethod,
 } from '../../cypress/fixtures/chat_messages';
 import { MEMBERS } from '../../cypress/fixtures/members';
+import Chatbox from '../components/Chatbox';
+import {
+  charCounterCypress,
+  dataCyWrapper,
+  inputTextFieldCypress,
+  inputTextFieldTextAreaCypress,
+  sendButtonCypress,
+} from '../config/selectors';
 import { HARD_MAX_MESSAGE_LENGTH } from '../constants';
+import { ImmutableMember, Member } from '../index';
 
 describe('Enter text', () => {
   beforeEach(() => {

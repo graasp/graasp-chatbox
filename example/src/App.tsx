@@ -1,9 +1,9 @@
+import ChatboxTest from './components/ChatboxTest';
 import {
-  queryClient,
   QueryClientProvider,
   ReactQueryDevtools,
+  queryClient,
 } from './config/queryClient';
-import ChatboxTest from './components/ChatboxTest';
 
 const App = () => {
   return (
