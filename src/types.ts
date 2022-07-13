@@ -1,5 +1,7 @@
 import { Record } from 'immutable';
 
+import { UseQueryResult } from 'react-query';
+
 import { UUID } from '@graasp/ui/dist/types';
 
 import { BUTTON_VARIANT, ICON_VARIANT } from './constants';
@@ -8,17 +10,6 @@ export type EditingProp = {
   open: boolean;
   id: string;
   body: string;
-};
-
-export type PartialNewChatMessage = {
-  chatId: string;
-  body: string;
-};
-
-export type PartialChatMessage = {
-  chatId: string;
-  messageId: string;
-  body?: string;
 };
 
 export interface ChatMessage {
@@ -45,7 +36,10 @@ export class ImmutableMember extends Record({
   type: '',
 }) {}
 
-export type AvatarHookType = (id?: UUID, size?: string) => unknown;
+export type AvatarHookType = (args: {
+  id?: UUID;
+  size?: string;
+}) => UseQueryResult<Blob>;
 export type ClearChatHookType = (id: UUID) => void;
 
 export const ToolVariants = {

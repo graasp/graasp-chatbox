@@ -1,10 +1,4 @@
 export { default } from './components/Chatbox';
 
-export type {
-  Member,
-  ChatMessage,
-  PartialNewChatMessage,
-  PartialChatMessage,
-  AvatarHookType,
-} from './types';
+export type { Member, ChatMessage, AvatarHookType } from './types';
 export { ImmutableMember } from './types';

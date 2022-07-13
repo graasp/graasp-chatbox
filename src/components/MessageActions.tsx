@@ -11,6 +11,7 @@ import {
 import { makeStyles } from '@material-ui/core/styles';
 import { Delete, Edit, MoreVert } from '@material-ui/icons';
 
+import { PartialChatMessage } from '@graasp/query-client/dist/src/types';
 import { CHATBOX } from '@graasp/translations';
 
 import {
@@ -20,7 +21,7 @@ import {
 } from '../config/selectors';
 import { LIST_ICON_MIN_WIDTH } from '../constants';
 import { useEditingContext } from '../context/EditingContext';
-import { ChatMessage, PartialChatMessage } from '../types';
+import { ChatMessage } from '../types';
 
 type Props = {
   message: ChatMessage;

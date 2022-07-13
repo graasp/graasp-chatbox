@@ -7,11 +7,13 @@ import Chatbox, {
   ChatMessage,
   ImmutableMember,
   Member,
-  PartialChatMessage,
 } from '@graasp/chatbox';
 import { MUTATION_KEYS } from '@graasp/query-client';
+import {
+  PartialChatMessage,
+  PartialNewChatMessage,
+} from '@graasp/query-client/dist/src/types';
 
-import { PartialNewChatMessage } from '../../../src';
 import { ClearChatHookType } from '../../../src/types';
 import { DEFAULT_LANG } from '../config/constants';
 import { hooks, useMutation } from '../config/queryClient';

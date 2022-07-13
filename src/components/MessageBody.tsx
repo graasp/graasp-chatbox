@@ -86,6 +86,14 @@ const renderCode = ({
   ...props
 }: CodeProps): ReactElement => {
   const match = (classNameInit || '').match(/language-(\w+)/);
+  const mention = codeContent.join('').match(/^<!@(\w+)>$/);
+  if (inline && mention) {
+    return (
+      <span style={{ backgroundColor: '#e3c980', fontWeight: 'bold' }}>
+        @{mention[1]}
+      </span>
+    );
+  }
   return !inline && match ? (
     <Highlight
       {...defaultProps}

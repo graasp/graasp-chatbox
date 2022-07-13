@@ -3,9 +3,13 @@ import { FC, useEffect, useRef, useState } from 'react';
 import Box from '@material-ui/core/Box';
 import { makeStyles } from '@material-ui/core/styles';
 
+import {
+  PartialChatMessage,
+  PartialNewChatMessage,
+} from '@graasp/query-client/dist/src/types';
+
 import { useEditingContext } from '../context/EditingContext';
 import { useMessagesContext } from '../context/MessagesContext';
-import { PartialChatMessage, PartialNewChatMessage } from '../types';
 import EditBanner from './EditBanner';
 import Input from './Input';
 
@@ -29,7 +33,7 @@ const InputBar: FC<Props> = ({
   const classes = useStyles();
   const { open, body, messageId, cancelEdit } = useEditingContext();
   const [textInput, setTextInput] = useState(open ? body : '');
-  const inputRef = useRef<HTMLDivElement>(null);
+  const inputRef = useRef<HTMLTextAreaElement>(null);
   const { chatId } = useMessagesContext();
 
   useEffect(() => {
@@ -51,10 +55,10 @@ const InputBar: FC<Props> = ({
       editMessageFunction?.({
         messageId,
         chatId,
-        body: textInput,
+        body: { message: textInput },
       });
     } else {
-      sendMessageFunction?.({ chatId, body: textInput });
+      sendMessageFunction?.({ chatId, body: { message: textInput } });
     }
     // reset editing
     cancelEdit();

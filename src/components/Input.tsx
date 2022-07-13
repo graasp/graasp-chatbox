@@ -1,21 +1,21 @@
 import clsx from 'clsx';
 
-import React, {
-  ChangeEvent,
-  FC,
-  ReactElement,
-  RefObject,
-  useEffect,
-} from 'react';
+import React, { FC, ReactElement, RefObject, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import {
+  Mention,
+  MentionsInput,
+  OnChangeHandlerFunc,
+  SuggestionDataItem,
+} from 'react-mentions';
 
 import { Typography } from '@material-ui/core';
 import Box from '@material-ui/core/Box';
 import IconButton from '@material-ui/core/IconButton';
-import TextField from '@material-ui/core/TextField';
 import { makeStyles } from '@material-ui/core/styles';
 import SendIcon from '@material-ui/icons/Send';
 
+import { PartialNewChatMessage } from '@graasp/query-client/dist/src/types';
 import { CHATBOX } from '@graasp/translations';
 
 import {
@@ -24,13 +24,12 @@ import {
   inputTextFieldTextAreaCypress,
   sendButtonCypress,
 } from '../config/selectors';
-import { HARD_MAX_MESSAGE_LENGTH, MAX_ROWS_INPUT } from '../constants';
+import { HARD_MAX_MESSAGE_LENGTH } from '../constants';
 import { useMessagesContext } from '../context/MessagesContext';
-import { PartialNewChatMessage } from '../types';
 
 type Props = {
   id?: string;
-  inputRef: RefObject<HTMLDivElement>;
+  inputRef: RefObject<HTMLTextAreaElement>;
   placeholder?: string;
   textInput: string;
   setTextInput: (newText: string) => void;
@@ -52,6 +51,48 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+const inputStyle = {
+  width: '100%',
+  // mentions
+  control: {
+    // fontFamily: 'monospace',
+    minHeight: 63,
+  },
+  input: {
+    padding: 9,
+    border: '1px solid silver',
+    width: '100%',
+    overflow: 'auto',
+    height: 70,
+  },
+  highlighter: {
+    padding: 9,
+    border: '1px solid transparent',
+    boxSizing: 'border-box',
+    overflow: 'hidden',
+    height: 70,
+  },
+
+  suggestions: {
+    list: {
+      backgroundColor: 'white',
+      border: '1px solid rgba(0,0,0,0.15)',
+      fontSize: 14,
+    },
+    item: {
+      padding: '5px 15px',
+      borderBottom: '1px solid rgba(0,0,0,0.15)',
+      '&focused': {
+        backgroundColor: '#cee4e5',
+      },
+    },
+  },
+};
+
+const mentionStyle = {
+  backgroundColor: '#c5c9e8',
+};
+
 const Input: FC<Props> = ({
   id,
   inputRef,
@@ -61,10 +102,13 @@ const Input: FC<Props> = ({
   sendMessageFunction,
 }) => {
   const classes = useStyles();
-  const { chatId } = useMessagesContext();
-
+  const { chatId, members } = useMessagesContext();
   const { t } = useTranslation();
+  const [mentions, setMentions] = useState<string[]>([]);
 
+  const memberSuggestions = members
+    ?.map((m) => ({ id: m.id, display: m.name }))
+    .toJS() as SuggestionDataItem[];
   const isMessageTooLong = textInput.length > HARD_MAX_MESSAGE_LENGTH;
 
   // autofocus on first render
@@ -74,22 +118,28 @@ const Input: FC<Props> = ({
 
   const onClick = (): void => {
     if (textInput) {
-      sendMessageFunction?.({ chatId, body: textInput });
+      sendMessageFunction?.({ chatId, body: { message: textInput, mentions } });
       // reset input content
       setTextInput('');
     }
   };
 
   // controlled input onChange handler
-  const onChange = (
-    event: ChangeEvent<HTMLTextAreaElement | HTMLInputElement>,
+  const onChange: OnChangeHandlerFunc = (
+    _: {
+      target: { value: string };
+    },
+    newValue: string,
   ): void => {
-    const newValue: string = event.target.value;
     setTextInput(newValue);
   };
 
   // catch {enter} key press to send messages
-  const keyDown = (e: React.KeyboardEvent<HTMLDivElement>): void => {
+  const keyDown = (
+    e:
+      | React.KeyboardEvent<HTMLTextAreaElement>
+      | React.KeyboardEvent<HTMLInputElement>,
+  ): void => {
     // let user insert a new line with shift+enter
     if (e.key === 'Enter' && !e.shiftKey) {
       // do not propagate keypress event when only enter is pressed
@@ -97,6 +147,15 @@ const Input: FC<Props> = ({
       if (!isMessageTooLong) {
         // send message
         onClick();
+      }
+    }
+  };
+
+  const addMention = (id: string | number, _: string): void => {
+    if (typeof id === 'string') {
+      if (!mentions[id]) {
+        console.log('adding', id);
+        setMentions((prevState) => [...prevState, id]);
       }
     }
   };
@@ -132,19 +191,29 @@ const Input: FC<Props> = ({
         alignItems="flex-end"
         id={id}
       >
-        <TextField
+        <MentionsInput
           data-cy={inputTextFieldCypress}
           id={inputTextFieldTextAreaCypress}
           inputRef={inputRef}
           value={textInput}
           onChange={onChange}
           onKeyDown={keyDown}
-          variant="outlined"
-          fullWidth
-          multiline
-          maxRows={MAX_ROWS_INPUT}
+          style={inputStyle}
+          a11ySuggestionsListLabel={'Suggested mentions'}
           placeholder={placeholder || t(CHATBOX.INPUT_FIELD_PLACEHOLDER)}
-        />
+        >
+          <Mention
+            displayTransform={(_, login): string => `@${login}`}
+            markup="`<!@__display__>[__id__]`"
+            trigger={'@'}
+            renderSuggestion={(_, __, highlightedDisplay): ReactElement => (
+              <div className="user">{highlightedDisplay}</div>
+            )}
+            data={memberSuggestions}
+            style={mentionStyle}
+            onAdd={addMention}
+          />
+        </MentionsInput>
         <IconButton
           data-cy={sendButtonCypress}
           onClick={onClick}
