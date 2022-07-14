@@ -4,6 +4,7 @@ import Box from '@material-ui/core/Box';
 import { makeStyles } from '@material-ui/core/styles';
 
 import {
+  MessageBodyType,
   PartialChatMessage,
   PartialNewChatMessage,
 } from '@graasp/query-client/dist/src/types';
@@ -50,15 +51,15 @@ const InputBar: FC<Props> = ({
     setTextInput('');
   };
 
-  const handleSendMessageFunction = (): void => {
+  const handleSendMessageFunction = (body: MessageBodyType): void => {
     if (open) {
       editMessageFunction?.({
         messageId,
         chatId,
-        body: { message: textInput },
+        body,
       });
     } else {
-      sendMessageFunction?.({ chatId, body: { message: textInput } });
+      sendMessageFunction?.({ chatId, body });
     }
     // reset editing
     cancelEdit();

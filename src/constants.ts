@@ -32,3 +32,6 @@ export const SIDE_PANE_HEIGHT = 512;
 
 export const ICON_VARIANT = 'icon';
 export const BUTTON_VARIANT = 'button';
+
+export const ALL_MEMBERS_ID = '00000000-0000-4000-8000-000000000000';
+export const ALL_MEMBERS_DISPLAY = 'all';

@@ -11,6 +11,7 @@ import {
 } from '@graasp/query-client/dist/src/types';
 import buildI18n, { langs, namespaces } from '@graasp/translations';
 
+import { CurrentMemberContextProvider } from '../context/CurrentMemberContext';
 import { EditingContextProvider } from '../context/EditingContext';
 import { HooksContextProvider } from '../context/HooksContext';
 import { MessagesContextProvider } from '../context/MessagesContext';
@@ -95,30 +96,32 @@ const Chatbox: FC<Props> = ({
           useAvatarHook={useAvatarHook}
           clearChatHook={clearChatFunction}
         >
-          <MessagesContextProvider
-            chatId={chatId}
-            members={members}
-            messages={messages}
-          >
-            <>
-              {showHeader && <Header />}
-              <div className={classes.chatboxContainer} id={id}>
-                <Messages
-                  currentMember={currentMember}
-                  isAdmin={showAdminTools}
-                  deleteMessageFunction={deleteMessageFunction}
-                />
-                <div className={classes.bottomContainer}>
-                  <InputBar
-                    sendMessageBoxId={sendMessageBoxId}
-                    sendMessageFunction={sendMessageFunction}
-                    editMessageFunction={editMessageFunction}
+          <CurrentMemberContextProvider currentMember={currentMember}>
+            <MessagesContextProvider
+              chatId={chatId}
+              members={members}
+              messages={messages}
+            >
+              <>
+                {showHeader && <Header />}
+                <div className={classes.chatboxContainer} id={id}>
+                  <Messages
+                    currentMember={currentMember}
+                    isAdmin={showAdminTools}
+                    deleteMessageFunction={deleteMessageFunction}
                   />
-                  {showAdminTools && <AdminTools variant="icon" />}
+                  <div className={classes.bottomContainer}>
+                    <InputBar
+                      sendMessageBoxId={sendMessageBoxId}
+                      sendMessageFunction={sendMessageFunction}
+                      editMessageFunction={editMessageFunction}
+                    />
+                    {showAdminTools && <AdminTools variant="icon" />}
+                  </div>
                 </div>
-              </div>
-            </>
-          </MessagesContextProvider>
+              </>
+            </MessagesContextProvider>
+          </CurrentMemberContextProvider>
         </HooksContextProvider>
       </EditingContextProvider>
     </I18nextProvider>

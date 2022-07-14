@@ -9,6 +9,10 @@ import { CodeProps } from 'react-markdown/lib/ast-to-react';
 
 import { makeStyles } from '@material-ui/core/styles';
 
+import { ALL_MEMBERS_ID } from '../constants';
+import { useCurrentMemberContext } from '../context/CurrentMemberContext';
+import { getMention } from '../utils/mentions';
+
 const useStyles = makeStyles((theme) => ({
   messageParagraphs: {
     fontFamily: theme.typography.fontFamily,
@@ -79,62 +83,72 @@ type Props = {
   messageBody: string;
 };
 
-const renderCode = ({
-  inline,
-  className: classNameInit,
-  children: codeContent,
-  ...props
-}: CodeProps): ReactElement => {
-  const match = (classNameInit || '').match(/language-(\w+)/);
-  const mention = codeContent.join('').match(/^<!@(\w+)>$/);
-  if (inline && mention) {
-    return (
-      <span style={{ backgroundColor: '#e3c980', fontWeight: 'bold' }}>
-        @{mention[1]}
-      </span>
-    );
-  }
-  return !inline && match ? (
-    <Highlight
-      {...defaultProps}
-      theme={vsLight}
-      code={String(codeContent).replace(/\n$/, '')}
-      language={match[1] as Language}
-      {...props}
-    >
-      {({ className, tokens, getLineProps, getTokenProps }): ReactElement => (
-        <div className={className}>
-          {tokens.map((line, i) => (
-            // eslint-disable-next-line react/jsx-key
-            <div
-              {...getLineProps({
-                line,
-                key: i,
-              })}
-            >
-              {line.map((token, key) => (
-                // eslint-disable-next-line react/jsx-key
-                <span
-                  {...getTokenProps({
-                    token,
-                    key,
-                  })}
-                />
-              ))}
-            </div>
-          ))}
-        </div>
-      )}
-    </Highlight>
-  ) : (
-    <code className={classNameInit} {...props}>
-      {codeContent}
-    </code>
-  );
-};
-
 const MessageBody: FC<Props> = ({ messageBody }) => {
   const classes = useStyles();
+  const { id: currentMemberId } = useCurrentMemberContext();
+
+  const renderCode = ({
+    inline,
+    className: classNameInit,
+    children: codeContent,
+    ...props
+  }: CodeProps): ReactElement => {
+    const match = (classNameInit || '').match(/language-(\w+)/);
+    const mention = getMention(codeContent.join(''));
+    if (inline && mention && mention.groups) {
+      return (
+        <span
+          style={{
+            ...((mention.groups.id === currentMemberId ||
+              mention.groups.id === ALL_MEMBERS_ID) && {
+              backgroundColor: '#e3c980',
+            }),
+            fontWeight: 'bold',
+          }}
+        >
+          @{mention[1]}
+        </span>
+      );
+    }
+    return !inline && match ? (
+      <Highlight
+        {...defaultProps}
+        theme={vsLight}
+        code={String(codeContent).replace(/\n$/, '')}
+        language={match[1] as Language}
+        {...props}
+      >
+        {({ className, tokens, getLineProps, getTokenProps }): ReactElement => (
+          <div className={className}>
+            {tokens.map((line, i) => (
+              // eslint-disable-next-line react/jsx-key
+              <div
+                {...getLineProps({
+                  line,
+                  key: i,
+                })}
+              >
+                {line.map((token, key) => (
+                  // eslint-disable-next-line react/jsx-key
+                  <span
+                    {...getTokenProps({
+                      token,
+                      key,
+                    })}
+                  />
+                ))}
+              </div>
+            ))}
+          </div>
+        )}
+      </Highlight>
+    ) : (
+      <code className={classNameInit} {...props}>
+        {codeContent}
+      </code>
+    );
+  };
+
   return (
     <ReactMarkdown
       linkTarget="_blank"

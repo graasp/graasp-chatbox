@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 
-import React, { FC, ReactElement, RefObject, useEffect, useState } from 'react';
+import React, { FC, ReactElement, RefObject, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import {
   Mention,
@@ -15,7 +15,7 @@ import IconButton from '@material-ui/core/IconButton';
 import { makeStyles } from '@material-ui/core/styles';
 import SendIcon from '@material-ui/icons/Send';
 
-import { PartialNewChatMessage } from '@graasp/query-client/dist/src/types';
+import { MessageBodyType } from '@graasp/query-client/dist/src/types';
 import { CHATBOX } from '@graasp/translations';
 
 import {
@@ -24,8 +24,14 @@ import {
   inputTextFieldTextAreaCypress,
   sendButtonCypress,
 } from '../config/selectors';
-import { HARD_MAX_MESSAGE_LENGTH } from '../constants';
+import {
+  ALL_MEMBERS_DISPLAY,
+  ALL_MEMBERS_ID,
+  HARD_MAX_MESSAGE_LENGTH,
+} from '../constants';
+import { useCurrentMemberContext } from '../context/CurrentMemberContext';
 import { useMessagesContext } from '../context/MessagesContext';
+import { getAllMentions } from '../utils/mentions';
 
 type Props = {
   id?: string;
@@ -33,7 +39,7 @@ type Props = {
   placeholder?: string;
   textInput: string;
   setTextInput: (newText: string) => void;
-  sendMessageFunction?: (body: PartialNewChatMessage) => void;
+  sendMessageFunction?: (body: MessageBodyType) => void;
 };
 
 const useStyles = makeStyles((theme) => ({
@@ -64,6 +70,7 @@ const inputStyle = {
     width: '100%',
     overflow: 'auto',
     height: 70,
+    borderRadius: '4px',
   },
   highlighter: {
     padding: 9,
@@ -102,13 +109,19 @@ const Input: FC<Props> = ({
   sendMessageFunction,
 }) => {
   const classes = useStyles();
-  const { chatId, members } = useMessagesContext();
+  const { members } = useMessagesContext();
+  const { id: currentMemberId } = useCurrentMemberContext();
   const { t } = useTranslation();
-  const [mentions, setMentions] = useState<string[]>([]);
 
-  const memberSuggestions = members
-    ?.map((m) => ({ id: m.id, display: m.name }))
-    .toJS() as SuggestionDataItem[];
+  const memberSuggestions = [
+    { id: ALL_MEMBERS_ID, display: ALL_MEMBERS_DISPLAY },
+    ...(members
+      // exclude self from suggestions
+      ?.filter((m) => m.id !== currentMemberId)
+      .map((m) => ({ id: m.id, display: m.name }))
+      .toJS() || []),
+  ] as SuggestionDataItem[];
+  // add mention to all
   const isMessageTooLong = textInput.length > HARD_MAX_MESSAGE_LENGTH;
 
   // autofocus on first render
@@ -116,9 +129,15 @@ const Input: FC<Props> = ({
     inputRef.current?.focus();
   }, []);
 
-  const onClick = (): void => {
+  const onSend = (): void => {
     if (textInput) {
-      sendMessageFunction?.({ chatId, body: { message: textInput, mentions } });
+      const mentions = getAllMentions(textInput).map(({ id }) => id);
+      // expand '@all' to all members in mentions array
+      let expandedMentions = mentions;
+      if (mentions.includes(ALL_MEMBERS_ID)) {
+        expandedMentions = members?.map((m) => m.id).toJS() as string[];
+      }
+      sendMessageFunction?.({ message: textInput, mentions: expandedMentions });
       // reset input content
       setTextInput('');
     }
@@ -146,16 +165,7 @@ const Input: FC<Props> = ({
       e.preventDefault();
       if (!isMessageTooLong) {
         // send message
-        onClick();
-      }
-    }
-  };
-
-  const addMention = (id: string | number, _: string): void => {
-    if (typeof id === 'string') {
-      if (!mentions[id]) {
-        console.log('adding', id);
-        setMentions((prevState) => [...prevState, id]);
+        onSend();
       }
     }
   };
@@ -199,6 +209,7 @@ const Input: FC<Props> = ({
           onChange={onChange}
           onKeyDown={keyDown}
           style={inputStyle}
+          forceSuggestionsAboveCursor
           a11ySuggestionsListLabel={'Suggested mentions'}
           placeholder={placeholder || t(CHATBOX.INPUT_FIELD_PLACEHOLDER)}
         >
@@ -211,12 +222,11 @@ const Input: FC<Props> = ({
             )}
             data={memberSuggestions}
             style={mentionStyle}
-            onAdd={addMention}
           />
         </MentionsInput>
         <IconButton
           data-cy={sendButtonCypress}
-          onClick={onClick}
+          onClick={onSend}
           disabled={isMessageTooLong}
         >
           <SendIcon color={isMessageTooLong ? 'disabled' : 'primary'} />

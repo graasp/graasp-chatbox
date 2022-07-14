@@ -2260,7 +2260,7 @@ __metadata:
 
 "@graasp/query-client@github:graasp/graasp-query-client#183/updateChatMessageTypes":
   version: 0.1.0
-  resolution: "@graasp/query-client@https://github.com/graasp/graasp-query-client.git#commit=90457296ad36845a9979bb406d08dba81802b970"
+  resolution: "@graasp/query-client@https://github.com/graasp/graasp-query-client.git#commit=031857119d47bcf11c8f8c0093aec1977676f827"
   dependencies:
     "@graasp/translations": "github:graasp/graasp-translations.git"
     "@graasp/utils": "github:graasp/graasp-utils.git"
@@ -2274,7 +2274,7 @@ __metadata:
     uuid: 8.3.2
   peerDependencies:
     react: ^17.0.0
-  checksum: 76d6eb90aff4d51e8ed9ed2d9c9f14b5dbc5d39e233d543a1459a02a2fa7b57d4296e349e470e629cc9030b1ac074204f8e886566142dd097e56c623792da206
+  checksum: 4ac3d300fa6f926e059a8caef919d15a91e7478de57ef547466d21eb2556086eaa8fc541604fc770ab995c5be98ab87a65443242e43bf0b4f7f2287a74b266fc
   languageName: node
   linkType: hard
 
