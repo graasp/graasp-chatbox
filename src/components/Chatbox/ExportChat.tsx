@@ -22,6 +22,7 @@ import {
   ToolVariants,
   ToolVariantsType,
 } from '../../types';
+import { normalizeMentions } from '../../utils/mentions';
 
 const useStyles = makeStyles({
   link: {
@@ -52,7 +53,11 @@ const ExportChat: FC<Props> = ({ variant = ToolVariants.ICON, text }) => {
       const creatorName =
         members.find((m) => m.id === message.creator)?.name ||
         DEFAULT_USER_NAME;
-      return { ...message, creatorName };
+      return {
+        ...message,
+        body: normalizeMentions(message.body)!,
+        creatorName,
+      };
     });
   // render nothing if there is no data
   if (!csvMessages.length) {
