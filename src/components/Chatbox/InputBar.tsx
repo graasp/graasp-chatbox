@@ -9,8 +9,8 @@ import {
   PartialNewChatMessage,
 } from '@graasp/query-client/dist/src/types';
 
-import { useEditingContext } from '../context/EditingContext';
-import { useMessagesContext } from '../context/MessagesContext';
+import { useEditingContext } from '../../context/EditingContext';
+import { useMessagesContext } from '../../context/MessagesContext';
 import EditBanner from './EditBanner';
 import Input from './Input';
 

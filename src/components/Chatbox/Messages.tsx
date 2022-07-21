@@ -8,11 +8,11 @@ import { makeStyles } from '@material-ui/core/styles';
 
 import { PartialChatMessage } from '@graasp/query-client/dist/src/types';
 
-import { messagesContainerCypress } from '../config/selectors';
-import { DEFAULT_DATE_FORMAT, SAFETY_MARGIN } from '../constants';
-import { useEditingContext } from '../context/EditingContext';
-import { useMessagesContext } from '../context/MessagesContext';
-import type { ChatMessage, ImmutableMember } from '../types';
+import { messagesContainerCypress } from '../../config/selectors';
+import { DEFAULT_DATE_FORMAT, SAFETY_MARGIN } from '../../constants';
+import { useEditingContext } from '../../context/EditingContext';
+import { useMessagesContext } from '../../context/MessagesContext';
+import type { ChatMessage, ImmutableMember } from '../../types';
 import Date from './Date';
 import Message from './Message';
 import MessageActions from './MessageActions';

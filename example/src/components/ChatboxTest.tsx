@@ -13,11 +13,16 @@ import {
   makeStyles,
 } from '@material-ui/core';
 
+import { MentionButton } from '@graasp/chatbox';
+import { MUTATION_KEYS } from '@graasp/query-client';
+import { ChatMention } from '@graasp/query-client/dist/src/types';
+
 import {
   DEFAULT_CHAT_ID,
   DEFAULT_LANG,
   GRAASP_PANEL_WIDTH,
 } from '../config/constants';
+import { hooks, useMutation } from '../config/queryClient';
 import ChatboxWrapper from './ChatboxWrapper';
 
 type Props = {};
@@ -61,6 +66,18 @@ const ChatboxTest: FC<Props> = () => {
   }));
 
   const classes = useStyles();
+
+  // mutations to handle the mentions
+  const { mutate: patchMentionFunction } = useMutation<
+    ChatMention,
+    unknown,
+    { id: string; status: string }
+  >(MUTATION_KEYS.PATCH_MENTION);
+  const { mutate: deleteMentionFunction } = useMutation<
+    ChatMention,
+    unknown,
+    string
+  >(MUTATION_KEYS.DELETE_MENTION);
 
   // adapt the width of the chatbox to simulate the width used on Graasp
   const onChangePanelWidth = (_: unknown, newValue: number | number[]) => {
@@ -130,6 +147,12 @@ const ChatboxTest: FC<Props> = () => {
             label={'Panel Width'}
           />
         </FormControl>
+        <MentionButton
+          useMentions={hooks.useMentions}
+          useMembers={hooks.useMembers}
+          patchMentionFunction={patchMentionFunction}
+          deleteMentionFunction={deleteMentionFunction}
+        />
       </div>
       <div className={classes.chatboxContainer}>
         <ChatboxWrapper

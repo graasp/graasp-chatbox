@@ -14,10 +14,10 @@ import { CHATBOX } from '@graasp/translations';
 import { Avatar } from '@graasp/ui';
 import { Variant } from '@graasp/ui/dist/types';
 
-import { messageIdCyWrapper } from '../config/selectors';
-import { DEFAULT_USER_NAME, MAX_USERNAME_LENGTH } from '../constants';
-import { useHooksContext } from '../context/HooksContext';
-import type { ChatMessage, ImmutableMember, Member } from '../types';
+import { messageIdCyWrapper } from '../../config/selectors';
+import { DEFAULT_USER_NAME, MAX_USERNAME_LENGTH } from '../../constants';
+import { useHooksContext } from '../../context/HooksContext';
+import type { ChatMessage, ImmutableMember, Member } from '../../types';
 import MessageBody from './MessageBody';
 
 const useStyles = makeStyles((theme) => ({

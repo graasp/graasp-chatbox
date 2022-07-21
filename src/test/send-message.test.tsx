@@ -10,7 +10,7 @@ import {
   spyMethod,
 } from '../../cypress/fixtures/chat_messages';
 import { MEMBERS } from '../../cypress/fixtures/members';
-import Chatbox from '../components/Chatbox';
+import Chatbox from '../components/Chatbox/Chatbox';
 import {
   charCounterCypress,
   dataCyWrapper,

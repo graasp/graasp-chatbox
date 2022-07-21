@@ -23,15 +23,15 @@ import {
   inputTextFieldCypress,
   inputTextFieldTextAreaCypress,
   sendButtonCypress,
-} from '../config/selectors';
+} from '../../config/selectors';
 import {
   ALL_MEMBERS_DISPLAY,
   ALL_MEMBERS_ID,
   HARD_MAX_MESSAGE_LENGTH,
-} from '../constants';
-import { useCurrentMemberContext } from '../context/CurrentMemberContext';
-import { useMessagesContext } from '../context/MessagesContext';
-import { getAllMentions } from '../utils/mentions';
+} from '../../constants';
+import { useCurrentMemberContext } from '../../context/CurrentMemberContext';
+import { useMessagesContext } from '../../context/MessagesContext';
+import { getAllMentions } from '../../utils/mentions';
 
 type Props = {
   id?: string;

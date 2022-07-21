@@ -6,7 +6,7 @@ import { mount } from '@cypress/react';
 import { CHAT_ID, CHAT_MESSAGES } from '../../cypress/fixtures/chat_messages';
 import { MEMBERS } from '../../cypress/fixtures/members';
 import { mockUseAvatar } from '../../cypress/fixtures/mockHooks';
-import Chatbox from '../components/Chatbox';
+import Chatbox from '../components/Chatbox/Chatbox';
 import {
   dataCyWrapper,
   exportChatButtonCypress,

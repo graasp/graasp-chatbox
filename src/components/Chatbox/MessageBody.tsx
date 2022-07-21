@@ -9,9 +9,9 @@ import { CodeProps } from 'react-markdown/lib/ast-to-react';
 
 import { makeStyles } from '@material-ui/core/styles';
 
-import { ALL_MEMBERS_ID } from '../constants';
-import { useCurrentMemberContext } from '../context/CurrentMemberContext';
-import { getMention } from '../utils/mentions';
+import { ALL_MEMBERS_ID } from '../../constants';
+import { useCurrentMemberContext } from '../../context/CurrentMemberContext';
+import { getMention } from '../../utils/mentions';
 
 const useStyles = makeStyles((theme) => ({
   messageParagraphs: {

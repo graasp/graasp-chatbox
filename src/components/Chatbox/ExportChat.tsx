@@ -10,14 +10,18 @@ import { GetApp } from '@material-ui/icons';
 
 import { Button } from '@graasp/ui';
 
-import { exportChatButtonCypress } from '../config/selectors';
+import { exportChatButtonCypress } from '../../config/selectors';
 import {
   DEFAULT_USER_NAME,
   EXPORT_CSV_HEADERS,
   EXPORT_DATE_FORMAT,
-} from '../constants';
-import { useMessagesContext } from '../context/MessagesContext';
-import { ExportedChatMessage, ToolVariants, ToolVariantsType } from '../types';
+} from '../../constants';
+import { useMessagesContext } from '../../context/MessagesContext';
+import {
+  ExportedChatMessage,
+  ToolVariants,
+  ToolVariantsType,
+} from '../../types';
 
 const useStyles = makeStyles({
   link: {

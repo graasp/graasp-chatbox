@@ -13,7 +13,7 @@ import { Button } from '@graasp/ui';
 import {
   cancelDialogButtonCypress,
   confirmDialogButtonCypress,
-} from '../../config/selectors';
+} from '../../../config/selectors';
 
 type Props = {
   open: boolean;

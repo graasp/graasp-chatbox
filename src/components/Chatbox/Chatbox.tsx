@@ -11,17 +11,17 @@ import {
 } from '@graasp/query-client/dist/src/types';
 import buildI18n, { langs, namespaces } from '@graasp/translations';
 
-import { CurrentMemberContextProvider } from '../context/CurrentMemberContext';
-import { EditingContextProvider } from '../context/EditingContext';
-import { HooksContextProvider } from '../context/HooksContext';
-import { MessagesContextProvider } from '../context/MessagesContext';
+import { CurrentMemberContextProvider } from '../../context/CurrentMemberContext';
+import { EditingContextProvider } from '../../context/EditingContext';
+import { HooksContextProvider } from '../../context/HooksContext';
+import { MessagesContextProvider } from '../../context/MessagesContext';
 import type {
   ChatMessage,
   ClearChatHookType,
   ImmutableMember,
   Member,
-} from '../types';
-import { AvatarHookType } from '../types';
+} from '../../types';
+import { AvatarHookType } from '../../types';
 import AdminTools from './AdminTools';
 import Header from './Header';
 import InputBar from './InputBar';

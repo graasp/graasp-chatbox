@@ -9,7 +9,7 @@ import ChatIcon from '@material-ui/icons/Chat';
 
 import { CHATBOX } from '@graasp/translations';
 
-import { HEADER_HEIGHT } from '../constants';
+import { HEADER_HEIGHT } from '../../constants';
 import ExportChat from './ExportChat';
 
 const useStyles = makeStyles((theme) => ({

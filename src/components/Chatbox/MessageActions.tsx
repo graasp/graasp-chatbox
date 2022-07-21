@@ -18,10 +18,10 @@ import {
   deleteMenuItemCypress,
   editMenuItemCypress,
   messageActionsButtonCypress,
-} from '../config/selectors';
-import { LIST_ICON_MIN_WIDTH } from '../constants';
-import { useEditingContext } from '../context/EditingContext';
-import { ChatMessage } from '../types';
+} from '../../config/selectors';
+import { LIST_ICON_MIN_WIDTH } from '../../constants';
+import { useEditingContext } from '../../context/EditingContext';
+import { ChatMessage } from '../../types';
 
 type Props = {
   message: ChatMessage;
