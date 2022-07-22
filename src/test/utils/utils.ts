@@ -1,5 +1,4 @@
 import Papa from 'papaparse';
-import path from 'path';
 
 import { EXPORT_CSV_HEADERS } from '../../constants';
 
@@ -18,7 +17,7 @@ export const verifyDownloadedChat = (
 ): void => {
   // get file from download folder
   const downloadsFolder = Cypress.config('downloadsFolder');
-  const filename = path.join(downloadsFolder, name);
+  const filename = [downloadsFolder, name].join('/');
   cy.readFile(filename, 'utf-8').then((csvString) => {
     // parse CSV data with headers
     const { data, meta } = Papa.parse(csvString, { header: true });

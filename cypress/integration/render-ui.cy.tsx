@@ -1,24 +1,23 @@
+/// <reference types="./cypress"/>
 import { List } from 'immutable';
 import { v4 } from 'uuid';
 
-import { mount } from '@cypress/react';
-
-import { CHAT_ID, CHAT_MESSAGES } from '../../cypress/fixtures/chat_messages';
-import { MEMBERS } from '../../cypress/fixtures/members';
-import { mockUseAvatar } from '../../cypress/fixtures/mockHooks';
-import Chatbox from '../components/Chatbox/Chatbox';
+import { ImmutableMember, Member } from '../../src';
+import Chatbox from '../../src/components/Chatbox/Chatbox';
 import {
   dataCyWrapper,
   exportChatButtonCypress,
   inputTextFieldTextAreaCypress,
   messageIdCyWrapper,
   messagesContainerCypress,
-} from '../config/selectors';
-import { ImmutableMember, Member } from '../types';
+} from '../../src/config/selectors';
+import { CHAT_ID, CHAT_MESSAGES } from '../fixtures/chat_messages';
+import { MEMBERS } from '../fixtures/members';
+import { mockUseAvatar } from '../fixtures/mockHooks';
 
 describe('Render Avatar', () => {
   beforeEach(() => {
-    mount(
+    cy.mount(
       <Chatbox
         chatId={CHAT_ID}
         currentMember={new ImmutableMember(MEMBERS.ANNA)}
@@ -30,7 +29,7 @@ describe('Render Avatar', () => {
 
   it('should call avatar hook', () => {
     const { hook: fakeHook, name: fakeHookName } = mockUseAvatar();
-    mount(
+    cy.mount(
       <Chatbox
         chatId={CHAT_ID}
         currentMember={new ImmutableMember(MEMBERS.ANNA)}
@@ -45,7 +44,7 @@ describe('Render Avatar', () => {
 
 describe('Autofocus input field', () => {
   it('should autofocus input field on first render', () => {
-    mount(
+    cy.mount(
       <Chatbox
         chatId={CHAT_ID}
         currentMember={new ImmutableMember(MEMBERS.ANNA)}
@@ -62,7 +61,7 @@ describe('Messages container', () => {
   it('should scroll when there are a lot of messages', () => {
     const firstId = v4();
     const lastId = v4();
-    mount(
+    cy.mount(
       <Chatbox
         chatId={CHAT_ID}
         currentMember={new ImmutableMember(MEMBERS.ANNA)}
@@ -92,7 +91,7 @@ describe('Messages container', () => {
 
 describe('Export Chat button', () => {
   it('should show export button', () => {
-    mount(
+    cy.mount(
       <Chatbox
         chatId={CHAT_ID}
         currentMember={new ImmutableMember(MEMBERS.ANNA)}
@@ -106,7 +105,7 @@ describe('Export Chat button', () => {
   });
 
   it('should not show button when chat is empty', () => {
-    mount(
+    cy.mount(
       <Chatbox
         chatId={CHAT_ID}
         currentMember={new ImmutableMember(MEMBERS.ANNA)}
@@ -119,7 +118,7 @@ describe('Export Chat button', () => {
   });
 
   it('should not show export button', () => {
-    mount(
+    cy.mount(
       <Chatbox
         chatId={CHAT_ID}
         currentMember={new ImmutableMember(MEMBERS.ANNA)}

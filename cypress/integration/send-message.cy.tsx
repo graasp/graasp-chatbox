@@ -1,29 +1,28 @@
+/// <reference types="./cypress"/>
 import { List } from 'immutable';
 
-import { mount } from '@cypress/react';
-
-import {
-  CHAT_ID,
-  CHAT_MESSAGES,
-  LONG_COMMENT,
-  SHORT_COMMENT,
-  spyMethod,
-} from '../../cypress/fixtures/chat_messages';
-import { MEMBERS } from '../../cypress/fixtures/members';
-import Chatbox from '../components/Chatbox/Chatbox';
+import { ImmutableMember, Member } from '../../src';
+import Chatbox from '../../src/components/Chatbox/Chatbox';
 import {
   charCounterCypress,
   dataCyWrapper,
   inputTextFieldCypress,
   inputTextFieldTextAreaCypress,
   sendButtonCypress,
-} from '../config/selectors';
-import { HARD_MAX_MESSAGE_LENGTH } from '../constants';
-import { ImmutableMember, Member } from '../index';
+} from '../../src/config/selectors';
+import { HARD_MAX_MESSAGE_LENGTH } from '../../src/constants';
+import {
+  CHAT_ID,
+  CHAT_MESSAGES,
+  LONG_COMMENT,
+  SHORT_COMMENT,
+  spyMethod,
+} from '../fixtures/chat_messages';
+import { MEMBERS } from '../fixtures/members';
 
 describe('Enter text', () => {
   beforeEach(() => {
-    mount(
+    cy.mount(
       <Chatbox
         chatId={CHAT_ID}
         currentMember={new ImmutableMember(MEMBERS.ANNA)}
@@ -54,7 +53,7 @@ describe('Send message', () => {
   it('should send a message with click', () => {
     const inputText = 'Hello there';
     const sendMessageSpy = spyMethod('spyMethod');
-    mount(
+    cy.mount(
       <Chatbox
         chatId={CHAT_ID}
         currentMember={new ImmutableMember(MEMBERS.ANNA)}
@@ -71,7 +70,7 @@ describe('Send message', () => {
   it('should send a message with enter', function () {
     const inputText = 'Hello there';
     const sendMessageSpy = spyMethod('spyMethod');
-    mount(
+    cy.mount(
       <Chatbox
         chatId={CHAT_ID}
         currentMember={new ImmutableMember(MEMBERS.ANNA)}
@@ -91,7 +90,7 @@ describe('Message Length', () => {
   let sendMessageSpy;
   beforeEach(() => {
     sendMessageSpy = spyMethod('spyMethod');
-    mount(
+    cy.mount(
       <Chatbox
         chatId={CHAT_ID}
         currentMember={new ImmutableMember(MEMBERS.ANNA)}

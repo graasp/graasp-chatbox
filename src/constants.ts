@@ -28,7 +28,7 @@ export const EXPORT_CSV_HEADERS = [
 ];
 
 export const SIDE_PANE_WIDTH = 290;
-export const SIDE_PANE_HEIGHT = 512;
+export const SIDE_PANE_HEIGHT = 800;
 
 export const ICON_VARIANT = 'icon';
 export const BUTTON_VARIANT = 'button';

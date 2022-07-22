@@ -36,8 +36,8 @@
     "hooks:install": "husky install",
     "predeploy": "cd example && yarn install && yarn build",
     "release": "standard-version",
-    "cypress:open": "cypress open-ct",
-    "cypress:ci": "cypress run-ct"
+    "cypress:open": "cypress open",
+    "cypress:ci": "cypress run --component"
   },
   "peerDependencies": {
     "@material-ui/core": "*",
@@ -97,7 +97,7 @@
     "@typescript-eslint/eslint-plugin": "5.30.7",
     "@typescript-eslint/parser": "5.30.7",
     "cross-env": "7.0.3",
-    "cypress": "9.5.3",
+    "cypress": "10",
     "enzyme": "3.11.0",
     "enzyme-adapter-react-16": "1.15.6",
     "enzyme-to-json": "3.6.2",
@@ -112,7 +112,6 @@
     "husky": "8.0.1",
     "jest": "27.4.7",
     "papaparse": "5.3.2",
-    "path-browserify": "1.0.1",
     "prettier": "2.7.1",
     "react": "17.0.2",
     "react-dom": "17.0.2",
