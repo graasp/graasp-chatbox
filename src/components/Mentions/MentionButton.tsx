@@ -2,14 +2,7 @@ import { List, RecordOf } from 'immutable';
 
 import { FC, useState } from 'react';
 
-import {
-  Badge,
-  Dialog,
-  DialogContent,
-  DialogTitle,
-  IconButton,
-  makeStyles,
-} from '@material-ui/core';
+import { Badge, IconButton, makeStyles } from '@material-ui/core';
 import { Notifications } from '@material-ui/icons';
 
 import {
@@ -19,6 +12,7 @@ import {
 import { Member } from '@graasp/ui/dist/types';
 
 import MentionsDialog from './MentionsDialog';
+import MentionsTable from './MentionsTable';
 
 const useStyles = makeStyles((theme) => ({
   badge: {
@@ -35,6 +29,7 @@ type Props = {
   useMembers: (memberIds: string[]) => { data?: List<Member> };
   patchMentionFunction: (args: { id: string; status: string }) => void;
   deleteMentionFunction: (id: string) => void;
+  clearAllMentionsFunction: () => void;
 };
 
 const MentionButton: FC<Props> = ({
@@ -42,6 +37,7 @@ const MentionButton: FC<Props> = ({
   useMembers,
   patchMentionFunction,
   deleteMentionFunction,
+  clearAllMentionsFunction,
 }) => {
   const classes = useStyles();
 
@@ -72,16 +68,18 @@ const MentionButton: FC<Props> = ({
           <Notifications color="primary" />
         </Badge>
       </IconButton>
-      <Dialog open={open} onClose={(): void => setOpen(false)}>
-        <DialogTitle>Notifications</DialogTitle>
-        <DialogContent>
-          <MentionsDialog
+      <MentionsDialog
+        content={
+          <MentionsTable
             mentions={mentionsWithMembers}
             patchMention={patchMentionFunction}
             deleteMention={deleteMentionFunction}
+            clearAllMentions={clearAllMentionsFunction}
           />
-        </DialogContent>
-      </Dialog>
+        }
+        open={open}
+        setOpen={setOpen}
+      />
     </div>
   );
 };

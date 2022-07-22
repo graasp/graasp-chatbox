@@ -25,9 +25,7 @@ import {
 import { hooks, useMutation } from '../config/queryClient';
 import ChatboxWrapper from './ChatboxWrapper';
 
-type Props = {};
-
-const ChatboxTest: FC<Props> = () => {
+const ChatboxTest: FC = () => {
   const [testWidth, setTestWidth] = useState(GRAASP_PANEL_WIDTH);
   const [showTools, setShowTools] = useState(false);
   const [lang, setLang] = useState(DEFAULT_LANG);
@@ -66,22 +64,37 @@ const ChatboxTest: FC<Props> = () => {
   }));
 
   const classes = useStyles();
-
+  const { data: currentMember } = hooks.useCurrentMember();
+  const memberId = currentMember?.get('id') as string;
   // mutations to handle the mentions
-  const { mutate: patchMentionFunction } = useMutation<
+  const { mutate: patchMentionMutate } = useMutation<
     ChatMention,
     unknown,
-    { id: string; status: string }
+    { memberId: string; id: string; status: string }
   >(MUTATION_KEYS.PATCH_MENTION);
-  const { mutate: deleteMentionFunction } = useMutation<
+  const patchMentionFunction = (args: { id: string; status: string }): void =>
+    patchMentionMutate({ memberId, ...args });
+  const { mutate: deleteMentionMutate } = useMutation<
     ChatMention,
     unknown,
-    string
+    { memberId: string; mentionId: string }
   >(MUTATION_KEYS.DELETE_MENTION);
+  const deleteMentionFunction = (mentionId: string): void =>
+    deleteMentionMutate({ memberId, mentionId });
+  const { mutate: clearAllMentionsMutate } = useMutation<
+    ChatMention[],
+    unknown,
+    { memberId: string }
+  >(MUTATION_KEYS.CLEAR_MENTIONS);
+  const clearAllMentionsFunction = (): void =>
+    clearAllMentionsMutate({ memberId });
 
   // adapt the width of the chatbox to simulate the width used on Graasp
-  const onChangePanelWidth = (_: unknown, newValue: number | number[]) => {
-    if (typeof newValue == 'number') {
+  const onChangePanelWidth = (
+    _: unknown,
+    newValue: number | number[],
+  ): void => {
+    if (typeof newValue === 'number') {
       setTestWidth(newValue);
     } else {
       setTestWidth(0);
@@ -100,7 +113,7 @@ const ChatboxTest: FC<Props> = () => {
               variant="outlined"
               value={chatId}
               fullWidth
-              onChange={({ target }) => setChatId(target.value)}
+              onChange={({ target }): void => setChatId(target.value)}
             />
           }
           label={'Chat Id'}
@@ -111,7 +124,7 @@ const ChatboxTest: FC<Props> = () => {
           <RadioGroup
             aria-label="language"
             value={lang}
-            onChange={({ target }) => setLang(target.value)}
+            onChange={({ target }): void => setLang(target.value)}
           >
             <FormControlLabel value="fr" control={<Radio />} label={'French'} />
             <FormControlLabel
@@ -127,7 +140,7 @@ const ChatboxTest: FC<Props> = () => {
             control={
               <Checkbox
                 value={showTools}
-                onChange={() => setShowTools(!showTools)}
+                onChange={(): void => setShowTools(!showTools)}
               />
             }
             label={'Show Admin tools'}
@@ -152,6 +165,7 @@ const ChatboxTest: FC<Props> = () => {
           useMembers={hooks.useMembers}
           patchMentionFunction={patchMentionFunction}
           deleteMentionFunction={deleteMentionFunction}
+          clearAllMentionsFunction={clearAllMentionsFunction}
         />
       </div>
       <div className={classes.chatboxContainer}>

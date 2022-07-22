@@ -1,3 +1,5 @@
+import { ReactElement } from 'react';
+
 import ChatboxTest from './components/ChatboxTest';
 import {
   QueryClientProvider,
@@ -5,7 +7,7 @@ import {
   queryClient,
 } from './config/queryClient';
 
-const App = () => {
+const App = (): ReactElement => {
   return (
     <QueryClientProvider client={queryClient}>
       <ChatboxTest />

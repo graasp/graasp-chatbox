@@ -31,7 +31,7 @@ import {
 } from '../../constants';
 import { useCurrentMemberContext } from '../../context/CurrentMemberContext';
 import { useMessagesContext } from '../../context/MessagesContext';
-import { getAllMentions } from '../../utils/mentions';
+import { getAllMentions, normalizeMentions } from '../../utils/mentions';
 
 type Props = {
   id?: string;
@@ -174,9 +174,10 @@ const Input: FC<Props> = ({
     // when the textInput is empty, return a text with just a whitespace
     // to keep the height of the element the same
     let helperText = ' ';
+    const normalizedTextInput = normalizeMentions(textInput);
     if (textInput) {
       helperText =
-        textInput.length +
+        normalizedTextInput.length +
         (isMessageTooLong ? ` (max. ${HARD_MAX_MESSAGE_LENGTH} chars)` : '');
     }
     return (

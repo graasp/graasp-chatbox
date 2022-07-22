@@ -121,7 +121,6 @@ const MessageBody: FC<Props> = ({ messageBody }) => {
         {({ className, tokens, getLineProps, getTokenProps }): ReactElement => (
           <div className={className}>
             {tokens.map((line, i) => (
-              // eslint-disable-next-line react/jsx-key
               <div
                 {...getLineProps({
                   line,
@@ -129,7 +128,6 @@ const MessageBody: FC<Props> = ({ messageBody }) => {
                 })}
               >
                 {line.map((token, key) => (
-                  // eslint-disable-next-line react/jsx-key
                   <span
                     {...getTokenProps({
                       token,

@@ -55,7 +55,7 @@ const ExportChat: FC<Props> = ({ variant = ToolVariants.ICON, text }) => {
         DEFAULT_USER_NAME;
       return {
         ...message,
-        body: normalizeMentions(message.body)!,
+        body: normalizeMentions(message.body),
         creatorName,
       };
     });

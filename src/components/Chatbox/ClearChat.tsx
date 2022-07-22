@@ -11,8 +11,8 @@ import { clearChatButtonCypress } from '../../config/selectors';
 import { useHooksContext } from '../../context/HooksContext';
 import { useMessagesContext } from '../../context/MessagesContext';
 import { ToolVariants, ToolVariantsType } from '../../types';
+import ConfirmationDialog from '../common/ConfirmationDialog';
 import ExportChat from './ExportChat';
-import ConfirmationDialog from './common/ConfirmationDialog';
 
 type Prop = {
   variant?: ToolVariantsType;

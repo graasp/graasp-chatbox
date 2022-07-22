@@ -18,5 +18,5 @@ export const getAllMentions = (
   return arr.filter(({ id, name }) => id && name);
 };
 
-export const normalizeMentions = (message?: string): string | undefined =>
-  message?.replaceAll(new RegExp(mentionCodeRegEx, 'g'), '@$<name>');
+export const normalizeMentions = (message: string): string =>
+  message.replaceAll(new RegExp(mentionCodeRegEx, 'g'), '@$<name>');

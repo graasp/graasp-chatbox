@@ -47,7 +47,7 @@ const useStyles = makeStyles((theme) => ({
 
 type Props = {
   onClose: () => void;
-  editedText?: string;
+  editedText: string;
 };
 
 const EditBanner: FC<Props> = ({ onClose, editedText }) => {
