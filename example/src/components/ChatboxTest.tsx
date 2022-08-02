@@ -161,6 +161,7 @@ const ChatboxTest: FC = () => {
           />
         </FormControl>
         <MentionButton
+          color={'primary'}
           useMentions={hooks.useMentions}
           useMembers={hooks.useMembers}
           patchMentionFunction={patchMentionFunction}

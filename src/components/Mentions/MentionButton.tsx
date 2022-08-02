@@ -23,6 +23,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 type Props = {
+  color?: 'primary' | 'secondary';
   useMentions: (options?: { getUpdates?: boolean | undefined } | undefined) => {
     data?: RecordOf<MemberMentions>;
   };
@@ -33,6 +34,7 @@ type Props = {
 };
 
 const MentionButton: FC<Props> = ({
+  color = 'primary',
   useMentions,
   useMembers,
   patchMentionFunction,
@@ -62,10 +64,10 @@ const MentionButton: FC<Props> = ({
         <Badge
           className={classes.badge}
           overlap="circular"
-          color="secondary"
+          color={color}
           badgeContent={mentions.filter((m) => m.status === 'unread').length}
         >
-          <Notifications color="primary" />
+          <Notifications color={color} />
         </Badge>
       </IconButton>
       <MentionsDialog
