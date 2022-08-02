@@ -2,9 +2,17 @@ import React, { FC, ReactElement } from 'react';
 
 import { ImmutableMember } from '../types';
 
-export const CurrentMemberContext = React.createContext(new ImmutableMember());
+export type CurrentMemberContextType = {
+  id: string;
+  name: string;
+  type: string;
+};
 
-export type CurrentMemberContextType = ImmutableMember;
+export const CurrentMemberContext = React.createContext({
+  id: '',
+  name: '',
+  type: '',
+});
 
 type Props = {
   children: ReactElement | ReactElement[];
@@ -16,7 +24,9 @@ export const CurrentMemberContextProvider: FC<Props> = ({
   currentMember,
 }) => {
   return (
-    <CurrentMemberContext.Provider value={currentMember}>
+    <CurrentMemberContext.Provider
+      value={currentMember.toJS() as CurrentMemberContextType}
+    >
       {children}
     </CurrentMemberContext.Provider>
   );
