@@ -51,7 +51,7 @@ const MentionsTable: FC<Props> = ({
       >
         <TableCell>
           {m.status === 'unread' ? (
-            <FiberManualRecord fontSize={'small'} color={'secondary'} />
+            <FiberManualRecord fontSize={'small'} color={'primary'} />
           ) : null}
         </TableCell>
         <TableCell>{normalizeMentions(m.message)}</TableCell>
