@@ -14,14 +14,6 @@ import { Member } from '@graasp/ui/dist/types';
 import MentionsDialog from './MentionsDialog';
 import MentionsTable from './MentionsTable';
 
-const useStyles = makeStyles((theme) => ({
-  badge: {
-    '& .MuiBadge-badge': {
-      border: `2px solid ${theme.palette.background.paper}`,
-    },
-  },
-}));
-
 type Props = {
   color?: 'primary' | 'secondary';
   useMentions: (options?: { getUpdates?: boolean | undefined } | undefined) => {
@@ -41,6 +33,17 @@ const MentionButton: FC<Props> = ({
   deleteMentionFunction,
   clearAllMentionsFunction,
 }) => {
+  const useStyles = makeStyles((theme) => ({
+    badge: {
+      '& .MuiBadge-badge': {
+        border: `2px solid ${
+          color === 'primary'
+            ? theme.palette.background.paper
+            : theme.palette.primary.main
+        }`,
+      },
+    },
+  }));
   const classes = useStyles();
 
   const { data: memberMentions } = useMentions();
