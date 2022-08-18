@@ -74,6 +74,7 @@
     "@cypress/instrument-cra": "1.4.0",
     "@cypress/react": "5.12.4",
     "@cypress/webpack-dev-server": "1.8.4",
+    "@graasp/query-client": "github:graasp/graasp-query-client#183/updateChatMessageTypes",
     "@material-ui/core": "4.12.4",
     "@material-ui/icons": "4.11.2",
     "@material-ui/lab": "4.0.0-alpha.60",

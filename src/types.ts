@@ -1,7 +1,8 @@
-import { Record } from 'immutable';
+import { List, Record } from 'immutable';
 
 import { UseQueryResult } from 'react-query';
 
+import { ChatMessageRecord } from '@graasp/query-client/dist/src/types';
 import { UUID } from '@graasp/ui/dist/types';
 
 import { BUTTON_VARIANT, ICON_VARIANT } from './constants';
@@ -20,6 +21,8 @@ export interface ChatMessage {
   updatedAt: string;
   body: string;
 }
+
+export type ChatMessageList = List<ChatMessageRecord>;
 
 export interface ExportedChatMessage extends ChatMessage {
   creatorName: string;

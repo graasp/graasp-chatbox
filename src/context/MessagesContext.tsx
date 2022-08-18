@@ -2,21 +2,21 @@ import { List } from 'immutable';
 
 import React, { FC, ReactElement } from 'react';
 
-import { ChatMessage, Member } from '../types';
+import { ChatMessageList, Member } from '../types';
 
 export const MessagesContext = React.createContext({
   chatId: '',
 });
 
 export type MessagesContextType = {
-  messages?: List<ChatMessage>;
+  messages?: ChatMessageList;
   chatId: string;
   members?: List<Member>;
 };
 
 type Props = {
   children: ReactElement;
-  messages?: List<ChatMessage>;
+  messages?: ChatMessageList;
   chatId: string;
   members?: List<Member>;
 };

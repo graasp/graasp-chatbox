@@ -6,13 +6,16 @@ import { FC, Fragment, useEffect, useRef } from 'react';
 import Box from '@material-ui/core/Box';
 import { makeStyles } from '@material-ui/core/styles';
 
-import { PartialChatMessage } from '@graasp/query-client/dist/src/types';
+import {
+  ChatMessageRecord,
+  PartialChatMessage,
+} from '@graasp/query-client/dist/src/types';
 
 import { messagesContainerCypress } from '../../config/selectors';
 import { DEFAULT_DATE_FORMAT, SAFETY_MARGIN } from '../../constants';
 import { useEditingContext } from '../../context/EditingContext';
 import { useMessagesContext } from '../../context/MessagesContext';
-import type { ChatMessage, ImmutableMember } from '../../types';
+import type { ImmutableMember } from '../../types';
 import Date from './Date';
 import Message from './Message';
 import MessageActions from './MessageActions';
@@ -78,13 +81,11 @@ const Messages: FC<Props> = ({
     }
   }, [ref, messages, open]);
 
-  const isOwn = (message: ChatMessage): boolean =>
+  const isOwn = (message: ChatMessageRecord): boolean =>
     message.creator === currentMember.get('id');
 
   const messagesByDay = messages
-    ?.groupBy(({ createdAt }: ChatMessage) =>
-      moment(createdAt).format(DEFAULT_DATE_FORMAT),
-    )
+    ?.groupBy(({ createdAt }) => moment(createdAt).format(DEFAULT_DATE_FORMAT))
     // transform to array to avoid printing the first key
     .toArray();
 
@@ -98,7 +99,7 @@ const Messages: FC<Props> = ({
         {messagesByDay?.map(([date, m]) => (
           <Fragment key={date}>
             <Date date={date} />
-            {m?.map((message: ChatMessage) => {
+            {m?.map((message) => {
               const isOwnMessage = isOwn(message);
               return (
                 <Box

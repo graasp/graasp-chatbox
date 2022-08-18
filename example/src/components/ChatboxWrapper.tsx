@@ -1,13 +1,6 @@
-import { List } from 'immutable';
-
 import { FC } from 'react';
 
-import Chatbox, {
-  AvatarHookType,
-  ChatMessage,
-  ImmutableMember,
-  Member,
-} from '@graasp/chatbox';
+import Chatbox, { AvatarHookType, ImmutableMember } from '@graasp/chatbox';
 import { MUTATION_KEYS } from '@graasp/query-client';
 import {
   PartialChatMessage,
@@ -35,15 +28,15 @@ const ChatboxWrapper: FC<Props> = ({
   const { data: currentMember } = hooks.useCurrentMember();
   const { data: chat } = hooks.useItemChat(chatId);
   // get chat messages
-  const chatMessages = chat?.get('messages') as ChatMessage[];
+  const chatMessages = chat?.messages;
 
   // get id of member that posted messages in the chat
-  const memberIds = Array.from(
+  const memberIds: string[] = Array.from(
     new Set(chatMessages?.map(({ creator }: { creator: string }) => creator)),
   );
 
   const member = new ImmutableMember(currentMember);
-  const members = hooks.useMembers(memberIds).data as List<Member>;
+  const members = hooks.useMembers(memberIds).data;
 
   const {
     mutate: sendMessage,
@@ -72,7 +65,7 @@ const ChatboxWrapper: FC<Props> = ({
       showAdminTools={showAdminTools}
       currentMember={member}
       members={members}
-      messages={List(chatMessages)}
+      messages={chatMessages}
       sendMessageFunction={sendMessage}
       deleteMessageFunction={deleteMessage}
       editMessageFunction={editMessage}

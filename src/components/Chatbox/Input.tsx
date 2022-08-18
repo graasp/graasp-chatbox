@@ -58,36 +58,34 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const inputStyle = {
-  width: '100%',
   // mentions
   control: {
-    // fontFamily: 'monospace',
-    minHeight: 63,
+    minHeight: '63px',
   },
   input: {
-    padding: 9,
+    padding: '9px',
     border: '1px solid silver',
     width: '100%',
     overflow: 'auto',
-    height: 70,
+    height: '70px',
     borderRadius: '4px',
   },
   highlighter: {
-    padding: 9,
+    padding: '9px',
     border: '1px solid transparent',
     boxSizing: 'border-box',
     overflow: 'hidden',
-    height: 70,
+    height: '70px',
   },
 
   suggestions: {
     list: {
       backgroundColor: 'white',
       border: '1px solid rgba(0,0,0,0.15)',
-      fontSize: 14,
+      fontSize: '1rem',
     },
     item: {
-      padding: '5px 15px',
+      padding: '15px 20px',
       borderBottom: '1px solid rgba(0,0,0,0.15)',
       '&focused': {
         backgroundColor: '#cee4e5',

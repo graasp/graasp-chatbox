@@ -168,16 +168,6 @@ const ChatboxTest: FC = () => {
           deleteMentionFunction={deleteMentionFunction}
           clearAllMentionsFunction={clearAllMentionsFunction}
         />
-        <div style={{ backgroundColor: '#5050d2' }}>
-          <MentionButton
-            color={'secondary'}
-            useMentions={hooks.useMentions}
-            useMembers={hooks.useMembers}
-            patchMentionFunction={patchMentionFunction}
-            deleteMentionFunction={deleteMentionFunction}
-            clearAllMentionsFunction={clearAllMentionsFunction}
-          />
-        </div>
       </div>
       <div className={classes.chatboxContainer}>
         <ChatboxWrapper

@@ -2159,6 +2159,7 @@ __metadata:
     "@cypress/instrument-cra": 1.4.0
     "@cypress/react": 5.12.4
     "@cypress/webpack-dev-server": 1.8.4
+    "@graasp/query-client": "github:graasp/graasp-query-client#183/updateChatMessageTypes"
     "@graasp/translations": "github:graasp/graasp-translations.git"
     "@graasp/ui": "github:graasp/graasp-ui"
     "@material-ui/core": 4.12.4
@@ -2239,7 +2240,7 @@ __metadata:
 
 "@graasp/query-client@github:graasp/graasp-query-client#183/updateChatMessageTypes":
   version: 0.1.0
-  resolution: "@graasp/query-client@https://github.com/graasp/graasp-query-client.git#commit=106754df67be896ce2ea471fbcc21738e63ec6ba"
+  resolution: "@graasp/query-client@https://github.com/graasp/graasp-query-client.git#commit=250e438135bee65b0d4ea978231399f711f387a4"
   dependencies:
     "@graasp/translations": "github:graasp/graasp-translations.git"
     "@graasp/utils": "github:graasp/graasp-utils.git"
@@ -2247,13 +2248,14 @@ __metadata:
     crypto-js: 4.1.1
     http-status-codes: 2.2.0
     immutable: 4.0.0
+    jest-immutable-matchers: 3.0.0
     js-cookie: 3.0.1
     qs: 6.10.3
     react-query: 3.34.19
     uuid: 8.3.2
   peerDependencies:
     react: ^17.0.0
-  checksum: 6a02a329697fc54920f9b25667b026be37b811d6399deac6e3f575fd62b1e64b25ca07846f40bf1117941c6048b20023f892c1bcef7ffff6e8cc7336c5999774
+  checksum: 064784e7543d62fffc8122b465a8109acaef1a331e735fed04ad7322870210857be0475cb1fac149e9f21485d6c6d56677504347e6a1d5277a8d764c929e1548
   languageName: node
   linkType: hard
 
@@ -11102,6 +11104,16 @@ __metadata:
     fsevents:
       optional: true
   checksum: e092a1412829a9254b4725531ee72926de530f77fda7b0d9ea18008fb7623c16f72e772d8e93be71cac9e591b2c6843a669610887dd2c89bd9eb528856e3ab47
+  languageName: node
+  linkType: hard
+
+"jest-immutable-matchers@npm:3.0.0":
+  version: 3.0.0
+  resolution: "jest-immutable-matchers@npm:3.0.0"
+  peerDependencies:
+    immutable: ">=3.0.0"
+    jest: ">=21.0.0"
+  checksum: 28c30e0bdb1637e3e1bf4a2b6f02cbc66ba6f3b4cb2c204968d13c591e0fabfdd0b68ee5fc1af49ba23ad702c0543676d7e70a6d19100193d2fafb1e7eb5621f
   languageName: node
   linkType: hard
 

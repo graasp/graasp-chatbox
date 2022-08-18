@@ -1,13 +1,14 @@
-import { List, RecordOf } from 'immutable';
+import { List } from 'immutable';
 
 import { FC, useState } from 'react';
+import { QueryObserverResult } from 'react-query';
 
 import { Badge, IconButton, makeStyles } from '@material-ui/core';
 import { Notifications } from '@material-ui/icons';
 
 import {
-  ChatMention,
-  MemberMentions,
+  MemberMentionsRecord,
+  MemberRecord,
 } from '@graasp/query-client/dist/src/types';
 import { Member } from '@graasp/ui/dist/types';
 
@@ -16,10 +17,10 @@ import MentionsTable from './MentionsTable';
 
 type Props = {
   color?: 'primary' | 'secondary';
-  useMentions: (options?: { getUpdates?: boolean | undefined } | undefined) => {
-    data?: RecordOf<MemberMentions>;
-  };
-  useMembers: (memberIds: string[]) => { data?: List<Member> };
+  useMentions: (
+    options?: { getUpdates?: boolean | undefined } | undefined,
+  ) => QueryObserverResult<MemberMentionsRecord>;
+  useMembers: (memberIds: string[]) => QueryObserverResult<List<MemberRecord>>;
   patchMentionFunction: (args: { id: string; status: string }) => void;
   deleteMentionFunction: (id: string) => void;
   clearAllMentionsFunction: () => void;
@@ -47,17 +48,19 @@ const MentionButton: FC<Props> = ({
   const classes = useStyles();
 
   const { data: memberMentions } = useMentions();
-  const mentions = memberMentions?.get('mentions') || ([] as ChatMention[]);
+  const mentions = memberMentions?.mentions;
 
   // get member ids from the mentions
-  const memberIds = Array.from(new Set(mentions.map((m) => m.creator)));
+  const memberIds = Array.from(new Set(mentions?.map((m) => m.creator)));
   const { data: members = List<Member>() } = useMembers(memberIds);
 
   // add member names to mentions
-  const mentionsWithMembers = mentions.map((m) => ({
-    ...m,
-    creator: members.find((u) => u.id === m.creator)?.name || 'Anonymous',
-  }));
+  const mentionsWithMembers = mentions?.map((m) => {
+    return m.update(
+      'creator',
+      () => members.find((u) => u.id === m.creator)?.name || 'Anonymous',
+    );
+  });
 
   const [open, setOpen] = useState(false);
 
@@ -68,7 +71,9 @@ const MentionButton: FC<Props> = ({
           className={classes.badge}
           overlap="circular"
           color={color}
-          badgeContent={mentions.filter((m) => m.status === 'unread').length}
+          badgeContent={
+            mentions?.filter((m) => m.status === 'unread')?.size || 0
+          }
         >
           <Notifications color={color} />
         </Badge>
