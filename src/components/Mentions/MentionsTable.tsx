@@ -15,6 +15,7 @@ import {
 import { Check, Close, FiberManualRecord } from '@material-ui/icons';
 
 import { ChatMentionRecord } from '@graasp/query-client/dist/src/types';
+import { MentionStatus } from '@graasp/sdk';
 import { Button } from '@graasp/ui';
 
 import { normalizeMentions } from '../../utils/mentions';
@@ -35,7 +36,7 @@ const MentionsTable: FC<Props> = ({
 }) => {
   const [openConfirmation, setOpenConfirmation] = useState(false);
   const markAsRead = (id: string): void => {
-    patchMention({ id: id, status: 'read' });
+    patchMention({ id: id, status: MentionStatus.READ });
   };
 
   const renderMentionTableContent = (): ReactElement | ReactElement[] => {
@@ -53,7 +54,7 @@ const MentionsTable: FC<Props> = ({
           onClick={(): void => console.log('go to item', m.itemPath)}
         >
           <TableCell>
-            {m.status === 'unread' ? (
+            {m.status === MentionStatus.UNREAD ? (
               <FiberManualRecord fontSize={'small'} color={'primary'} />
             ) : null}
           </TableCell>
@@ -94,10 +95,8 @@ const MentionsTable: FC<Props> = ({
           </TableCell>
         </TableRow>
       ))
-      .toJS() as ReactElement[];
+      .toArray();
   };
-
-  console.log(mentions?.toJS());
 
   return (
     <Grid container direction="column">
@@ -106,8 +105,10 @@ const MentionsTable: FC<Props> = ({
           variant="outlined"
           onClick={(): void => {
             mentions
-              ?.filter((m) => m.status === 'unread')
-              .map((m) => patchMention({ id: m.id, status: 'read' }));
+              ?.filter((m) => m.status === MentionStatus.UNREAD)
+              .map((m) =>
+                patchMention({ id: m.id, status: MentionStatus.READ }),
+              );
           }}
         >
           Mark All As Read

@@ -10,7 +10,7 @@ import {
   MemberMentionsRecord,
   MemberRecord,
 } from '@graasp/query-client/dist/src/types';
-import { Member } from '@graasp/ui/dist/types';
+import { MentionStatus } from '@graasp/sdk';
 
 import MentionsDialog from './MentionsDialog';
 import MentionsTable from './MentionsTable';
@@ -52,7 +52,7 @@ const MentionButton: FC<Props> = ({
 
   // get member ids from the mentions
   const memberIds = Array.from(new Set(mentions?.map((m) => m.creator)));
-  const { data: members = List<Member>() } = useMembers(memberIds);
+  const { data: members = List<MemberRecord>() } = useMembers(memberIds);
 
   // add member names to mentions
   const mentionsWithMembers = mentions?.map((m) => {
@@ -72,7 +72,8 @@ const MentionButton: FC<Props> = ({
           overlap="circular"
           color={color}
           badgeContent={
-            mentions?.filter((m) => m.status === 'unread')?.size || 0
+            mentions?.filter((m) => m.status === MentionStatus.UNREAD)?.size ||
+            0
           }
         >
           <Notifications color={color} />

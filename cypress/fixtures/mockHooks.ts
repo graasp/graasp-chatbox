@@ -17,3 +17,13 @@ export const mockUseAvatar = (): SpyHookType => ({
     .as(USE_AVATAR_HOOK_NAME),
   name: USE_AVATAR_HOOK_NAME,
 });
+
+// todo
+// export const mockUseMentions = (): QueryObserverResult<List<MemberRecord>> => ({
+//   id: '123',
+//   mentions: [
+//     {
+//       id: '1234',
+//     },
+//   ],
+// });

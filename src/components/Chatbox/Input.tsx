@@ -15,7 +15,10 @@ import IconButton from '@material-ui/core/IconButton';
 import { makeStyles } from '@material-ui/core/styles';
 import SendIcon from '@material-ui/icons/Send';
 
-import { MessageBodyType } from '@graasp/query-client/dist/src/types';
+import {
+  MemberRecord,
+  MessageBodyType,
+} from '@graasp/query-client/dist/src/types';
 import { CHATBOX } from '@graasp/translations';
 
 import {
@@ -58,6 +61,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const inputStyle = {
+  width: '100%',
   // mentions
   control: {
     minHeight: '63px',
@@ -111,15 +115,15 @@ const Input: FC<Props> = ({
   const { id: currentMemberId } = useCurrentMemberContext();
   const { t } = useTranslation();
 
-  const memberSuggestions = [
+  // exclude self from suggestions
+  const membersExcludingSelf: MemberRecord[] =
+    members?.filter((m) => m.id !== currentMemberId)?.toArray() || [];
+  const memberSuggestions: SuggestionDataItem[] = [
     { id: ALL_MEMBERS_ID, display: ALL_MEMBERS_DISPLAY },
-    ...(members
-      // exclude self from suggestions
-      ?.filter((m) => m.id !== currentMemberId)
-      .map((m) => ({ id: m.id, display: m.name }))
-      .toJS() || []),
-  ] as SuggestionDataItem[];
-  // add mention to all
+    ...membersExcludingSelf.map((m) => ({ id: m.id, display: m.name })),
+  ];
+
+  // compute if message exceeds max length
   const isMessageTooLong = textInput.length > HARD_MAX_MESSAGE_LENGTH;
 
   // autofocus on first render
@@ -130,10 +134,10 @@ const Input: FC<Props> = ({
   const onSend = (): void => {
     if (textInput) {
       const mentions = getAllMentions(textInput).map(({ id }) => id);
-      // expand '@all' to all members in mentions array
-      let expandedMentions = mentions;
-      if (mentions.includes(ALL_MEMBERS_ID)) {
-        expandedMentions = members?.map((m) => m.id).toJS() as string[];
+      let expandedMentions: string[] = mentions;
+      // expand '@all' to all members in mentions array (skip if there are no members)
+      if (mentions.includes(ALL_MEMBERS_ID) && members?.size) {
+        expandedMentions = members.map((m) => m.id).toArray();
       }
       sendMessageFunction?.({ message: textInput, mentions: expandedMentions });
       // reset input content
