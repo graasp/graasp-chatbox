@@ -27,13 +27,12 @@ const ChatboxWrapper: FC<Props> = ({
   // use kooks
   const { data: currentMember } = hooks.useCurrentMember();
   const { data: chat } = hooks.useItemChat(chatId);
+  const memberships = hooks.useItemMemberships(chatId).data;
   // get chat messages
   const chatMessages = chat?.messages;
 
-  // get id of member that posted messages in the chat
-  const memberIds: string[] = Array.from(
-    new Set(chatMessages?.map(({ creator }: { creator: string }) => creator)),
-  );
+  const memberIds: string[] =
+    memberships?.map((m) => m.memberId)?.toArray() || [];
 
   const member = new ImmutableMember(currentMember);
   const members = hooks.useMembers(memberIds).data;

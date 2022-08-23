@@ -9,7 +9,7 @@ import {
   SuggestionDataItem,
 } from 'react-mentions';
 
-import { Typography } from '@material-ui/core';
+import { Typography, useTheme } from '@material-ui/core';
 import Box from '@material-ui/core/Box';
 import IconButton from '@material-ui/core/IconButton';
 import { makeStyles } from '@material-ui/core/styles';
@@ -60,46 +60,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const inputStyle = {
-  width: '100%',
-  // mentions
-  control: {
-    minHeight: '63px',
-  },
-  input: {
-    padding: '9px',
-    border: '1px solid silver',
-    width: '100%',
-    overflow: 'auto',
-    height: '70px',
-    borderRadius: '4px',
-  },
-  highlighter: {
-    padding: '9px',
-    border: '1px solid transparent',
-    boxSizing: 'border-box',
-    overflow: 'hidden',
-    height: '70px',
-  },
-
-  suggestions: {
-    list: {
-      backgroundColor: 'white',
-      border: '1px solid rgba(0,0,0,0.15)',
-      fontSize: '1rem',
-    },
-    item: {
-      padding: '15px 20px',
-      borderBottom: '1px solid rgba(0,0,0,0.15)',
-      '&focused': {
-        backgroundColor: '#cee4e5',
-      },
-    },
-  },
-};
-
 const mentionStyle = {
-  backgroundColor: '#c5c9e8',
+  backgroundColor: '#b9b9ed',
 };
 
 const Input: FC<Props> = ({
@@ -110,6 +72,60 @@ const Input: FC<Props> = ({
   placeholder,
   sendMessageFunction,
 }) => {
+  // use mui theme for the mentions component
+  // we can not use 'useStyles' with it because it requests an object for the styles
+  const theme = useTheme();
+  // padding for the input field, needs to match the padding for the overlay
+  // in the 'highlighter' key
+  const inputPadding = theme.spacing(1);
+  const inputRadius = theme.spacing(0.5);
+  const inputStyle = {
+    width: '100%',
+    minWidth: '0px',
+    // mentions
+    control: {
+      minHeight: '63px',
+    },
+    input: {
+      padding: inputPadding,
+      border: '1px solid silver',
+      width: '100%',
+      overflow: 'auto',
+      height: '70px',
+      borderRadius: inputRadius,
+    },
+    highlighter: {
+      padding: inputPadding,
+      border: '1px solid transparent',
+      boxSizing: 'border-box',
+      overflow: 'hidden',
+      height: '70px',
+    },
+
+    suggestions: {
+      // hides the sharp corners
+      overflow: 'hidden',
+      borderRadius: inputRadius,
+      list: {
+        // hides the sharp corners
+        overflow: 'hidden',
+        backgroundColor: 'white',
+        fontSize: '1rem',
+        border: '1px solid rgba(0,0,0,0.15)',
+        borderRadius: inputRadius,
+      },
+      item: {
+        display: {
+          // change the style of the suggestions
+        },
+        padding: theme.spacing(0.5, 2),
+        '&focused': {
+          backgroundColor: '#b9b9ed',
+        },
+      },
+    },
+  };
+
   const classes = useStyles();
   const { members } = useMessagesContext();
   const { id: currentMemberId } = useCurrentMemberContext();
@@ -178,9 +194,13 @@ const Input: FC<Props> = ({
     let helperText = ' ';
     const normalizedTextInput = normalizeMentions(textInput);
     if (textInput) {
-      helperText =
-        normalizedTextInput.length +
-        (isMessageTooLong ? ` (max. ${HARD_MAX_MESSAGE_LENGTH} chars)` : '');
+      helperText = normalizedTextInput.length.toString();
+      // append the max message size
+      if (isMessageTooLong) {
+        helperText += t(CHATBOX.INPUT_MESSAGE_TOO_LONG, {
+          length: HARD_MAX_MESSAGE_LENGTH,
+        });
+      }
     }
     return (
       <Typography
@@ -213,7 +233,7 @@ const Input: FC<Props> = ({
           onKeyDown={keyDown}
           style={inputStyle}
           forceSuggestionsAboveCursor
-          a11ySuggestionsListLabel={'Suggested mentions'}
+          a11ySuggestionsListLabel={t(CHATBOX.SUGGESTED_MENTIONS)}
           placeholder={placeholder || t(CHATBOX.INPUT_FIELD_PLACEHOLDER)}
         >
           <Mention

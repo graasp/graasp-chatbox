@@ -1,6 +1,7 @@
 import { List } from 'immutable';
 
 import { FC, ReactElement, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 import {
   Grid,
@@ -11,15 +12,27 @@ import {
   TableHead,
   TableRow,
   Tooltip,
+  makeStyles,
 } from '@material-ui/core';
 import { Check, Close, FiberManualRecord } from '@material-ui/icons';
 
 import { ChatMentionRecord } from '@graasp/query-client/dist/src/types';
-import { MentionStatus } from '@graasp/sdk';
+import { MentionStatus, buildItemLinkForBuilder } from '@graasp/sdk';
+import { getIdsFromPath } from '@graasp/sdk/dist/utils/item';
+import { CHATBOX } from '@graasp/translations';
 import { Button } from '@graasp/ui';
 
 import { normalizeMentions } from '../../utils/mentions';
 import ConfirmationDialog from '../common/ConfirmationDialog';
+
+const useStyles = makeStyles({
+  row: {
+    '&:hover': {
+      // make the cursor a pointer to indicate we can click
+      cursor: 'pointer',
+    },
+  },
+});
 
 type Props = {
   mentions?: List<ChatMentionRecord>;
@@ -35,6 +48,8 @@ const MentionsTable: FC<Props> = ({
   clearAllMentions,
 }) => {
   const [openConfirmation, setOpenConfirmation] = useState(false);
+  const { t } = useTranslation();
+  const classes = useStyles();
   const markAsRead = (id: string): void => {
     patchMention({ id: id, status: MentionStatus.READ });
   };
@@ -50,25 +65,29 @@ const MentionsTable: FC<Props> = ({
     return mentions
       .map((m) => (
         <TableRow
+          className={classes.row}
           hover
-          onClick={(): void => console.log('go to item', m.itemPath)}
+          onClick={(): void => {
+            const link = buildItemLinkForBuilder({
+              host: '',
+              itemId: getIdsFromPath(m.itemPath).slice(-1)[0],
+              chatOpen: true,
+            });
+            console.log(link);
+            window.location.href = link;
+          }}
         >
           <TableCell>
-            {m.status === MentionStatus.UNREAD ? (
+            {m.status === MentionStatus.UNREAD && (
               <FiberManualRecord fontSize={'small'} color={'primary'} />
-            ) : null}
-          </TableCell>
-          <TableCell>
-            {Object.keys(m.toJS())
-              .map((k: string) => `${k}: ${m[k]}`)
-              .join('\n')}
+            )}
           </TableCell>
           <TableCell>{normalizeMentions(m.message)}</TableCell>
           <TableCell>{m.creator}</TableCell>
           <TableCell>
             <Grid container direction="row">
               <Grid item>
-                <Tooltip title={'Mark as Read'}>
+                <Tooltip title={t(CHATBOX.MARK_AS_READ)}>
                   <IconButton
                     onClick={(e): void => {
                       e.stopPropagation();
@@ -80,7 +99,7 @@ const MentionsTable: FC<Props> = ({
                 </Tooltip>
               </Grid>
               <Grid item>
-                <Tooltip title={'Delete'}>
+                <Tooltip title={t(CHATBOX.DELETE_TOOLTIP)}>
                   <IconButton
                     onClick={(e): void => {
                       e.stopPropagation();
@@ -111,18 +130,18 @@ const MentionsTable: FC<Props> = ({
               );
           }}
         >
-          Mark All As Read
+          {t(CHATBOX.MARK_ALL_AS_READ)}
         </Button>
         <Button
           variant="outlined"
           onClick={(): void => setOpenConfirmation(true)}
         >
-          Clear All
+          {t(CHATBOX.CLEAR_ALL)}
         </Button>
         <ConfirmationDialog
           open={openConfirmation}
-          title="Clear All Notifications"
-          content={'Are you sure you want to clear all your notifications ?'}
+          title={t(CHATBOX.CLEAR_ALL_NOTIFICATIONS_TITLE)}
+          content={t(CHATBOX.CLEAR_ALL_NOTIFICATIONS_CONTENT)}
           onConfirm={(): void => {
             clearAllMentions();
             setOpenConfirmation(false);
@@ -134,11 +153,10 @@ const MentionsTable: FC<Props> = ({
         <Table>
           <TableHead>
             <TableRow>
-              <TableCell>Status</TableCell>
-              <TableCell>Infos</TableCell>
-              <TableCell>Message</TableCell>
-              <TableCell>By</TableCell>
-              <TableCell>Actions</TableCell>
+              <TableCell>{t(CHATBOX.COL_STATUS)}</TableCell>
+              <TableCell>{t(CHATBOX.COL_MESSAGE)}</TableCell>
+              <TableCell>{t(CHATBOX.COL_BY)}</TableCell>
+              <TableCell>{t(CHATBOX.COL_ACTIONS)}</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>{renderMentionTableContent()}</TableBody>

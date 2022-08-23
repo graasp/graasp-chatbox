@@ -2188,7 +2188,7 @@ __metadata:
     "@cypress/webpack-dev-server": 1.8.4
     "@graasp/query-client": "github:graasp/graasp-query-client#183/updateChatMessageTypes"
     "@graasp/sdk": "github:graasp/graasp-sdk#38/addMentionStatusEnum"
-    "@graasp/translations": "github:graasp/graasp-translations.git"
+    "@graasp/translations": "github:graasp/graasp-translations#32/addMentionsTranslations"
     "@graasp/ui": "github:graasp/graasp-ui"
     "@material-ui/core": 4.12.4
     "@material-ui/icons": 4.11.2
@@ -2241,7 +2241,7 @@ __metadata:
     react-dom: 17.0.2
     react-i18next: 11.18.1
     react-markdown: 8.0.3
-    react-mentions: 4.4.7
+    react-mentions: 4.4.6
     react-router-dom: 6.3.0
     react-scripts: 5.0.1
     remark-breaks: 3.0.2
@@ -2320,6 +2320,15 @@ __metadata:
     slonik: 28.1.1
     uuid: 8.3.2
   checksum: c2dbb4a4f478429cbc19187f453fe7e181964e9dd53c349ee6f7d2ed0ec4e67c485314a06dc97685faeb7522fb4fded00bc5fdbce59bdb512e1dfff6d7526cfe
+  languageName: node
+  linkType: hard
+
+"@graasp/translations@github:graasp/graasp-translations#32/addMentionsTranslations":
+  version: 0.1.0
+  resolution: "@graasp/translations@https://github.com/graasp/graasp-translations.git#commit=496b52ade0ebf655d94bd89f45335dd8f255732e"
+  dependencies:
+    i18next: 21.8.1
+  checksum: 1b00196da9371f7ec9a864f6b0152fac566786ee38fd744cf00565b6e446748398f5f6baa4dfc137f21e1c2e208ced4288e8f7552efbd624a955ffb2ebe8bc98
   languageName: node
   linkType: hard
 
@@ -15894,9 +15903,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-mentions@npm:4.4.7":
-  version: 4.4.7
-  resolution: "react-mentions@npm:4.4.7"
+"react-mentions@npm:4.4.6":
+  version: 4.4.6
+  resolution: "react-mentions@npm:4.4.6"
   dependencies:
     "@babel/runtime": 7.4.5
     invariant: ^2.2.4
@@ -15905,7 +15914,7 @@ __metadata:
   peerDependencies:
     react: ">=16.8.3"
     react-dom: ">=16.8.3"
-  checksum: 3d195df7b8d762d0f184cb8a76c82ea7f6509b122bfac733c0bdebc3d592bd0aa98f3c61535945c2a115c92afb97949590c6cb00d77d3cb5e40ccaa385223dcb
+  checksum: 174b218936958d4c2ed76d1001b67331475288ad212089552a887382dcc587eda4e14250b89d9cbe91135255ad3a33395f2367ae8d14f8085f70998032608f59
   languageName: node
   linkType: hard
 
