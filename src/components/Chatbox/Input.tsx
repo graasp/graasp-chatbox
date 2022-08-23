@@ -92,6 +92,7 @@ const Input: FC<Props> = ({
       width: '100%',
       overflow: 'auto',
       height: '70px',
+      lineHeight: 'inherit',
       borderRadius: inputRadius,
     },
     highlighter: {
