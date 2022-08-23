@@ -65,6 +65,7 @@ const MentionsTable: FC<Props> = ({
     return mentions
       .map((m) => (
         <TableRow
+          key={m.id}
           className={classes.row}
           hover
           onClick={(): void => {
