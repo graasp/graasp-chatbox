@@ -14,6 +14,7 @@ import {
 import { MentionStatus } from '@graasp/sdk';
 import buildI18n, { CHATBOX, langs, namespaces } from '@graasp/translations';
 
+import { mentionButtonCypress } from '../../config/selectors';
 import MentionsDialog from './MentionsDialog';
 import MentionsTable from './MentionsTable';
 
@@ -79,7 +80,10 @@ const MentionButton: FC<Props> = ({
   return (
     <div>
       <I18nextProvider i18n={i18n}>
-        <IconButton onClick={(): void => setOpen(true)}>
+        <IconButton
+          data-cy={mentionButtonCypress}
+          onClick={(): void => setOpen(true)}
+        >
           <Badge
             className={classes.badge}
             overlap="circular"

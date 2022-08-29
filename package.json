@@ -49,7 +49,7 @@
     "react-dom": "*"
   },
   "dependencies": {
-    "@graasp/translations": "github:graasp/graasp-translations#32/addMentionsTranslations",
+    "@graasp/translations": "github:graasp/graasp-translations",
     "@graasp/ui": "github:graasp/graasp-ui",
     "clsx": "1.1.1",
     "i18next": "21.8.1",
@@ -132,7 +132,8 @@
   },
   "resolutions": {
     "@types/react": "17.0.2",
-    "@graasp/sdk": "github:graasp/graasp-sdk#main"
+    "@graasp/sdk": "github:graasp/graasp-sdk#main",
+    "@graasp/translations": "github:graasp/graasp-translations#main"
   },
   "files": [
     "dist"

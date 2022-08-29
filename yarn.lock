@@ -2188,7 +2188,7 @@ __metadata:
     "@cypress/webpack-dev-server": 1.8.4
     "@graasp/query-client": "github:graasp/graasp-query-client"
     "@graasp/sdk": "github:graasp/graasp-sdk"
-    "@graasp/translations": "github:graasp/graasp-translations#32/addMentionsTranslations"
+    "@graasp/translations": "github:graasp/graasp-translations"
     "@graasp/ui": "github:graasp/graasp-ui"
     "@material-ui/core": 4.12.4
     "@material-ui/icons": 4.11.2
@@ -2306,21 +2306,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@graasp/translations@github:graasp/graasp-translations#32/addMentionsTranslations":
+"@graasp/translations@github:graasp/graasp-translations#main":
   version: 0.1.0
-  resolution: "@graasp/translations@https://github.com/graasp/graasp-translations.git#commit=b828b7cf2ff5e27b05e56aa7e89e95a9c542b84f"
+  resolution: "@graasp/translations@https://github.com/graasp/graasp-translations.git#commit=1eb30447fca754c2b418bfa6d86772348952ccf0"
   dependencies:
     i18next: 21.8.1
-  checksum: 960cd9e8c2fce5141d8071fedd7a5f41c986409a7e156ae24792fffbb16ab46631c24b8163551078d9bea3e53ea259ea9704ef6d65a9e7b6ebe68ca20590905f
-  languageName: node
-  linkType: hard
-
-"@graasp/translations@github:graasp/graasp-translations.git":
-  version: 0.1.0
-  resolution: "@graasp/translations@https://github.com/graasp/graasp-translations.git#commit=be598da34ba1dda3a95c2dea737dacfad78b50fd"
-  dependencies:
-    i18next: 21.8.1
-  checksum: bd2d9012e7abf7c61e406b5540e5719967e3007729d0361ade3cfd9e34c3da6a2545bd763eb259a182ecd99db02932d1e61fe1c40688e9d5b557fc6beec84d86
+  checksum: 5cb8f4782c29bf6c83347604193a77c89acf0edabc541534adf1ada844305777e3a9dc1b01c1b7f8bb463a79ca8563b70f9052e67640e6f3ea0d13622a6af24c
   languageName: node
   linkType: hard
 

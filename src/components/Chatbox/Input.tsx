@@ -198,9 +198,10 @@ const Input: FC<Props> = ({
       helperText = normalizedTextInput.length.toString();
       // append the max message size
       if (isMessageTooLong) {
-        helperText += t(CHATBOX.INPUT_MESSAGE_TOO_LONG, {
+        // there is a "space" before the message
+        helperText += ` ${t(CHATBOX.INPUT_MESSAGE_TOO_LONG, {
           length: HARD_MAX_MESSAGE_LENGTH,
-        });
+        })}`;
       }
     }
     return (
