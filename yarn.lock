@@ -2186,8 +2186,8 @@ __metadata:
     "@cypress/instrument-cra": 1.4.0
     "@cypress/react": 5.12.4
     "@cypress/webpack-dev-server": 1.8.4
-    "@graasp/query-client": "github:graasp/graasp-query-client#183/updateChatMessageTypes"
-    "@graasp/sdk": "github:graasp/graasp-sdk#38/addMentionStatusEnum"
+    "@graasp/query-client": "github:graasp/graasp-query-client"
+    "@graasp/sdk": "github:graasp/graasp-sdk"
     "@graasp/translations": "github:graasp/graasp-translations#32/addMentionsTranslations"
     "@graasp/ui": "github:graasp/graasp-ui"
     "@material-ui/core": 4.12.4
@@ -2267,11 +2267,11 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@graasp/query-client@github:graasp/graasp-query-client#183/updateChatMessageTypes":
+"@graasp/query-client@github:graasp/graasp-query-client":
   version: 0.1.0
-  resolution: "@graasp/query-client@https://github.com/graasp/graasp-query-client.git#commit=0bec86abcd3dbc946c3f7a377123f93d058fefc1"
+  resolution: "@graasp/query-client@https://github.com/graasp/graasp-query-client.git#commit=6ef71cc527741f4cce266e28265779149932d4f4"
   dependencies:
-    "@graasp/sdk": "github:graasp/graasp-sdk#38/addMentionStatusEnum"
+    "@graasp/sdk": "github:graasp/graasp-sdk"
     "@graasp/translations": "github:graasp/graasp-translations.git"
     "@graasp/utils": "github:graasp/graasp-utils.git"
     axios: 0.27.2
@@ -2285,13 +2285,13 @@ __metadata:
     uuid: 8.3.2
   peerDependencies:
     react: ^17.0.0
-  checksum: 53f1b01581f65c552ee80d651ce73f0eb786b118e5a7f7dca60b0ed7952f88ddee9078c606117a5842fc87daa44e54e4398f50ae80fc7ad2d80167c183de9641
+  checksum: c2224dc891e89c93b07469de1af99d0de53b71a7114a14808246ff3bb1e45744c3d49359114611c00a2a6c0a034d87f09d4d5b803a90b617d9dd276ca1deafe5
   languageName: node
   linkType: hard
 
-"@graasp/sdk@github:graasp/graasp-sdk#38/addMentionStatusEnum":
+"@graasp/sdk@github:graasp/graasp-sdk#main":
   version: 0.1.0
-  resolution: "@graasp/sdk@https://github.com/graasp/graasp-sdk.git#commit=3caacdb183d83b9d21e750f1d81a7156352526fe"
+  resolution: "@graasp/sdk@https://github.com/graasp/graasp-sdk.git#commit=5170aab6390aa6deb16b9be559a359bdec050cc9"
   dependencies:
     "@fastify/secure-session": 5.2.0
     aws-sdk: 2.1111.0
@@ -2302,33 +2302,16 @@ __metadata:
     qs: 6.11.0
     slonik: 28.1.1
     uuid: 8.3.2
-  checksum: eaeb4fcfba723e04301e48effa83cf2c13c583bb86792743a417c64750f46bb4bd63df9726b1f061f8967ced4c1b1442d96c73df9afbb9605ef982c79b7370e3
-  languageName: node
-  linkType: hard
-
-"@graasp/sdk@github:graasp/graasp-sdk.git":
-  version: 0.1.0
-  resolution: "@graasp/sdk@https://github.com/graasp/graasp-sdk.git#commit=79aaa38e0b35280d7b37f0b22e33e0d5b3513930"
-  dependencies:
-    "@fastify/secure-session": 5.2.0
-    aws-sdk: 2.1111.0
-    fastify: ^3.29.1
-    fluent-json-schema: 3.1.0
-    immutable: 4.1.0
-    js-cookie: 3.0.1
-    qs: 6.11.0
-    slonik: 28.1.1
-    uuid: 8.3.2
-  checksum: c2dbb4a4f478429cbc19187f453fe7e181964e9dd53c349ee6f7d2ed0ec4e67c485314a06dc97685faeb7522fb4fded00bc5fdbce59bdb512e1dfff6d7526cfe
+  checksum: 4548423660f7c7d57f07ae1fa3d243e80d516f03bddd04c23df707aabe9302b671f22e17f318c48414960921a3fd9ee5144e0f0da057d070879923f1a0389edf
   languageName: node
   linkType: hard
 
 "@graasp/translations@github:graasp/graasp-translations#32/addMentionsTranslations":
   version: 0.1.0
-  resolution: "@graasp/translations@https://github.com/graasp/graasp-translations.git#commit=496b52ade0ebf655d94bd89f45335dd8f255732e"
+  resolution: "@graasp/translations@https://github.com/graasp/graasp-translations.git#commit=b828b7cf2ff5e27b05e56aa7e89e95a9c542b84f"
   dependencies:
     i18next: 21.8.1
-  checksum: 1b00196da9371f7ec9a864f6b0152fac566786ee38fd744cf00565b6e446748398f5f6baa4dfc137f21e1c2e208ced4288e8f7552efbd624a955ffb2ebe8bc98
+  checksum: 960cd9e8c2fce5141d8071fedd7a5f41c986409a7e156ae24792fffbb16ab46631c24b8163551078d9bea3e53ea259ea9704ef6d65a9e7b6ebe68ca20590905f
   languageName: node
   linkType: hard
 
@@ -9780,7 +9763,7 @@ __metadata:
   dependencies:
     "@babel/plugin-syntax-object-rest-spread": 7.8.3
     "@graasp/chatbox": "link:.."
-    "@graasp/query-client": "github:graasp/graasp-query-client#183/updateChatMessageTypes"
+    "@graasp/query-client": "github:graasp/graasp-query-client"
     "@material-ui/core": 4.12.4
     "@material-ui/icons": 4.11.2
     "@material-ui/lab": 4.0.0-alpha.60

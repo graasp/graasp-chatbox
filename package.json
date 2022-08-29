@@ -74,8 +74,8 @@
     "@cypress/instrument-cra": "1.4.0",
     "@cypress/react": "5.12.4",
     "@cypress/webpack-dev-server": "1.8.4",
-    "@graasp/query-client": "github:graasp/graasp-query-client#183/updateChatMessageTypes",
-    "@graasp/sdk": "github:graasp/graasp-sdk#38/addMentionStatusEnum",
+    "@graasp/query-client": "github:graasp/graasp-query-client",
+    "@graasp/sdk": "github:graasp/graasp-sdk",
     "@material-ui/core": "4.12.4",
     "@material-ui/icons": "4.11.2",
     "@material-ui/lab": "4.0.0-alpha.60",
@@ -131,7 +131,8 @@
     "typescript": "4.7.4"
   },
   "resolutions": {
-    "@types/react": "17.0.2"
+    "@types/react": "17.0.2",
+    "@graasp/sdk": "github:graasp/graasp-sdk#main"
   },
   "files": [
     "dist"
