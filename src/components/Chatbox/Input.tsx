@@ -132,12 +132,13 @@ const Input: FC<Props> = ({
   const { id: currentMemberId } = useCurrentMemberContext();
   const { t } = useTranslation();
 
-  // exclude self from suggestions
-  const membersExcludingSelf: MemberRecord[] =
-    members?.filter((m) => m.id !== currentMemberId)?.toArray() || [];
+  // exclude self from suggestions and add @all pseudo member
   const memberSuggestions: SuggestionDataItem[] = [
     { id: ALL_MEMBERS_ID, display: ALL_MEMBERS_DISPLAY },
-    ...membersExcludingSelf.map((m) => ({ id: m.id, display: m.name })),
+    ...(members
+      ?.filter((m) => m.id !== currentMemberId)
+      ?.map((m) => ({ id: m.id, display: m.name }))
+      ?.toArray() || []),
   ];
 
   // compute if message exceeds max length
@@ -241,7 +242,7 @@ const Input: FC<Props> = ({
           <Mention
             displayTransform={(_, login): string => `@${login}`}
             markup="`<!@__display__>[__id__]`"
-            trigger={'@'}
+            trigger="@"
             renderSuggestion={(_, __, highlightedDisplay): ReactElement => (
               <div className="user">{highlightedDisplay}</div>
             )}

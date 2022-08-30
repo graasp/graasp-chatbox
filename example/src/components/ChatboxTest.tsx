@@ -94,6 +94,7 @@ const ChatboxTest: FC = () => {
     _: unknown,
     newValue: number | number[],
   ): void => {
+    // narrow type of newValue to a simple number and not an array of numbers (slider with range)
     if (typeof newValue === 'number') {
       setTestWidth(newValue);
     } else {
@@ -116,7 +117,7 @@ const ChatboxTest: FC = () => {
               onChange={({ target }): void => setChatId(target.value)}
             />
           }
-          label={'Chat Id'}
+          label="Chat Id"
           labelPlacement="top"
         />
         <FormControl>
@@ -126,12 +127,8 @@ const ChatboxTest: FC = () => {
             value={lang}
             onChange={({ target }): void => setLang(target.value)}
           >
-            <FormControlLabel value="fr" control={<Radio />} label={'French'} />
-            <FormControlLabel
-              value="en"
-              control={<Radio />}
-              label={'English'}
-            />
+            <FormControlLabel value="fr" control={<Radio />} label="French" />
+            <FormControlLabel value="en" control={<Radio />} label="English" />
           </RadioGroup>
         </FormControl>
         <FormControl>
@@ -143,7 +140,7 @@ const ChatboxTest: FC = () => {
                 onChange={(): void => setShowTools(!showTools)}
               />
             }
-            label={'Show Admin tools'}
+            label="Show Admin tools"
           />
           <FormControlLabel
             control={
@@ -152,16 +149,16 @@ const ChatboxTest: FC = () => {
                 min={GRAASP_PANEL_WIDTH}
                 step={20}
                 max={800}
-                color={'secondary'}
+                color="secondary"
                 onChange={onChangePanelWidth}
               />
             }
             labelPlacement="top"
-            label={'Panel Width'}
+            label="Panel Width"
           />
         </FormControl>
         <MentionButton
-          color={'primary'}
+          color="primary"
           useMentions={hooks.useMentions}
           useMembers={hooks.useMembers}
           patchMentionFunction={patchMentionFunction}

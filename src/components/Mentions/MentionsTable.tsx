@@ -17,8 +17,11 @@ import {
 import { Check, Close, FiberManualRecord } from '@material-ui/icons';
 
 import { ChatMentionRecord } from '@graasp/query-client/dist/src/types';
-import { MentionStatus, buildItemLinkForBuilder } from '@graasp/sdk';
-import { getIdsFromPath } from '@graasp/sdk/dist/utils/item';
+import {
+  MentionStatus,
+  buildItemLinkForBuilder,
+  getIdsFromPath,
+} from '@graasp/sdk';
 import { CHATBOX } from '@graasp/translations';
 import { Button } from '@graasp/ui';
 
@@ -74,13 +77,12 @@ const MentionsTable: FC<Props> = ({
               itemId: getIdsFromPath(m.itemPath).slice(-1)[0],
               chatOpen: true,
             });
-            console.log(link);
             window.location.href = link;
           }}
         >
           <TableCell>
             {m.status === MentionStatus.UNREAD && (
-              <FiberManualRecord fontSize={'small'} color={'primary'} />
+              <FiberManualRecord fontSize="small" color="primary" />
             )}
           </TableCell>
           <TableCell>{normalizeMentions(m.message)}</TableCell>
@@ -95,7 +97,7 @@ const MentionsTable: FC<Props> = ({
                       markAsRead(m.id);
                     }}
                   >
-                    <Check color={'primary'} />
+                    <Check color="primary" />
                   </IconButton>
                 </Tooltip>
               </Grid>
@@ -107,7 +109,7 @@ const MentionsTable: FC<Props> = ({
                       deleteMention(m.id);
                     }}
                   >
-                    <Close color={'primary'} />
+                    <Close color="primary" />
                   </IconButton>
                 </Tooltip>
               </Grid>

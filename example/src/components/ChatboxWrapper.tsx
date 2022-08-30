@@ -24,7 +24,7 @@ const ChatboxWrapper: FC<Props> = ({
   showHeader = false,
   showAdminTools = false,
 }) => {
-  // use kooks
+  // use hooks
   const { data: currentMember } = hooks.useCurrentMember();
   const { data: chat } = hooks.useItemChat(chatId);
   const memberships = hooks.useItemMemberships(chatId).data;
