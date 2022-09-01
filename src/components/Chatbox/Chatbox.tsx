@@ -5,20 +5,19 @@ import { I18nextProvider } from 'react-i18next';
 
 import { makeStyles } from '@material-ui/core/styles';
 
-import buildI18n, { langs, namespaces } from '@graasp/translations';
-
-import { EditingContextProvider } from '../context/EditingContext';
-import { HooksContextProvider } from '../context/HooksContext';
-import { MessagesContextProvider } from '../context/MessagesContext';
-import type {
-  ChatMessage,
-  ClearChatHookType,
-  ImmutableMember,
-  Member,
+import {
+  MemberRecord,
   PartialChatMessage,
   PartialNewChatMessage,
-} from '../types';
-import { AvatarHookType } from '../types';
+} from '@graasp/query-client/dist/src/types';
+import buildI18n, { langs, namespaces } from '@graasp/translations';
+
+import { CurrentMemberContextProvider } from '../../context/CurrentMemberContext';
+import { EditingContextProvider } from '../../context/EditingContext';
+import { HooksContextProvider } from '../../context/HooksContext';
+import { MessagesContextProvider } from '../../context/MessagesContext';
+import type { ClearChatHookType, ImmutableMember } from '../../types';
+import { AvatarHookType, ChatMessageList } from '../../types';
 import AdminTools from './AdminTools';
 import Header from './Header';
 import InputBar from './InputBar';
@@ -27,7 +26,7 @@ import Messages from './Messages';
 type Props = {
   id?: string;
   sendMessageBoxId?: string;
-  messages?: List<ChatMessage>;
+  messages?: ChatMessageList;
   isLoading?: boolean;
   sendMessageFunction?: (message: PartialNewChatMessage) => void;
   deleteMessageFunction?: (message: PartialChatMessage) => void;
@@ -39,7 +38,7 @@ type Props = {
   showAdminTools?: boolean;
   lang?: string;
   currentMember: ImmutableMember;
-  members?: List<Member>;
+  members?: List<MemberRecord>;
 };
 
 const Chatbox: FC<Props> = ({
@@ -93,30 +92,32 @@ const Chatbox: FC<Props> = ({
           useAvatarHook={useAvatarHook}
           clearChatHook={clearChatFunction}
         >
-          <MessagesContextProvider
-            chatId={chatId}
-            members={members}
-            messages={messages}
-          >
-            <>
-              {showHeader && <Header />}
-              <div className={classes.chatboxContainer} id={id}>
-                <Messages
-                  currentMember={currentMember}
-                  isAdmin={showAdminTools}
-                  deleteMessageFunction={deleteMessageFunction}
-                />
-                <div className={classes.bottomContainer}>
-                  <InputBar
-                    sendMessageBoxId={sendMessageBoxId}
-                    sendMessageFunction={sendMessageFunction}
-                    editMessageFunction={editMessageFunction}
+          <CurrentMemberContextProvider currentMember={currentMember}>
+            <MessagesContextProvider
+              chatId={chatId}
+              members={members}
+              messages={messages}
+            >
+              <>
+                {showHeader && <Header />}
+                <div className={classes.chatboxContainer} id={id}>
+                  <Messages
+                    currentMember={currentMember}
+                    isAdmin={showAdminTools}
+                    deleteMessageFunction={deleteMessageFunction}
                   />
-                  {showAdminTools && <AdminTools variant="icon" />}
+                  <div className={classes.bottomContainer}>
+                    <InputBar
+                      sendMessageBoxId={sendMessageBoxId}
+                      sendMessageFunction={sendMessageFunction}
+                      editMessageFunction={editMessageFunction}
+                    />
+                    {showAdminTools && <AdminTools variant="icon" />}
+                  </div>
                 </div>
-              </div>
-            </>
-          </MessagesContextProvider>
+              </>
+            </MessagesContextProvider>
+          </CurrentMemberContextProvider>
         </HooksContextProvider>
       </EditingContextProvider>
     </I18nextProvider>

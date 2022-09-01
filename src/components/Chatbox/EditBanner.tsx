@@ -14,8 +14,9 @@ import {
   editBannerCloseButtonCypress,
   editBannerCypress,
   editBannerOldTextCypress,
-} from '../config/selectors';
-import { useEditingContext } from '../context/EditingContext';
+} from '../../config/selectors';
+import { useEditingContext } from '../../context/EditingContext';
+import { normalizeMentions } from '../../utils/mentions';
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -46,7 +47,7 @@ const useStyles = makeStyles((theme) => ({
 
 type Props = {
   onClose: () => void;
-  editedText?: string;
+  editedText: string;
 };
 
 const EditBanner: FC<Props> = ({ onClose, editedText }) => {
@@ -74,7 +75,7 @@ const EditBanner: FC<Props> = ({ onClose, editedText }) => {
             className={classes.oldTextPreview}
             data-cy={editBannerOldTextCypress}
           >
-            {editedText}
+            {normalizeMentions(editedText)}
           </Typography>
         </Box>
         <IconButton data-cy={editBannerCloseButtonCypress} onClick={onClose}>

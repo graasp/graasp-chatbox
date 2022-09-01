@@ -3,9 +3,14 @@ import { FC, useEffect, useRef, useState } from 'react';
 import Box from '@material-ui/core/Box';
 import { makeStyles } from '@material-ui/core/styles';
 
-import { useEditingContext } from '../context/EditingContext';
-import { useMessagesContext } from '../context/MessagesContext';
-import { PartialChatMessage, PartialNewChatMessage } from '../types';
+import {
+  MessageBodyType,
+  PartialChatMessage,
+  PartialNewChatMessage,
+} from '@graasp/query-client/dist/src/types';
+
+import { useEditingContext } from '../../context/EditingContext';
+import { useMessagesContext } from '../../context/MessagesContext';
 import EditBanner from './EditBanner';
 import Input from './Input';
 
@@ -29,7 +34,7 @@ const InputBar: FC<Props> = ({
   const classes = useStyles();
   const { open, body, messageId, cancelEdit } = useEditingContext();
   const [textInput, setTextInput] = useState(open ? body : '');
-  const inputRef = useRef<HTMLDivElement>(null);
+  const inputRef = useRef<HTMLTextAreaElement>(null);
   const { chatId } = useMessagesContext();
 
   useEffect(() => {
@@ -46,15 +51,15 @@ const InputBar: FC<Props> = ({
     setTextInput('');
   };
 
-  const handleSendMessageFunction = (): void => {
+  const handleSendMessageFunction = (body: MessageBodyType): void => {
     if (open) {
       editMessageFunction?.({
         messageId,
         chatId,
-        body: textInput,
+        body,
       });
     } else {
-      sendMessageFunction?.({ chatId, body: textInput });
+      sendMessageFunction?.({ chatId, body });
     }
     // reset editing
     cancelEdit();

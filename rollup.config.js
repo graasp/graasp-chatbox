@@ -1,6 +1,7 @@
 import peerDepsExternal from 'rollup-plugin-peer-deps-external';
 
 import commonjs from '@rollup/plugin-commonjs';
+import json from '@rollup/plugin-json';
 import resolve from '@rollup/plugin-node-resolve';
 import typescript from '@rollup/plugin-typescript';
 
@@ -11,6 +12,7 @@ export default {
     format: 'cjs',
   },
   plugins: [
+    json(),
     peerDepsExternal(),
     resolve({
       mainFields: ['module', 'main', 'jsnext:main', 'browser'],

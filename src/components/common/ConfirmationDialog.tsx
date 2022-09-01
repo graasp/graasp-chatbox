@@ -8,6 +8,7 @@ import {
   DialogTitle,
 } from '@material-ui/core';
 
+import { CHATBOX } from '@graasp/translations';
 import { Button } from '@graasp/ui';
 
 import {
@@ -46,14 +47,14 @@ const ConfirmationDialog: FC<Props> = ({
           onClick={onCancel}
           dataCy={cancelDialogButtonCypress}
         >
-          {cancelText || t('Cancel')}
+          {cancelText || t(CHATBOX.CANCEL_BUTTON)}
         </Button>
         <Button
           variant="outlined"
           onClick={onConfirm}
           dataCy={confirmDialogButtonCypress}
         >
-          {confirmText || t('Confirm')}
+          {confirmText || t(CHATBOX.CONFIRM_BUTTON)}
         </Button>
       </DialogActions>
     </Dialog>

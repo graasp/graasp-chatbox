@@ -6,7 +6,7 @@ export const BIG_NUMBER = 9999;
 export const SAFETY_MARGIN = 64;
 export const DEFAULT_USER_NAME = 'Anonymous';
 export const MAX_USERNAME_LENGTH = 30;
-export const HARD_MAX_MESSAGE_LENGTH = 500;
+export const HARD_MAX_MESSAGE_LENGTH = 400;
 export const DEFAULT_DATE_FORMAT = 'DD MMM YYYY';
 export const EXPORT_DATE_FORMAT = 'YYYY-MM-DD';
 export const HEADER_HEIGHT = 64;
@@ -28,7 +28,10 @@ export const EXPORT_CSV_HEADERS = [
 ];
 
 export const SIDE_PANE_WIDTH = 290;
-export const SIDE_PANE_HEIGHT = 512;
+export const SIDE_PANE_HEIGHT = 800;
 
 export const ICON_VARIANT = 'icon';
 export const BUTTON_VARIANT = 'button';
+
+export const ALL_MEMBERS_ID = '00000000-0000-4000-8000-000000000000';
+export const ALL_MEMBERS_DISPLAY = 'all';

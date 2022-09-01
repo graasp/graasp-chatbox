@@ -2,11 +2,7 @@
   "compilerOptions": {
     "outDir": "dist",
     "module": "esnext",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext"],
     "moduleResolution": "node",
     "jsx": "react-jsx",
     "sourceMap": true,
@@ -35,12 +31,8 @@
   "include": [
     "src",
     "index.ts",
+    "cypress/cypress.d.ts",
     "node_modules/cypress/types/cypress-global-vars.d.ts"
   ],
-  "exclude": [
-    "node_modules",
-    "dist",
-    "example",
-    "src/test/*"
-  ]
+  "exclude": ["node_modules", "dist", "example", "src/test/*"]
 }

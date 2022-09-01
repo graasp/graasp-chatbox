@@ -2,23 +2,25 @@ import { List } from 'immutable';
 
 import React, { FC, ReactElement } from 'react';
 
-import { ChatMessage, Member } from '../types';
+import { MemberRecord } from '@graasp/query-client/dist/src/types';
+
+import { ChatMessageList } from '../types';
 
 export const MessagesContext = React.createContext({
   chatId: '',
 });
 
 export type MessagesContextType = {
-  messages?: List<ChatMessage>;
+  messages?: ChatMessageList;
   chatId: string;
-  members?: List<Member>;
+  members?: List<MemberRecord>;
 };
 
 type Props = {
   children: ReactElement;
-  messages?: List<ChatMessage>;
+  messages?: ChatMessageList;
   chatId: string;
-  members?: List<Member>;
+  members?: List<MemberRecord>;
 };
 
 export const MessagesContextProvider: FC<Props> = ({

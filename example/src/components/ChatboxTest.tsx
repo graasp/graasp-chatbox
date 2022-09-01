@@ -13,16 +13,19 @@ import {
   makeStyles,
 } from '@material-ui/core';
 
+import { MentionButton } from '@graasp/chatbox';
+import { MUTATION_KEYS } from '@graasp/query-client';
+import { ChatMention } from '@graasp/query-client/dist/src/types';
+
 import {
   DEFAULT_CHAT_ID,
   DEFAULT_LANG,
   GRAASP_PANEL_WIDTH,
 } from '../config/constants';
+import { hooks, useMutation } from '../config/queryClient';
 import ChatboxWrapper from './ChatboxWrapper';
 
-type Props = {};
-
-const ChatboxTest: FC<Props> = () => {
+const ChatboxTest: FC = () => {
   const [testWidth, setTestWidth] = useState(GRAASP_PANEL_WIDTH);
   const [showTools, setShowTools] = useState(false);
   const [lang, setLang] = useState(DEFAULT_LANG);
@@ -61,10 +64,38 @@ const ChatboxTest: FC<Props> = () => {
   }));
 
   const classes = useStyles();
+  const { data: currentMember } = hooks.useCurrentMember();
+  const memberId = currentMember?.get('id') as string;
+  // mutations to handle the mentions
+  const { mutate: patchMentionMutate } = useMutation<
+    ChatMention,
+    unknown,
+    { memberId: string; id: string; status: string }
+  >(MUTATION_KEYS.PATCH_MENTION);
+  const patchMentionFunction = (args: { id: string; status: string }): void =>
+    patchMentionMutate({ memberId, ...args });
+  const { mutate: deleteMentionMutate } = useMutation<
+    ChatMention,
+    unknown,
+    { memberId: string; mentionId: string }
+  >(MUTATION_KEYS.DELETE_MENTION);
+  const deleteMentionFunction = (mentionId: string): void =>
+    deleteMentionMutate({ memberId, mentionId });
+  const { mutate: clearAllMentionsMutate } = useMutation<
+    ChatMention[],
+    unknown,
+    { memberId: string }
+  >(MUTATION_KEYS.CLEAR_MENTIONS);
+  const clearAllMentionsFunction = (): void =>
+    clearAllMentionsMutate({ memberId });
 
   // adapt the width of the chatbox to simulate the width used on Graasp
-  const onChangePanelWidth = (_: unknown, newValue: number | number[]) => {
-    if (typeof newValue == 'number') {
+  const onChangePanelWidth = (
+    _: unknown,
+    newValue: number | number[],
+  ): void => {
+    // narrow type of newValue to a simple number and not an array of numbers (slider with range)
+    if (typeof newValue === 'number') {
       setTestWidth(newValue);
     } else {
       setTestWidth(0);
@@ -83,10 +114,10 @@ const ChatboxTest: FC<Props> = () => {
               variant="outlined"
               value={chatId}
               fullWidth
-              onChange={({ target }) => setChatId(target.value)}
+              onChange={({ target }): void => setChatId(target.value)}
             />
           }
-          label={'Chat Id'}
+          label="Chat Id"
           labelPlacement="top"
         />
         <FormControl>
@@ -94,14 +125,10 @@ const ChatboxTest: FC<Props> = () => {
           <RadioGroup
             aria-label="language"
             value={lang}
-            onChange={({ target }) => setLang(target.value)}
+            onChange={({ target }): void => setLang(target.value)}
           >
-            <FormControlLabel value="fr" control={<Radio />} label={'French'} />
-            <FormControlLabel
-              value="en"
-              control={<Radio />}
-              label={'English'}
-            />
+            <FormControlLabel value="fr" control={<Radio />} label="French" />
+            <FormControlLabel value="en" control={<Radio />} label="English" />
           </RadioGroup>
         </FormControl>
         <FormControl>
@@ -110,10 +137,10 @@ const ChatboxTest: FC<Props> = () => {
             control={
               <Checkbox
                 value={showTools}
-                onChange={() => setShowTools(!showTools)}
+                onChange={(): void => setShowTools(!showTools)}
               />
             }
-            label={'Show Admin tools'}
+            label="Show Admin tools"
           />
           <FormControlLabel
             control={
@@ -122,14 +149,22 @@ const ChatboxTest: FC<Props> = () => {
                 min={GRAASP_PANEL_WIDTH}
                 step={20}
                 max={800}
-                color={'secondary'}
+                color="secondary"
                 onChange={onChangePanelWidth}
               />
             }
             labelPlacement="top"
-            label={'Panel Width'}
+            label="Panel Width"
           />
         </FormControl>
+        <MentionButton
+          color="primary"
+          useMentions={hooks.useMentions}
+          useMembers={hooks.useMembers}
+          patchMentionFunction={patchMentionFunction}
+          deleteMentionFunction={deleteMentionFunction}
+          clearAllMentionsFunction={clearAllMentionsFunction}
+        />
       </div>
       <div className={classes.chatboxContainer}>
         <ChatboxWrapper

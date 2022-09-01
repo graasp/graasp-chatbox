@@ -15,6 +15,8 @@ export const messagesContainerCypress = 'messagesContainer';
 export const inputTextFieldTextAreaCypress = 'inputTextFieldTextArea';
 export const charCounterCypress = 'charCounter';
 
+export const mentionButtonCypress = 'mentionButton';
+
 export const messageIdCyWrapper = (id: string): string => `message-${id}`;
 
 export const dataCyWrapper = (cypressSelector: string): string =>

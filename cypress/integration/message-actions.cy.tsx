@@ -1,14 +1,8 @@
+/// <reference types="./cypress"/>
 import { List } from 'immutable';
 
-import { mount } from '@cypress/react';
-
-import {
-  CHAT_ID,
-  CHAT_MESSAGES,
-  spyMethod,
-} from '../../cypress/fixtures/chat_messages';
-import { CURRENT_MEMBER, MEMBERS } from '../../cypress/fixtures/members';
-import Chatbox from '../components/Chatbox';
+import { ImmutableMember, Member } from '../../src';
+import Chatbox from '../../src/components/Chatbox/Chatbox';
 import {
   dataCyWrapper,
   deleteMenuItemCypress,
@@ -18,13 +12,14 @@ import {
   editMenuItemCypress,
   inputTextFieldTextAreaCypress,
   messageActionsButtonCypress,
-} from '../config/selectors';
-import { SIDE_PANE_HEIGHT, SIDE_PANE_WIDTH } from '../constants';
-import { ImmutableMember, Member } from '../types';
+} from '../../src/config/selectors';
+import { SIDE_PANE_HEIGHT, SIDE_PANE_WIDTH } from '../../src/constants';
+import { CHAT_ID, CHAT_MESSAGES, spyMethod } from '../fixtures/chat_messages';
+import { CURRENT_MEMBER, MEMBERS } from '../fixtures/members';
 
 describe('Message actions', () => {
   beforeEach(() => {
-    mount(
+    cy.mount(
       <Chatbox
         chatId={CHAT_ID}
         currentMember={new ImmutableMember(MEMBERS.ANNA)}
@@ -50,7 +45,7 @@ describe('Message actions', () => {
 describe('Delete action', () => {
   it('should delete message', () => {
     const deleteMessageSpy = spyMethod('spyMethod');
-    mount(
+    cy.mount(
       <Chatbox
         chatId={CHAT_ID}
         currentMember={new ImmutableMember(MEMBERS.ANNA)}
@@ -74,7 +69,7 @@ describe('Edit action', () => {
     cy.viewport(SIDE_PANE_WIDTH, SIDE_PANE_HEIGHT);
     const editMessageSpy = spyMethod('editSpyMethod');
     const sendMessageSpy = spyMethod('sendSpyMethod');
-    mount(
+    cy.mount(
       <Chatbox
         chatId={CHAT_ID}
         currentMember={new ImmutableMember(MEMBERS.ANNA)}

@@ -11,19 +11,22 @@ import {
 import { makeStyles } from '@material-ui/core/styles';
 import { Delete, Edit, MoreVert } from '@material-ui/icons';
 
+import {
+  ChatMessageRecord,
+  PartialChatMessage,
+} from '@graasp/query-client/dist/src/types';
 import { CHATBOX } from '@graasp/translations';
 
 import {
   deleteMenuItemCypress,
   editMenuItemCypress,
   messageActionsButtonCypress,
-} from '../config/selectors';
-import { LIST_ICON_MIN_WIDTH } from '../constants';
-import { useEditingContext } from '../context/EditingContext';
-import { ChatMessage, PartialChatMessage } from '../types';
+} from '../../config/selectors';
+import { LIST_ICON_MIN_WIDTH } from '../../constants';
+import { useEditingContext } from '../../context/EditingContext';
 
 type Props = {
-  message: ChatMessage;
+  message: ChatMessageRecord;
   isOwn?: boolean;
   deleteMessageFunction?: (message: PartialChatMessage) => void;
 };

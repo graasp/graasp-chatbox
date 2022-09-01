@@ -1,14 +1,8 @@
+/// <reference types="./cypress"/>
 import { List } from 'immutable';
 
-import { mount } from '@cypress/react';
-
-import {
-  CHAT_ID,
-  CHAT_MESSAGES,
-  spyMethod,
-} from '../../cypress/fixtures/chat_messages';
-import { MEMBERS } from '../../cypress/fixtures/members';
-import Chatbox from '../components/Chatbox';
+import { ImmutableMember, Member } from '../../src';
+import Chatbox from '../../src/components/Chatbox/Chatbox';
 import {
   adminToolsContainerCypress,
   cancelDialogButtonCypress,
@@ -16,12 +10,13 @@ import {
   confirmDialogButtonCypress,
   dataCyWrapper,
   exportChatButtonCypress,
-} from '../config/selectors';
-import { ImmutableMember, Member } from '../types';
-import { verifyDownloadedChat } from './utils/utils';
+} from '../../src/config/selectors';
+import { verifyDownloadedChat } from '../../src/test/utils/utils';
+import { CHAT_ID, CHAT_MESSAGES, spyMethod } from '../fixtures/chat_messages';
+import { MEMBERS } from '../fixtures/members';
 
 const mountChatbox = (showTools: boolean, emptyData = false): void => {
-  mount(
+  cy.mount(
     <Chatbox
       chatId={CHAT_ID}
       currentMember={new ImmutableMember(MEMBERS.ANNA)}
@@ -73,7 +68,7 @@ describe('Admin tools', () => {
 
   it('should show clear chat button', () => {
     const clearChatSpy = spyMethod('clearChatSpy');
-    mount(
+    cy.mount(
       <Chatbox
         chatId={CHAT_ID}
         currentMember={new ImmutableMember(MEMBERS.ANNA)}
