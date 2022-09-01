@@ -15,10 +15,7 @@ import IconButton from '@material-ui/core/IconButton';
 import { makeStyles } from '@material-ui/core/styles';
 import SendIcon from '@material-ui/icons/Send';
 
-import {
-  MemberRecord,
-  MessageBodyType,
-} from '@graasp/query-client/dist/src/types';
+import { MessageBodyType } from '@graasp/query-client/dist/src/types';
 import { CHATBOX } from '@graasp/translations';
 
 import {
