@@ -149,11 +149,15 @@ const Input: FC<Props> = ({
   const onSend = (): void => {
     if (textInput) {
       const mentions = getAllMentions(textInput).map(({ id }) => id);
+      console.log('mentions from the message', mentions);
       let expandedMentions: string[] = mentions;
+      console.log('expanded mentions initial', expandedMentions);
       // expand '@all' to all members in mentions array (skip if there are no members)
       if (mentions.includes(ALL_MEMBERS_ID) && members?.size) {
         expandedMentions = members.map((m) => m.id).toArray();
+        console.log('All detected, mentions are now', expandedMentions);
       }
+      console.log('Just before sending mentions are', expandedMentions);
       sendMessageFunction?.({ message: textInput, mentions: expandedMentions });
       // reset input content
       setTextInput('');
@@ -167,6 +171,7 @@ const Input: FC<Props> = ({
     },
     newValue: string,
   ): void => {
+    console.log('new value for the input', newValue);
     setTextInput(newValue);
   };
 
