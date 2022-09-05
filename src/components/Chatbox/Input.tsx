@@ -1,9 +1,10 @@
 import clsx from 'clsx';
 
-import React, { FC, ReactElement, RefObject, useEffect } from 'react';
+import React, { FC, ReactElement, RefObject, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import {
   Mention,
+  MentionItem,
   MentionsInput,
   OnChangeHandlerFunc,
   SuggestionDataItem,
@@ -31,7 +32,7 @@ import {
 } from '../../constants';
 import { useCurrentMemberContext } from '../../context/CurrentMemberContext';
 import { useMessagesContext } from '../../context/MessagesContext';
-import { getAllMentions, normalizeMentions } from '../../utils/mentions';
+import { normalizeMentions } from '../../utils/mentions';
 
 type Props = {
   id?: string;
@@ -128,6 +129,7 @@ const Input: FC<Props> = ({
   const { members } = useMessagesContext();
   const { id: currentMemberId } = useCurrentMemberContext();
   const { t } = useTranslation();
+  const [currentMentions, setCurrentMentions] = useState<string[]>([]);
 
   // exclude self from suggestions and add @all pseudo member
   const memberSuggestions: SuggestionDataItem[] = [
@@ -148,12 +150,12 @@ const Input: FC<Props> = ({
 
   const onSend = (): void => {
     if (textInput) {
-      const mentions = getAllMentions(textInput).map(({ id }) => id);
-      console.log('mentions from the message', mentions);
-      let expandedMentions: string[] = mentions;
+      // const mentions = getAllMentions(textInput).map(({ id }) => id);
+      // console.log('mentions from the message', mentions);
+      let expandedMentions: string[] = currentMentions;
       console.log('expanded mentions initial', expandedMentions);
       // expand '@all' to all members in mentions array (skip if there are no members)
-      if (mentions.includes(ALL_MEMBERS_ID) && members?.size) {
+      if (currentMentions.includes(ALL_MEMBERS_ID) && members?.size) {
         expandedMentions = members.map((m) => m.id).toArray();
         console.log('All detected, mentions are now', expandedMentions);
       }
@@ -169,10 +171,15 @@ const Input: FC<Props> = ({
     _: {
       target: { value: string };
     },
+    // new value of the field
     newValue: string,
+    // newPlainTextValue of the field
+    __: string,
+    newMentions: MentionItem[],
   ): void => {
-    console.log('new value for the input', newValue);
+    console.log('new value for the input', newValue, newMentions);
     setTextInput(newValue);
+    setCurrentMentions(newMentions.map(({ id }) => id));
   };
 
   // catch {enter} key press to send messages
