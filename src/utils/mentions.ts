@@ -15,6 +15,7 @@ export const getAllMentions = (
     id: match.groups?.id || '',
     name: match.groups?.name || '',
   }));
+  console.log('found mentions', arr);
   return arr.filter(({ id, name }) => id && name);
 };
 
