@@ -27,15 +27,16 @@ const ChatboxWrapper: FC<Props> = ({
   // use hooks
   const { data: currentMember } = hooks.useCurrentMember();
   const { data: chat } = hooks.useItemChat(chatId);
-  const memberships = hooks.useItemMemberships(chatId).data;
   // get chat messages
   const chatMessages = chat?.messages;
 
+  const { data: memberships } = hooks.useItemMemberships(chatId);
+
   const memberIds: string[] =
-    memberships?.map((m) => m.memberId)?.toArray() || [];
+    (memberships?.size && memberships?.map((m) => m.memberId)?.toArray()) || [];
+  const members = hooks.useMembers(memberIds).data;
 
   const member = new ImmutableMember(currentMember);
-  const members = hooks.useMembers(memberIds).data;
 
   const {
     mutate: sendMessage,

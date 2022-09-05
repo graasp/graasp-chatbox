@@ -9,9 +9,12 @@ export const getMention = (textContent: string): RegExpMatchArray | null =>
 export const getAllMentions = (
   textContent: string,
 ): { id: string; name: string }[] => {
-  const arr = Array.from(
+  console.log('Message to analyze', textContent);
+  const tempArr = Array.from(
     textContent.matchAll(new RegExp(mentionRegEx, 'g')),
-  ).map((match) => ({
+  );
+  console.log('found matches', tempArr);
+  const arr = tempArr.map((match) => ({
     id: match.groups?.id || '',
     name: match.groups?.name || '',
   }));
