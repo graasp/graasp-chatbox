@@ -89,44 +89,44 @@ describe('Messages container', () => {
   });
 });
 
-describe('Export Chat button', () => {
-  it('should show export button', () => {
-    cy.mount(
-      <Chatbox
-        chatId={CHAT_ID}
-        currentMember={new ImmutableMember(MEMBERS.ANNA)}
-        members={List(Object.values(MEMBERS) as Member[])}
-        messages={List(CHAT_MESSAGES)}
-        showAdminTools
-      />,
-    ).then(() =>
-      cy.get(dataCyWrapper(exportChatButtonCypress)).should('exist'),
-    );
-  });
+// describe('Export Chat button', () => {
+//   it('should show export button', () => {
+//     cy.mount(
+//       <Chatbox
+//         chatId={CHAT_ID}
+//         currentMember={new ImmutableMember(MEMBERS.ANNA)}
+//         members={List(Object.values(MEMBERS) as Member[])}
+//         messages={List(CHAT_MESSAGES)}
+//         showAdminTools
+//       />,
+//     ).then(() =>
+//       cy.get(dataCyWrapper(exportChatButtonCypress)).should('exist'),
+//     );
+//   });
 
-  it('should not show button when chat is empty', () => {
-    cy.mount(
-      <Chatbox
-        chatId={CHAT_ID}
-        currentMember={new ImmutableMember(MEMBERS.ANNA)}
-        members={List(Object.values(MEMBERS) as Member[])}
-        showAdminTools
-      />,
-    ).then(() =>
-      cy.get(dataCyWrapper(exportChatButtonCypress)).should('not.exist'),
-    );
-  });
+//   it('should not show button when chat is empty', () => {
+//     cy.mount(
+//       <Chatbox
+//         chatId={CHAT_ID}
+//         currentMember={new ImmutableMember(MEMBERS.ANNA)}
+//         members={List(Object.values(MEMBERS) as Member[])}
+//         showAdminTools
+//       />,
+//     ).then(() =>
+//       cy.get(dataCyWrapper(exportChatButtonCypress)).should('not.exist'),
+//     );
+//   });
 
-  it('should not show export button', () => {
-    cy.mount(
-      <Chatbox
-        chatId={CHAT_ID}
-        currentMember={new ImmutableMember(MEMBERS.ANNA)}
-        members={List(Object.values(MEMBERS) as Member[])}
-        showAdminTools={false}
-      />,
-    ).then(() =>
-      cy.get(dataCyWrapper(exportChatButtonCypress)).should('not.exist'),
-    );
-  });
-});
+//   it('should not show export button', () => {
+//     cy.mount(
+//       <Chatbox
+//         chatId={CHAT_ID}
+//         currentMember={new ImmutableMember(MEMBERS.ANNA)}
+//         members={List(Object.values(MEMBERS) as Member[])}
+//         showAdminTools={false}
+//       />,
+//     ).then(() =>
+//       cy.get(dataCyWrapper(exportChatButtonCypress)).should('not.exist'),
+//     );
+//   });
+// });
