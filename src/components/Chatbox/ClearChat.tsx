@@ -5,35 +5,38 @@ import { Box, Tooltip, Typography } from '@material-ui/core';
 import IconButton from '@material-ui/core/IconButton';
 import { DeleteForever } from '@material-ui/icons';
 
+import { CHATBOX, namespaces } from '@graasp/translations';
 import { Button } from '@graasp/ui';
 
 import { clearChatButtonCypress } from '../../config/selectors';
-import { useHooksContext } from '../../context/HooksContext';
-import { useMessagesContext } from '../../context/MessagesContext';
-import { ToolVariants, ToolVariantsType } from '../../types';
+import { ClearChatHookType, ToolVariants, ToolVariantsType } from '../../types';
 import ConfirmationDialog from '../common/ConfirmationDialog';
 import ExportChat from './ExportChat';
 
 type Prop = {
   variant?: ToolVariantsType;
+  chatId: string;
+  clearChatHook?: ClearChatHookType;
 };
 
-const ClearChat: FC<Prop> = ({ variant = ToolVariants.BUTTON }) => {
+const ClearChat: FC<Prop> = ({
+  chatId,
+  clearChatHook,
+  variant = ToolVariants.BUTTON,
+}) => {
   const [openConfirmation, setOpenConfirmation] = useState(false);
-  const { t } = useTranslation();
-  const { clearChatHook: clearChat } = useHooksContext();
-  const { chatId, messages } = useMessagesContext();
+  const { t } = useTranslation(namespaces.chatbox);
 
-  if (!clearChat || !messages || !messages?.size) {
+  if (!clearChatHook) {
     return null;
   }
 
   const handleClearChat = (): void => {
-    clearChat?.(chatId);
+    clearChatHook?.(chatId);
   };
 
   const getContent = (contentType: ToolVariantsType): ReactElement => {
-    const text = t('Clear Chat');
+    const text = t(CHATBOX.CLEAR_ALL_CHAT);
 
     switch (contentType) {
       case ToolVariants.ICON:
@@ -50,6 +53,7 @@ const ClearChat: FC<Prop> = ({ variant = ToolVariants.BUTTON }) => {
       case ToolVariants.BUTTON:
         return (
           <Button
+            startIcon={<DeleteForever color="primary" />}
             variant="outlined"
             dataCy={clearChatButtonCypress}
             onClick={(): void => setOpenConfirmation(true)}
@@ -61,22 +65,22 @@ const ClearChat: FC<Prop> = ({ variant = ToolVariants.BUTTON }) => {
   };
 
   return (
-    <>
+    <div>
       {getContent(variant)}
       <ConfirmationDialog
         open={openConfirmation}
-        title={t('Clear Chat Confirmation')}
+        title={t(CHATBOX.CLEAR_ALL_CHAT_TITLE)}
         content={
           <Box display="flex" flexDirection="column" alignItems="center">
-            <Typography>
-              {t(
-                'Do you want to clear all messages from this chat? This action is non-reversible. Use the button below if you want to make a backup.',
-              )}
-            </Typography>
-            <ExportChat variant="button" text={t('Save Chat')} />
+            <Typography>{t(CHATBOX.CLEAR_ALL_CHAT_CONTENT)}</Typography>
+            <ExportChat
+              chatId={chatId}
+              variant="button"
+              text={t(CHATBOX.SAVE_CHAT_BUTTON)}
+            />
           </Box>
         }
-        confirmText={t('Clear Chat')}
+        confirmText={t(CHATBOX.CLEAR_ALL_CHAT)}
         onConfirm={(): void => {
           setOpenConfirmation(false);
           handleClearChat();
@@ -85,7 +89,7 @@ const ClearChat: FC<Prop> = ({ variant = ToolVariants.BUTTON }) => {
           setOpenConfirmation(false);
         }}
       />
-    </>
+    </div>
   );
 };
 

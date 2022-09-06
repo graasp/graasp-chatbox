@@ -33,10 +33,12 @@ const useStyles = makeStyles({
 });
 
 type Props = {
+  chatId: string;
   variant?: ToolVariantsType;
   text?: string;
 };
 
+// todo: convert this into a backend call
 const ExportChat: FC<Props> = ({ variant = ToolVariants.ICON, text }) => {
   const { messages, chatId, members } = useMessagesContext();
   const [filename, setFilename] = useState('');

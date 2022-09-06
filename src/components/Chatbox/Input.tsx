@@ -78,6 +78,7 @@ const Input: FC<Props> = ({
   const inputRadius = theme.spacing(0.5);
   const inputStyle = {
     width: '100%',
+    height: '100%',
     minWidth: '0px',
     // mentions
     control: {
@@ -88,7 +89,9 @@ const Input: FC<Props> = ({
       border: '1px solid silver',
       width: '100%',
       overflow: 'auto',
-      height: '70px',
+      // height: '70px',
+      height: '100%',
+      maxHeight: '30vh',
       lineHeight: 'inherit',
       borderRadius: inputRadius,
     },
@@ -97,7 +100,9 @@ const Input: FC<Props> = ({
       border: '1px solid transparent',
       boxSizing: 'border-box',
       overflow: 'hidden',
-      height: '70px',
+      // height: '70px',
+      height: '100%',
+      maxHeight: '30vh',
     },
 
     suggestions: {
