@@ -1,4 +1,4 @@
-import { FC, useState } from 'react';
+import { FC, useEffect, useState } from 'react';
 
 import {
   Checkbox,
@@ -30,6 +30,12 @@ const ChatboxTest: FC = () => {
   const [showTools, setShowTools] = useState(false);
   const [lang, setLang] = useState(DEFAULT_LANG);
   const [chatId, setChatId] = useState(DEFAULT_CHAT_ID);
+
+  // get chatId from url
+  useEffect(() => {
+    const choppedUrl = window.location.pathname.split('/');
+    setChatId(choppedUrl[choppedUrl.length - 1]);
+  }, [window.location.pathname]);
 
   const useStyles = makeStyles((theme) => ({
     container: {

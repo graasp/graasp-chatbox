@@ -8,6 +8,7 @@ import { IconButton, Tooltip } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { GetApp } from '@material-ui/icons';
 
+import { ChatMessage } from '@graasp/query-client/dist/src/types';
 import { Button } from '@graasp/ui';
 
 import { exportChatButtonCypress } from '../../config/selectors';
@@ -48,17 +49,17 @@ const ExportChat: FC<Props> = ({ variant = ToolVariants.ICON, text }) => {
   }
 
   const csvMessages: ExportedChatMessage[] = messages
-    .toArray()
     .map((message) => {
       const creatorName =
         members.find((m) => m.id === message.creator)?.name ||
         DEFAULT_USER_NAME;
       return {
-        ...message,
+        ...(message.toJS() as ChatMessage),
         body: normalizeMentions(message.body),
         creatorName,
       };
-    });
+    })
+    .toArray();
   // render nothing if there is no data
   if (!csvMessages.length) {
     return null;

@@ -75,7 +75,10 @@ const EditBanner: FC<Props> = ({ onClose, editedText }) => {
             className={classes.oldTextPreview}
             data-cy={editBannerOldTextCypress}
           >
-            {normalizeMentions(editedText)}
+            {
+              // todo: make this work as expected in dev
+              normalizeMentions(editedText)
+            }
           </Typography>
         </Box>
         <IconButton data-cy={editBannerCloseButtonCypress} onClick={onClose}>
