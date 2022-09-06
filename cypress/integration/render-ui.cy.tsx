@@ -1,4 +1,4 @@
-/// <reference types="./cypress"/>
+/// <reference types="../cypress"/>
 import { List } from 'immutable';
 import { v4 } from 'uuid';
 
@@ -6,7 +6,6 @@ import { ImmutableMember, Member } from '../../src';
 import Chatbox from '../../src/components/Chatbox/Chatbox';
 import {
   dataCyWrapper,
-  exportChatButtonCypress,
   inputTextFieldTextAreaCypress,
   messageIdCyWrapper,
   messagesContainerCypress,
