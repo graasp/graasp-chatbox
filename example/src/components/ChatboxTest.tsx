@@ -14,12 +14,11 @@ import {
   makeStyles,
 } from '@material-ui/core';
 
-import { ClearChatButton, MentionButton, ToolVariants } from '@graasp/chatbox';
+import { MentionButton } from '@graasp/chatbox';
 import { MUTATION_KEYS } from '@graasp/query-client';
 import { ChatMention } from '@graasp/query-client/dist/src/types';
 import buildI18n, { namespaces } from '@graasp/translations';
 
-import { ClearChatHookType } from '../../../dist/types';
 import {
   DEFAULT_CHAT_ID,
   DEFAULT_LANG,
@@ -100,10 +99,6 @@ const ChatboxTest: FC = () => {
   >(MUTATION_KEYS.CLEAR_MENTIONS);
   const clearAllMentionsFunction = (): void =>
     clearAllMentionsMutate({ memberId });
-
-  const { mutate: clearChat }: { mutate: ClearChatHookType } = useMutation(
-    MUTATION_KEYS.CLEAR_ITEM_CHAT,
-  );
 
   // adapt the width of the chatbox to simulate the width used on Graasp
   const onChangePanelWidth = (
@@ -196,12 +191,6 @@ const ChatboxTest: FC = () => {
             patchMentionFunction={patchMentionFunction}
             deleteMentionFunction={deleteMentionFunction}
             clearAllMentionsFunction={clearAllMentionsFunction}
-          />
-          <ClearChatButton
-            variant={ToolVariants.BUTTON}
-            chatId={chatId}
-            clearChatHook={clearChat}
-            exportChatHook={hooks.useExportItemChat}
           />
         </div>
         <div className={classes.chatboxContainer}>
