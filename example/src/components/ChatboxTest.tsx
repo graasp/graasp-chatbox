@@ -124,11 +124,16 @@ const ChatboxTest: FC = () => {
     return i18nInstance;
   }, [lang]);
 
+  console.log(currentMember);
+
   return (
     <I18nextProvider i18n={i18n}>
       <div className={classes.container}>
         <div className={classes.testContainer}>
           <Typography variant="h5">Test parameters</Typography>
+          <Typography variant="body1">
+            Current User: {currentMember?.get('name')}
+          </Typography>
           <FormControlLabel
             className={classes.textInputControl}
             control={
@@ -196,6 +201,7 @@ const ChatboxTest: FC = () => {
             variant={ToolVariants.BUTTON}
             chatId={chatId}
             clearChatHook={clearChat}
+            exportChatHook={hooks.useExportItemChat}
           />
         </div>
         <div className={classes.chatboxContainer}>

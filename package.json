@@ -72,7 +72,7 @@
     "@cypress/instrument-cra": "1.4.0",
     "@cypress/react": "5.12.4",
     "@cypress/webpack-dev-server": "1.8.4",
-    "@graasp/query-client": "github:graasp/graasp-query-client",
+    "@graasp/query-client": "github:graasp/graasp-query-client#202/exportChatHook",
     "@graasp/sdk": "github:graasp/graasp-sdk",
     "@material-ui/core": "4.12.4",
     "@material-ui/icons": "4.11.2",

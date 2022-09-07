@@ -8,17 +8,12 @@ import { IconButton, Tooltip } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { GetApp } from '@material-ui/icons';
 
-import { ChatMessage } from '@graasp/query-client/dist/src/types';
 import { Button } from '@graasp/ui';
 
 import { exportChatButtonCypress } from '../../config/selectors';
+import { EXPORT_CSV_HEADERS, EXPORT_DATE_FORMAT } from '../../constants';
 import {
-  DEFAULT_USER_NAME,
-  EXPORT_CSV_HEADERS,
-  EXPORT_DATE_FORMAT,
-} from '../../constants';
-import { useMessagesContext } from '../../context/MessagesContext';
-import {
+  ExportChatHookType,
   ExportedChatMessage,
   ToolVariants,
   ToolVariantsType,
@@ -36,41 +31,52 @@ type Props = {
   chatId: string;
   variant?: ToolVariantsType;
   text?: string;
+  exportChatHook: ExportChatHookType;
 };
 
 // todo: convert this into a backend call
-const ExportChat: FC<Props> = ({ variant = ToolVariants.ICON, text }) => {
-  const { messages, chatId, members } = useMessagesContext();
+const ExportChat: FC<Props> = ({
+  chatId,
+  variant = ToolVariants.ICON,
+  text,
+  exportChatHook,
+}) => {
   const [filename, setFilename] = useState('');
+  const [data, setData] = useState<ExportedChatMessage[]>([]);
   const { t } = useTranslation();
   const classes = useStyles();
 
-  // if any of the used values is falsy we should not display the button
-  if (!messages || !chatId || !members) {
-    return null;
-  }
+  const { refetch } = exportChatHook(chatId, { enabled: false });
 
-  const csvMessages: ExportedChatMessage[] = messages
-    .map((message) => {
-      const creatorName =
-        members.find((m) => m.id === message.creator)?.name ||
-        DEFAULT_USER_NAME;
-      return {
-        ...(message.toJS() as ChatMessage),
-        body: normalizeMentions(message.body),
-        creatorName,
-      };
-    })
-    .toArray();
-  // render nothing if there is no data
-  if (!csvMessages.length) {
+  if (!chatId) {
     return null;
   }
 
   // generate file name when user clicks on the button
-  const onClick = (): void => {
+  const onClick = async (): Promise<void> => {
     const currentDate = moment().format(EXPORT_DATE_FORMAT);
     setFilename(`${currentDate}_chat_${chatId}.csv`);
+
+    // fetch the data
+    const { data: exportedChat, isSuccess } = await refetch();
+    // if any of the used values is falsy we should not display the button
+    if (!exportedChat || !isSuccess) {
+      setData([]);
+      return;
+    }
+
+    const csvMessages: ExportedChatMessage[] = exportedChat.messages
+      ?.map((message) => ({
+        ...(message.toJS() as ExportedChatMessage),
+        body: normalizeMentions(message.body),
+      }))
+      .toArray();
+    // render nothing if there is no data
+    if (!csvMessages.length) {
+      setData([]);
+      return;
+    }
+    setData(csvMessages);
   };
 
   const getContent = (variant: ToolVariantsType): ReactElement | null => {
@@ -99,8 +105,9 @@ const ExportChat: FC<Props> = ({ variant = ToolVariants.ICON, text }) => {
       data-cy-filename={filename}
       className={classes.link}
       headers={EXPORT_CSV_HEADERS}
-      data={csvMessages}
+      data={data}
       filename={filename}
+      asyncOnClick
       onClick={onClick}
       // this removes the BOM for better parsing
       uFEFF={false}

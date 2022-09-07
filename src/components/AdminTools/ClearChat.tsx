@@ -9,19 +9,26 @@ import { CHATBOX, namespaces } from '@graasp/translations';
 import { Button } from '@graasp/ui';
 
 import { clearChatButtonCypress } from '../../config/selectors';
-import { ClearChatHookType, ToolVariants, ToolVariantsType } from '../../types';
+import {
+  ClearChatHookType,
+  ExportChatHookType,
+  ToolVariants,
+  ToolVariantsType,
+} from '../../types';
 import ConfirmationDialog from '../common/ConfirmationDialog';
 import ExportChat from './ExportChat';
 
 type Prop = {
   variant?: ToolVariantsType;
   chatId: string;
-  clearChatHook?: ClearChatHookType;
+  clearChatHook: ClearChatHookType;
+  exportChatHook: ExportChatHookType;
 };
 
 const ClearChat: FC<Prop> = ({
   chatId,
   clearChatHook,
+  exportChatHook,
   variant = ToolVariants.BUTTON,
 }) => {
   const [openConfirmation, setOpenConfirmation] = useState(false);
@@ -76,6 +83,7 @@ const ClearChat: FC<Prop> = ({
             <ExportChat
               chatId={chatId}
               variant="button"
+              exportChatHook={exportChatHook}
               text={t(CHATBOX.SAVE_CHAT_BUTTON)}
             />
           </Box>
