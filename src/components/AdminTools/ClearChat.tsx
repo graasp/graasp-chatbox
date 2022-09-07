@@ -1,28 +1,22 @@
-import { FC, ReactElement, useState } from 'react';
-import { useTranslation } from 'react-i18next';
+import { FC, useMemo } from 'react';
+import { I18nextProvider } from 'react-i18next';
 
-import { Box, Tooltip, Typography } from '@material-ui/core';
-import IconButton from '@material-ui/core/IconButton';
-import { DeleteForever } from '@material-ui/icons';
+import buildI18n, { langs, namespaces } from '@graasp/translations';
 
-import { CHATBOX, namespaces } from '@graasp/translations';
-import { Button } from '@graasp/ui';
-
-import { clearChatButtonCypress } from '../../config/selectors';
+import { ClearChatButton } from '../..';
 import {
   ClearChatHookType,
   ExportChatHookType,
   ToolVariants,
   ToolVariantsType,
 } from '../../types';
-import ConfirmationDialog from '../common/ConfirmationDialog';
-import ExportChat from './ExportChat';
 
 type Prop = {
   variant?: ToolVariantsType;
   chatId: string;
   clearChatHook: ClearChatHookType;
   exportChatHook: ExportChatHookType;
+  lang?: string;
 };
 
 const ClearChat: FC<Prop> = ({
@@ -30,74 +24,27 @@ const ClearChat: FC<Prop> = ({
   clearChatHook,
   exportChatHook,
   variant = ToolVariants.BUTTON,
+  lang = langs.en,
 }) => {
-  const [openConfirmation, setOpenConfirmation] = useState(false);
-  const { t } = useTranslation(namespaces.chatbox);
+  const i18n = useMemo(() => {
+    const i18nInstance = buildI18n(namespaces.chatbox);
+    i18nInstance.changeLanguage(lang);
+    return i18nInstance;
+  }, [lang]);
 
   if (!clearChatHook) {
     return null;
   }
 
-  const handleClearChat = (): void => {
-    clearChatHook?.(chatId);
-  };
-
-  const getContent = (contentType: ToolVariantsType): ReactElement => {
-    const text = t(CHATBOX.CLEAR_ALL_CHAT);
-
-    switch (contentType) {
-      case ToolVariants.ICON:
-        return (
-          <Tooltip title={text}>
-            <IconButton
-              data-cy={clearChatButtonCypress}
-              onClick={(): void => setOpenConfirmation(true)}
-            >
-              <DeleteForever color="primary" />
-            </IconButton>
-          </Tooltip>
-        );
-      case ToolVariants.BUTTON:
-        return (
-          <Button
-            startIcon={<DeleteForever color="primary" />}
-            variant="outlined"
-            dataCy={clearChatButtonCypress}
-            onClick={(): void => setOpenConfirmation(true)}
-          >
-            {text}
-          </Button>
-        );
-    }
-  };
-
   return (
-    <div>
-      {getContent(variant)}
-      <ConfirmationDialog
-        open={openConfirmation}
-        title={t(CHATBOX.CLEAR_ALL_CHAT_TITLE)}
-        content={
-          <Box display="flex" flexDirection="column" alignItems="center">
-            <Typography>{t(CHATBOX.CLEAR_ALL_CHAT_CONTENT)}</Typography>
-            <ExportChat
-              chatId={chatId}
-              variant="button"
-              exportChatHook={exportChatHook}
-              text={t(CHATBOX.SAVE_CHAT_BUTTON)}
-            />
-          </Box>
-        }
-        confirmText={t(CHATBOX.CLEAR_ALL_CHAT)}
-        onConfirm={(): void => {
-          setOpenConfirmation(false);
-          handleClearChat();
-        }}
-        onCancel={(): void => {
-          setOpenConfirmation(false);
-        }}
+    <I18nextProvider i18n={i18n}>
+      <ClearChatButton
+        chatId={chatId}
+        exportChatHook={exportChatHook}
+        clearChatHook={clearChatHook}
+        variant={variant}
       />
-    </div>
+    </I18nextProvider>
   );
 };
 
