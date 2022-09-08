@@ -89,7 +89,6 @@ const Input: FC<Props> = ({
       border: '1px solid silver',
       width: '100%',
       overflow: 'auto',
-      // height: '70px',
       height: '100%',
       maxHeight: '30vh',
       lineHeight: 'inherit',
@@ -100,7 +99,6 @@ const Input: FC<Props> = ({
       border: '1px solid transparent',
       boxSizing: 'border-box',
       overflow: 'hidden',
-      // height: '70px',
       height: '100%',
       maxHeight: '30vh',
     },
@@ -156,13 +154,10 @@ const Input: FC<Props> = ({
   const onSend = (): void => {
     if (textInput) {
       let expandedMentions: string[] = currentMentions;
-      console.log('expanded mentions initial', expandedMentions);
       // expand '@all' to all members in mentions array (skip if there are no members)
       if (currentMentions.includes(ALL_MEMBERS_ID) && members?.size) {
         expandedMentions = members.map((m) => m.id).toArray();
-        console.log('All detected, mentions are now', expandedMentions);
       }
-      console.log('Just before sending mentions are', expandedMentions);
       sendMessageFunction?.({ message: textInput, mentions: expandedMentions });
       // reset input content
       setTextInput('');

@@ -119,8 +119,6 @@ const ChatboxTest: FC = () => {
     return i18nInstance;
   }, [lang]);
 
-  console.log(currentMember);
-
   return (
     <I18nextProvider i18n={i18n}>
       <div className={classes.container}>

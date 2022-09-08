@@ -16,5 +16,5 @@ export const TOOLS_SIZE = 64;
 
 export const GRAASP_PANEL_WIDTH = 290;
 
-export const DEFAULT_CHAT_ID = '';
+export const DEFAULT_CHAT_ID = 'mock-id-replace-me!';
 export const DEFAULT_LANG = 'fr';

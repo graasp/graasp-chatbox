@@ -65,7 +65,6 @@ const ChatboxWrapper: FC<Props> = ({
       sendMessageFunction={sendMessage}
       deleteMessageFunction={deleteMessage}
       editMessageFunction={editMessage}
-      // clearChatFunction={clearChat}
       useAvatarHook={hooks.useAvatar as AvatarHookType}
     />
   );

@@ -59,7 +59,6 @@ const InputBar: FC<Props> = ({
         body,
       });
     } else {
-      console.log('message body to send is', body);
       sendMessageFunction?.({ chatId, body });
     }
     // reset editing
