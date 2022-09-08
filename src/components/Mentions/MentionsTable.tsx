@@ -25,7 +25,7 @@ import {
 import { CHATBOX } from '@graasp/translations';
 import { Button } from '@graasp/ui';
 
-import { normalizeMentions } from '../../utils/mentions';
+import MessageBody from '../Chatbox/MessageBody';
 import ConfirmationDialog from '../common/ConfirmationDialog';
 
 const useStyles = makeStyles({
@@ -77,6 +77,7 @@ const MentionsTable: FC<Props> = ({
               itemId: getIdsFromPath(m.itemPath).slice(-1)[0],
               chatOpen: true,
             });
+            markAsRead(m.id);
             window.location.href = link;
           }}
         >
@@ -85,7 +86,9 @@ const MentionsTable: FC<Props> = ({
               <FiberManualRecord fontSize="small" color="primary" />
             )}
           </TableCell>
-          <TableCell>{normalizeMentions(m.message)}</TableCell>
+          <TableCell>
+            <MessageBody messageBody={m.message} />
+          </TableCell>
           <TableCell>{m.creator}</TableCell>
           <TableCell>
             <Grid container direction="row">

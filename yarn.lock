@@ -2177,9 +2177,9 @@ __metadata:
     "@cypress/instrument-cra": 1.4.0
     "@cypress/react": 5.12.4
     "@cypress/webpack-dev-server": 1.8.4
-    "@graasp/query-client": "github:graasp/graasp-query-client"
+    "@graasp/query-client": "github:graasp/graasp-query-client#202/exportChatHook"
     "@graasp/sdk": "github:graasp/graasp-sdk"
-    "@graasp/translations": "github:graasp/graasp-translations"
+    "@graasp/translations": "github:graasp/graasp-translations#34/chatboxTranslations"
     "@graasp/ui": "github:graasp/graasp-ui"
     "@material-ui/core": 4.12.4
     "@material-ui/icons": 4.11.2
@@ -2204,6 +2204,7 @@ __metadata:
     clsx: 1.1.1
     cross-env: 7.0.3
     cypress: 10.6.0
+    env-cmd: 10.1.0
     eslint: 8.23.0
     eslint-config-prettier: 8.3.0
     eslint-config-standard: 16.0.3
@@ -2250,9 +2251,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@graasp/query-client@github:graasp/graasp-query-client":
+"@graasp/query-client@github:graasp/graasp-query-client#202/exportChatHook":
   version: 0.1.0
-  resolution: "@graasp/query-client@https://github.com/graasp/graasp-query-client.git#commit=6ef71cc527741f4cce266e28265779149932d4f4"
+  resolution: "@graasp/query-client@https://github.com/graasp/graasp-query-client.git#commit=a51e6eee76b7063e813bddf78ccd25f39539634f"
   dependencies:
     "@graasp/sdk": "github:graasp/graasp-sdk"
     "@graasp/translations": "github:graasp/graasp-translations.git"
@@ -2261,14 +2262,12 @@ __metadata:
     crypto-js: 4.1.1
     http-status-codes: 2.2.0
     immutable: 4.0.0
-    jest-immutable-matchers: 3.0.0
-    js-cookie: 3.0.1
     qs: 6.10.3
     react-query: 3.34.19
     uuid: 8.3.2
   peerDependencies:
     react: ^17.0.0
-  checksum: c2224dc891e89c93b07469de1af99d0de53b71a7114a14808246ff3bb1e45744c3d49359114611c00a2a6c0a034d87f09d4d5b803a90b617d9dd276ca1deafe5
+  checksum: 1a4e640d3af2834b6fdbf774414840b319c1e6901c2cc38fc37094bdfe6e625fb4ca225dae0f656d69cab541711ec90d0d9f371fae40f32223ff3fa3a3d05680
   languageName: node
   linkType: hard
 
@@ -2289,7 +2288,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@graasp/translations@github:graasp/graasp-translations#main":
+"@graasp/translations@github:graasp/graasp-translations#34/chatboxTranslations":
+  version: 0.1.0
+  resolution: "@graasp/translations@https://github.com/graasp/graasp-translations.git#commit=f180be4abd25f91e3d0eef68638eeace1b737448"
+  dependencies:
+    i18next: 21.8.1
+  checksum: 2c00fc7cff04584a07d66caabcb55d95f2eb2ead9071e28b9053c37b3f055bf056469a40fbd94f63d3091864f549854955ee6bc604c941fe02d397dbc51a6e66
+  languageName: node
+  linkType: hard
+
+"@graasp/translations@github:graasp/graasp-translations.git":
   version: 0.1.0
   resolution: "@graasp/translations@https://github.com/graasp/graasp-translations.git#commit=1eb30447fca754c2b418bfa6d86772348952ccf0"
   dependencies:
@@ -5986,6 +5994,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"commander@npm:^4.0.0":
+  version: 4.1.1
+  resolution: "commander@npm:4.1.1"
+  checksum: d7b9913ff92cae20cb577a4ac6fcc121bd6223319e54a40f51a14740a681ad5c574fd29a57da478a5f234a6fa6c52cbf0b7c641353e03c648b1ae85ba670b977
+  languageName: node
+  linkType: hard
+
 "commander@npm:^5.1.0":
   version: 5.1.0
   resolution: "commander@npm:5.1.0"
@@ -7500,6 +7515,18 @@ __metadata:
   version: 2.2.0
   resolution: "entities@npm:2.2.0"
   checksum: 19010dacaf0912c895ea262b4f6128574f9ccf8d4b3b65c7e8334ad0079b3706376360e28d8843ff50a78aabcb8f08f0a32dbfacdc77e47ed77ca08b713669b3
+  languageName: node
+  linkType: hard
+
+"env-cmd@npm:10.1.0":
+  version: 10.1.0
+  resolution: "env-cmd@npm:10.1.0"
+  dependencies:
+    commander: ^4.0.0
+    cross-spawn: ^7.0.0
+  bin:
+    env-cmd: bin/env-cmd.js
+  checksum: efef55074250f14cfc0b80c98dd98f1f056a80e1f3c7db14097ceefdd2d56c766bbb83b54c22932112707f41b36ce2e923f8015d69e62a75c12d98640b972e75
   languageName: node
   linkType: hard
 
@@ -9338,7 +9365,7 @@ __metadata:
   dependencies:
     "@babel/plugin-syntax-object-rest-spread": 7.8.3
     "@graasp/chatbox": "link:.."
-    "@graasp/query-client": "github:graasp/graasp-query-client"
+    "@graasp/query-client": "github:graasp/graasp-query-client#202/exportChatHook"
     "@material-ui/core": 4.12.4
     "@material-ui/icons": 4.11.2
     "@material-ui/lab": 4.0.0-alpha.60
@@ -9352,6 +9379,7 @@ __metadata:
     immutable: 4.0.0
     react: 17.0.2
     react-dom: 17.0.2
+    react-i18next: 11.18.1
     react-scripts: 5.0.1
     typescript: 4.7.4
   peerDependencies:
@@ -10844,16 +10872,6 @@ __metadata:
     fsevents:
       optional: true
   checksum: e092a1412829a9254b4725531ee72926de530f77fda7b0d9ea18008fb7623c16f72e772d8e93be71cac9e591b2c6843a669610887dd2c89bd9eb528856e3ab47
-  languageName: node
-  linkType: hard
-
-"jest-immutable-matchers@npm:3.0.0":
-  version: 3.0.0
-  resolution: "jest-immutable-matchers@npm:3.0.0"
-  peerDependencies:
-    immutable: ">=3.0.0"
-    jest: ">=21.0.0"
-  checksum: 28c30e0bdb1637e3e1bf4a2b6f02cbc66ba6f3b4cb2c204968d13c591e0fabfdd0b68ee5fc1af49ba23ad702c0543676d7e70a6d19100193d2fafb1e7eb5621f
   languageName: node
   linkType: hard
 

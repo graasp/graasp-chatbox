@@ -7,7 +7,6 @@ import {
   PartialNewChatMessage,
 } from '@graasp/query-client/dist/src/types';
 
-import { ClearChatHookType } from '../../../src/types';
 import { DEFAULT_LANG } from '../config/constants';
 import { hooks, useMutation } from '../config/queryClient';
 
@@ -27,15 +26,16 @@ const ChatboxWrapper: FC<Props> = ({
   // use hooks
   const { data: currentMember } = hooks.useCurrentMember();
   const { data: chat } = hooks.useItemChat(chatId);
-  const memberships = hooks.useItemMemberships(chatId).data;
   // get chat messages
   const chatMessages = chat?.messages;
 
+  const { data: memberships } = hooks.useItemMemberships(chatId);
+
   const memberIds: string[] =
-    memberships?.map((m) => m.memberId)?.toArray() || [];
+    (memberships?.size && memberships?.map((m) => m.memberId)?.toArray()) || [];
+  const members = hooks.useMembers(memberIds).data;
 
   const member = new ImmutableMember(currentMember);
-  const members = hooks.useMembers(memberIds).data;
 
   const {
     mutate: sendMessage,
@@ -52,9 +52,6 @@ const ChatboxWrapper: FC<Props> = ({
   }: { mutate: (message: PartialChatMessage) => void } = useMutation(
     MUTATION_KEYS.PATCH_ITEM_CHAT_MESSAGE,
   );
-  const { mutate: clearChat }: { mutate: ClearChatHookType } = useMutation(
-    MUTATION_KEYS.CLEAR_ITEM_CHAT,
-  );
 
   return (
     <Chatbox
@@ -68,7 +65,6 @@ const ChatboxWrapper: FC<Props> = ({
       sendMessageFunction={sendMessage}
       deleteMessageFunction={deleteMessage}
       editMessageFunction={editMessage}
-      clearChatFunction={clearChat}
       useAvatarHook={hooks.useAvatar as AvatarHookType}
     />
   );

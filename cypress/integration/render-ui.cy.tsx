@@ -1,4 +1,4 @@
-/// <reference types="./cypress"/>
+/// <reference types="../cypress"/>
 import { List } from 'immutable';
 import { v4 } from 'uuid';
 
@@ -6,7 +6,6 @@ import { ImmutableMember, Member } from '../../src';
 import Chatbox from '../../src/components/Chatbox/Chatbox';
 import {
   dataCyWrapper,
-  exportChatButtonCypress,
   inputTextFieldTextAreaCypress,
   messageIdCyWrapper,
   messagesContainerCypress,
@@ -86,47 +85,5 @@ describe('Messages container', () => {
       cy.get(dataCyWrapper(messagesContainerCypress)).scrollTo('top');
       cy.get(dataCyWrapper(messageIdCyWrapper(firstId))).should('be.visible');
     });
-  });
-});
-
-describe('Export Chat button', () => {
-  it('should show export button', () => {
-    cy.mount(
-      <Chatbox
-        chatId={CHAT_ID}
-        currentMember={new ImmutableMember(MEMBERS.ANNA)}
-        members={List(Object.values(MEMBERS) as Member[])}
-        messages={List(CHAT_MESSAGES)}
-        showAdminTools
-      />,
-    ).then(() =>
-      cy.get(dataCyWrapper(exportChatButtonCypress)).should('exist'),
-    );
-  });
-
-  it('should not show button when chat is empty', () => {
-    cy.mount(
-      <Chatbox
-        chatId={CHAT_ID}
-        currentMember={new ImmutableMember(MEMBERS.ANNA)}
-        members={List(Object.values(MEMBERS) as Member[])}
-        showAdminTools
-      />,
-    ).then(() =>
-      cy.get(dataCyWrapper(exportChatButtonCypress)).should('not.exist'),
-    );
-  });
-
-  it('should not show export button', () => {
-    cy.mount(
-      <Chatbox
-        chatId={CHAT_ID}
-        currentMember={new ImmutableMember(MEMBERS.ANNA)}
-        members={List(Object.values(MEMBERS) as Member[])}
-        showAdminTools={false}
-      />,
-    ).then(() =>
-      cy.get(dataCyWrapper(exportChatButtonCypress)).should('not.exist'),
-    );
   });
 });

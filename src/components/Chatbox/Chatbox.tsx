@@ -18,7 +18,6 @@ import { HooksContextProvider } from '../../context/HooksContext';
 import { MessagesContextProvider } from '../../context/MessagesContext';
 import type { ClearChatHookType, ImmutableMember } from '../../types';
 import { AvatarHookType, ChatMessageList } from '../../types';
-import AdminTools from './AdminTools';
 import Header from './Header';
 import InputBar from './InputBar';
 import Messages from './Messages';
@@ -112,7 +111,6 @@ const Chatbox: FC<Props> = ({
                       sendMessageFunction={sendMessageFunction}
                       editMessageFunction={editMessageFunction}
                     />
-                    {showAdminTools && <AdminTools variant="icon" />}
                   </div>
                 </div>
               </>

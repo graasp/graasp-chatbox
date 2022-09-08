@@ -1,9 +1,10 @@
 import clsx from 'clsx';
 
-import React, { FC, ReactElement, RefObject, useEffect } from 'react';
+import React, { FC, ReactElement, RefObject, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import {
   Mention,
+  MentionItem,
   MentionsInput,
   OnChangeHandlerFunc,
   SuggestionDataItem,
@@ -31,7 +32,6 @@ import {
 } from '../../constants';
 import { useCurrentMemberContext } from '../../context/CurrentMemberContext';
 import { useMessagesContext } from '../../context/MessagesContext';
-import { getAllMentions, normalizeMentions } from '../../utils/mentions';
 
 type Props = {
   id?: string;
@@ -78,6 +78,7 @@ const Input: FC<Props> = ({
   const inputRadius = theme.spacing(0.5);
   const inputStyle = {
     width: '100%',
+    height: '100%',
     minWidth: '0px',
     // mentions
     control: {
@@ -88,7 +89,8 @@ const Input: FC<Props> = ({
       border: '1px solid silver',
       width: '100%',
       overflow: 'auto',
-      height: '70px',
+      height: '100%',
+      maxHeight: '30vh',
       lineHeight: 'inherit',
       borderRadius: inputRadius,
     },
@@ -97,7 +99,8 @@ const Input: FC<Props> = ({
       border: '1px solid transparent',
       boxSizing: 'border-box',
       overflow: 'hidden',
-      height: '70px',
+      height: '100%',
+      maxHeight: '30vh',
     },
 
     suggestions: {
@@ -128,6 +131,8 @@ const Input: FC<Props> = ({
   const { members } = useMessagesContext();
   const { id: currentMemberId } = useCurrentMemberContext();
   const { t } = useTranslation();
+  const [currentMentions, setCurrentMentions] = useState<string[]>([]);
+  const [plainTextMessage, setPlainTextMessage] = useState<string>('');
 
   // exclude self from suggestions and add @all pseudo member
   const memberSuggestions: SuggestionDataItem[] = [
@@ -148,15 +153,16 @@ const Input: FC<Props> = ({
 
   const onSend = (): void => {
     if (textInput) {
-      const mentions = getAllMentions(textInput).map(({ id }) => id);
-      let expandedMentions: string[] = mentions;
+      let expandedMentions: string[] = currentMentions;
       // expand '@all' to all members in mentions array (skip if there are no members)
-      if (mentions.includes(ALL_MEMBERS_ID) && members?.size) {
+      if (currentMentions.includes(ALL_MEMBERS_ID) && members?.size) {
         expandedMentions = members.map((m) => m.id).toArray();
       }
       sendMessageFunction?.({ message: textInput, mentions: expandedMentions });
       // reset input content
       setTextInput('');
+      setPlainTextMessage('');
+      setCurrentMentions([]);
     }
   };
 
@@ -165,9 +171,15 @@ const Input: FC<Props> = ({
     _: {
       target: { value: string };
     },
+    // new value of the field
     newValue: string,
+    // newPlainTextValue of the field
+    newPlainTextValue: string,
+    newMentions: MentionItem[],
   ): void => {
     setTextInput(newValue);
+    setPlainTextMessage(newPlainTextValue);
+    setCurrentMentions(newMentions.map(({ id }) => id));
   };
 
   // catch {enter} key press to send messages
@@ -191,9 +203,8 @@ const Input: FC<Props> = ({
     // when the textInput is empty, return a text with just a whitespace
     // to keep the height of the element the same
     let helperText = ' ';
-    const normalizedTextInput = normalizeMentions(textInput);
-    if (textInput) {
-      helperText = normalizedTextInput.length.toString();
+    if (textInput && plainTextMessage) {
+      helperText = plainTextMessage.length.toString();
       // append the max message size
       if (isMessageTooLong) {
         // there is a "space" before the message

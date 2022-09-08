@@ -47,7 +47,7 @@
     "react-dom": "*"
   },
   "dependencies": {
-    "@graasp/translations": "github:graasp/graasp-translations",
+    "@graasp/translations": "github:graasp/graasp-translations#34/chatboxTranslations",
     "@graasp/ui": "github:graasp/graasp-ui",
     "clsx": "1.1.1",
     "i18next": "21.8.1",
@@ -72,7 +72,7 @@
     "@cypress/instrument-cra": "1.4.0",
     "@cypress/react": "5.12.4",
     "@cypress/webpack-dev-server": "1.8.4",
-    "@graasp/query-client": "github:graasp/graasp-query-client",
+    "@graasp/query-client": "github:graasp/graasp-query-client#202/exportChatHook",
     "@graasp/sdk": "github:graasp/graasp-sdk",
     "@material-ui/core": "4.12.4",
     "@material-ui/icons": "4.11.2",
@@ -96,6 +96,7 @@
     "@typescript-eslint/parser": "5.30.7",
     "cross-env": "7.0.3",
     "cypress": "10.6.0",
+    "env-cmd": "10.1.0",
     "eslint": "8.23.0",
     "eslint-config-prettier": "8.3.0",
     "eslint-config-standard": "16.0.3",
@@ -122,8 +123,7 @@
   },
   "resolutions": {
     "@types/react": "17.0.2",
-    "@graasp/sdk": "github:graasp/graasp-sdk#main",
-    "@graasp/translations": "github:graasp/graasp-translations#main"
+    "@graasp/sdk": "github:graasp/graasp-sdk#main"
   },
   "files": [
     "dist"

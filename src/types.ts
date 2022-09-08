@@ -2,7 +2,10 @@ import { List, Record } from 'immutable';
 
 import { UseQueryResult } from 'react-query';
 
-import { ChatMessageRecord } from '@graasp/query-client/dist/src/types';
+import {
+  ChatMessageRecord,
+  ExportedItemChat,
+} from '@graasp/query-client/dist/src/types';
 import { UUID } from '@graasp/ui/dist/types';
 
 import { BUTTON_VARIANT, ICON_VARIANT } from './constants';
@@ -44,6 +47,10 @@ export type AvatarHookType = (args: {
   size?: string;
 }) => UseQueryResult<Blob>;
 export type ClearChatHookType = (id: UUID) => void;
+export type ExportChatHookType = (
+  id: UUID,
+  options: { enabled: boolean },
+) => UseQueryResult<ExportedItemChat>;
 
 export const ToolVariants = {
   ICON: ICON_VARIANT,

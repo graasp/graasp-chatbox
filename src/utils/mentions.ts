@@ -1,22 +1,10 @@
-const mentionRegEx =
-  /<!@(?<name>\w+)>\[(?<id>[\da-f]{8}-[\da-f]{4}-4[\da-f]{3}-[89ab][\da-f]{3}-[\da-f]{12})]/i;
-
-const mentionCodeRegEx =
-  /`<!@(?<name>\w+)>\[(?<id>[\da-f]{8}-[\da-f]{4}-4[\da-f]{3}-[89ab][\da-f]{3}-[\da-f]{12})]`/i;
 export const getMention = (textContent: string): RegExpMatchArray | null =>
-  textContent.match(mentionRegEx);
+  textContent.match(
+    /<!@(?<name>[\s\w]+)>\[(?<id>[\da-f]{8}-[\da-f]{4}-4[\da-f]{3}-[89ab][\da-f]{3}-[\da-f]{12})]/i,
+  );
 
-export const getAllMentions = (
-  textContent: string,
-): { id: string; name: string }[] => {
-  const arr = Array.from(
-    textContent.matchAll(new RegExp(mentionRegEx, 'g')),
-  ).map((match) => ({
-    id: match.groups?.id || '',
-    name: match.groups?.name || '',
-  }));
-  return arr.filter(({ id, name }) => id && name);
+export const normalizeMentions = (message: string): string => {
+  const regexMentions =
+    /`<!@([\s\w]+)>\[([\da-f]{8}-[\da-f]{4}-4[\da-f]{3}-[89ab][\da-f]{3}-[\da-f]{12})]`/gi;
+  return message.replace(regexMentions, '@$1');
 };
-
-export const normalizeMentions = (message: string): string =>
-  message.replaceAll(new RegExp(mentionCodeRegEx, 'g'), '@$<name>');

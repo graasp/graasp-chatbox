@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "@graasp/chatbox": "link:..",
-    "@graasp/query-client": "github:graasp/graasp-query-client",
+    "@graasp/query-client": "github:graasp/graasp-query-client#202/exportChatHook",
     "@material-ui/core": "4.12.4",
     "@material-ui/icons": "4.11.2",
     "@material-ui/lab": "4.0.0-alpha.60",
@@ -25,6 +25,7 @@
     "immutable": "4.0.0",
     "react": "17.0.2",
     "react-dom": "17.0.2",
+    "react-i18next": "11.18.1",
     "react-scripts": "5.0.1",
     "typescript": "4.7.4"
   },

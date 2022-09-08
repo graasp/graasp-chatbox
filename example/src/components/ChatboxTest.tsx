@@ -1,4 +1,5 @@
-import { FC, useState } from 'react';
+import { FC, useEffect, useMemo, useState } from 'react';
+import { I18nextProvider } from 'react-i18next';
 
 import {
   Checkbox,
@@ -16,6 +17,7 @@ import {
 import { MentionButton } from '@graasp/chatbox';
 import { MUTATION_KEYS } from '@graasp/query-client';
 import { ChatMention } from '@graasp/query-client/dist/src/types';
+import buildI18n, { namespaces } from '@graasp/translations';
 
 import {
   DEFAULT_CHAT_ID,
@@ -30,6 +32,12 @@ const ChatboxTest: FC = () => {
   const [showTools, setShowTools] = useState(false);
   const [lang, setLang] = useState(DEFAULT_LANG);
   const [chatId, setChatId] = useState(DEFAULT_CHAT_ID);
+
+  // get chatId from url
+  useEffect(() => {
+    const choppedUrl = window.location.pathname.split('/');
+    setChatId(choppedUrl[choppedUrl.length - 1]);
+  }, [window.location.pathname]);
 
   const useStyles = makeStyles((theme) => ({
     container: {
@@ -66,6 +74,7 @@ const ChatboxTest: FC = () => {
   const classes = useStyles();
   const { data: currentMember } = hooks.useCurrentMember();
   const memberId = currentMember?.get('id') as string;
+
   // mutations to handle the mentions
   const { mutate: patchMentionMutate } = useMutation<
     ChatMention,
@@ -74,6 +83,7 @@ const ChatboxTest: FC = () => {
   >(MUTATION_KEYS.PATCH_MENTION);
   const patchMentionFunction = (args: { id: string; status: string }): void =>
     patchMentionMutate({ memberId, ...args });
+
   const { mutate: deleteMentionMutate } = useMutation<
     ChatMention,
     unknown,
@@ -81,6 +91,7 @@ const ChatboxTest: FC = () => {
   >(MUTATION_KEYS.DELETE_MENTION);
   const deleteMentionFunction = (mentionId: string): void =>
     deleteMentionMutate({ memberId, mentionId });
+
   const { mutate: clearAllMentionsMutate } = useMutation<
     ChatMention[],
     unknown,
@@ -102,78 +113,93 @@ const ChatboxTest: FC = () => {
     }
   };
 
+  const i18n = useMemo(() => {
+    const i18nInstance = buildI18n(namespaces.chatbox);
+    i18nInstance.changeLanguage(lang);
+    return i18nInstance;
+  }, [lang]);
+
   return (
-    <div className={classes.container}>
-      <div className={classes.testContainer}>
-        <Typography variant="h5">Test parameters</Typography>
-        <FormControlLabel
-          className={classes.textInputControl}
-          control={
-            <TextField
-              className={classes.chatInputBox}
-              variant="outlined"
-              value={chatId}
-              fullWidth
-              onChange={({ target }): void => setChatId(target.value)}
-            />
-          }
-          label="Chat Id"
-          labelPlacement="top"
-        />
-        <FormControl>
-          <FormLabel component="legend">Language</FormLabel>
-          <RadioGroup
-            aria-label="language"
-            value={lang}
-            onChange={({ target }): void => setLang(target.value)}
-          >
-            <FormControlLabel value="fr" control={<Radio />} label="French" />
-            <FormControlLabel value="en" control={<Radio />} label="English" />
-          </RadioGroup>
-        </FormControl>
-        <FormControl>
-          <FormLabel component="legend">Chatbox params</FormLabel>
+    <I18nextProvider i18n={i18n}>
+      <div className={classes.container}>
+        <div className={classes.testContainer}>
+          <Typography variant="h5">Test parameters</Typography>
+          <Typography variant="body1">
+            Current User: {currentMember?.get('name')}
+          </Typography>
           <FormControlLabel
+            className={classes.textInputControl}
             control={
-              <Checkbox
-                value={showTools}
-                onChange={(): void => setShowTools(!showTools)}
+              <TextField
+                className={classes.chatInputBox}
+                variant="outlined"
+                value={chatId}
+                fullWidth
+                onChange={({ target }): void => setChatId(target.value)}
               />
             }
-            label="Show Admin tools"
-          />
-          <FormControlLabel
-            control={
-              <Slider
-                value={testWidth}
-                min={GRAASP_PANEL_WIDTH}
-                step={20}
-                max={800}
-                color="secondary"
-                onChange={onChangePanelWidth}
-              />
-            }
+            label="Chat Id"
             labelPlacement="top"
-            label="Panel Width"
           />
-        </FormControl>
-        <MentionButton
-          color="primary"
-          useMentions={hooks.useMentions}
-          useMembers={hooks.useMembers}
-          patchMentionFunction={patchMentionFunction}
-          deleteMentionFunction={deleteMentionFunction}
-          clearAllMentionsFunction={clearAllMentionsFunction}
-        />
+          <FormControl>
+            <FormLabel component="legend">Language</FormLabel>
+            <RadioGroup
+              aria-label="language"
+              value={lang}
+              onChange={({ target }): void => setLang(target.value)}
+            >
+              <FormControlLabel value="fr" control={<Radio />} label="French" />
+              <FormControlLabel
+                value="en"
+                control={<Radio />}
+                label="English"
+              />
+            </RadioGroup>
+          </FormControl>
+          <FormControl>
+            <FormLabel component="legend">Chatbox params</FormLabel>
+            <FormControlLabel
+              control={
+                <Checkbox
+                  value={showTools}
+                  onChange={(): void => setShowTools(!showTools)}
+                />
+              }
+              label="Show Admin tools"
+            />
+            <FormControlLabel
+              control={
+                <Slider
+                  value={testWidth}
+                  min={GRAASP_PANEL_WIDTH}
+                  step={20}
+                  max={800}
+                  color="secondary"
+                  onChange={onChangePanelWidth}
+                />
+              }
+              labelPlacement="top"
+              label="Panel Width"
+            />
+          </FormControl>
+          <MentionButton
+            color="primary"
+            useMentions={hooks.useMentions}
+            useMembers={hooks.useMembers}
+            patchMentionFunction={patchMentionFunction}
+            deleteMentionFunction={deleteMentionFunction}
+            clearAllMentionsFunction={clearAllMentionsFunction}
+          />
+        </div>
+        <div className={classes.chatboxContainer}>
+          <ChatboxWrapper
+            chatId={chatId}
+            lang={lang}
+            showAdminTools={showTools}
+          />
+        </div>
       </div>
-      <div className={classes.chatboxContainer}>
-        <ChatboxWrapper
-          chatId={chatId}
-          lang={lang}
-          showAdminTools={showTools}
-        />
-      </div>
-    </div>
+    </I18nextProvider>
   );
 };
 
