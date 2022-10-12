@@ -1,5 +1,3 @@
-import clsx from 'clsx';
-
 import React, { FC, ReactElement, RefObject, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import {
@@ -10,11 +8,9 @@ import {
   SuggestionDataItem,
 } from 'react-mentions';
 
-import { Typography, useTheme } from '@material-ui/core';
-import Box from '@material-ui/core/Box';
-import IconButton from '@material-ui/core/IconButton';
-import { makeStyles } from '@material-ui/core/styles';
-import SendIcon from '@material-ui/icons/Send';
+import SendIcon from '@mui/icons-material/Send';
+import { Typography, styled, useTheme } from '@mui/material';
+import IconButton from '@mui/material/IconButton';
 
 import { MessageBodyType } from '@graasp/query-client/dist/src/types';
 import { CHATBOX } from '@graasp/translations';
@@ -32,6 +28,18 @@ import {
 } from '../../constants';
 import { useCurrentMemberContext } from '../../context/CurrentMemberContext';
 import { useMessagesContext } from '../../context/MessagesContext';
+import FullWidthWrapper from '../common/FullWidthWrapper';
+
+const HelperText = styled(Typography)(({ theme }) => ({
+  whiteSpace: 'pre',
+  paddingLeft: theme.spacing(1),
+  marginBottom: theme.spacing(1),
+  color: 'gray',
+}));
+
+const mentionStyle = {
+  backgroundColor: '#b9b9ed',
+};
 
 type Props = {
   id?: string;
@@ -40,25 +48,6 @@ type Props = {
   textInput: string;
   setTextInput: (newText: string) => void;
   sendMessageFunction?: (body: MessageBodyType) => void;
-};
-
-const useStyles = makeStyles((theme) => ({
-  wrapper: {
-    width: '100%',
-  },
-  textLength: {
-    whiteSpace: 'pre',
-    paddingLeft: theme.spacing(1),
-    marginBottom: theme.spacing(1),
-    color: 'gray',
-  },
-  textTooLong: {
-    color: 'red !important',
-  },
-}));
-
-const mentionStyle = {
-  backgroundColor: '#b9b9ed',
 };
 
 const Input: FC<Props> = ({
@@ -127,7 +116,6 @@ const Input: FC<Props> = ({
     },
   };
 
-  const classes = useStyles();
   const { members } = useMessagesContext();
   const { id: currentMemberId } = useCurrentMemberContext();
   const { t } = useTranslation();
@@ -214,23 +202,20 @@ const Input: FC<Props> = ({
       }
     }
     return (
-      <Typography
-        className={clsx(classes.textLength, {
-          [classes.textTooLong]: isMessageTooLong,
-        })}
+      <HelperText
+        sx={{ ...(isMessageTooLong && { color: 'red !important' }) }}
         variant="caption"
         data-cy={charCounterCypress}
       >
         {helperText}
-      </Typography>
+      </HelperText>
     );
   };
 
   return (
     <div>
-      <Box
+      <FullWidthWrapper
         display="flex"
-        className={classes.wrapper}
         justifyContent="center"
         alignItems="flex-end"
         id={id}
@@ -265,7 +250,7 @@ const Input: FC<Props> = ({
         >
           <SendIcon color={isMessageTooLong ? 'disabled' : 'primary'} />
         </IconButton>
-      </Box>
+      </FullWidthWrapper>
       {renderHelperText()}
     </div>
   );

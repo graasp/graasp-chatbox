@@ -3,7 +3,7 @@ import { List } from 'immutable';
 import { FC, useMemo } from 'react';
 import { I18nextProvider } from 'react-i18next';
 
-import { makeStyles } from '@material-ui/core/styles';
+import { StyledEngineProvider, styled } from '@mui/material';
 
 import {
   MemberRecord,
@@ -16,11 +16,24 @@ import { CurrentMemberContextProvider } from '../../context/CurrentMemberContext
 import { EditingContextProvider } from '../../context/EditingContext';
 import { HooksContextProvider } from '../../context/HooksContext';
 import { MessagesContextProvider } from '../../context/MessagesContext';
-import type { ClearChatHookType, ImmutableMember } from '../../types';
+import type { ImmutableMember } from '../../types';
 import { AvatarHookType, ChatMessageList } from '../../types';
 import Header from './Header';
 import InputBar from './InputBar';
 import Messages from './Messages';
+
+const ChatboxContainer = styled('div')({
+  // set height of full container
+  height: 'calc(100vh - 16px)',
+  minHeight: '0px',
+  display: 'flex',
+  flexDirection: 'column',
+});
+
+const InputContainer = styled('div')({
+  // no flex growing -> keep container at bottom of window
+  flex: 'none',
+});
 
 type Props = {
   id?: string;
@@ -30,8 +43,7 @@ type Props = {
   sendMessageFunction?: (message: PartialNewChatMessage) => void;
   deleteMessageFunction?: (message: PartialChatMessage) => void;
   editMessageFunction?: (message: PartialChatMessage) => void;
-  clearChatFunction?: ClearChatHookType;
-  useAvatarHook?: AvatarHookType;
+  useAvatarHook: AvatarHookType;
   chatId: string;
   showHeader?: boolean;
   showAdminTools?: boolean;
@@ -46,7 +58,6 @@ const Chatbox: FC<Props> = ({
   sendMessageFunction,
   deleteMessageFunction,
   editMessageFunction,
-  clearChatFunction,
   useAvatarHook,
   messages,
   isLoading,
@@ -57,23 +68,6 @@ const Chatbox: FC<Props> = ({
   currentMember,
   members,
 }) => {
-  const useStyles = makeStyles(() => ({
-    chatboxContainer: {
-      // set height of full container
-      height: 'calc(100vh - 16px)',
-      minHeight: '0px',
-      display: 'flex',
-      flexDirection: 'column',
-    },
-    container: {
-      minHeight: '0px',
-    },
-    bottomContainer: {
-      // no flex growing -> keep container at bottom of window
-      flex: 'none',
-    },
-  }));
-  const classes = useStyles();
   const i18n = useMemo(() => {
     const i18nInstance = buildI18n(namespaces.chatbox);
     i18nInstance.changeLanguage(lang);
@@ -85,40 +79,39 @@ const Chatbox: FC<Props> = ({
   }
 
   return (
-    <I18nextProvider i18n={i18n}>
-      <EditingContextProvider>
-        <HooksContextProvider
-          useAvatarHook={useAvatarHook}
-          clearChatHook={clearChatFunction}
-        >
-          <CurrentMemberContextProvider currentMember={currentMember}>
-            <MessagesContextProvider
-              chatId={chatId}
-              members={members}
-              messages={messages}
-            >
-              <>
-                {showHeader && <Header />}
-                <div className={classes.chatboxContainer} id={id}>
-                  <Messages
-                    currentMember={currentMember}
-                    isAdmin={showAdminTools}
-                    deleteMessageFunction={deleteMessageFunction}
-                  />
-                  <div className={classes.bottomContainer}>
-                    <InputBar
-                      sendMessageBoxId={sendMessageBoxId}
-                      sendMessageFunction={sendMessageFunction}
-                      editMessageFunction={editMessageFunction}
+    <StyledEngineProvider injectFirst>
+      <I18nextProvider i18n={i18n}>
+        <EditingContextProvider>
+          <HooksContextProvider useAvatarHook={useAvatarHook}>
+            <CurrentMemberContextProvider currentMember={currentMember}>
+              <MessagesContextProvider
+                chatId={chatId}
+                members={members}
+                messages={messages}
+              >
+                <>
+                  {showHeader && <Header />}
+                  <ChatboxContainer id={id}>
+                    <Messages
+                      currentMember={currentMember}
+                      isAdmin={showAdminTools}
+                      deleteMessageFunction={deleteMessageFunction}
                     />
-                  </div>
-                </div>
-              </>
-            </MessagesContextProvider>
-          </CurrentMemberContextProvider>
-        </HooksContextProvider>
-      </EditingContextProvider>
-    </I18nextProvider>
+                    <InputContainer>
+                      <InputBar
+                        sendMessageBoxId={sendMessageBoxId}
+                        sendMessageFunction={sendMessageFunction}
+                        editMessageFunction={editMessageFunction}
+                      />
+                    </InputContainer>
+                  </ChatboxContainer>
+                </>
+              </MessagesContextProvider>
+            </CurrentMemberContextProvider>
+          </HooksContextProvider>
+        </EditingContextProvider>
+      </I18nextProvider>
+    </StyledEngineProvider>
   );
 };
 

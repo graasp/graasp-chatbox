@@ -1,8 +1,18 @@
 import { v4 } from 'uuid';
 
+import { ChatMessage } from '../../src/types';
 import { CURRENT_MEMBER, MEMBERS } from './members';
 
 export const CHAT_ID = v4();
+
+export const getMockMessage = ({ member = CURRENT_MEMBER }): ChatMessage => ({
+  id: v4(),
+  chatId: CHAT_ID,
+  creator: member.id,
+  createdAt: new Date().toISOString(),
+  updatedAt: new Date().toISOString(),
+  body: 'This is a message',
+});
 
 export const CHAT_MESSAGES = [
   {

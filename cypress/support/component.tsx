@@ -17,6 +17,11 @@
 // require('./commands')
 import { mount } from 'cypress/react';
 
+import React from 'react';
+
+import { CssBaseline } from '@mui/material';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+
 import './commands';
 
 // Augment the Cypress namespace to include type definitions for
@@ -31,7 +36,16 @@ declare global {
   }
 }
 
-Cypress.Commands.add('mount', mount);
+Cypress.Commands.add('mount', (component) => {
+  const theme = createTheme();
+  const wrapped = (
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      {component}
+    </ThemeProvider>
+  );
+  return mount(wrapped);
+});
 
 // Example use:
 // cy.mount(<MyComponent />)

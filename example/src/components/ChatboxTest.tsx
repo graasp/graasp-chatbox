@@ -11,8 +11,8 @@ import {
   Slider,
   TextField,
   Typography,
-  makeStyles,
-} from '@material-ui/core';
+  styled,
+} from '@mui/material';
 
 import { MentionButton } from '@graasp/chatbox';
 import { MUTATION_KEYS } from '@graasp/query-client';
@@ -27,11 +27,45 @@ import {
 import { hooks, useMutation } from '../config/queryClient';
 import ChatboxWrapper from './ChatboxWrapper';
 
+const TextInputControl = styled(FormControlLabel)({
+  width: '100%',
+});
+
+const Container = styled('div')({
+  display: 'flex',
+  flexDirection: 'row',
+});
+
+const TestContainer = styled('div')(({ theme }) => ({
+  margin: theme.spacing(1),
+  display: 'flex',
+  flexDirection: 'column',
+  borderRadius: '6px',
+  padding: theme.spacing(2),
+  width: '400px',
+  border: 'solid darkred 1px',
+  '& > *': {
+    margin: theme.spacing(2, 0) + '!important',
+  },
+}));
+
+const ChatInputBox = styled(TextField)({
+  backgroundColor: 'white',
+});
+
 const ChatboxTest: FC = () => {
   const [testWidth, setTestWidth] = useState(GRAASP_PANEL_WIDTH);
   const [showTools, setShowTools] = useState(false);
   const [lang, setLang] = useState(DEFAULT_LANG);
   const [chatId, setChatId] = useState(DEFAULT_CHAT_ID);
+
+  const ChatboxContainer = styled('div')(({ theme }) => ({
+    margin: theme.spacing(1),
+    width: testWidth,
+    padding: theme.spacing(0, 1),
+    border: 'solid darkblue 1px',
+    borderRadius: '6px',
+  }));
 
   // get chatId from url
   useEffect(() => {
@@ -39,39 +73,6 @@ const ChatboxTest: FC = () => {
     setChatId(choppedUrl[choppedUrl.length - 1]);
   }, [window.location.pathname]);
 
-  const useStyles = makeStyles((theme) => ({
-    container: {
-      display: 'flex',
-      flexDirection: 'row',
-    },
-    chatboxContainer: {
-      margin: theme.spacing(1),
-      width: testWidth,
-      padding: theme.spacing(0, 1),
-      border: 'solid darkblue 1px',
-      borderRadius: '6px',
-    },
-    testContainer: {
-      margin: theme.spacing(1),
-      display: 'flex',
-      flexDirection: 'column',
-      borderRadius: '6px',
-      padding: theme.spacing(2),
-      width: '400px',
-      border: 'solid darkred 1px',
-      '& > *': {
-        margin: theme.spacing(2, 0) + '!important',
-      },
-    },
-    textInputControl: {
-      width: '100%',
-    },
-    chatInputBox: {
-      backgroundColor: 'white',
-    },
-  }));
-
-  const classes = useStyles();
   const { data: currentMember } = hooks.useCurrentMember();
   const memberId = currentMember?.get('id') as string;
 
@@ -121,21 +122,23 @@ const ChatboxTest: FC = () => {
 
   return (
     <I18nextProvider i18n={i18n}>
-      <div className={classes.container}>
-        <div className={classes.testContainer}>
+      <Container>
+        <TestContainer>
           <Typography variant="h5">Test parameters</Typography>
           <Typography variant="body1">
             Current User: {currentMember?.get('name')}
           </Typography>
-          <FormControlLabel
-            className={classes.textInputControl}
+          <TextInputControl
             control={
-              <TextField
-                className={classes.chatInputBox}
+              <ChatInputBox
                 variant="outlined"
                 value={chatId}
                 fullWidth
-                onChange={({ target }): void => setChatId(target.value)}
+                onChange={({
+                  target: { value },
+                }: {
+                  target: { value: string };
+                }): void => setChatId(value)}
               />
             }
             label="Chat Id"
@@ -190,15 +193,15 @@ const ChatboxTest: FC = () => {
             deleteMentionFunction={deleteMentionFunction}
             clearAllMentionsFunction={clearAllMentionsFunction}
           />
-        </div>
-        <div className={classes.chatboxContainer}>
+        </TestContainer>
+        <ChatboxContainer>
           <ChatboxWrapper
             chatId={chatId}
             lang={lang}
             showAdminTools={showTools}
           />
-        </div>
-      </div>
+        </ChatboxContainer>
+      </Container>
     </I18nextProvider>
   );
 };

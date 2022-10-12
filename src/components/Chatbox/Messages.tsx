@@ -1,10 +1,9 @@
-import clsx from 'clsx';
 import moment from 'moment';
 
 import { FC, Fragment, useEffect, useRef } from 'react';
 
-import Box from '@material-ui/core/Box';
-import { makeStyles } from '@material-ui/core/styles';
+import { styled } from '@mui/material';
+import Box from '@mui/material/Box';
 
 import {
   ChatMessageRecord,
@@ -20,6 +19,32 @@ import Date from './Date';
 import Message from './Message';
 import MessageActions from './MessageActions';
 
+const Container = styled('div')({
+  // used in accordance with the main container (input + scroll window)
+  overflowY: 'auto',
+  // grow container to push input at bottom of window
+  flex: 1,
+  minHeight: '0px',
+});
+
+const MessageContainer = styled(Box)({
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'flex-start',
+  justifyContent: 'flex-end',
+});
+
+const SingleMessageContainer = styled(Box)({
+  // make sure that the box container takes the most space
+  width: '100%',
+  display: 'flex',
+  // used to place actions on the left of the message
+  flexDirection: 'row',
+  // center button with message box
+  alignItems: 'center',
+  alignContent: 'stretch',
+});
+
 type Props = {
   currentMember: ImmutableMember;
   isAdmin?: boolean;
@@ -34,40 +59,6 @@ const Messages: FC<Props> = ({
   const ref = useRef<HTMLDivElement>(null);
   const { open } = useEditingContext();
   const { messages, members } = useMessagesContext();
-
-  const useStyles = makeStyles(() => ({
-    // used in accordance with the main container (input + scroll window)
-    container: {
-      overflowY: 'auto',
-      // grow container to push input at bottom of window
-      flex: 1,
-      minHeight: '0px',
-    },
-    messagesContainer: {
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'flex-start',
-      justifyContent: 'flex-end',
-    },
-    singleMessageContainer: {
-      // make sure that the box container takes the most space
-      width: '100%',
-      display: 'flex',
-      // used to place actions on the left of the message
-      flexDirection: 'row',
-      // center button with message box
-      alignItems: 'center',
-      alignContent: 'stretch',
-    },
-    alignLeft: {
-      justifyContent: 'flex-start',
-    },
-    alignRight: {
-      justifyContent: 'flex-end',
-    },
-  }));
-
-  const classes = useStyles();
 
   // scroll down to last message at start, on new message and on editing message
   useEffect(() => {
@@ -90,25 +81,19 @@ const Messages: FC<Props> = ({
     .toArray();
 
   return (
-    <div
-      className={classes.container}
-      ref={ref}
-      data-cy={messagesContainerCypress}
-    >
-      <Box className={classes.messagesContainer}>
+    <Container ref={ref} data-cy={messagesContainerCypress}>
+      <MessageContainer>
         {messagesByDay?.map(([date, m]) => (
           <Fragment key={date}>
             <Date date={date} />
             {m?.map((message) => {
               const isOwnMessage = isOwn(message);
               return (
-                <Box
+                <SingleMessageContainer
                   key={message.id}
-                  className={clsx(classes.singleMessageContainer, {
-                    // align message to the correct side
-                    [classes.alignRight]: isOwnMessage,
-                    [classes.alignLeft]: !isOwnMessage,
-                  })}
+                  sx={{
+                    justifyContent: isOwnMessage ? 'flex-end' : 'flex-start',
+                  }}
                 >
                   <Message
                     currentMember={currentMember}
@@ -122,13 +107,13 @@ const Messages: FC<Props> = ({
                       deleteMessageFunction={deleteMessageFunction}
                     />
                   )}
-                </Box>
+                </SingleMessageContainer>
               );
             })}
           </Fragment>
         ))}
-      </Box>
-    </div>
+      </MessageContainer>
+    </Container>
   );
 };
 

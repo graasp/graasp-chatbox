@@ -6,7 +6,7 @@ import {
   DialogActions,
   DialogContent,
   DialogTitle,
-} from '@material-ui/core';
+} from '@mui/material';
 
 import { CHATBOX } from '@graasp/translations';
 import { Button } from '@graasp/ui';

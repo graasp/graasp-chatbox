@@ -3,6 +3,7 @@ import { List } from 'immutable';
 import { FC, ReactElement, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
+import { Check, Close, FiberManualRecord } from '@mui/icons-material';
 import {
   Grid,
   IconButton,
@@ -12,9 +13,8 @@ import {
   TableHead,
   TableRow,
   Tooltip,
-  makeStyles,
-} from '@material-ui/core';
-import { Check, Close, FiberManualRecord } from '@material-ui/icons';
+  styled,
+} from '@mui/material';
 
 import { ChatMentionRecord } from '@graasp/query-client/dist/src/types';
 import {
@@ -28,12 +28,10 @@ import { Button } from '@graasp/ui';
 import MessageBody from '../Chatbox/MessageBody';
 import ConfirmationDialog from '../common/ConfirmationDialog';
 
-const useStyles = makeStyles({
-  row: {
-    '&:hover': {
-      // make the cursor a pointer to indicate we can click
-      cursor: 'pointer',
-    },
+const StyledRow = styled(TableRow)({
+  '&:hover': {
+    // make the cursor a pointer to indicate we can click
+    cursor: 'pointer',
   },
 });
 
@@ -52,7 +50,6 @@ const MentionsTable: FC<Props> = ({
 }) => {
   const [openConfirmation, setOpenConfirmation] = useState(false);
   const { t } = useTranslation();
-  const classes = useStyles();
   const markAsRead = (id: string): void => {
     patchMention({ id: id, status: MentionStatus.READ });
   };
@@ -67,9 +64,8 @@ const MentionsTable: FC<Props> = ({
     }
     return mentions
       .map((m) => (
-        <TableRow
+        <StyledRow
           key={m.id}
-          className={classes.row}
           hover
           onClick={(): void => {
             const link = buildItemLinkForBuilder({
@@ -118,7 +114,7 @@ const MentionsTable: FC<Props> = ({
               </Grid>
             </Grid>
           </TableCell>
-        </TableRow>
+        </StyledRow>
       ))
       .toArray();
   };

@@ -1,7 +1,11 @@
-/// <reference types="./cypress"/>
+/// <reference types="../cypress"/>
 import { List } from 'immutable';
 
-import { ImmutableMember, Member } from '../../src';
+import React from 'react';
+
+import { convertJs } from '@graasp/sdk';
+
+import { ImmutableMember } from '../../src';
 import Chatbox from '../../src/components/Chatbox/Chatbox';
 import {
   charCounterCypress,
@@ -19,15 +23,18 @@ import {
   spyMethod,
 } from '../fixtures/chat_messages';
 import { MEMBERS } from '../fixtures/members';
+import { mockUseAvatar } from '../fixtures/mockHooks';
 
 describe('Enter text', () => {
   beforeEach(() => {
+    const { hook: fakeHook } = mockUseAvatar();
     cy.mount(
       <Chatbox
         chatId={CHAT_ID}
         currentMember={new ImmutableMember(MEMBERS.ANNA)}
-        members={List(Object.values(MEMBERS) as Member[])}
-        messages={List(CHAT_MESSAGES)}
+        members={List(convertJs(Object.values(MEMBERS)))}
+        messages={List(convertJs(CHAT_MESSAGES))}
+        useAvatarHook={fakeHook}
       />,
     );
   });
@@ -53,13 +60,15 @@ describe('Send message', () => {
   it('should send a message with click', () => {
     const inputText = 'Hello there';
     const sendMessageSpy = spyMethod('spyMethod');
+    const { hook: fakeHook } = mockUseAvatar();
     cy.mount(
       <Chatbox
         chatId={CHAT_ID}
         currentMember={new ImmutableMember(MEMBERS.ANNA)}
-        members={List(Object.values(MEMBERS) as Member[])}
-        messages={List(CHAT_MESSAGES)}
+        members={List(convertJs(Object.values(MEMBERS)))}
+        messages={List(convertJs(CHAT_MESSAGES))}
         sendMessageFunction={sendMessageSpy}
+        useAvatarHook={fakeHook}
       />,
     );
     cy.get(dataCyWrapper(inputTextFieldCypress)).type(inputText);
@@ -70,13 +79,15 @@ describe('Send message', () => {
   it('should send a message with enter', function () {
     const inputText = 'Hello there';
     const sendMessageSpy = spyMethod('spyMethod');
+    const { hook: fakeHook } = mockUseAvatar();
     cy.mount(
       <Chatbox
         chatId={CHAT_ID}
         currentMember={new ImmutableMember(MEMBERS.ANNA)}
-        members={List(Object.values(MEMBERS) as Member[])}
-        messages={List(CHAT_MESSAGES)}
+        members={List(convertJs(Object.values(MEMBERS)))}
+        messages={List(convertJs(CHAT_MESSAGES))}
         sendMessageFunction={sendMessageSpy}
+        useAvatarHook={fakeHook}
       />,
     );
     cy.get(dataCyWrapper(inputTextFieldCypress))
@@ -90,13 +101,15 @@ describe('Message Length', () => {
   let sendMessageSpy;
   beforeEach(() => {
     sendMessageSpy = spyMethod('spyMethod');
+    const { hook: fakeHook } = mockUseAvatar();
     cy.mount(
       <Chatbox
         chatId={CHAT_ID}
         currentMember={new ImmutableMember(MEMBERS.ANNA)}
-        members={List(Object.values(MEMBERS) as Member[])}
-        messages={List(CHAT_MESSAGES)}
+        members={List(convertJs(Object.values(MEMBERS)))}
+        messages={List(convertJs(CHAT_MESSAGES))}
         sendMessageFunction={sendMessageSpy}
+        useAvatarHook={fakeHook}
       />,
     );
   });

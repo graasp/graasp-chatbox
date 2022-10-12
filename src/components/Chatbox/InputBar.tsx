@@ -1,8 +1,5 @@
 import { FC, useEffect, useRef, useState } from 'react';
 
-import Box from '@material-ui/core/Box';
-import { makeStyles } from '@material-ui/core/styles';
-
 import {
   MessageBodyType,
   PartialChatMessage,
@@ -11,14 +8,9 @@ import {
 
 import { useEditingContext } from '../../context/EditingContext';
 import { useMessagesContext } from '../../context/MessagesContext';
+import FullWidthWrapper from '../common/FullWidthWrapper';
 import EditBanner from './EditBanner';
 import Input from './Input';
-
-const useStyles = makeStyles(() => ({
-  wrapper: {
-    width: '100%',
-  },
-}));
 
 type Props = {
   sendMessageBoxId?: string;
@@ -31,7 +23,6 @@ const InputBar: FC<Props> = ({
   sendMessageFunction,
   editMessageFunction,
 }) => {
-  const classes = useStyles();
   const { open, body, messageId, cancelEdit } = useEditingContext();
   const [textInput, setTextInput] = useState(open ? body : '');
   const inputRef = useRef<HTMLTextAreaElement>(null);
@@ -66,7 +57,7 @@ const InputBar: FC<Props> = ({
   };
 
   return (
-    <Box className={classes.wrapper}>
+    <FullWidthWrapper>
       <EditBanner onClose={handleOnCloseEditingBanner} editedText={body} />
       <Input
         id={sendMessageBoxId}
@@ -75,7 +66,7 @@ const InputBar: FC<Props> = ({
         setTextInput={setTextInput}
         sendMessageFunction={handleSendMessageFunction}
       />
-    </Box>
+    </FullWidthWrapper>
   );
 };
 

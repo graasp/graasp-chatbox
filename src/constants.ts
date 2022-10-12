@@ -11,6 +11,7 @@ export const DEFAULT_DATE_FORMAT = 'DD MMM YYYY';
 export const EXPORT_DATE_FORMAT = 'YYYY-MM-DD';
 export const HEADER_HEIGHT = 64;
 export const LIST_ICON_MIN_WIDTH = 30;
+export const MAX_AVATAR_SIZE = 30;
 export const INITIAL_EDITING_PROPS = {
   open: false,
   id: '',

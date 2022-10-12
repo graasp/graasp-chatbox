@@ -1,13 +1,11 @@
 import { FC } from 'react';
 
-import Box from '@material-ui/core/Box';
-import Typography from '@material-ui/core/Typography';
-import { makeStyles } from '@material-ui/core/styles';
+import { styled } from '@mui/material';
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
 
-const useStyles = makeStyles((theme) => ({
-  date: {
-    padding: theme.spacing(0.5, 1, 1),
-  },
+const DateContainer = styled(Box)(({ theme }) => ({
+  padding: theme.spacing(0.5, 1, 1),
 }));
 
 type Props = {
@@ -15,12 +13,10 @@ type Props = {
 };
 
 const Date: FC<Props> = ({ date }) => {
-  const classes = useStyles();
-
   return (
-    <Box p={1} className={classes.date} alignSelf="center">
+    <DateContainer p={1} alignSelf="center">
       <Typography variant="subtitle2">{date}</Typography>
-    </Box>
+    </DateContainer>
   );
 };
 
