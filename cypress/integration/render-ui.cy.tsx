@@ -1,5 +1,4 @@
 /// <reference types="../cypress"/>
-import { List } from 'immutable';
 import { v4 } from 'uuid';
 
 import React from 'react';
@@ -29,8 +28,8 @@ describe('Render Avatar', () => {
       <Chatbox
         chatId={CHAT_ID}
         currentMember={new ImmutableMember(MEMBERS.ANNA)}
-        members={List(convertJs(Object.values(MEMBERS)))}
-        messages={List(convertJs(CHAT_MESSAGES))}
+        members={convertJs(Object.values(MEMBERS))}
+        messages={convertJs(CHAT_MESSAGES)}
         useAvatarHook={fakeHook}
       />,
     );
@@ -42,8 +41,8 @@ describe('Render Avatar', () => {
       <Chatbox
         chatId={CHAT_ID}
         currentMember={new ImmutableMember(MEMBERS.ANNA)}
-        members={List(convertJs(Object.values(MEMBERS)))}
-        messages={List(convertJs(CHAT_MESSAGES))}
+        members={convertJs(Object.values(MEMBERS))}
+        messages={convertJs(CHAT_MESSAGES)}
         useAvatarHook={fakeHook}
       />,
     );
@@ -58,8 +57,8 @@ describe('Autofocus input field', () => {
       <Chatbox
         chatId={CHAT_ID}
         currentMember={new ImmutableMember(MEMBERS.ANNA)}
-        members={List(convertJs(Object.values(MEMBERS)))}
-        messages={List(convertJs(CHAT_MESSAGES))}
+        members={convertJs(Object.values(MEMBERS))}
+        messages={convertJs(CHAT_MESSAGES)}
         useAvatarHook={fakeHook}
       />,
     ).then(() =>
@@ -77,27 +76,25 @@ describe('Messages container', () => {
       <Chatbox
         chatId={CHAT_ID}
         currentMember={new ImmutableMember(MEMBERS.ANNA)}
-        members={List(convertJs(Object.values(MEMBERS)))}
-        messages={List(
-          convertJs([
-            {
-              ...CHAT_MESSAGES[0],
-              id: firstId,
-            },
-            getMockMessage({ member: MEMBERS.ANNA }),
-            getMockMessage({ member: MEMBERS.BOB }),
-            getMockMessage({ member: MEMBERS.ANNA }),
-            getMockMessage({ member: MEMBERS.ANNA }),
-            getMockMessage({ member: MEMBERS.BOB }),
-            getMockMessage({ member: MEMBERS.BOB }),
-            getMockMessage({ member: MEMBERS.ANNA }),
-            getMockMessage({ member: MEMBERS.ANNA }),
-            {
-              ...CHAT_MESSAGES[0],
-              id: lastId,
-            },
-          ]),
-        )}
+        members={convertJs(Object.values(MEMBERS))}
+        messages={convertJs([
+          {
+            ...CHAT_MESSAGES[0],
+            id: firstId,
+          },
+          getMockMessage({ member: MEMBERS.ANNA }),
+          getMockMessage({ member: MEMBERS.BOB }),
+          getMockMessage({ member: MEMBERS.ANNA }),
+          getMockMessage({ member: MEMBERS.ANNA }),
+          getMockMessage({ member: MEMBERS.BOB }),
+          getMockMessage({ member: MEMBERS.BOB }),
+          getMockMessage({ member: MEMBERS.ANNA }),
+          getMockMessage({ member: MEMBERS.ANNA }),
+          {
+            ...CHAT_MESSAGES[0],
+            id: lastId,
+          },
+        ])}
         useAvatarHook={fakeHook}
       />,
     ).then(() => {

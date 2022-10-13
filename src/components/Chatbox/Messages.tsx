@@ -11,7 +11,7 @@ import {
 } from '@graasp/query-client/dist/src/types';
 
 import { messagesContainerCypress } from '../../config/selectors';
-import { DEFAULT_DATE_FORMAT, SAFETY_MARGIN } from '../../constants';
+import { DEFAULT_DATE_FORMAT, SCROLL_SAFETY_MARGIN } from '../../constants';
 import { useEditingContext } from '../../context/EditingContext';
 import { useMessagesContext } from '../../context/MessagesContext';
 import type { ImmutableMember } from '../../types';
@@ -66,7 +66,7 @@ const Messages: FC<Props> = ({
       // temporarily hide the scroll bars when scrolling the container
       ref.current.style.overflowY = 'hidden';
       // scroll down the height of the container + some margin to make sure we are at the bottom
-      ref.current.scrollTop = ref.current.scrollHeight + SAFETY_MARGIN;
+      ref.current.scrollTop = ref.current.scrollHeight + SCROLL_SAFETY_MARGIN;
       // re-activate scroll
       ref.current.style.overflowY = 'auto';
     }

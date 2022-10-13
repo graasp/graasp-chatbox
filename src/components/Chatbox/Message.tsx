@@ -13,7 +13,6 @@ import { ChatMessageRecord } from '@graasp/query-client/dist/src/types';
 import { CHATBOX } from '@graasp/translations';
 import { Avatar } from '@graasp/ui';
 
-// import { Variant } from '@graasp/ui/dist/types';
 import { messageIdCyWrapper } from '../../config/selectors';
 import {
   DEFAULT_USER_NAME,

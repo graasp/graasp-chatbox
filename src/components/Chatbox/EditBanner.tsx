@@ -35,11 +35,6 @@ const EditContainer = styled(Box)({
 const OldTextLabel = styled(Typography)(({ theme }) => ({
   color: theme.palette.primary.main,
 }));
-const OldTextPreview = styled(Typography)({
-  whiteSpace: 'nowrap',
-  overflow: 'hidden',
-  textOverflow: 'ellipsis',
-});
 
 const EditIcon = styled(SvgIcon)(({ theme }) => ({
   margin: theme.spacing(1),
@@ -67,9 +62,9 @@ const EditBanner: FC<Props> = ({ onClose, editedText }) => {
           <OldTextLabel variant="subtitle2">
             {t(CHATBOX.EDITING_MESSAGE_LABEL)}
           </OldTextLabel>
-          <OldTextPreview data-cy={editBannerOldTextCypress}>
+          <Typography noWrap data-cy={editBannerOldTextCypress}>
             {normalizeMentions(editedText)}
-          </OldTextPreview>
+          </Typography>
         </EditContainer>
         <IconButton data-cy={editBannerCloseButtonCypress} onClick={onClose}>
           <Close

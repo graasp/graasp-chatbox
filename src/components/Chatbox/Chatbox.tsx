@@ -12,6 +12,7 @@ import {
 } from '@graasp/query-client/dist/src/types';
 import buildI18n, { langs, namespaces } from '@graasp/translations';
 
+import { CONTAINER_HEIGHT_SAFETY_MARGIN } from '../../constants';
 import { CurrentMemberContextProvider } from '../../context/CurrentMemberContext';
 import { EditingContextProvider } from '../../context/EditingContext';
 import { HooksContextProvider } from '../../context/HooksContext';
@@ -24,7 +25,8 @@ import Messages from './Messages';
 
 const ChatboxContainer = styled('div')({
   // set height of full container
-  height: 'calc(100vh - 16px)',
+  // the margin is used to make it "slightly" smaller than the ful height to not have very small scrollbars
+  height: `calc(100vh - ${CONTAINER_HEIGHT_SAFETY_MARGIN}px)`,
   minHeight: '0px',
   display: 'flex',
   flexDirection: 'column',

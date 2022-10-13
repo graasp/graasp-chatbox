@@ -24,6 +24,7 @@ import {
 import {
   ALL_MEMBERS_DISPLAY,
   ALL_MEMBERS_ID,
+  GRAASP_MENTION_COLOR,
   HARD_MAX_MESSAGE_LENGTH,
 } from '../../constants';
 import { useCurrentMemberContext } from '../../context/CurrentMemberContext';
@@ -38,7 +39,7 @@ const HelperText = styled(Typography)(({ theme }) => ({
 }));
 
 const mentionStyle = {
-  backgroundColor: '#b9b9ed',
+  backgroundColor: GRAASP_MENTION_COLOR,
 };
 
 type Props = {

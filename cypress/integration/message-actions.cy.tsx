@@ -1,6 +1,4 @@
 /// <reference types="../cypress"/>
-import { List } from 'immutable';
-
 import React from 'react';
 
 import { convertJs } from '@graasp/sdk';
@@ -29,8 +27,8 @@ describe('Message actions', () => {
       <Chatbox
         chatId={CHAT_ID}
         currentMember={new ImmutableMember(MEMBERS.ANNA)}
-        members={List(convertJs(Object.values(MEMBERS)))}
-        messages={List(convertJs(CHAT_MESSAGES))}
+        members={convertJs(Object.values(MEMBERS))}
+        messages={convertJs(CHAT_MESSAGES)}
         useAvatarHook={fakeHook}
       />,
     );
@@ -57,8 +55,8 @@ describe('Delete action', () => {
       <Chatbox
         chatId={CHAT_ID}
         currentMember={new ImmutableMember(MEMBERS.ANNA)}
-        members={List(convertJs(Object.values(MEMBERS)))}
-        messages={List(convertJs(CHAT_MESSAGES))}
+        members={convertJs(Object.values(MEMBERS))}
+        messages={convertJs(CHAT_MESSAGES)}
         deleteMessageFunction={deleteMessageSpy}
         useAvatarHook={fakeHook}
       />,
@@ -83,8 +81,8 @@ describe('Edit action', () => {
       <Chatbox
         chatId={CHAT_ID}
         currentMember={new ImmutableMember(MEMBERS.ANNA)}
-        members={List(convertJs(Object.values(MEMBERS)))}
-        messages={List(convertJs(CHAT_MESSAGES))}
+        members={convertJs(Object.values(MEMBERS))}
+        messages={convertJs(CHAT_MESSAGES)}
         editMessageFunction={editMessageSpy}
         sendMessageFunction={sendMessageSpy}
         useAvatarHook={fakeHook}
