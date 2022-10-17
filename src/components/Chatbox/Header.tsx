@@ -1,32 +1,23 @@
 import { FC } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-import { makeStyles } from '@material-ui/core/styles';
-import ChatIcon from '@material-ui/icons/Chat';
+import ChatIcon from '@mui/icons-material/Chat';
+import { styled } from '@mui/material';
+import AppBar from '@mui/material/AppBar';
+import Toolbar from '@mui/material/Toolbar';
+import Typography from '@mui/material/Typography';
 
 import { CHATBOX } from '@graasp/translations';
 
-import { HEADER_HEIGHT } from '../../constants';
+const RootContainer = styled('div')({
+  flexGrow: 1,
+});
+const Title = styled(Typography)({
+  flexGrow: 1,
+});
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1,
-  },
-  menuButton: {
-    marginRight: theme.spacing(2),
-  },
-  title: {
-    flexGrow: 1,
-  },
-  icon: {
-    marginRight: theme.spacing(2),
-  },
-  spacing: {
-    height: HEADER_HEIGHT,
-  },
+const StyledChatIcon = styled(ChatIcon)(({ theme }) => ({
+  marginRight: theme.spacing(2),
 }));
 
 type Props = {
@@ -34,21 +25,18 @@ type Props = {
 };
 
 const Header: FC<Props> = ({ title }) => {
-  const classes = useStyles();
   const { t } = useTranslation();
 
   return (
-    <div className={classes.root}>
+    <RootContainer>
       <AppBar position="fixed">
         <Toolbar>
-          <ChatIcon className={classes.icon} />
-          <Typography variant="h6" className={classes.title}>
-            {title || t(CHATBOX.CHATBOX_HEADER)}
-          </Typography>
+          <StyledChatIcon />
+          <Title variant="h6">{title || t(CHATBOX.CHATBOX_HEADER)}</Title>
         </Toolbar>
       </AppBar>
-      <div className={classes.spacing} />
-    </div>
+      <Toolbar />
+    </RootContainer>
   );
 };
 

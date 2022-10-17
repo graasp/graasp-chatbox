@@ -1,7 +1,9 @@
-/// <reference types="./cypress"/>
-import { List } from 'immutable';
+/// <reference types="../cypress"/>
+import React from 'react';
 
-import { ImmutableMember, Member } from '../../src';
+import { convertJs } from '@graasp/sdk';
+
+import { ImmutableMember } from '../../src';
 import Chatbox from '../../src/components/Chatbox/Chatbox';
 import {
   dataCyWrapper,
@@ -16,15 +18,18 @@ import {
 import { SIDE_PANE_HEIGHT, SIDE_PANE_WIDTH } from '../../src/constants';
 import { CHAT_ID, CHAT_MESSAGES, spyMethod } from '../fixtures/chat_messages';
 import { CURRENT_MEMBER, MEMBERS } from '../fixtures/members';
+import { mockUseAvatar } from '../fixtures/mockHooks';
 
 describe('Message actions', () => {
   beforeEach(() => {
+    const { hook: fakeHook } = mockUseAvatar();
     cy.mount(
       <Chatbox
         chatId={CHAT_ID}
         currentMember={new ImmutableMember(MEMBERS.ANNA)}
-        members={List(Object.values(MEMBERS) as Member[])}
-        messages={List(CHAT_MESSAGES)}
+        members={convertJs(Object.values(MEMBERS))}
+        messages={convertJs(CHAT_MESSAGES)}
+        useAvatarHook={fakeHook}
       />,
     );
   });
@@ -45,13 +50,15 @@ describe('Message actions', () => {
 describe('Delete action', () => {
   it('should delete message', () => {
     const deleteMessageSpy = spyMethod('spyMethod');
+    const { hook: fakeHook } = mockUseAvatar();
     cy.mount(
       <Chatbox
         chatId={CHAT_ID}
         currentMember={new ImmutableMember(MEMBERS.ANNA)}
-        members={List(Object.values(MEMBERS) as Member[])}
-        messages={List(CHAT_MESSAGES)}
+        members={convertJs(Object.values(MEMBERS))}
+        messages={convertJs(CHAT_MESSAGES)}
         deleteMessageFunction={deleteMessageSpy}
+        useAvatarHook={fakeHook}
       />,
     );
     cy.get(dataCyWrapper(messageActionsButtonCypress))
@@ -69,14 +76,16 @@ describe('Edit action', () => {
     cy.viewport(SIDE_PANE_WIDTH, SIDE_PANE_HEIGHT);
     const editMessageSpy = spyMethod('editSpyMethod');
     const sendMessageSpy = spyMethod('sendSpyMethod');
+    const { hook: fakeHook } = mockUseAvatar();
     cy.mount(
       <Chatbox
         chatId={CHAT_ID}
         currentMember={new ImmutableMember(MEMBERS.ANNA)}
-        members={List(Object.values(MEMBERS) as Member[])}
-        messages={List(CHAT_MESSAGES)}
+        members={convertJs(Object.values(MEMBERS))}
+        messages={convertJs(CHAT_MESSAGES)}
         editMessageFunction={editMessageSpy}
         sendMessageFunction={sendMessageSpy}
+        useAvatarHook={fakeHook}
       />,
     );
 

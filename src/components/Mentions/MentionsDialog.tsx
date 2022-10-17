@@ -1,22 +1,17 @@
 import { FC, ReactElement } from 'react';
+import { useTranslation } from 'react-i18next';
 
-import {
-  Dialog,
-  DialogContent,
-  DialogTitle,
-  makeStyles,
-} from '@material-ui/core';
-import { Notifications } from '@material-ui/icons';
+import { Notifications } from '@mui/icons-material';
+import { Dialog, DialogContent, DialogTitle, styled } from '@mui/material';
 
-const useStyles = makeStyles((theme) => ({
-  dialogTitleIcon: {
-    paddingRight: theme.spacing(1),
-  },
-  dialogTitleContainer: {
-    display: 'flex',
-    alignItems: 'center',
-  },
+const DialogTitleIcon = styled(Notifications)(({ theme }) => ({
+  paddingRight: theme.spacing(1),
 }));
+
+const DialogTitleContainer = styled('div')({
+  display: 'flex',
+  alignItems: 'center',
+});
 
 type Props = {
   content: ReactElement;
@@ -25,15 +20,14 @@ type Props = {
 };
 
 const MentionsDialog: FC<Props> = ({ content, open, setOpen }) => {
-  const classes = useStyles();
-
+  const { t } = useTranslation();
   return (
     <Dialog open={open} onClose={(): void => setOpen(false)} maxWidth="lg">
       <DialogTitle>
-        <div className={classes.dialogTitleContainer}>
-          <Notifications className={classes.dialogTitleIcon} color="primary" />
-          Notifications
-        </div>
+        <DialogTitleContainer>
+          <DialogTitleIcon color="primary" />
+          {t('Notifications')}
+        </DialogTitleContainer>
       </DialogTitle>
       <DialogContent>{content}</DialogContent>
     </Dialog>

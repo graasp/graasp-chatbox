@@ -1,28 +1,26 @@
 import React, { FC, ReactElement } from 'react';
 
-import { AvatarHookType, ClearChatHookType } from '../types';
+import { AvatarHookType } from '../types';
 
-export const HooksContext = React.createContext({});
+export const HooksContext = React.createContext({
+  useAvatarHook: (() => null) as unknown as AvatarHookType,
+});
 
 export type HooksContextType = {
-  useAvatarHook?: AvatarHookType;
-  clearChatHook?: ClearChatHookType;
+  useAvatarHook: AvatarHookType;
 };
 
 type Props = {
   children: ReactElement;
-  useAvatarHook?: AvatarHookType;
-  clearChatHook?: ClearChatHookType;
+  useAvatarHook: AvatarHookType;
 };
 
 export const HooksContextProvider: FC<Props> = ({
   children,
   useAvatarHook,
-  clearChatHook,
 }) => {
   const value = {
     useAvatarHook,
-    clearChatHook,
   };
 
   return (

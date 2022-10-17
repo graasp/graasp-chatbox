@@ -1,15 +1,15 @@
 import React, { FC, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
+import { Delete, Edit, MoreVert } from '@mui/icons-material';
 import {
   IconButton,
   ListItemIcon,
   ListItemText,
   Menu,
   MenuItem,
-} from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
-import { Delete, Edit, MoreVert } from '@material-ui/icons';
+  styled,
+} from '@mui/material';
 
 import {
   ChatMessageRecord,
@@ -31,14 +31,12 @@ type Props = {
   deleteMessageFunction?: (message: PartialChatMessage) => void;
 };
 
-const useStyles = makeStyles(() => ({
-  menu: {
-    // reduce min width of icons in list to make more compact
-    '&.MuiListItemIcon-root': {
-      minWidth: LIST_ICON_MIN_WIDTH,
-    },
+const StyledListItemIcon = styled(ListItemIcon)({
+  // reduce min width of icons in list to make more compact
+  '&.MuiListItemIcon-root': {
+    minWidth: LIST_ICON_MIN_WIDTH,
   },
-}));
+});
 
 const MessageActions: FC<Props> = ({
   message,
@@ -47,7 +45,6 @@ const MessageActions: FC<Props> = ({
 }) => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [menuAnchor, setMenuAnchor] = useState<HTMLElement | null>(null);
-  const classes = useStyles();
   const { t } = useTranslation();
   const { enableEdit } = useEditingContext();
 
@@ -99,9 +96,9 @@ const MessageActions: FC<Props> = ({
               onClick={handleEditMessage}
               dense
             >
-              <ListItemIcon className={classes.menu}>
+              <StyledListItemIcon>
                 <Edit color="primary" />
-              </ListItemIcon>
+              </StyledListItemIcon>
               <ListItemText>{t(CHATBOX.EDIT_BUTTON)}</ListItemText>
             </MenuItem>
           )
@@ -111,12 +108,12 @@ const MessageActions: FC<Props> = ({
           onClick={handleDeleteMessage}
           dense
         >
-          <ListItemIcon className={classes.menu}>
+          <StyledListItemIcon>
             <Delete
               // todo: change to secondary once Graasp has one
               color="primary"
             />
-          </ListItemIcon>
+          </StyledListItemIcon>
           <ListItemText>{t(CHATBOX.DELETE_BUTTON)}</ListItemText>
         </MenuItem>
       </Menu>

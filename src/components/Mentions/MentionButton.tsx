@@ -4,8 +4,8 @@ import { FC, useMemo, useState } from 'react';
 import { I18nextProvider } from 'react-i18next';
 import { QueryObserverResult } from 'react-query';
 
-import { Badge, IconButton, makeStyles } from '@material-ui/core';
-import { Notifications } from '@material-ui/icons';
+import { Notifications } from '@mui/icons-material';
+import { Badge, IconButton, styled } from '@mui/material';
 
 import {
   MemberMentionsRecord,
@@ -39,23 +39,20 @@ const MentionButton: FC<Props> = ({
   deleteMentionFunction,
   clearAllMentionsFunction,
 }) => {
+  const StyledBadge = styled(Badge)(({ theme }) => ({
+    '& .MuiBadge-badge': {
+      border: `2px solid ${
+        color === 'primary'
+          ? theme.palette.background.paper
+          : theme.palette.primary.main
+      }`,
+    },
+  }));
   const i18n = useMemo(() => {
     const i18nInstance = buildI18n(namespaces.chatbox);
     i18nInstance.changeLanguage(lang);
     return i18nInstance;
   }, [lang]);
-  const useStyles = makeStyles((theme) => ({
-    badge: {
-      '& .MuiBadge-badge': {
-        border: `2px solid ${
-          color === 'primary'
-            ? theme.palette.background.paper
-            : theme.palette.primary.main
-        }`,
-      },
-    },
-  }));
-  const classes = useStyles();
   const t = i18n.t;
 
   const { data: memberMentions } = useMentions();
@@ -84,8 +81,7 @@ const MentionButton: FC<Props> = ({
           data-cy={mentionButtonCypress}
           onClick={(): void => setOpen(true)}
         >
-          <Badge
-            className={classes.badge}
+          <StyledBadge
             overlap="circular"
             color={color}
             badgeContent={
@@ -94,7 +90,7 @@ const MentionButton: FC<Props> = ({
             }
           >
             <Notifications color={color} />
-          </Badge>
+          </StyledBadge>
         </IconButton>
         <MentionsDialog
           content={
