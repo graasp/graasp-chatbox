@@ -16,7 +16,7 @@ import {
   styled,
 } from '@mui/material';
 
-import { ChatMentionRecord } from '@graasp/query-client/dist/src/types';
+import { ChatMentionRecord } from '@graasp/query-client/dist/types';
 import {
   MentionStatus,
   buildItemLinkForBuilder,

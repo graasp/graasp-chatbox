@@ -9,7 +9,7 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import grey from '@mui/material/colors/grey';
 
-import { ChatMessageRecord } from '@graasp/query-client/dist/src/types';
+import { ChatMessageRecord } from '@graasp/query-client/dist/types';
 import { CHATBOX } from '@graasp/translations';
 import { Avatar } from '@graasp/ui';
 

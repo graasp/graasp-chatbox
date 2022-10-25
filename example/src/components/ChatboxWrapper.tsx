@@ -5,7 +5,7 @@ import { MUTATION_KEYS } from '@graasp/query-client';
 import {
   PartialChatMessage,
   PartialNewChatMessage,
-} from '@graasp/query-client/dist/src/types';
+} from '@graasp/query-client/dist/types';
 
 import { DEFAULT_LANG } from '../config/constants';
 import { hooks, useMutation } from '../config/queryClient';

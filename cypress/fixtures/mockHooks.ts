@@ -13,7 +13,7 @@ import {
   MemberMentions,
   MemberMentionsRecord,
   MemberRecord,
-} from '@graasp/query-client/dist/src/types';
+} from '@graasp/query-client/dist/types';
 import { MentionStatus } from '@graasp/sdk';
 
 import { CHAT_MESSAGES } from './chat_messages';

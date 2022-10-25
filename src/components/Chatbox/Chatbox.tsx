@@ -9,7 +9,7 @@ import {
   MemberRecord,
   PartialChatMessage,
   PartialNewChatMessage,
-} from '@graasp/query-client/dist/src/types';
+} from '@graasp/query-client/dist/types';
 import buildI18n, { langs, namespaces } from '@graasp/translations';
 
 import { CONTAINER_HEIGHT_SAFETY_MARGIN } from '../../constants';

@@ -50,7 +50,7 @@
     "@emotion/react": "11.10.4",
     "@emotion/styled": "11.10.4",
     "@graasp/translations": "github:graasp/graasp-translations",
-    "@graasp/ui": "github:graasp/graasp-ui#93-new-mui5",
+    "@graasp/ui": "github:graasp/graasp-ui#v0.3.0",
     "clsx": "1.1.1",
     "i18next": "21.8.1",
     "immutable": "4.0.0",
@@ -129,5 +129,5 @@
   "files": [
     "dist"
   ],
-  "packageManager": "yarn@3.2.0-rc.10"
+  "packageManager": "yarn@3.2.4"
 }

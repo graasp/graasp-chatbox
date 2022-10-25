@@ -8,7 +8,7 @@ import Box from '@mui/material/Box';
 import {
   ChatMessageRecord,
   PartialChatMessage,
-} from '@graasp/query-client/dist/src/types';
+} from '@graasp/query-client/dist/types';
 
 import { messagesContainerCypress } from '../../config/selectors';
 import { DEFAULT_DATE_FORMAT, SCROLL_SAFETY_MARGIN } from '../../constants';
