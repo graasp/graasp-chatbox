@@ -2,7 +2,7 @@ import { List, Record } from 'immutable';
 
 import { UseQueryResult } from 'react-query';
 
-import { ChatMessageRecord } from '@graasp/query-client/dist/src/types';
+import { ChatMessageRecord } from '@graasp/query-client/dist/types';
 
 import { BUTTON_VARIANT, ICON_VARIANT } from './constants';
 

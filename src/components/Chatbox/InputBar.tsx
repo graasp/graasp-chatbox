@@ -4,7 +4,7 @@ import {
   MessageBodyType,
   PartialChatMessage,
   PartialNewChatMessage,
-} from '@graasp/query-client/dist/src/types';
+} from '@graasp/query-client/dist/types';
 
 import { useEditingContext } from '../../context/EditingContext';
 import { useMessagesContext } from '../../context/MessagesContext';

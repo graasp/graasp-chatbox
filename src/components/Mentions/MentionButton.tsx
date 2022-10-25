@@ -10,7 +10,7 @@ import { Badge, IconButton, styled } from '@mui/material';
 import {
   MemberMentionsRecord,
   MemberRecord,
-} from '@graasp/query-client/dist/src/types';
+} from '@graasp/query-client/dist/types';
 import { MentionStatus } from '@graasp/sdk';
 import buildI18n, { CHATBOX, langs, namespaces } from '@graasp/translations';
 

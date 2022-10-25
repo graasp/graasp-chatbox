@@ -14,7 +14,7 @@ import {
 import {
   ChatMessageRecord,
   PartialChatMessage,
-} from '@graasp/query-client/dist/src/types';
+} from '@graasp/query-client/dist/types';
 import { CHATBOX } from '@graasp/translations';
 
 import {
