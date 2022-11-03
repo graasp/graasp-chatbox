@@ -69,7 +69,7 @@ const MentionsTable: FC<Props> = ({
           hover
           onClick={(): void => {
             const link = buildItemLinkForBuilder({
-              host: '',
+              origin: window.location.origin,
               itemId: getIdsFromPath(m.itemPath).slice(-1)[0],
               chatOpen: true,
             });
