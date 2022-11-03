@@ -2334,7 +2334,7 @@ __metadata:
     "@typescript-eslint/parser": 5.30.7
     clsx: 1.1.1
     cross-env: 7.0.3
-    cypress: 10.6.0
+    cypress: 10.11.0
     env-cmd: 10.1.0
     eslint: 8.23.0
     eslint-config-prettier: 8.3.0
@@ -2355,9 +2355,10 @@ __metadata:
     react: 17.0.2
     react-csv: 2.2.2
     react-dom: 17.0.2
-    react-i18next: 11.18.1
+    react-i18next: 12.0.0
     react-markdown: 8.0.3
     react-mentions: 4.4.6
+    react-query: 3.39.2
     react-router-dom: 6.3.0
     react-scripts: 5.0.1
     remark-breaks: 3.0.2
@@ -6977,9 +6978,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cypress@npm:10.6.0":
-  version: 10.6.0
-  resolution: "cypress@npm:10.6.0"
+"cypress@npm:10.11.0":
+  version: 10.11.0
+  resolution: "cypress@npm:10.11.0"
   dependencies:
     "@cypress/request": ^2.88.10
     "@cypress/xvfb": ^1.2.4
@@ -7000,7 +7001,7 @@ __metadata:
     dayjs: ^1.10.4
     debug: ^4.3.2
     enquirer: ^2.3.6
-    eventemitter2: ^6.4.3
+    eventemitter2: 6.4.7
     execa: 4.1.0
     executable: ^4.1.1
     extract-zip: 2.0.1
@@ -7025,7 +7026,7 @@ __metadata:
     yauzl: ^2.10.0
   bin:
     cypress: bin/cypress
-  checksum: 53993d2d712222df13ef4802db051fee8a7ac59b180ed11b22e6f10d36f5d9b2c2622f1bbfa012f61c7756139287a976abd075275ddd37191b13f40ec8deaa85
+  checksum: 938cc6a20f7eeace5c8e850d234904ee1651cbb36d94666fe600cf17ce964e73d4f7d8d944aab677491702a57364e6aceeb4fe8bcbd96147ff5e2b575a956fb2
   languageName: node
   linkType: hard
 
@@ -8418,10 +8419,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eventemitter2@npm:^6.4.3":
-  version: 6.4.9
-  resolution: "eventemitter2@npm:6.4.9"
-  checksum: be59577c1e1c35509c7ba0e2624335c35bbcfd9485b8a977384c6cc6759341ea1a98d3cb9dbaa5cea4fff9b687e504504e3f9c2cc1674cf3bd8a43a7c74ea3eb
+"eventemitter2@npm:6.4.7":
+  version: 6.4.7
+  resolution: "eventemitter2@npm:6.4.7"
+  checksum: 1b36a77e139d6965ebf3a36c01fa00c089ae6b80faa1911e52888f40b3a7057b36a2cc45dcd1ad87cda3798fe7b97a0aabcbb8175a8b96092a23bb7d0f039e66
   languageName: node
   linkType: hard
 
@@ -9573,9 +9574,9 @@ __metadata:
     immutable: 4.0.0
     react: 17.0.2
     react-dom: 17.0.2
-    react-i18next: 11.18.1
+    react-i18next: 12.0.0
     react-scripts: 5.0.1
-    typescript: 4.7.4
+    typescript: 4.8.4
   peerDependencies:
     "@babel/core": "*"
   languageName: unknown
@@ -15314,9 +15315,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-i18next@npm:11.18.1":
-  version: 11.18.1
-  resolution: "react-i18next@npm:11.18.1"
+"react-i18next@npm:12.0.0":
+  version: 12.0.0
+  resolution: "react-i18next@npm:12.0.0"
   dependencies:
     "@babel/runtime": ^7.14.5
     html-parse-stringify: ^3.0.1
@@ -15328,7 +15329,7 @@ __metadata:
       optional: true
     react-native:
       optional: true
-  checksum: 3614d4f41a2bad2831aee7c02da6403955eacf7aeef1cd73635a99b072e72f2ebed3e83ac2bc1bfe72421cb2de025bfbecc9929bfc495ba1f055d49851bf6e62
+  checksum: f523d7ec5dcb7f5fd36efc9385639d01160071f4dadbbc5a3f1daa64b0f332f709347bdd3bc68f5aefbd72c8742233aa715b308b1ca87179ad501acc19c72068
   languageName: node
   linkType: hard
 
@@ -15409,6 +15410,24 @@ __metadata:
     react-native:
       optional: true
   checksum: 765bec81e521a78ef04a8feb6710041ce838ef82bf6e1d35c7e9327cc242b232b242fd89f3604adf6747dce2df055d12b15e8e4208687cc5eb493c1c0bf71d34
+  languageName: node
+  linkType: hard
+
+"react-query@npm:3.39.2":
+  version: 3.39.2
+  resolution: "react-query@npm:3.39.2"
+  dependencies:
+    "@babel/runtime": ^7.5.5
+    broadcast-channel: ^3.4.1
+    match-sorter: ^6.0.2
+  peerDependencies:
+    react: ^16.8.0 || ^17.0.0 || ^18.0.0
+  peerDependenciesMeta:
+    react-dom:
+      optional: true
+    react-native:
+      optional: true
+  checksum: 83b199e66af28ab67ec4d22e51da42f02447186623db926b75d27a1c09a3383da6ddc9e5b83d82578fac7abdba7e6f265aecbffdb91db61981950d3d59409346
   languageName: node
   linkType: hard
 

@@ -9,9 +9,16 @@ import { CodeProps } from 'react-markdown/lib/ast-to-react';
 
 import { styled } from '@mui/material';
 
-import { ALL_MEMBERS_ID } from '../../constants';
+import { Member } from '@graasp/sdk';
+
+import {
+  ALL_MEMBERS_ID,
+  ALL_MEMBERS_MEMBER,
+  UNKNOWN_USER_NAME,
+} from '../../constants';
 import { useCurrentMemberContext } from '../../context/CurrentMemberContext';
-import { getMention } from '../../utils/mentions';
+import { useMessagesContext } from '../../context/MessagesContext';
+import { getIdMention, getMention } from '../../utils/mentions';
 
 const StyledReactMarkdown = styled(ReactMarkdown)(({ theme }) => ({
   fontFamily: theme.typography.fontFamily,
@@ -83,6 +90,7 @@ type Props = {
 
 const MessageBody: FC<Props> = ({ messageBody }) => {
   const { id: currentMemberId } = useCurrentMemberContext();
+  const { members } = useMessagesContext();
 
   const renderCode = ({
     inline,
@@ -91,19 +99,29 @@ const MessageBody: FC<Props> = ({ messageBody }) => {
     ...props
   }: CodeProps): ReactElement => {
     const match = (classNameInit || '').match(/language-(\w+)/);
-    const mention = getMention(codeContent.join(''));
-    if (inline && mention && mention.groups) {
+    const mentionText = codeContent.join('');
+    // try to match a legacy mention
+    const legacyMention = getMention(mentionText);
+    const mention = getIdMention(mentionText);
+    if (
+      inline &&
+      ((legacyMention && legacyMention.groups) || (mention && mention.groups))
+    ) {
+      const userId = mention?.groups?.id || legacyMention?.groups?.id;
+      const userName =
+        [...(members.toJS() as Member[]), ALL_MEMBERS_MEMBER].find(
+          (m) => m.id === userId,
+        )?.name || UNKNOWN_USER_NAME;
       return (
         <span
           style={{
-            ...((mention.groups.id === currentMemberId ||
-              mention.groups.id === ALL_MEMBERS_ID) && {
+            ...((userId === currentMemberId || userId === ALL_MEMBERS_ID) && {
               backgroundColor: '#e3c980',
             }),
             fontWeight: 'bold',
           }}
         >
-          @{mention[1]}
+          @{userName}
         </span>
       );
     }

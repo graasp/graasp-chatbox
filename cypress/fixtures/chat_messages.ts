@@ -1,17 +1,22 @@
 import { v4 } from 'uuid';
 
+import { getMentionMarkupFromMember } from '../../src';
 import { ChatMessage } from '../../src/types';
 import { CURRENT_MEMBER, MEMBERS } from './members';
 
 export const CHAT_ID = v4();
+export const MOCK_MESSAGE_BODY = 'This is a message';
 
-export const getMockMessage = ({ member = CURRENT_MEMBER }): ChatMessage => ({
+export const getMockMessage = ({
+  member = CURRENT_MEMBER,
+  message = MOCK_MESSAGE_BODY,
+}): ChatMessage => ({
   id: v4(),
   chatId: CHAT_ID,
   creator: member.id,
   createdAt: new Date().toISOString(),
   updatedAt: new Date().toISOString(),
-  body: 'This is a message',
+  body: message,
 });
 
 export const CHAT_MESSAGES = [
@@ -47,6 +52,10 @@ export const CHAT_MESSAGES = [
     updatedAt: new Date().toISOString(),
     body: 'Message',
   },
+];
+
+export const CHAT_MESSAGES_WITH_LEGACY_MENTIONS: ChatMessage[] = [
+  getMockMessage({ message: getMentionMarkupFromMember(MEMBERS.ANNA) }),
 ];
 
 export const SHORT_COMMENT = 'Hello how are you ?';

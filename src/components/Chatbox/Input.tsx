@@ -22,13 +22,14 @@ import {
   sendButtonCypress,
 } from '../../config/selectors';
 import {
-  ALL_MEMBERS_DISPLAY,
   ALL_MEMBERS_ID,
+  ALL_MEMBERS_SUGGESTION,
   GRAASP_MENTION_COLOR,
   HARD_MAX_MESSAGE_LENGTH,
 } from '../../constants';
 import { useCurrentMemberContext } from '../../context/CurrentMemberContext';
 import { useMessagesContext } from '../../context/MessagesContext';
+import { MENTION_MARKUP } from '../../utils/mentions';
 import FullWidthWrapper from '../common/FullWidthWrapper';
 
 const HelperText = styled(Typography)(({ theme }) => ({
@@ -125,7 +126,7 @@ const Input: FC<Props> = ({
 
   // exclude self from suggestions and add @all pseudo member
   const memberSuggestions: SuggestionDataItem[] = [
-    { id: ALL_MEMBERS_ID, display: ALL_MEMBERS_DISPLAY },
+    ALL_MEMBERS_SUGGESTION,
     ...(members
       ?.filter((m) => m.id !== currentMemberId)
       ?.map((m) => ({ id: m.id, display: m.name }))
@@ -235,7 +236,7 @@ const Input: FC<Props> = ({
         >
           <Mention
             displayTransform={(_, login): string => `@${login}`}
-            markup="`<!@__display__>[__id__]`"
+            markup={MENTION_MARKUP}
             trigger="@"
             renderSuggestion={(_, __, highlightedDisplay): ReactElement => (
               <div className="user">{highlightedDisplay}</div>
