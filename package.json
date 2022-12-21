@@ -9,8 +9,12 @@
     "definition": "dist/index.d.ts"
   },
   "repository": "graasp/graasp-chatbox",
-  "author": "Kim Lan Phan Hoang",
-  "license": "MIT",
+  "author": "Graasp",
+  "contributors": [
+    "Kim Lan Phan Hoang",
+    "Basile Spaenlehauer"
+  ],
+  "license": "AGPL3.0-only",
   "workspaces": [
     "example"
   ],
