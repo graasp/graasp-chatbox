@@ -10,10 +10,8 @@ jobs:
       - name: component tests 🧪
         uses: cypress-io/github-action@v5
         with:
-          components: true
+          component: true
           browser: chrome
-          headless: true
-          quiet: true
 
       # after the test run completes
       # store videos and any screenshots
