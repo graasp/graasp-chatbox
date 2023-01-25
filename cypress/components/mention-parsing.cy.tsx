@@ -26,7 +26,6 @@ describe('Mention Highlighting', () => {
         LEGACY_MENTION_MARKUP,
       ),
     });
-    console.log(allMessage.body);
 
     cy.mount(
       <Chatbox
