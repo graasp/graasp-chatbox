@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.1](https://github.com/graasp/graasp-chatbox/compare/v1.0.0...v1.0.1) (2023-01-25)
+
+
+### Bug Fixes
+
+* mention syntax ([#71](https://github.com/graasp/graasp-chatbox/issues/71)) ([2a85484](https://github.com/graasp/graasp-chatbox/commit/2a8548407418589c02549953ea4522ab10670cb9))
+
 ## 1.0.0 (2022-11-03)
 
 
