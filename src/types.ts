@@ -49,3 +49,5 @@ export const ToolVariants = {
 } as const;
 
 export type ToolVariantsType = typeof ToolVariants[keyof typeof ToolVariants];
+
+export type PartialMemberDisplay = Pick<Member, 'name' | 'id'>;
