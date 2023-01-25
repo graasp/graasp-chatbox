@@ -23,8 +23,10 @@ type Props = {
   lang?: string;
   useMentions: (
     options?: { getUpdates?: boolean | undefined } | undefined,
-  ) => QueryObserverResult<MemberMentionsRecord>;
-  useMembers: (memberIds: string[]) => QueryObserverResult<List<MemberRecord>>;
+  ) => QueryObserverResult<MemberMentionsRecord, Error>;
+  useMembers: (
+    memberIds: string[],
+  ) => QueryObserverResult<List<MemberRecord>, Error>;
   patchMentionFunction: (args: { id: string; status: string }) => void;
   deleteMentionFunction: (id: string) => void;
   clearAllMentionsFunction: () => void;

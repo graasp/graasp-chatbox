@@ -7,10 +7,10 @@ import Chatbox, {
   getMentionMarkupFromMember,
 } from '../../src';
 import { dataCyWrapper, messageIdCyWrapper } from '../../src/config/selectors';
-import { ALL_MEMBERS_DISPLAY } from '../../src/constants';
+import { ALL_MEMBERS_DISPLAY, ALL_MEMBERS_MEMBER } from '../../src/constants';
 import { ImmutableMember } from '../../src/types';
 import { CHAT_ID, getMockMessage } from '../fixtures/chat_messages';
-import { ALL_MEMBERS_MEMBER, MEMBERS } from '../fixtures/members';
+import { MEMBERS } from '../fixtures/members';
 import { mockUseAvatar } from '../fixtures/mockHooks';
 
 describe('Mention Highlighting', () => {

@@ -112,6 +112,7 @@ const MessageBody: FC<Props> = ({ messageBody }) => {
         [...(members.toJS() as Member[]), ALL_MEMBERS_MEMBER].find(
           (m) => m.id === userId,
         )?.name || UNKNOWN_USER_NAME;
+
       return (
         <span
           style={{

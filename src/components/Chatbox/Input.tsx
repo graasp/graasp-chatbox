@@ -235,7 +235,7 @@ const Input: FC<Props> = ({
           placeholder={placeholder || t(CHATBOX.INPUT_FIELD_PLACEHOLDER)}
         >
           <Mention
-            displayTransform={(_, login): string => `@${login}`}
+            displayTransform={(_, display): string => `@${display}`}
             markup={MENTION_MARKUP}
             trigger="@"
             renderSuggestion={(_, __, highlightedDisplay): ReactElement => (

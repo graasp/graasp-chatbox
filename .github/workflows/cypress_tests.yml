@@ -1,5 +1,5 @@
 name: Cypress tests
-on: [ push ]
+on: [push]
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -8,10 +8,9 @@ jobs:
         uses: actions/checkout@v2
 
       - name: component tests 🧪
-        uses: cypress-io/github-action@v2
+        uses: cypress-io/github-action@v5
         with:
-          # to run component tests we need to use "cypress run-ct"
-          command: yarn cypress run-ct
+          components: true
           browser: chrome
           headless: true
           quiet: true
