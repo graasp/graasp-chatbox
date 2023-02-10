@@ -5,16 +5,13 @@ import { FC, Fragment, useEffect, useRef } from 'react';
 import { styled } from '@mui/material';
 import Box from '@mui/material/Box';
 
-import {
-  ChatMessageRecord,
-  PartialChatMessage,
-} from '@graasp/query-client/dist/types';
+import { ChatMessageRecord, MemberRecord } from '@graasp/sdk/frontend';
 
 import { messagesContainerCypress } from '../../config/selectors';
 import { DEFAULT_DATE_FORMAT, SCROLL_SAFETY_MARGIN } from '../../constants';
 import { useEditingContext } from '../../context/EditingContext';
 import { useMessagesContext } from '../../context/MessagesContext';
-import type { ImmutableMember } from '../../types';
+import type { DeleteMessageFunctionType } from '../../types';
 import Date from './Date';
 import Message from './Message';
 import MessageActions from './MessageActions';
@@ -46,9 +43,9 @@ const SingleMessageContainer = styled(Box)({
 });
 
 type Props = {
-  currentMember: ImmutableMember;
+  currentMember: MemberRecord;
   isAdmin?: boolean;
-  deleteMessageFunction?: (message: PartialChatMessage) => void;
+  deleteMessageFunction?: DeleteMessageFunctionType;
 };
 
 const Messages: FC<Props> = ({

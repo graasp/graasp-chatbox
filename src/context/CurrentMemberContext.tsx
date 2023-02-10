@@ -1,6 +1,6 @@
 import React, { FC, ReactElement } from 'react';
 
-import { ImmutableMember } from '../types';
+import { MemberRecord } from '@graasp/sdk/frontend';
 
 export type CurrentMemberContextType = {
   id: string;
@@ -16,7 +16,7 @@ export const CurrentMemberContext = React.createContext({
 
 type Props = {
   children: ReactElement | ReactElement[];
-  currentMember: ImmutableMember;
+  currentMember: MemberRecord;
 };
 
 export const CurrentMemberContextProvider: FC<Props> = ({

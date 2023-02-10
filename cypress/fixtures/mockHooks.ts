@@ -1,20 +1,15 @@
 /// <reference types="../cypress"/>
-import { List, Record } from 'immutable';
+import { List } from 'immutable';
 import { v4 } from 'uuid';
 
 import { QueryObserverResult } from 'react-query';
 
+import { Member, MemberType, MentionStatus, convertJs } from '@graasp/sdk';
 import {
   ChatMention,
-  ChatMentionRecord,
-  Member,
-  MemberExtra,
-  MemberExtraRecord,
-  MemberMentions,
   MemberMentionsRecord,
   MemberRecord,
-} from '@graasp/query-client/dist/types';
-import { MentionStatus } from '@graasp/sdk';
+} from '@graasp/sdk/frontend';
 
 import { CHAT_MESSAGES } from './chat_messages';
 import { CURRENT_MEMBER, MEMBERS } from './members';
@@ -53,29 +48,22 @@ export const mockUseMentions =
       status: MentionStatus.UNREAD,
     };
 
-    const createMention: Record.Factory<ChatMention> = Record(defaultMention);
-    const CHAT_MENTION_1: ChatMentionRecord = createMention({
+    const CHAT_MENTION_1: ChatMention = {
+      ...defaultMention,
       id: v4(),
       creator: MEMBERS.BOB.id,
       messageId: CHAT_MESSAGES[0].id,
-    });
-    const CHAT_MENTION_2: ChatMentionRecord = createMention({
+    };
+    const CHAT_MENTION_2: ChatMention = {
+      ...defaultMention,
       id: v4(),
       creator: MEMBERS.ANNA.id,
       messageId: CHAT_MESSAGES[1].id,
-    });
-
-    const defaultMemberMentionsValues: MemberMentions = {
-      memberId: '',
-      mentions: List([]),
     };
 
-    const createMockMemberMentions: Record.Factory<MemberMentions> = Record(
-      defaultMemberMentionsValues,
-    );
-    const MEMBER_MENTIONS: MemberMentionsRecord = createMockMemberMentions({
+    const MEMBER_MENTIONS: MemberMentionsRecord = convertJs({
       memberId: CURRENT_MEMBER.id,
-      mentions: List([CHAT_MENTION_1, CHAT_MENTION_2]),
+      mentions: [CHAT_MENTION_1, CHAT_MENTION_2],
     });
     return {
       data: MEMBER_MENTIONS,
@@ -83,20 +71,18 @@ export const mockUseMentions =
   };
 
 export const mockUseMembers = (): QueryObserverResult<List<MemberRecord>> => {
-  const defaultMemberExtra: MemberExtra = {
-    hasAvatar: false,
-  };
-  const createMemberExtra: Record.Factory<MemberExtra> =
-    Record(defaultMemberExtra);
-  const extra: MemberExtraRecord = createMemberExtra();
   const defaultMember: Member = {
     id: '',
     name: '',
-    extra,
+    extra: {},
+    type: MemberType.Individual,
     email: 'default@mail.com',
+    createdAt: 'somedate',
+    updatedAt: 'someotherDate',
   };
 
-  const createMember: Record.Factory<Member> = Record(defaultMember);
+  const createMember = (member: Partial<Member>): MemberRecord =>
+    convertJs({ ...defaultMember, ...member });
 
   return {
     data: List([

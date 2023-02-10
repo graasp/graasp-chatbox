@@ -11,10 +11,7 @@ import {
   styled,
 } from '@mui/material';
 
-import {
-  ChatMessageRecord,
-  PartialChatMessage,
-} from '@graasp/query-client/dist/types';
+import { ChatMessageRecord } from '@graasp/sdk/frontend';
 import { CHATBOX } from '@graasp/translations';
 
 import {
@@ -24,11 +21,12 @@ import {
 } from '../../config/selectors';
 import { LIST_ICON_MIN_WIDTH } from '../../constants';
 import { useEditingContext } from '../../context/EditingContext';
+import { DeleteMessageFunctionType } from '../../types';
 
 type Props = {
   message: ChatMessageRecord;
   isOwn?: boolean;
-  deleteMessageFunction?: (message: PartialChatMessage) => void;
+  deleteMessageFunction?: DeleteMessageFunctionType;
 };
 
 const StyledListItemIcon = styled(ListItemIcon)({
@@ -58,7 +56,7 @@ const MessageActions: FC<Props> = ({
   };
 
   const handleDeleteMessage = (): void => {
-    deleteMessageFunction?.({ chatId: message.chatId, messageId: message.id });
+    deleteMessageFunction?.({ chatId: message.chatId, id: message.id });
     handleOnCloseMenu();
   };
 
