@@ -1,11 +1,10 @@
-/// <reference types="../cypress"/>
+/// <reference types="../support/cypress" />
 import { v4 } from 'uuid';
 
 import React from 'react';
 
 import { convertJs } from '@graasp/sdk';
 
-import { ImmutableMember } from '../../src';
 import Chatbox from '../../src/components/Chatbox/Chatbox';
 import {
   dataCyWrapper,
@@ -27,7 +26,7 @@ describe('Render Avatar', () => {
     cy.mount(
       <Chatbox
         chatId={CHAT_ID}
-        currentMember={new ImmutableMember(MEMBERS.ANNA)}
+        currentMember={convertJs(MEMBERS.ANNA)}
         members={convertJs(Object.values(MEMBERS))}
         messages={convertJs(CHAT_MESSAGES)}
         useAvatarHook={fakeHook}
@@ -40,7 +39,7 @@ describe('Render Avatar', () => {
     cy.mount(
       <Chatbox
         chatId={CHAT_ID}
-        currentMember={new ImmutableMember(MEMBERS.ANNA)}
+        currentMember={convertJs(MEMBERS.ANNA)}
         members={convertJs(Object.values(MEMBERS))}
         messages={convertJs(CHAT_MESSAGES)}
         useAvatarHook={fakeHook}
@@ -56,7 +55,7 @@ describe('Autofocus input field', () => {
     cy.mount(
       <Chatbox
         chatId={CHAT_ID}
-        currentMember={new ImmutableMember(MEMBERS.ANNA)}
+        currentMember={convertJs(MEMBERS.ANNA)}
         members={convertJs(Object.values(MEMBERS))}
         messages={convertJs(CHAT_MESSAGES)}
         useAvatarHook={fakeHook}
@@ -75,7 +74,7 @@ describe('Messages container', () => {
     cy.mount(
       <Chatbox
         chatId={CHAT_ID}
-        currentMember={new ImmutableMember(MEMBERS.ANNA)}
+        currentMember={convertJs(MEMBERS.ANNA)}
         members={convertJs(Object.values(MEMBERS))}
         messages={convertJs([
           {

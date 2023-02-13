@@ -2,9 +2,8 @@ import { List } from 'immutable';
 
 import { UseQueryResult } from 'react-query';
 
-import { ChatMessageRecord } from '@graasp/query-client/dist/types';
 import { Member } from '@graasp/sdk';
-import { MessageBodyType } from '@graasp/sdk/frontend';
+import { ChatMessageRecord, MessageBodyType } from '@graasp/sdk/frontend';
 
 export type EditingProp = {
   open: boolean;

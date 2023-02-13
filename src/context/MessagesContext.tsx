@@ -2,7 +2,7 @@ import { List } from 'immutable';
 
 import React, { FC, PropsWithChildren } from 'react';
 
-import { MemberRecord } from '@graasp/query-client/dist/types';
+import { MemberRecord } from '@graasp/sdk/frontend';
 
 import { ChatMessageList } from '../types';
 

@@ -16,12 +16,12 @@ import {
   styled,
 } from '@mui/material';
 
-import { ChatMentionRecord } from '@graasp/query-client/dist/types';
 import {
   MentionStatus,
   buildItemLinkForBuilder,
   getIdsFromPath,
 } from '@graasp/sdk';
+import { ChatMentionRecord } from '@graasp/sdk/frontend';
 import { CHATBOX } from '@graasp/translations';
 import { Button } from '@graasp/ui';
 

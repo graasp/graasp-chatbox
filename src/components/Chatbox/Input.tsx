@@ -12,7 +12,7 @@ import SendIcon from '@mui/icons-material/Send';
 import { Typography, styled, useTheme } from '@mui/material';
 import IconButton from '@mui/material/IconButton';
 
-import { MessageBodyType } from '@graasp/query-client/dist/types';
+import { MessageBodyType } from '@graasp/sdk/frontend';
 import { CHATBOX } from '@graasp/translations';
 
 import {

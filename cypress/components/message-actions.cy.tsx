@@ -1,9 +1,8 @@
-/// <reference types="../cypress"/>
+/// <reference types="../support/cypress" />
 import React from 'react';
 
 import { convertJs } from '@graasp/sdk';
 
-import { ImmutableMember } from '../../src';
 import Chatbox from '../../src/components/Chatbox/Chatbox';
 import {
   dataCyWrapper,
@@ -26,7 +25,7 @@ describe('Message actions', () => {
     cy.mount(
       <Chatbox
         chatId={CHAT_ID}
-        currentMember={new ImmutableMember(MEMBERS.ANNA)}
+        currentMember={convertJs(MEMBERS.ANNA)}
         members={convertJs(Object.values(MEMBERS))}
         messages={convertJs(CHAT_MESSAGES)}
         useAvatarHook={fakeHook}
@@ -54,7 +53,7 @@ describe('Delete action', () => {
     cy.mount(
       <Chatbox
         chatId={CHAT_ID}
-        currentMember={new ImmutableMember(MEMBERS.ANNA)}
+        currentMember={convertJs(MEMBERS.ANNA)}
         members={convertJs(Object.values(MEMBERS))}
         messages={convertJs(CHAT_MESSAGES)}
         deleteMessageFunction={deleteMessageSpy}
@@ -80,7 +79,7 @@ describe('Edit action', () => {
     cy.mount(
       <Chatbox
         chatId={CHAT_ID}
-        currentMember={new ImmutableMember(MEMBERS.ANNA)}
+        currentMember={convertJs(MEMBERS.ANNA)}
         members={convertJs(Object.values(MEMBERS))}
         messages={convertJs(CHAT_MESSAGES)}
         editMessageFunction={editMessageSpy}
