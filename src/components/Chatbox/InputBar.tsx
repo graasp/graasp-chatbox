@@ -1,4 +1,4 @@
-import { EditMessageFunctionType, sendMessageFunctionType } from 'src/types';
+import { EditMessageFunctionType, SendMessageFunctionType } from '@/types';
 
 import { FC, useEffect, useRef, useState } from 'react';
 
@@ -12,7 +12,7 @@ import Input from './Input';
 
 type Props = {
   sendMessageBoxId?: string;
-  sendMessageFunction?: sendMessageFunctionType;
+  sendMessageFunction?: SendMessageFunctionType;
   editMessageFunction?: EditMessageFunctionType;
 };
 

@@ -18,7 +18,7 @@ import {
   ChatMessageList,
   DeleteMessageFunctionType,
   EditMessageFunctionType,
-  sendMessageFunctionType,
+  SendMessageFunctionType,
 } from '../../types';
 import Header from './Header';
 import InputBar from './InputBar';
@@ -43,7 +43,7 @@ type Props = {
   sendMessageBoxId?: string;
   messages?: ChatMessageList;
   isLoading?: boolean;
-  sendMessageFunction?: sendMessageFunctionType;
+  sendMessageFunction?: SendMessageFunctionType;
   deleteMessageFunction?: DeleteMessageFunctionType;
   editMessageFunction?: EditMessageFunctionType;
   useAvatarHook: AvatarHookType;

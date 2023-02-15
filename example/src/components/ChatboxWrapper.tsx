@@ -6,8 +6,8 @@ import { MUTATION_KEYS } from '@graasp/query-client';
 import {
   DeleteMessageFunctionType,
   EditMessageFunctionType,
-  sendMessageFunctionType,
-} from '../../../dist/types';
+  SendMessageFunctionType,
+} from '../../../src/types';
 import { DEFAULT_LANG } from '../config/constants';
 import { hooks, useMutation } from '../config/queryClient';
 
@@ -38,7 +38,7 @@ const ChatboxWrapper: FC<Props> = ({
 
   const member = currentMember;
 
-  const { mutate: sendMessage }: { mutate: sendMessageFunctionType } =
+  const { mutate: sendMessage }: { mutate: SendMessageFunctionType } =
     useMutation(MUTATION_KEYS.POST_ITEM_CHAT_MESSAGE);
   const { mutate: deleteMessage }: { mutate: DeleteMessageFunctionType } =
     useMutation(MUTATION_KEYS.DELETE_ITEM_CHAT_MESSAGE);

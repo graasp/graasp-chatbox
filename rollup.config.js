@@ -1,4 +1,5 @@
 import peerDepsExternal from 'rollup-plugin-peer-deps-external';
+import tscAlias from 'rollup-plugin-tsc-alias';
 
 import commonjs from '@rollup/plugin-commonjs';
 import json from '@rollup/plugin-json';
@@ -23,6 +24,8 @@ export default {
       sourceMap: false,
       exclude: ['**/*.test.ts', '**/*.test.tsx'],
     }),
+    // resolve tsconfig path aliases
+    tscAlias(),
     commonjs(),
   ],
   external: [

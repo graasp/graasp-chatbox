@@ -1,7 +1,12 @@
 import React, { FC, ReactElement, useState } from 'react';
 
 import { INITIAL_EDITING_PROPS } from '../constants';
-import { EditingProp } from '../types';
+
+type EditingProp = {
+  open: boolean;
+  id: string;
+  body: string;
+};
 
 export type EditingContextType = {
   open: boolean;
