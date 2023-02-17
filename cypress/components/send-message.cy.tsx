@@ -1,11 +1,10 @@
-/// <reference types="../cypress"/>
+/// <reference types="../support/cypress"/>
 import { List } from 'immutable';
 
 import React from 'react';
 
 import { convertJs } from '@graasp/sdk';
 
-import { ImmutableMember } from '../../src';
 import Chatbox from '../../src/components/Chatbox/Chatbox';
 import {
   charCounterCypress,
@@ -31,7 +30,7 @@ describe('Enter text', () => {
     cy.mount(
       <Chatbox
         chatId={CHAT_ID}
-        currentMember={new ImmutableMember(MEMBERS.ANNA)}
+        currentMember={convertJs(MEMBERS.ANNA)}
         members={List(convertJs(Object.values(MEMBERS)))}
         messages={List(convertJs(CHAT_MESSAGES))}
         useAvatarHook={fakeHook}
@@ -64,7 +63,7 @@ describe('Send message', () => {
     cy.mount(
       <Chatbox
         chatId={CHAT_ID}
-        currentMember={new ImmutableMember(MEMBERS.ANNA)}
+        currentMember={convertJs(MEMBERS.ANNA)}
         members={List(convertJs(Object.values(MEMBERS)))}
         messages={List(convertJs(CHAT_MESSAGES))}
         sendMessageFunction={sendMessageSpy}
@@ -83,7 +82,7 @@ describe('Send message', () => {
     cy.mount(
       <Chatbox
         chatId={CHAT_ID}
-        currentMember={new ImmutableMember(MEMBERS.ANNA)}
+        currentMember={convertJs(MEMBERS.ANNA)}
         members={List(convertJs(Object.values(MEMBERS)))}
         messages={List(convertJs(CHAT_MESSAGES))}
         sendMessageFunction={sendMessageSpy}
@@ -105,7 +104,7 @@ describe('Message Length', () => {
     cy.mount(
       <Chatbox
         chatId={CHAT_ID}
-        currentMember={new ImmutableMember(MEMBERS.ANNA)}
+        currentMember={convertJs(MEMBERS.ANNA)}
         members={List(convertJs(Object.values(MEMBERS)))}
         messages={List(convertJs(CHAT_MESSAGES))}
         sendMessageFunction={sendMessageSpy}

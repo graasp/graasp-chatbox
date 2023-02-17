@@ -5,11 +5,7 @@ import { I18nextProvider } from 'react-i18next';
 
 import { StyledEngineProvider, styled } from '@mui/material';
 
-import {
-  MemberRecord,
-  PartialChatMessage,
-  PartialNewChatMessage,
-} from '@graasp/query-client/dist/types';
+import { MemberRecord } from '@graasp/sdk/frontend';
 import buildI18n, { langs, namespaces } from '@graasp/translations';
 
 import { CONTAINER_HEIGHT_SAFETY_MARGIN } from '../../constants';
@@ -17,8 +13,13 @@ import { CurrentMemberContextProvider } from '../../context/CurrentMemberContext
 import { EditingContextProvider } from '../../context/EditingContext';
 import { HooksContextProvider } from '../../context/HooksContext';
 import { MessagesContextProvider } from '../../context/MessagesContext';
-import type { ImmutableMember } from '../../types';
-import { AvatarHookType, ChatMessageList } from '../../types';
+import {
+  AvatarHookType,
+  ChatMessageList,
+  DeleteMessageFunctionType,
+  EditMessageFunctionType,
+  SendMessageFunctionType,
+} from '../../types';
 import Header from './Header';
 import InputBar from './InputBar';
 import Messages from './Messages';
@@ -42,15 +43,15 @@ type Props = {
   sendMessageBoxId?: string;
   messages?: ChatMessageList;
   isLoading?: boolean;
-  sendMessageFunction?: (message: PartialNewChatMessage) => void;
-  deleteMessageFunction?: (message: PartialChatMessage) => void;
-  editMessageFunction?: (message: PartialChatMessage) => void;
+  sendMessageFunction?: SendMessageFunctionType;
+  deleteMessageFunction?: DeleteMessageFunctionType;
+  editMessageFunction?: EditMessageFunctionType;
   useAvatarHook: AvatarHookType;
   chatId: string;
   showHeader?: boolean;
   showAdminTools?: boolean;
   lang?: string;
-  currentMember: ImmutableMember;
+  currentMember: MemberRecord;
   members?: List<MemberRecord>;
 };
 

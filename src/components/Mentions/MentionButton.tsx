@@ -7,11 +7,8 @@ import { QueryObserverResult } from 'react-query';
 import { Notifications } from '@mui/icons-material';
 import { Badge, IconButton, styled } from '@mui/material';
 
-import {
-  MemberMentionsRecord,
-  MemberRecord,
-} from '@graasp/query-client/dist/types';
 import { MentionStatus } from '@graasp/sdk';
+import { MemberMentionsRecord, MemberRecord } from '@graasp/sdk/frontend';
 import buildI18n, { CHATBOX, langs, namespaces } from '@graasp/translations';
 
 import { mentionButtonCypress } from '../../config/selectors';

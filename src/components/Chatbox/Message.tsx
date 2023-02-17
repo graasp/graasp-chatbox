@@ -9,7 +9,7 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import grey from '@mui/material/colors/grey';
 
-import { ChatMessageRecord } from '@graasp/query-client/dist/types';
+import { ChatMessageRecord, MemberRecord } from '@graasp/sdk/frontend';
 import { CHATBOX } from '@graasp/translations';
 import { Avatar } from '@graasp/ui';
 
@@ -20,7 +20,6 @@ import {
   MAX_USERNAME_LENGTH,
 } from '../../constants';
 import { useHooksContext } from '../../context/HooksContext';
-import type { ImmutableMember, Member } from '../../types';
 import MessageBody from './MessageBody';
 
 const MessageWrapper = styled(Box)(({ theme }) => ({
@@ -49,8 +48,8 @@ const AvatarContainer = styled(Box)({
 
 type Props = {
   message: ChatMessageRecord;
-  currentMember: ImmutableMember;
-  member?: Member;
+  currentMember: MemberRecord;
+  member?: MemberRecord;
 };
 
 const Message: FC<Props> = ({ message, currentMember, member }) => {

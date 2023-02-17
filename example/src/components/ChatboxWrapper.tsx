@@ -1,12 +1,13 @@
 import { FC } from 'react';
 
-import Chatbox, { AvatarHookType, ImmutableMember } from '@graasp/chatbox';
+import Chatbox, { AvatarHookType } from '@graasp/chatbox';
 import { MUTATION_KEYS } from '@graasp/query-client';
-import {
-  PartialChatMessage,
-  PartialNewChatMessage,
-} from '@graasp/query-client/dist/types';
 
+import {
+  DeleteMessageFunctionType,
+  EditMessageFunctionType,
+  SendMessageFunctionType,
+} from '../../../src/types';
 import { DEFAULT_LANG } from '../config/constants';
 import { hooks, useMutation } from '../config/queryClient';
 
@@ -35,23 +36,14 @@ const ChatboxWrapper: FC<Props> = ({
     (memberships?.size && memberships?.map((m) => m.memberId)?.toArray()) || [];
   const members = hooks.useMembers(memberIds).data;
 
-  const member = new ImmutableMember(currentMember);
+  const member = currentMember;
 
-  const {
-    mutate: sendMessage,
-  }: { mutate: (message: PartialNewChatMessage) => void } = useMutation(
-    MUTATION_KEYS.POST_ITEM_CHAT_MESSAGE,
-  );
-  const {
-    mutate: deleteMessage,
-  }: { mutate: (message: PartialChatMessage) => void } = useMutation(
-    MUTATION_KEYS.DELETE_ITEM_CHAT_MESSAGE,
-  );
-  const {
-    mutate: editMessage,
-  }: { mutate: (message: PartialChatMessage) => void } = useMutation(
-    MUTATION_KEYS.PATCH_ITEM_CHAT_MESSAGE,
-  );
+  const { mutate: sendMessage }: { mutate: SendMessageFunctionType } =
+    useMutation(MUTATION_KEYS.POST_ITEM_CHAT_MESSAGE);
+  const { mutate: deleteMessage }: { mutate: DeleteMessageFunctionType } =
+    useMutation(MUTATION_KEYS.DELETE_ITEM_CHAT_MESSAGE);
+  const { mutate: editMessage }: { mutate: EditMessageFunctionType } =
+    useMutation(MUTATION_KEYS.PATCH_ITEM_CHAT_MESSAGE);
 
   return (
     <Chatbox

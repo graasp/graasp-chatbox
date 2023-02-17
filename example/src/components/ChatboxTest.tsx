@@ -16,7 +16,7 @@ import {
 
 import { MentionButton } from '@graasp/chatbox';
 import { MUTATION_KEYS } from '@graasp/query-client';
-import { ChatMention } from '@graasp/query-client/dist/types';
+import { ChatMention } from '@graasp/sdk/frontend';
 import buildI18n, { namespaces } from '@graasp/translations';
 
 import {

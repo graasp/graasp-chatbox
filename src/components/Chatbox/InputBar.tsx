@@ -1,10 +1,8 @@
+import { EditMessageFunctionType, SendMessageFunctionType } from '@/types';
+
 import { FC, useEffect, useRef, useState } from 'react';
 
-import {
-  MessageBodyType,
-  PartialChatMessage,
-  PartialNewChatMessage,
-} from '@graasp/query-client/dist/types';
+import { MessageBodyType } from '@graasp/sdk/frontend';
 
 import { useEditingContext } from '../../context/EditingContext';
 import { useMessagesContext } from '../../context/MessagesContext';
@@ -14,8 +12,8 @@ import Input from './Input';
 
 type Props = {
   sendMessageBoxId?: string;
-  sendMessageFunction?: (message: PartialNewChatMessage) => void;
-  editMessageFunction?: (message: PartialChatMessage) => void;
+  sendMessageFunction?: SendMessageFunctionType;
+  editMessageFunction?: EditMessageFunctionType;
 };
 
 const InputBar: FC<Props> = ({
@@ -45,7 +43,7 @@ const InputBar: FC<Props> = ({
   const handleSendMessageFunction = (body: MessageBodyType): void => {
     if (open) {
       editMessageFunction?.({
-        messageId,
+        id: messageId,
         chatId,
         body,
       });

@@ -1,3 +1,4 @@
+/// <reference types="../support/cypress"/>
 import React from 'react';
 
 import { convertJs } from '@graasp/sdk';
@@ -8,7 +9,6 @@ import Chatbox, {
 } from '../../src';
 import { dataCyWrapper, messageIdCyWrapper } from '../../src/config/selectors';
 import { ALL_MEMBERS_DISPLAY, ALL_MEMBERS_MEMBER } from '../../src/constants';
-import { ImmutableMember } from '../../src/types';
 import { CHAT_ID, getMockMessage } from '../fixtures/chat_messages';
 import { MEMBERS } from '../fixtures/members';
 import { mockUseAvatar } from '../fixtures/mockHooks';
@@ -30,7 +30,7 @@ describe('Mention Highlighting', () => {
     cy.mount(
       <Chatbox
         chatId={CHAT_ID}
-        currentMember={new ImmutableMember(MEMBERS.ANNA)}
+        currentMember={convertJs(MEMBERS.ANNA)}
         members={convertJs(Object.values(MEMBERS))}
         messages={convertJs([annaMessage, allMessage])}
         useAvatarHook={fakeHook}
