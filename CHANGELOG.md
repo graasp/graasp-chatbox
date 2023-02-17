@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.0.2](https://github.com/graasp/graasp-chatbox/compare/v1.0.1...v1.0.2) (2023-02-17)
+
+
+### Bug Fixes
+
+* adapt types to use `@graasp/sdk/frontend` instead of query-client ([#74](https://github.com/graasp/graasp-chatbox/issues/74)) ([d116f28](https://github.com/graasp/graasp-chatbox/commit/d116f288cb219a147b9997de7ffe25432a7ddcf6))
+* build with alias resolution and export function param types ([d116f28](https://github.com/graasp/graasp-chatbox/commit/d116f288cb219a147b9997de7ffe25432a7ddcf6))
+* **test:** use convertJs instead of removed ImmutableMember ([d116f28](https://github.com/graasp/graasp-chatbox/commit/d116f288cb219a147b9997de7ffe25432a7ddcf6))
+
 ## [1.0.1](https://github.com/graasp/graasp-chatbox/compare/v1.0.0...v1.0.1) (2023-01-25)
 
 
