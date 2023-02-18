@@ -2,7 +2,7 @@ import { List } from 'immutable';
 
 import { FC, useMemo, useState } from 'react';
 import { I18nextProvider } from 'react-i18next';
-import { QueryObserverResult } from 'react-query';
+import { UseQueryResult } from 'react-query';
 
 import { Notifications } from '@mui/icons-material';
 import { Badge, IconButton, styled } from '@mui/material';
@@ -20,10 +20,8 @@ type Props = {
   lang?: string;
   useMentions: (
     options?: { getUpdates?: boolean | undefined } | undefined,
-  ) => QueryObserverResult<MemberMentionsRecord, Error>;
-  useMembers: (
-    memberIds: string[],
-  ) => QueryObserverResult<List<MemberRecord>, Error>;
+  ) => UseQueryResult<MemberMentionsRecord>;
+  useMembers: (memberIds: string[]) => UseQueryResult<List<MemberRecord>>;
   patchMentionFunction: (args: { id: string; status: string }) => void;
   deleteMentionFunction: (id: string) => void;
   clearAllMentionsFunction: () => void;

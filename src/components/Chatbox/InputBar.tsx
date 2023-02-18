@@ -2,7 +2,7 @@ import { EditMessageFunctionType, SendMessageFunctionType } from '@/types';
 
 import { FC, useEffect, useRef, useState } from 'react';
 
-import { MessageBodyType } from '@graasp/sdk/frontend';
+import { MessageBodyType } from '@graasp/sdk';
 
 import { useEditingContext } from '../../context/EditingContext';
 import { useMessagesContext } from '../../context/MessagesContext';

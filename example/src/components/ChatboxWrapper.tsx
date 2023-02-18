@@ -1,8 +1,11 @@
+import { v4 } from 'uuid';
+
 import { FC } from 'react';
 
-import Chatbox, { AvatarHookType } from '@graasp/chatbox';
 import { MUTATION_KEYS } from '@graasp/query-client';
+import { Member, MemberType, convertJs } from '@graasp/sdk';
 
+import Chatbox, { AvatarHookType } from '../../../src';
 import {
   DeleteMessageFunctionType,
   EditMessageFunctionType,
@@ -35,8 +38,16 @@ const ChatboxWrapper: FC<Props> = ({
   const memberIds: string[] =
     (memberships?.size && memberships?.map((m) => m.memberId)?.toArray()) || [];
   const members = hooks.useMembers(memberIds).data;
-
-  const member = currentMember;
+  const defaultCurrentMember: Member = {
+    id: v4(),
+    name: 'default-member',
+    email: 'default-email',
+    type: MemberType.Individual,
+    createdAt: new Date().toISOString(),
+    updatedAt: new Date().toISOString(),
+    extra: {},
+  };
+  const member = currentMember || convertJs(defaultCurrentMember);
 
   const { mutate: sendMessage }: { mutate: SendMessageFunctionType } =
     useMutation(MUTATION_KEYS.POST_ITEM_CHAT_MESSAGE);

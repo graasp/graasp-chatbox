@@ -2,12 +2,8 @@ import { List } from 'immutable';
 
 import { UseQueryResult } from 'react-query';
 
-import { Member } from '@graasp/sdk';
-import {
-  ChatMessage,
-  ChatMessageRecord,
-  MessageBodyType,
-} from '@graasp/sdk/frontend';
+import { ChatMessage, Member, MessageBodyType } from '@graasp/sdk';
+import { ChatMessageRecord } from '@graasp/sdk/frontend';
 
 export type ChatMessageList = List<ChatMessageRecord>;
 

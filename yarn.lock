@@ -2320,7 +2320,7 @@ __metadata:
     "@cypress/webpack-dev-server": 3.2.3
     "@emotion/react": 11.10.5
     "@emotion/styled": 11.10.5
-    "@graasp/query-client": 0.1.2
+    "@graasp/query-client": 0.2.1
     "@graasp/sdk": 0.4.1
     "@graasp/translations": 1.4.0
     "@graasp/ui": 0.10.5
@@ -2396,22 +2396,28 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@graasp/query-client@npm:0.1.2":
-  version: 0.1.2
-  resolution: "@graasp/query-client@npm:0.1.2"
+"@graasp/query-client@link:../node_modules/@graasp/query-client::locator=graasp-chatbox-example%40workspace%3Aexample":
+  version: 0.0.0-use.local
+  resolution: "@graasp/query-client@link:../node_modules/@graasp/query-client::locator=graasp-chatbox-example%40workspace%3Aexample"
+  languageName: node
+  linkType: soft
+
+"@graasp/query-client@npm:0.2.1":
+  version: 0.2.1
+  resolution: "@graasp/query-client@npm:0.2.1"
   dependencies:
-    "@graasp/sdk": 0.2.0
-    "@graasp/translations": 1.1.0
+    "@graasp/sdk": 0.4.1
+    "@graasp/translations": 1.4.0
     axios: 0.27.2
     crypto-js: 4.1.1
     http-status-codes: 2.2.0
-    immutable: 4.0.0
-    qs: 6.10.3
-    react-query: 3.34.19
-    uuid: 8.3.2
+    immutable: 4.2.4
+    qs: 6.11.0
+    react-query: 3.39.3
+    uuid: 9.0.0
   peerDependencies:
     react: ^17.0.0
-  checksum: 6b60ff37cb2788a25eff3c6c91947eccd4af7bd280e1e53251d24bbe6f038c284df232398f730f78dac94af6f5d3cb7c9a8b4c33fb563b8a6e32c1deb989eac8
+  checksum: 63337026c3fe71d9a772cc5a9f2144fc523fa1682db29bb3718fb096e1a8dd9945ae32eef900a129baa32979ca5c89d9457956bf95552d06977e4f1ecd0505a2
   languageName: node
   linkType: hard
 
@@ -2446,15 +2452,6 @@ __metadata:
     slonik: 28.1.1
     uuid: 9.0.0
   checksum: dc65bdad6db5d8647c5753fa03c7d88cd894b3e3dc9da55c19e92da4bbc77cd85b542beb93ec5db46b75a8a7ac65ba8901258a667a3bedccb8fdfa6b4f13df14
-  languageName: node
-  linkType: hard
-
-"@graasp/translations@npm:1.1.0":
-  version: 1.1.0
-  resolution: "@graasp/translations@npm:1.1.0"
-  dependencies:
-    i18next: 21.8.1
-  checksum: 1d6fabce21ef205146c4f74b9b4b5dafc5969cf13a78cd7c4947a9b882cb22d48f3832ad6e20c21cc905b41b4809a1c2efa7ba629b12cd79bd2067df6ebd2f22
   languageName: node
   linkType: hard
 
@@ -2935,6 +2932,12 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@mui/icons-material@link:../node_modules/@mui/icons-material::locator=graasp-chatbox-example%40workspace%3Aexample":
+  version: 0.0.0-use.local
+  resolution: "@mui/icons-material@link:../node_modules/@mui/icons-material::locator=graasp-chatbox-example%40workspace%3Aexample"
+  languageName: node
+  linkType: soft
+
 "@mui/icons-material@npm:5.11.0":
   version: 5.11.0
   resolution: "@mui/icons-material@npm:5.11.0"
@@ -2980,6 +2983,12 @@ __metadata:
   checksum: 9db5507e19a4d3afc726df3f7403bb46f5d97df1129a12b00360c9cda7cf50f4249eb1195eeeca508045cd8b56b0a84fb4a447fc6a62cc161db903f2e8d26c67
   languageName: node
   linkType: hard
+
+"@mui/material@link:../node_modules/@mui/material::locator=graasp-chatbox-example%40workspace%3Aexample":
+  version: 0.0.0-use.local
+  resolution: "@mui/material@link:../node_modules/@mui/material::locator=graasp-chatbox-example%40workspace%3Aexample"
+  languageName: node
+  linkType: soft
 
 "@mui/material@npm:5.11.6":
   version: 5.11.6
@@ -9580,14 +9589,14 @@ __metadata:
   dependencies:
     "@babel/plugin-syntax-object-rest-spread": 7.8.3
     "@graasp/chatbox": "link:.."
-    "@graasp/query-client": 0.1.2
-    "@mui/icons-material": 5.11.0
-    "@mui/material": 5.11.6
+    "@graasp/query-client": "link:../node_modules/@graasp/query-client"
+    "@mui/icons-material": "link:../node_modules/@mui/icons-material"
+    "@mui/material": "link:../node_modules/@mui/material"
     "@types/jest": "link:../node_modules/@types/jest"
     "@types/node": "link:../node_modules/@types/node"
     "@types/react": "link:../node_modules/@types/react"
     "@types/react-dom": "link:../node_modules/@types/react-dom"
-    immutable: 4.2.2
+    immutable: "link:../node_modules/immutable"
     react: 17.0.2
     react-dom: 17.0.2
     react-i18next: 12.0.0
@@ -14958,15 +14967,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"qs@npm:6.10.3":
-  version: 6.10.3
-  resolution: "qs@npm:6.10.3"
-  dependencies:
-    side-channel: ^1.0.4
-  checksum: 0fac5e6c7191d0295a96d0e83c851aeb015df7e990e4d3b093897d3ac6c94e555dbd0a599739c84d7fa46d7fee282d94ba76943983935cf33bba6769539b8019
-  languageName: node
-  linkType: hard
-
 "qs@npm:6.10.5":
   version: 6.10.5
   resolution: "qs@npm:6.10.5"
@@ -15321,24 +15321,6 @@ __metadata:
     react: ">=16.8.3"
     react-dom: ">=16.8.3"
   checksum: 3d195df7b8d762d0f184cb8a76c82ea7f6509b122bfac733c0bdebc3d592bd0aa98f3c61535945c2a115c92afb97949590c6cb00d77d3cb5e40ccaa385223dcb
-  languageName: node
-  linkType: hard
-
-"react-query@npm:3.34.19":
-  version: 3.34.19
-  resolution: "react-query@npm:3.34.19"
-  dependencies:
-    "@babel/runtime": ^7.5.5
-    broadcast-channel: ^3.4.1
-    match-sorter: ^6.0.2
-  peerDependencies:
-    react: ^16.8.0 || ^17.0.0
-  peerDependenciesMeta:
-    react-dom:
-      optional: true
-    react-native:
-      optional: true
-  checksum: 765bec81e521a78ef04a8feb6710041ce838ef82bf6e1d35c7e9327cc242b232b242fd89f3604adf6747dce2df055d12b15e8e4208687cc5eb493c1c0bf71d34
   languageName: node
   linkType: hard
 
