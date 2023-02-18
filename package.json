@@ -15,11 +15,14 @@
     "Basile Spaenlehauer"
   ],
   "license": "AGPL3.0-only",
+  "bugs": {
+    "url": "http://github.com/graasp/graasp-chatbox/issues"
+  },
   "workspaces": [
     "example"
   ],
   "engines": {
-    "node": ">=10"
+    "node": ">=16"
   },
   "scripts": {
     "pre-commit": "yarn prettier:check && yarn lint",
@@ -54,7 +57,6 @@
   "dependencies": {
     "@emotion/react": "11.10.5",
     "@emotion/styled": "11.10.5",
-    "@graasp/query-client": "0.2.0",
     "@graasp/sdk": "0.4.1",
     "@graasp/translations": "1.4.0",
     "@graasp/ui": "0.10.5",
@@ -83,7 +85,7 @@
     "@cypress/instrument-cra": "1.4.0",
     "@cypress/react": "7.0.2",
     "@cypress/webpack-dev-server": "3.2.3",
-    "@graasp/query-client": "0.1.2",
+    "@graasp/query-client": "0.2.1",
     "@mui/icons-material": "5.11.0",
     "@mui/lab": "5.0.0-alpha.117",
     "@mui/material": "5.11.6",
