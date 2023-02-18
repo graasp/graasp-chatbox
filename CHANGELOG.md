@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.3](https://github.com/graasp/graasp-chatbox/compare/v1.0.2...v1.0.3) (2023-02-18)
+
+
+### Bug Fixes
+
+* missing imports for sdk ([#77](https://github.com/graasp/graasp-chatbox/issues/77)) ([ac6f84b](https://github.com/graasp/graasp-chatbox/commit/ac6f84bb4a1dcc25199dd9fb6114a6a28ef93f83))
+
 ## [1.0.2](https://github.com/graasp/graasp-chatbox/compare/v1.0.1...v1.0.2) (2023-02-17)
 
 
