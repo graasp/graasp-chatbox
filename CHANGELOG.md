@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.4](https://github.com/graasp/graasp-chatbox/compare/v1.0.3...v1.0.4) (2023-03-06)
+
+
+### Bug Fixes
+
+* bump package versions and fix type of avatarhook ([#80](https://github.com/graasp/graasp-chatbox/issues/80)) ([ed2dadd](https://github.com/graasp/graasp-chatbox/commit/ed2dadd0f02d657edd1fafd8941036848ec90613))
+
 ## [1.0.3](https://github.com/graasp/graasp-chatbox/compare/v1.0.2...v1.0.3) (2023-02-18)
 
 
