@@ -10,7 +10,7 @@ export type ChatMessageList = List<ChatMessageRecord>;
 export type AvatarHookType = (args: {
   id?: string;
   size?: string;
-}) => UseQueryResult<Blob>;
+}) => UseQueryResult<Blob | undefined>;
 
 export type PartialMemberDisplay = Pick<Member, 'name' | 'id'>;
 
