@@ -5,7 +5,7 @@ import { I18nextProvider } from 'react-i18next';
 import { UseQueryResult } from 'react-query';
 
 import { Notifications } from '@mui/icons-material';
-import { Badge, IconButton, styled } from '@mui/material';
+import { Badge, IconButton } from '@mui/material';
 
 import { MentionStatus } from '@graasp/sdk';
 import { MemberMentionsRecord, MemberRecord } from '@graasp/sdk/frontend';
@@ -36,15 +36,6 @@ const MentionButton: FC<Props> = ({
   deleteMentionFunction,
   clearAllMentionsFunction,
 }) => {
-  const StyledBadge = styled(Badge)(({ theme }) => ({
-    '& .MuiBadge-badge': {
-      border: `2px solid ${
-        color === 'primary'
-          ? theme.palette.background.paper
-          : theme.palette.primary.main
-      }`,
-    },
-  }));
   const i18n = useMemo(() => {
     const i18nInstance = buildI18n(namespaces.chatbox);
     i18nInstance.changeLanguage(lang);
@@ -78,16 +69,16 @@ const MentionButton: FC<Props> = ({
           data-cy={mentionButtonCypress}
           onClick={(): void => setOpen(true)}
         >
-          <StyledBadge
+          <Badge
             overlap="circular"
-            color={color}
+            color={color === 'primary' ? 'secondary' : color}
             badgeContent={
               mentions?.filter((m) => m.status === MentionStatus.UNREAD)
                 ?.size || 0
             }
           >
             <Notifications color={color} />
-          </StyledBadge>
+          </Badge>
         </IconButton>
         <MentionsDialog
           content={

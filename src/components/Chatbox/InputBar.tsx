@@ -1,11 +1,10 @@
-import { EditMessageFunctionType, SendMessageFunctionType } from '@/types';
-
 import { FC, useEffect, useRef, useState } from 'react';
 
 import { MessageBodyType } from '@graasp/sdk';
 
 import { useEditingContext } from '../../context/EditingContext';
 import { useMessagesContext } from '../../context/MessagesContext';
+import { EditMessageFunctionType, SendMessageFunctionType } from '../../types';
 import FullWidthWrapper from '../common/FullWidthWrapper';
 import EditBanner from './EditBanner';
 import Input from './Input';
