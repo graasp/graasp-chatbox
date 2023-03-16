@@ -71,7 +71,7 @@ const MentionButton: FC<Props> = ({
         >
           <Badge
             overlap="circular"
-            color={color === 'primary' ? 'secondary' : color}
+            color={color === 'secondary' ? 'primary' : color}
             badgeContent={
               mentions?.filter((m) => m.status === MentionStatus.UNREAD)
                 ?.size || 0
