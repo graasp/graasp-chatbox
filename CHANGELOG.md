@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.0](https://github.com/graasp/graasp-chatbox/compare/v1.0.4...v1.1.0) (2023-03-17)
+
+
+### Features
+
+* allow setting mention badge color ([#83](https://github.com/graasp/graasp-chatbox/issues/83)) ([b44cd5b](https://github.com/graasp/graasp-chatbox/commit/b44cd5bff6f06829e6625bcc2ca1eebab7163e79))
+
 ## [1.0.4](https://github.com/graasp/graasp-chatbox/compare/v1.0.3...v1.0.4) (2023-03-06)
 
 
