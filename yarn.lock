@@ -2289,9 +2289,9 @@ __metadata:
     "@emotion/react": 11.10.6
     "@emotion/styled": 11.10.6
     "@graasp/query-client": 0.3.0
-    "@graasp/sdk": 0.5.0
-    "@graasp/translations": 1.6.0
-    "@graasp/ui": 0.13.0
+    "@graasp/sdk": 0.9.2
+    "@graasp/translations": 1.8.0
+    "@graasp/ui": 2.2.0
     "@mui/icons-material": 5.11.11
     "@mui/lab": 5.0.0-alpha.121
     "@mui/material": 5.11.11
@@ -2402,9 +2402,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@graasp/sdk@npm:0.5.0":
-  version: 0.5.0
-  resolution: "@graasp/sdk@npm:0.5.0"
+"@graasp/sdk@npm:0.9.2":
+  version: 0.9.2
+  resolution: "@graasp/sdk@npm:0.9.2"
   dependencies:
     "@fastify/secure-session": 5.3.0
     aws-sdk: 2.1310.0
@@ -2415,7 +2415,7 @@ __metadata:
     qs: 6.11.0
     slonik: 28.1.1
     uuid: 9.0.0
-  checksum: 2f021d5b8a725e089f8ca473384e0d397f8a2680ec62e5ef290bd5601cb6bd44c59010b80a628d33a8ef5141c7bfa128cc1b78573c9652e605439571f69ebac0
+  checksum: 49daf48b8877b1a0bdd0612c5a88be22860de4e94c494978732add26d38b5d0a6784df8eb8caedd7972b2767c78258c056c89889c73eeeb3971f2ff989a7f1e0
   languageName: node
   linkType: hard
 
@@ -2428,20 +2428,20 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@graasp/translations@npm:1.6.0":
-  version: 1.6.0
-  resolution: "@graasp/translations@npm:1.6.0"
+"@graasp/translations@npm:1.8.0":
+  version: 1.8.0
+  resolution: "@graasp/translations@npm:1.8.0"
   dependencies:
     i18next: 21.8.1
-  checksum: 4decfc135055ab65462cab9f2ba56efb257c836c6ad367d3a81762a4521dd9ff87d031c282eaf49e082a6b1fe385dd6e1b4d4b0ef38be400c68e39199a95b940
+  checksum: 61c99573820d08f675b9294c075c0995bc2589c1aac962c2eb140b73de45125b28131e5712848b416c8e8a7694f7b6381d903b9e8fd6f4db9cb41ab553352c52
   languageName: node
   linkType: hard
 
-"@graasp/ui@npm:0.13.0":
-  version: 0.13.0
-  resolution: "@graasp/ui@npm:0.13.0"
+"@graasp/ui@npm:2.2.0":
+  version: 2.2.0
+  resolution: "@graasp/ui@npm:2.2.0"
   dependencies:
-    "@graasp/sdk": 0.4.1
+    "@graasp/sdk": 0.9.2
     clsx: 1.1.1
     http-status-codes: 2.2.0
     immutable: 4.2.4
@@ -2472,7 +2472,7 @@ __metadata:
       optional: true
     ag-grid-react:
       optional: true
-  checksum: 2188c3b23c3c9751e0255c355671abaad5ac4801c92e29798e6b517dda65b47ad0be5467a3abf646a1c6b1624aa2bc10e9895306dbc131912493732b8c39ad14
+  checksum: 0c87e2a73c223430723fabe02a5186ea44e3815f665bc0c5ba0213eb382925d9437ae3369c715dab02ee1441321ae02a1de233e303e29dd512b58016ff9976cc
   languageName: node
   linkType: hard
 
