@@ -65,6 +65,7 @@ const MentionsTable: FC<Props> = ({
         </TableRow>
       );
     }
+
     return mentions
       .map((m) => (
         <StyledRow
@@ -73,7 +74,7 @@ const MentionsTable: FC<Props> = ({
           onClick={(): void => {
             const link = buildItemLinkForBuilder({
               origin: window.location.origin,
-              itemId: getIdsFromPath(m.itemPath).slice(-1)[0],
+              itemId: getIdsFromPath(m.item.path).slice(-1)[0],
               chatOpen: true,
             });
             markAsRead(m.id);

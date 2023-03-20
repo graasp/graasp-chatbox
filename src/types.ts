@@ -10,7 +10,7 @@ export type ChatMessageList = List<ImmutableCast<ChatMessage>>;
 export type AvatarHookType = (args: {
   id?: string;
   size?: string;
-}) => UseQueryResult<Blob | undefined>;
+}) => UseQueryResult<string | undefined>;
 
 export type PartialMemberDisplay = Pick<Member, 'name' | 'id'>;
 

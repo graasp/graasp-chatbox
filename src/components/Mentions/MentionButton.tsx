@@ -6,12 +6,10 @@ import { Badge, BadgeProps, IconButton, SvgIconProps } from '@mui/material';
 
 import { MentionStatus } from '@graasp/sdk';
 import { MemberMentionsRecord, MemberRecord } from '@graasp/sdk/frontend';
-import { CHATBOX } from '@graasp/translations';
 
 import { List } from 'immutable';
 
 import { mentionButtonCypress } from '@/config/selectors';
-import { useChatboxTranslation } from '@/utils/utils';
 
 import MentionsDialog from './MentionsDialog';
 import MentionsTable from './MentionsTable';
@@ -32,29 +30,12 @@ const MentionButton: FC<Props> = ({
   color = 'secondary',
   badgeColor = 'primary',
   useMentions,
-  useMembers,
   patchMentionFunction,
   deleteMentionFunction,
   clearAllMentionsFunction,
 }) => {
-  const { t } = useChatboxTranslation();
-
   const { data: memberMentions } = useMentions();
   const mentions = memberMentions?.mentions;
-
-  // get member ids from the mentions
-  const memberIds = Array.from(new Set(mentions?.map((m) => m.creator)));
-  const { data: members = List<MemberRecord>() } = useMembers(memberIds);
-
-  // add member names to mentions
-  const mentionsWithMembers = mentions?.map((m) => {
-    return m.update(
-      'creator',
-      () =>
-        members.find((u) => u.id === m.creator)?.name ||
-        t(CHATBOX.ANONYMOUS_USER),
-    );
-  });
 
   const [open, setOpen] = useState(false);
 
@@ -79,7 +60,7 @@ const MentionButton: FC<Props> = ({
       <MentionsDialog
         content={
           <MentionsTable
-            mentions={mentionsWithMembers}
+            mentions={mentions}
             patchMention={patchMentionFunction}
             deleteMention={deleteMentionFunction}
             clearAllMentions={clearAllMentionsFunction}

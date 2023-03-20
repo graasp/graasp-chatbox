@@ -70,10 +70,12 @@ const Messages: FC<Props> = ({
   }, [ref, messages, open]);
 
   const isOwn = (message: ChatMessageRecord): boolean =>
-    message.creator === currentMember.get('id');
+    message.creator.id === currentMember.id;
 
   const messagesByDay = messages
-    ?.groupBy(({ createdAt }) => moment(createdAt).format(DEFAULT_DATE_FORMAT))
+    ?.groupBy(({ createdAt }) =>
+      moment(createdAt as unknown as string).format(DEFAULT_DATE_FORMAT),
+    )
     // transform to array to avoid printing the first key
     .toArray();
 
@@ -95,7 +97,9 @@ const Messages: FC<Props> = ({
                   <Message
                     currentMember={currentMember}
                     message={message}
-                    member={members?.find(({ id }) => id === message.creator)}
+                    member={members?.find(
+                      ({ id }) => id === message.creator.id,
+                    )}
                   />
                   {(isOwnMessage || isAdmin) && (
                     <MessageActions

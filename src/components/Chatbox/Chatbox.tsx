@@ -46,7 +46,7 @@ type Props = {
   sendMessageFunction?: SendMessageFunctionType;
   deleteMessageFunction?: DeleteMessageFunctionType;
   editMessageFunction?: EditMessageFunctionType;
-  useAvatarHook: AvatarHookType;
+  useAvatarUrl: AvatarHookType;
   chatId: string;
   showHeader?: boolean;
   showAdminTools?: boolean;
@@ -61,7 +61,7 @@ const Chatbox: FC<Props> = ({
   sendMessageFunction,
   deleteMessageFunction,
   editMessageFunction,
-  useAvatarHook,
+  useAvatarUrl,
   messages,
   isLoading,
   chatId,
@@ -85,7 +85,7 @@ const Chatbox: FC<Props> = ({
     <StyledEngineProvider injectFirst>
       <I18nextProvider i18n={i18n}>
         <EditingContextProvider>
-          <HooksContextProvider useAvatarHook={useAvatarHook}>
+          <HooksContextProvider useAvatarUrl={useAvatarUrl}>
             <CurrentMemberContextProvider currentMember={currentMember}>
               <MessagesContextProvider
                 chatId={chatId}

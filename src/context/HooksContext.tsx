@@ -3,24 +3,21 @@ import React, { FC, ReactElement } from 'react';
 import { AvatarHookType } from '../types';
 
 export const HooksContext = React.createContext({
-  useAvatarHook: (() => null) as unknown as AvatarHookType,
+  useAvatarUrl: (() => null) as unknown as AvatarHookType,
 });
 
 export type HooksContextType = {
-  useAvatarHook: AvatarHookType;
+  useAvatarUrl: AvatarHookType;
 };
 
 type Props = {
   children: ReactElement;
-  useAvatarHook: AvatarHookType;
+  useAvatarUrl: AvatarHookType;
 };
 
-export const HooksContextProvider: FC<Props> = ({
-  children,
-  useAvatarHook,
-}) => {
+export const HooksContextProvider: FC<Props> = ({ children, useAvatarUrl }) => {
   const value = {
-    useAvatarHook,
+    useAvatarUrl,
   };
 
   return (

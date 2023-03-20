@@ -55,21 +55,21 @@ type Props = {
 
 const Message: FC<Props> = ({ message, currentMember, member }) => {
   const { t } = useChatboxTranslation();
-  const { useAvatarHook } = useHooksContext();
+  const { useAvatarUrl } = useHooksContext();
   const {
-    data: thumbnailBlob,
+    data: avatarUrl,
     isLoading: isLoadingAvatar,
     isFetching: isFetchingAvatar,
-  } = useAvatarHook({
+  } = useAvatarUrl({
     id: member?.id,
     size: 'small',
   });
-  const creator = message.creator;
-  const isOwnMessage = creator === currentMember.get('id');
+  const creatorId = message.creator.id;
+  const isOwnMessage = creatorId === currentMember.id;
   const creatorName = member?.name
     ? truncate(member?.name, { length: MAX_USERNAME_LENGTH })
     : DEFAULT_USER_NAME;
-  const time = moment(message.createdAt).format('hh:mm a');
+  const time = moment(message.createdAt as unknown as string).format('hh:mm a');
 
   return (
     <MessageWrapper
@@ -89,7 +89,7 @@ const Message: FC<Props> = ({ message, currentMember, member }) => {
               alt={creatorName}
               isLoading={isLoadingAvatar || isFetchingAvatar}
               component="avatar"
-              blob={thumbnailBlob}
+              url={avatarUrl}
               maxHeight={MAX_AVATAR_SIZE}
               maxWidth={MAX_AVATAR_SIZE}
               sx={{
