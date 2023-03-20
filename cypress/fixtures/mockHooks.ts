@@ -22,7 +22,7 @@ type SpyHookType = {
   name: string;
 };
 
-const USE_AVATAR_HOOK_NAME = 'useAvatarHook';
+const USE_AVATAR_HOOK_NAME = 'useAvatarUrl';
 
 export const mockUseAvatar = (): SpyHookType => ({
   hook: cy
