@@ -4,14 +4,17 @@ import { v4 } from 'uuid';
 
 import { QueryObserverResult } from 'react-query';
 
-import { Member, MemberType, MentionStatus, convertJs } from '@graasp/sdk';
 import {
   ChatMention,
-  MemberMentionsRecord,
-  MemberRecord,
-} from '@graasp/sdk/frontend';
+  Member,
+  MemberType,
+  MentionStatus,
+  convertJs,
+} from '@graasp/sdk';
+import { MemberMentionsRecord, MemberRecord } from '@graasp/sdk/frontend';
 
 import { CHAT_MESSAGES } from './chat_messages';
+import { MOCK_ITEM } from './item';
 import { CURRENT_MEMBER, MEMBERS } from './members';
 
 type SpyHookType = {
@@ -25,7 +28,7 @@ export const mockUseAvatar = (): SpyHookType => ({
   hook: cy
     .spy(() => {
       return {
-        data: new Blob(['someText']),
+        data: 'someText',
         isLoading: false,
         isFetching: false,
       };
@@ -38,26 +41,26 @@ export const mockUseMentions =
   (): QueryObserverResult<MemberMentionsRecord> => {
     const defaultMention: ChatMention = {
       id: '',
-      itemPath: 'some itemPath',
+      item: MOCK_ITEM,
       message: 'a message',
       messageId: '',
-      memberId: CURRENT_MEMBER.id,
-      creator: MEMBERS.BOB.id,
-      createdAt: new Date().toISOString(),
-      updatedAt: new Date().toISOString(),
+      member: CURRENT_MEMBER,
+      creator: MEMBERS.BOB,
+      createdAt: new Date(),
+      updatedAt: new Date(),
       status: MentionStatus.UNREAD,
     };
 
     const CHAT_MENTION_1: ChatMention = {
       ...defaultMention,
       id: v4(),
-      creator: MEMBERS.BOB.id,
+      creator: MEMBERS.BOB,
       messageId: CHAT_MESSAGES[0].id,
     };
     const CHAT_MENTION_2: ChatMention = {
       ...defaultMention,
       id: v4(),
-      creator: MEMBERS.ANNA.id,
+      creator: MEMBERS.ANNA,
       messageId: CHAT_MESSAGES[1].id,
     };
 
@@ -77,8 +80,8 @@ export const mockUseMembers = (): QueryObserverResult<List<MemberRecord>> => {
     extra: {},
     type: MemberType.Individual,
     email: 'default@mail.com',
-    createdAt: 'somedate',
-    updatedAt: 'someotherDate',
+    createdAt: new Date(),
+    updatedAt: new Date(),
   };
 
   const createMember = (member: Partial<Member>): MemberRecord =>

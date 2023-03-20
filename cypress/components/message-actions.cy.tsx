@@ -28,7 +28,7 @@ describe('Message actions', () => {
         currentMember={convertJs(MEMBERS.ANNA)}
         members={convertJs(Object.values(MEMBERS))}
         messages={convertJs(CHAT_MESSAGES)}
-        useAvatarHook={fakeHook}
+        useAvatarUrl={fakeHook}
       />,
     );
   });
@@ -57,7 +57,7 @@ describe('Delete action', () => {
         members={convertJs(Object.values(MEMBERS))}
         messages={convertJs(CHAT_MESSAGES)}
         deleteMessageFunction={deleteMessageSpy}
-        useAvatarHook={fakeHook}
+        useAvatarUrl={fakeHook}
       />,
     );
     cy.get(dataCyWrapper(messageActionsButtonCypress))
@@ -84,7 +84,7 @@ describe('Edit action', () => {
         messages={convertJs(CHAT_MESSAGES)}
         editMessageFunction={editMessageSpy}
         sendMessageFunction={sendMessageSpy}
-        useAvatarHook={fakeHook}
+        useAvatarUrl={fakeHook}
       />,
     );
 
