@@ -1,9 +1,9 @@
 /// <reference types="../support/cypress" />
-import { v4 } from 'uuid';
-
 import React from 'react';
 
 import { convertJs } from '@graasp/sdk';
+
+import { v4 } from 'uuid';
 
 import Chatbox from '../../src/components/Chatbox/Chatbox';
 import {

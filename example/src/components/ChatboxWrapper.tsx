@@ -1,9 +1,9 @@
-import { v4 } from 'uuid';
-
 import { FC } from 'react';
 
 import { MUTATION_KEYS } from '@graasp/query-client';
 import { Member, MemberType, convertJs } from '@graasp/sdk';
+
+import { v4 } from 'uuid';
 
 import Chatbox, { AvatarHookType } from '../../../src';
 import {

@@ -1,6 +1,6 @@
-import { v4 } from 'uuid';
-
 import { ChatMessage } from '@graasp/sdk';
+
+import { v4 } from 'uuid';
 
 import { getMentionMarkupFromMember } from '../../src';
 import { CURRENT_MEMBER, MEMBERS } from './members';

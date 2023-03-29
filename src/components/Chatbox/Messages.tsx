@@ -1,11 +1,11 @@
-import moment from 'moment';
-
 import { FC, Fragment, useEffect, useRef } from 'react';
 
 import { styled } from '@mui/material';
 import Box from '@mui/material/Box';
 
 import { ChatMessageRecord, MemberRecord } from '@graasp/sdk/frontend';
+
+import moment from 'moment';
 
 import { messagesContainerCypress } from '../../config/selectors';
 import { DEFAULT_DATE_FORMAT, SCROLL_SAFETY_MARGIN } from '../../constants';

@@ -1,8 +1,8 @@
-import { List } from 'immutable';
-
 import React, { FC, PropsWithChildren } from 'react';
 
 import { MemberRecord } from '@graasp/sdk/frontend';
+
+import { List } from 'immutable';
 
 import { ChatMessageList } from '../types';
 

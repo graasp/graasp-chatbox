@@ -1,5 +1,3 @@
-import { List } from 'immutable';
-
 import { FC, useMemo } from 'react';
 import { I18nextProvider } from 'react-i18next';
 
@@ -7,6 +5,8 @@ import { StyledEngineProvider, styled } from '@mui/material';
 
 import { MemberRecord } from '@graasp/sdk/frontend';
 import buildI18n, { langs, namespaces } from '@graasp/translations';
+
+import { List } from 'immutable';
 
 import { CONTAINER_HEIGHT_SAFETY_MARGIN } from '../../constants';
 import { CurrentMemberContextProvider } from '../../context/CurrentMemberContext';

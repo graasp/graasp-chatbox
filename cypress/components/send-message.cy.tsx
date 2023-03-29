@@ -1,9 +1,9 @@
 /// <reference types="../support/cypress"/>
-import { List } from 'immutable';
-
 import React from 'react';
 
 import { convertJs } from '@graasp/sdk';
+
+import { List } from 'immutable';
 
 import Chatbox from '../../src/components/Chatbox/Chatbox';
 import {

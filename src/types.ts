@@ -1,11 +1,16 @@
 import { UseQueryResult } from 'react-query';
 
-import { ChatMessage, Member, MessageBodyType } from '@graasp/sdk';
-import { ImmutableCast } from '@graasp/sdk/frontend';
+import {
+  DeleteChatMessageParamType,
+  Member,
+  PatchChatMessageParamType,
+  PostChatMessageParamType,
+} from '@graasp/sdk';
+import { ChatMessageRecord } from '@graasp/sdk/frontend';
 
 import { List } from 'immutable';
 
-export type ChatMessageList = List<ImmutableCast<ChatMessage>>;
+export type ChatMessageList = List<ChatMessageRecord>;
 
 export type AvatarHookType = (args: {
   id?: string;
@@ -14,22 +19,14 @@ export type AvatarHookType = (args: {
 
 export type PartialMemberDisplay = Pick<Member, 'name' | 'id'>;
 
-export type SendMessageFunctionParamType = Pick<ChatMessage, 'chatId'> & {
-  body: MessageBodyType;
-};
 export type SendMessageFunctionType = (
-  message: SendMessageFunctionParamType,
+  message: PostChatMessageParamType,
 ) => void;
 
-export type EditMessageFunctionParamType = Pick<
-  ChatMessage,
-  'chatId' | 'id'
-> & { body: MessageBodyType };
 export type EditMessageFunctionType = (
-  message: EditMessageFunctionParamType,
+  message: PatchChatMessageParamType,
 ) => void;
 
-export type DeleteMessageFunctionParamType = Pick<ChatMessage, 'chatId' | 'id'>;
 export type DeleteMessageFunctionType = (
-  message: DeleteMessageFunctionParamType,
+  message: DeleteChatMessageParamType,
 ) => void;

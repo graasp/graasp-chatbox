@@ -1,7 +1,4 @@
 /// <reference types="../cypress"/>
-import { List } from 'immutable';
-import { v4 } from 'uuid';
-
 import { QueryObserverResult } from 'react-query';
 
 import {
@@ -12,6 +9,9 @@ import {
   convertJs,
 } from '@graasp/sdk';
 import { MemberMentionsRecord, MemberRecord } from '@graasp/sdk/frontend';
+
+import { List } from 'immutable';
+import { v4 } from 'uuid';
 
 import { CHAT_MESSAGES } from './chat_messages';
 import { MOCK_ITEM } from './item';

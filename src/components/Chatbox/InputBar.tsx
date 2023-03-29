@@ -44,10 +44,10 @@ const InputBar: FC<Props> = ({
       editMessageFunction?.({
         id: messageId,
         chatId,
-        body,
+        ...body,
       });
     } else {
-      sendMessageFunction?.({ chatId, body });
+      sendMessageFunction?.({ chatId, ...body });
     }
     // reset editing
     cancelEdit();
