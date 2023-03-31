@@ -1,7 +1,7 @@
 import { FC, ReactElement } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { Notifications } from '@mui/icons-material';
+import Notifications from '@mui/icons-material/Notifications';
 import { Dialog, DialogContent, DialogTitle, styled } from '@mui/material';
 
 const DialogTitleIcon = styled(Notifications)(({ theme }) => ({
