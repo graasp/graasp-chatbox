@@ -2291,7 +2291,7 @@ __metadata:
     "@graasp/query-client": 0.3.0
     "@graasp/sdk": 0.9.2
     "@graasp/translations": 1.8.0
-    "@graasp/ui": 2.2.0
+    "@graasp/ui": "github:graasp/graasp-ui#test-reduce-bundle"
     "@mui/icons-material": 5.11.11
     "@mui/lab": 5.0.0-alpha.121
     "@mui/material": 5.11.11
@@ -2419,6 +2419,23 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@graasp/sdk@npm:0.9.3":
+  version: 0.9.3
+  resolution: "@graasp/sdk@npm:0.9.3"
+  dependencies:
+    "@fastify/secure-session": 5.3.0
+    aws-sdk: 2.1310.0
+    fastify: 3.29.5
+    fluent-json-schema: 3.1.0
+    immutable: 4.2.4
+    js-cookie: 3.0.1
+    qs: 6.11.0
+    slonik: 28.1.1
+    uuid: 9.0.0
+  checksum: 222e8d7e00f5c4fbfb23d596899edd0afcaa0640c540ae90f85d6cd6f92b1bb7832bf50504fecd4aafe1a185b79ecae42a75163bd5fca5975e535fbeb84c3049
+  languageName: node
+  linkType: hard
+
 "@graasp/translations@npm:1.4.0":
   version: 1.4.0
   resolution: "@graasp/translations@npm:1.4.0"
@@ -2437,11 +2454,11 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@graasp/ui@npm:2.2.0":
+"@graasp/ui@github:graasp/graasp-ui#test-reduce-bundle":
   version: 2.2.0
-  resolution: "@graasp/ui@npm:2.2.0"
+  resolution: "@graasp/ui@https://github.com/graasp/graasp-ui.git#commit=b91e4ac1be0230dc94e3e6e7dcb55f8a2746ff7b"
   dependencies:
-    "@graasp/sdk": 0.9.2
+    "@graasp/sdk": 0.9.3
     clsx: 1.1.1
     http-status-codes: 2.2.0
     immutable: 4.2.4
@@ -2472,7 +2489,7 @@ __metadata:
       optional: true
     ag-grid-react:
       optional: true
-  checksum: 0c87e2a73c223430723fabe02a5186ea44e3815f665bc0c5ba0213eb382925d9437ae3369c715dab02ee1441321ae02a1de233e303e29dd512b58016ff9976cc
+  checksum: e2d02b3bfe7d5e52878b24d0e66dba6b29e761a7de87031c14a3b467851ef5cfcfb976cd793b6485df14cda1b01a5e5c5b498c4cff661d2baee7941ddeba6cef
   languageName: node
   linkType: hard
 
