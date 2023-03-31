@@ -4,7 +4,7 @@ import { FC, useMemo, useState } from 'react';
 import { I18nextProvider } from 'react-i18next';
 import { UseQueryResult } from 'react-query';
 
-import  Notifications from '@mui/icons-material/Notifications';
+import Notifications from '@mui/icons-material/Notifications';
 import { Badge, BadgeProps, IconButton } from '@mui/material';
 
 import { MentionStatus } from '@graasp/sdk';

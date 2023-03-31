@@ -1,10 +1,19 @@
 {
   "name": "@graasp/chatbox",
   "version": "1.1.0",
-  "main": "dist/index.js",
-  "module": "dist/index.js",
-  "source": "index.ts",
-  "typings": "dist/index.d.ts",
+  "type": "module",
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/chatbox.js",
+  "module": "./dist/index.js",
+  "exports": {
+    ".": {
+      "import": "./dist/chatbox.js",
+      "require": "./dist/chatbox.umd.cjs"
+    }
+  },
+  "types": "./dist/index.d.ts",
   "typescript": {
     "definition": "dist/index.d.ts"
   },
@@ -25,9 +34,7 @@
     "node": ">=16"
   },
   "scripts": {
-    "pre-commit": "yarn prettier:check && yarn lint",
-    "post-commit": "git status",
-    "build": "rimraf dist && tsc && rollup -c rollup.config.js",
+    "build": "tsc && vite build",
     "start": "rimraf dist && tsc && rollup --watch -c rollup.config.js",
     "start:example": "yarn workspace graasp-chatbox-example start",
     "prepack": "yarn build",
@@ -47,10 +54,15 @@
     "cypress:ci": "cypress run --component"
   },
   "peerDependencies": {
+    "@emotion/react": "*",
+    "@emotion/styled": "*",
+    "@graasp/sdk": "*",
+    "@graasp/translations": "*",
+    "@graasp/ui": "*",
     "@mui/icons-material": "*",
     "@mui/lab": "*",
     "@mui/material": "*",
-    "eslint": "*",
+    "immutable": "^4.2.0",
     "react": "*",
     "react-dom": "*"
   },
@@ -104,6 +116,7 @@
     "@types/uuid": "9.0.0",
     "@typescript-eslint/eslint-plugin": "5.49.0",
     "@typescript-eslint/parser": "5.49.0",
+    "@vitejs/plugin-react": "3.1.0",
     "cross-env": "7.0.3",
     "cypress": "12.4.0",
     "env-cmd": "10.1.0",
@@ -126,16 +139,16 @@
     "rollup-plugin-import-css": "3.0.3",
     "rollup-plugin-peer-deps-external": "2.2.4",
     "rollup-plugin-tsc-alias": "1.1.2",
+    "rollup-plugin-visualizer": "5.9.0",
     "ts-loader": "9.3.1",
     "tslib": "2.5.0",
-    "typescript": "4.9.5"
+    "typescript": "4.9.5",
+    "vite": "4.2.1",
+    "vite-plugin-dts": "2.1.0"
   },
   "resolutions": {
     "@types/react": "17.0.2",
     "immutable": "4.2.4"
   },
-  "files": [
-    "dist"
-  ],
   "packageManager": "yarn@3.4.1"
 }
