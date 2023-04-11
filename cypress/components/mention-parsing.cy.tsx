@@ -3,10 +3,8 @@ import React from 'react';
 
 import { convertJs } from '@graasp/sdk';
 
-import Chatbox, {
-  LEGACY_MENTION_MARKUP,
-  getMentionMarkupFromMember,
-} from '../../src';
+import { LEGACY_MENTION_MARKUP, getMentionMarkupFromMember } from '../../src';
+import Chatbox from '../../src/components/Chatbox/Chatbox';
 import { dataCyWrapper, messageIdCyWrapper } from '../../src/config/selectors';
 import { ALL_MEMBERS_DISPLAY, ALL_MEMBERS_MEMBER } from '../../src/constants';
 import { CHAT_ID, getMockMessage } from '../fixtures/chat_messages';
