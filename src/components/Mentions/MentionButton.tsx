@@ -4,7 +4,7 @@ import { FC, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { UseQueryResult } from 'react-query';
 
-import Notifications from '@mui/icons-material/Notifications';
+import { Notifications } from '@mui/icons-material';
 import { Badge, BadgeProps, IconButton } from '@mui/material';
 
 import { MentionStatus } from '@graasp/sdk';
@@ -64,6 +64,7 @@ const MentionButton: FC<Props> = ({
         onClick={(): void => setOpen(true)}
       >
         <Badge
+          component="div"
           overlap="circular"
           color={badgeColor}
           badgeContent={
