@@ -5,12 +5,11 @@
   "files": [
     "dist"
   ],
-  "main": "./dist/chatbox.umd.cjs",
+  "main": "./dist/index.js",
   "module": "./dist/index.js",
   "exports": {
     ".": {
-      "import": "./dist/chatbox.js",
-      "require": "./dist/chatbox.umd.cjs"
+      "import": "./dist/index.js"
     }
   },
   "types": "./dist/index.d.ts",
@@ -34,7 +33,7 @@
     "node": ">=16"
   },
   "scripts": {
-    "build": "tsc && vite build",
+    "build": "tsc",
     "start": "rimraf dist && tsc && rollup --watch -c rollup.config.js",
     "start:example": "yarn workspace graasp-chatbox-example start",
     "prepack": "yarn build",

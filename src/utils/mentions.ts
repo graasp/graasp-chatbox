@@ -38,6 +38,7 @@ export const getMentionMarkupFromMember = (
   templateMarkup = MENTION_MARKUP,
 ): string =>
   Object.entries(reactMentionsMarkup).reduce(
-    (markup, [key, value]) => markup.replace(value, member[key]),
+    (markup, [key, value]) =>
+      markup.replace(value, member[key as keyof typeof reactMentionsMarkup]),
     templateMarkup,
   );

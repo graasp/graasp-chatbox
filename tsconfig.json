@@ -13,7 +13,6 @@
     "noImplicitThis": true,
     "noImplicitAny": true,
     "strictNullChecks": true,
-    "suppressImplicitAnyIndexErrors": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "allowSyntheticDefaultImports": true,
@@ -24,7 +23,7 @@
     "forceConsistentCasingInFileNames": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "noEmit": true,
+    "noEmit": false,
     "noFallthroughCasesInSwitch": true,
     "types": ["node", "cypress"],
     "baseUrl": "./src",
@@ -34,9 +33,8 @@
   },
   "include": [
     "src",
-    "index.ts",
     "cypress/cypress.d.ts",
     "node_modules/cypress/types/cypress-global-vars.d.ts"
   ],
-  "exclude": ["node_modules", "dist", "example", "src/test/*"]
+  "exclude": ["node_modules", "dist", "example"]
 }

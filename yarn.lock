@@ -2705,7 +2705,7 @@ __metadata:
     "@mui/lab": "*"
     "@mui/material": "*"
     immutable: ^4.2.0
-    react: "*"
+    react: ^17.0.0
     react-dom: "*"
   languageName: unknown
   linkType: soft
