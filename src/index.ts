@@ -1,4 +1,4 @@
-export { default as Chatbox } from './components/Chatbox/Chatbox';
+export { default } from './components/Chatbox/Chatbox';
 
 // Mention button providing dialog with member mentions table
 // should be placed in the header next to the profile picture
