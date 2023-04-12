@@ -2696,15 +2696,6 @@ __metadata:
     vite: 4.2.1
     vite-plugin-dts: 2.1.0
   peerDependencies:
-    "@emotion/react": "*"
-    "@emotion/styled": "*"
-    "@graasp/sdk": "*"
-    "@graasp/translations": "*"
-    "@graasp/ui": "*"
-    "@mui/icons-material": "*"
-    "@mui/lab": "*"
-    "@mui/material": "*"
-    immutable: ^4.2.0
     react: ^17.0.0
     react-dom: "*"
   languageName: unknown
