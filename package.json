@@ -1,17 +1,11 @@
 {
   "name": "@graasp/chatbox",
   "version": "1.1.0",
-  "type": "module",
+  "type": "commonjs",
   "files": [
     "dist"
   ],
   "main": "./dist/index.js",
-  "module": "./dist/index.js",
-  "exports": {
-    ".": {
-      "import": "./dist/index.js"
-    }
-  },
   "types": "./dist/index.d.ts",
   "typescript": {
     "definition": "./dist/index.d.ts"

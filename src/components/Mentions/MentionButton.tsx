@@ -4,7 +4,7 @@ import { FC, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { UseQueryResult } from 'react-query';
 
-import { Notifications } from '@mui/icons-material';
+import Notifications from '@mui/icons-material/Notifications';
 import { Badge, BadgeProps, IconButton, SvgIconProps } from '@mui/material';
 
 import { MentionStatus } from '@graasp/sdk';
@@ -16,7 +16,7 @@ import MentionsDialog from './MentionsDialog';
 import MentionsTable from './MentionsTable';
 
 type Props = {
-  color?: SvgIconProps['color'] | string;
+  color?: SvgIconProps['color'];
   badgeColor?: BadgeProps['color'];
   useMentions: (
     options?: { getUpdates?: boolean | undefined } | undefined,
@@ -64,6 +64,7 @@ const MentionButton: FC<Props> = ({
         onClick={(): void => setOpen(true)}
       >
         <Badge
+          component="div"
           overlap="circular"
           color={badgeColor}
           badgeContent={
@@ -71,7 +72,7 @@ const MentionButton: FC<Props> = ({
             0
           }
         >
-          <Notifications htmlColor={color} />
+          <Notifications color={color} />
         </Badge>
       </IconButton>
       <MentionsDialog

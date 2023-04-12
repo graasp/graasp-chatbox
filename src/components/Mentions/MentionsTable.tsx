@@ -3,7 +3,9 @@ import { List } from 'immutable';
 import { FC, ReactElement, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { Check, Close, FiberManualRecord } from '@mui/icons-material';
+import Check from '@mui/icons-material/Check';
+import Close from '@mui/icons-material/Close';
+import FiberManualRecord from '@mui/icons-material/FiberManualRecord';
 import {
   Grid,
   IconButton,
