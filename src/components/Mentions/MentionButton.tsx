@@ -64,7 +64,6 @@ const MentionButton: FC<Props> = ({
         onClick={(): void => setOpen(true)}
       >
         <Badge
-          component="div"
           overlap="circular"
           color={badgeColor}
           badgeContent={
@@ -72,10 +71,7 @@ const MentionButton: FC<Props> = ({
             0
           }
         >
-          <Notifications
-            color={typeof color !== 'string' ? color : undefined}
-            htmlColor={color}
-          />
+          <Notifications htmlColor={color} />
         </Badge>
       </IconButton>
       <MentionsDialog
