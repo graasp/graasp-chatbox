@@ -9,7 +9,11 @@ import { Badge, BadgeProps, IconButton } from '@mui/material';
 
 import { MentionStatus } from '@graasp/sdk';
 import { MemberMentionsRecord, MemberRecord } from '@graasp/sdk/frontend';
-import buildI18n, { CHATBOX, langs, namespaces } from '@graasp/translations';
+import buildI18n, {
+  CHATBOX,
+  DEFAULT_LANG,
+  namespaces,
+} from '@graasp/translations';
 
 import { mentionButtonCypress } from '../../config/selectors';
 import MentionsDialog from './MentionsDialog';
@@ -31,7 +35,7 @@ type Props = {
 const MentionButton: FC<Props> = ({
   color = 'primary',
   badgeColor = 'warning',
-  lang = langs.en,
+  lang = DEFAULT_LANG,
   useMentions,
   useMembers,
   patchMentionFunction,

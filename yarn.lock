@@ -2641,7 +2641,7 @@ __metadata:
     "@emotion/styled": 11.10.6
     "@graasp/query-client": 0.4.0
     "@graasp/sdk": 0.10.0
-    "@graasp/translations": 1.8.0
+    "@graasp/translations": 1.10.0
     "@graasp/ui": 2.3.1
     "@mui/icons-material": 5.11.11
     "@mui/lab": 5.0.0-alpha.121
@@ -2768,6 +2768,15 @@ __metadata:
     slonik: 28.1.1
     uuid: 9.0.0
   checksum: 222e8d7e00f5c4fbfb23d596899edd0afcaa0640c540ae90f85d6cd6f92b1bb7832bf50504fecd4aafe1a185b79ecae42a75163bd5fca5975e535fbeb84c3049
+  languageName: node
+  linkType: hard
+
+"@graasp/translations@npm:1.10.0":
+  version: 1.10.0
+  resolution: "@graasp/translations@npm:1.10.0"
+  dependencies:
+    i18next: 21.8.1
+  checksum: 96c5b1f7612082846c92ef46dbd6392a2233a62a1ec4d987cc66b689af51a3f30707545501ab49f282687adbb52d81919711e0eee2cac8566571059a04638093
   languageName: node
   linkType: hard
 
