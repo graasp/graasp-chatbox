@@ -4,6 +4,8 @@ import { useTranslation } from 'react-i18next';
 import Notifications from '@mui/icons-material/Notifications';
 import { Dialog, DialogContent, DialogTitle, styled } from '@mui/material';
 
+import { namespaces } from '@graasp/translations';
+
 const DialogTitleIcon = styled(Notifications)(({ theme }) => ({
   paddingRight: theme.spacing(1),
 }));
@@ -20,7 +22,7 @@ type Props = {
 };
 
 const MentionsDialog: FC<Props> = ({ content, open, setOpen }) => {
-  const { t } = useTranslation();
+  const { t } = useTranslation(namespaces.chatbox);
   return (
     <Dialog open={open} onClose={(): void => setOpen(false)} maxWidth="lg">
       <DialogTitle>

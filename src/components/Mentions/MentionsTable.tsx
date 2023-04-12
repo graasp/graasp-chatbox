@@ -24,7 +24,7 @@ import {
   getIdsFromPath,
 } from '@graasp/sdk';
 import { ChatMentionRecord } from '@graasp/sdk/frontend';
-import { CHATBOX } from '@graasp/translations';
+import { CHATBOX, namespaces } from '@graasp/translations';
 import { Button } from '@graasp/ui';
 
 import MessageBody from '../Chatbox/MessageBody';
@@ -51,7 +51,7 @@ const MentionsTable: FC<Props> = ({
   clearAllMentions,
 }) => {
   const [openConfirmation, setOpenConfirmation] = useState(false);
-  const { t } = useTranslation();
+  const { t } = useTranslation(namespaces.chatbox);
   const markAsRead = (id: string): void => {
     patchMention({ id: id, status: MentionStatus.READ });
   };
