@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next';
 import { UseQueryResult } from 'react-query';
 
 import { Notifications } from '@mui/icons-material';
-import { Badge, BadgeProps, IconButton } from '@mui/material';
+import { Badge, BadgeProps, IconButton, SvgIconProps } from '@mui/material';
 
 import { MentionStatus } from '@graasp/sdk';
 import { MemberMentionsRecord, MemberRecord } from '@graasp/sdk/frontend';
@@ -16,7 +16,7 @@ import MentionsDialog from './MentionsDialog';
 import MentionsTable from './MentionsTable';
 
 type Props = {
-  color?: 'primary' | 'secondary';
+  color?: SvgIconProps['color'] | string;
   badgeColor?: BadgeProps['color'];
   useMentions: (
     options?: { getUpdates?: boolean | undefined } | undefined,
@@ -72,7 +72,10 @@ const MentionButton: FC<Props> = ({
             0
           }
         >
-          <Notifications color={color} />
+          <Notifications
+            color={typeof color !== 'string' ? color : undefined}
+            htmlColor={color}
+          />
         </Badge>
       </IconButton>
       <MentionsDialog
