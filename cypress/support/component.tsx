@@ -15,12 +15,15 @@
 // Import commands.js using ES2015 syntax:
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
-import { mount } from 'cypress/react';
-
 import React from 'react';
+import { I18nextProvider, initReactI18next } from 'react-i18next';
 
 import { CssBaseline } from '@mui/material';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
+
+import buildI18n from '@graasp/translations';
+
+import { mount } from 'cypress/react';
 
 import './commands';
 
@@ -37,12 +40,15 @@ declare global {
 }
 
 Cypress.Commands.add('mount', (component) => {
+  const i18n = buildI18n().use(initReactI18next);
   const theme = createTheme();
   const wrapped = (
-    <ThemeProvider theme={theme}>
-      <CssBaseline />
-      {component}
-    </ThemeProvider>
+    <I18nextProvider i18n={i18n}>
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+        {component}
+      </ThemeProvider>
+    </I18nextProvider>
   );
   return mount(wrapped);
 });
