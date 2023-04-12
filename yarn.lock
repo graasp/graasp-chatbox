@@ -2696,6 +2696,11 @@ __metadata:
     vite: 4.2.1
     vite-plugin-dts: 2.1.0
   peerDependencies:
+    "@emotion/react": 11.10.6
+    "@emotion/styled": 11.10.6
+    "@mui/icons-material": 5.11.11
+    "@mui/lab": 5.0.0-alpha.121
+    "@mui/material": 5.11.11
     react: ^17.0.0
     react-dom: "*"
   languageName: unknown
