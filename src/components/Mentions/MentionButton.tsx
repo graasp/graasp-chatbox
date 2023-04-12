@@ -1,7 +1,4 @@
-import { List } from 'immutable';
-
 import { FC, useState } from 'react';
-import { useTranslation } from 'react-i18next';
 import { UseQueryResult } from 'react-query';
 
 import Notifications from '@mui/icons-material/Notifications';
@@ -9,9 +6,13 @@ import { Badge, BadgeProps, IconButton, SvgIconProps } from '@mui/material';
 
 import { MentionStatus } from '@graasp/sdk';
 import { MemberMentionsRecord, MemberRecord } from '@graasp/sdk/frontend';
-import { CHATBOX, namespaces } from '@graasp/translations';
+import { CHATBOX } from '@graasp/translations';
 
-import { mentionButtonCypress } from '../../config/selectors';
+import { List } from 'immutable';
+
+import { mentionButtonCypress } from '@/config/selectors';
+import { useChatboxTranslation } from '@/utils/utils';
+
 import MentionsDialog from './MentionsDialog';
 import MentionsTable from './MentionsTable';
 
@@ -36,7 +37,7 @@ const MentionButton: FC<Props> = ({
   deleteMentionFunction,
   clearAllMentionsFunction,
 }) => {
-  const { t } = useTranslation(namespaces.chatbox);
+  const { t } = useChatboxTranslation();
 
   const { data: memberMentions } = useMentions();
   const mentions = memberMentions?.mentions;

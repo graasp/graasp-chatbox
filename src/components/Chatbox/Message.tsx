@@ -1,8 +1,4 @@
-import truncate from 'lodash.truncate';
-import moment from 'moment';
-
 import { FC } from 'react';
-import { useTranslation } from 'react-i18next';
 
 import { styled } from '@mui/material';
 import Box from '@mui/material/Box';
@@ -13,13 +9,18 @@ import { ChatMessageRecord, MemberRecord } from '@graasp/sdk/frontend';
 import { CHATBOX } from '@graasp/translations';
 import { Avatar } from '@graasp/ui';
 
-import { messageIdCyWrapper } from '../../config/selectors';
+import truncate from 'lodash.truncate';
+import moment from 'moment';
+
+import { messageIdCyWrapper } from '@/config/selectors';
 import {
   DEFAULT_USER_NAME,
   MAX_AVATAR_SIZE,
   MAX_USERNAME_LENGTH,
-} from '../../constants';
-import { useHooksContext } from '../../context/HooksContext';
+} from '@/constants';
+import { useHooksContext } from '@/context/HooksContext';
+import { useChatboxTranslation } from '@/utils/utils';
+
 import MessageBody from './MessageBody';
 
 const MessageWrapper = styled(Box)(({ theme }) => ({
@@ -53,7 +54,7 @@ type Props = {
 };
 
 const Message: FC<Props> = ({ message, currentMember, member }) => {
-  const { t } = useTranslation();
+  const { t } = useChatboxTranslation();
   const { useAvatarHook } = useHooksContext();
   const {
     data: thumbnailBlob,

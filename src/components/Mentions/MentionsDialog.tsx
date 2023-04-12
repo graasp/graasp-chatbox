@@ -1,10 +1,11 @@
 import { FC, ReactElement } from 'react';
-import { useTranslation } from 'react-i18next';
 
 import Notifications from '@mui/icons-material/Notifications';
 import { Dialog, DialogContent, DialogTitle, styled } from '@mui/material';
 
-import { namespaces } from '@graasp/translations';
+import { CHATBOX } from '@graasp/translations';
+
+import { useChatboxTranslation } from '@/utils/utils';
 
 const DialogTitleIcon = styled(Notifications)(({ theme }) => ({
   paddingRight: theme.spacing(1),
@@ -22,13 +23,13 @@ type Props = {
 };
 
 const MentionsDialog: FC<Props> = ({ content, open, setOpen }) => {
-  const { t } = useTranslation(namespaces.chatbox);
+  const { t } = useChatboxTranslation();
   return (
     <Dialog open={open} onClose={(): void => setOpen(false)} maxWidth="lg">
       <DialogTitle>
         <DialogTitleContainer>
           <DialogTitleIcon color="primary" />
-          {t('Notifications')}
+          {t(CHATBOX.NOTIFICATIONS_DIALOG_TITLE)}
         </DialogTitleContainer>
       </DialogTitle>
       <DialogContent>{content}</DialogContent>

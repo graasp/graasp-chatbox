@@ -1,5 +1,4 @@
 import React, { FC, useState } from 'react';
-import { useTranslation } from 'react-i18next';
 
 import Delete from '@mui/icons-material/Delete';
 import Edit from '@mui/icons-material/Edit';
@@ -20,10 +19,11 @@ import {
   deleteMenuItemCypress,
   editMenuItemCypress,
   messageActionsButtonCypress,
-} from '../../config/selectors';
-import { LIST_ICON_MIN_WIDTH } from '../../constants';
-import { useEditingContext } from '../../context/EditingContext';
-import { DeleteMessageFunctionType } from '../../types';
+} from '@/config/selectors';
+import { LIST_ICON_MIN_WIDTH } from '@/constants';
+import { useEditingContext } from '@/context/EditingContext';
+import { DeleteMessageFunctionType } from '@/types';
+import { useChatboxTranslation } from '@/utils/utils';
 
 type Props = {
   message: ChatMessageRecord;
@@ -45,7 +45,7 @@ const MessageActions: FC<Props> = ({
 }) => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [menuAnchor, setMenuAnchor] = useState<HTMLElement | null>(null);
-  const { t } = useTranslation();
+  const { t } = useChatboxTranslation();
   const { enableEdit } = useEditingContext();
 
   const handleOnClickMenu = (e: React.MouseEvent<HTMLButtonElement>): void => {

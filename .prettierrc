@@ -4,10 +4,11 @@
   "semi": true,
   "singleQuote": true,
   "importOrder": [
-    "^@(?!graasp|mui)(.*)",
     "^react",
-    "^@?mui(.*)",
-    "^@?graasp(.*)",
+    "^@?mui",
+    "^@?graasp",
+    "<THIRD_PARTY_MODULES>",
+    "^@/",
     "^[./]"
   ],
   "importOrderSeparation": true,
