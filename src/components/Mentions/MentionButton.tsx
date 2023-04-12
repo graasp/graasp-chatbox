@@ -28,8 +28,8 @@ type Props = {
 };
 
 const MentionButton: FC<Props> = ({
-  color = 'primary',
-  badgeColor = 'warning',
+  color = 'secondary',
+  badgeColor = 'primary',
   useMentions,
   useMembers,
   patchMentionFunction,
