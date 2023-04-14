@@ -1,5 +1,25 @@
 # Changelog
 
+## [1.2.0](https://github.com/graasp/graasp-chatbox/compare/v1.1.0...v1.2.0) (2023-04-14)
+
+
+### Features
+
+* move to pure TS package to reduce bundle size ([#89](https://github.com/graasp/graasp-chatbox/issues/89)) ([0b07b36](https://github.com/graasp/graasp-chatbox/commit/0b07b36edcd433bf35584b08b51c5cdd12e52b4a))
+
+
+### Bug Fixes
+
+* **build:** make mui and emotion external ([0b07b36](https://github.com/graasp/graasp-chatbox/commit/0b07b36edcd433bf35584b08b51c5cdd12e52b4a))
+* **deps:** allow only react 17 ([0b07b36](https://github.com/graasp/graasp-chatbox/commit/0b07b36edcd433bf35584b08b51c5cdd12e52b4a))
+* **deps:** make react-i18n a peer dep ([0b07b36](https://github.com/graasp/graasp-chatbox/commit/0b07b36edcd433bf35584b08b51c5cdd12e52b4a))
+* **deps:** remove dependencies and unused packages ([0b07b36](https://github.com/graasp/graasp-chatbox/commit/0b07b36edcd433bf35584b08b51c5cdd12e52b4a))
+* **deps:** update deps ([0b07b36](https://github.com/graasp/graasp-chatbox/commit/0b07b36edcd433bf35584b08b51c5cdd12e52b4a))
+* inline sourcemap ([0b07b36](https://github.com/graasp/graasp-chatbox/commit/0b07b36edcd433bf35584b08b51c5cdd12e52b4a))
+* use chatbox namespace for translations ([0b07b36](https://github.com/graasp/graasp-chatbox/commit/0b07b36edcd433bf35584b08b51c5cdd12e52b4a))
+* use default import on second level for mui icons ([0b07b36](https://github.com/graasp/graasp-chatbox/commit/0b07b36edcd433bf35584b08b51c5cdd12e52b4a))
+* use ImmutableCast in props ([0b07b36](https://github.com/graasp/graasp-chatbox/commit/0b07b36edcd433bf35584b08b51c5cdd12e52b4a))
+
 ## [1.1.0](https://github.com/graasp/graasp-chatbox/compare/v1.0.4...v1.1.0) (2023-03-17)
 
 
