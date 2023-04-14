@@ -1,11 +1,11 @@
-import { List } from 'immutable';
-
 import { UseQueryResult } from 'react-query';
 
 import { ChatMessage, Member, MessageBodyType } from '@graasp/sdk';
-import { ChatMessageRecord } from '@graasp/sdk/frontend';
+import { ImmutableCast } from '@graasp/sdk/frontend';
 
-export type ChatMessageList = List<ChatMessageRecord>;
+import { List } from 'immutable';
+
+export type ChatMessageList = List<ImmutableCast<ChatMessage>>;
 
 export type AvatarHookType = (args: {
   id?: string;
