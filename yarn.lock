@@ -2623,7 +2623,7 @@ __metadata:
     "@emotion/styled": 11.10.6
     "@graasp/query-client": 0.4.0
     "@graasp/sdk": 0.10.0
-    "@graasp/translations": "github:graasp/graasp-translations#145-add-notification-translations"
+    "@graasp/translations": 1.11.0
     "@graasp/ui": 2.3.1
     "@mui/icons-material": 5.11.11
     "@mui/lab": 5.0.0-alpha.121
@@ -2680,7 +2680,7 @@ __metadata:
   peerDependencies:
     "@emotion/react": ^11.10.6
     "@emotion/styled": ^11.10.6
-    "@graasp/translations": 1.10.0
+    "@graasp/translations": ^1.10.0
     "@mui/icons-material": ^5.11.11
     "@mui/lab": ^5.0.0-alpha.121
     "@mui/material": ^5.11.11
@@ -2760,12 +2760,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@graasp/translations@github:graasp/graasp-translations#145-add-notification-translations":
-  version: 1.10.0
-  resolution: "@graasp/translations@https://github.com/graasp/graasp-translations.git#commit=de329f31f6000b623121eca09b53261555d6114b"
+"@graasp/translations@npm:1.11.0":
+  version: 1.11.0
+  resolution: "@graasp/translations@npm:1.11.0"
   dependencies:
     i18next: 21.8.1
-  checksum: 2c7cc7657d386a27d3252949c0a25c865e7c678db1d83ded6e4f51e4a78a3b85960ac7f39bc4f904f779499e4a73952d07402e492472c7d154d3b8825c2bd1f7
+  checksum: 83bba8432cc5b2f83cfa88278fc61387821d421e8a3e9f6a3a1b28ce8c2789e9c8f20832305c13aa0d554d8a20824644ce968d7e6fa5b643676164eb1a3c230c
   languageName: node
   linkType: hard
 
@@ -10145,6 +10145,12 @@ __metadata:
   checksum: e9a5ca65c929b329da7a3b7beccf7984271cda7bdd47b2cab619eac3277dcd56598c211b55cc340786b6eff0c06652ac018808d9fd744443f06882364dece6bc
   languageName: node
   linkType: hard
+
+"immutable@link:../node_modules/immutable::locator=graasp-chatbox-example%40workspace%3Aexample":
+  version: 0.0.0-use.local
+  resolution: "immutable@link:../node_modules/immutable::locator=graasp-chatbox-example%40workspace%3Aexample"
+  languageName: node
+  linkType: soft
 
 "immutable@npm:4.2.4":
   version: 4.2.4
