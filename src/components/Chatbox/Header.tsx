@@ -1,5 +1,4 @@
 import { FC } from 'react';
-import { useTranslation } from 'react-i18next';
 
 import ChatIcon from '@mui/icons-material/Chat';
 import { styled } from '@mui/material';
@@ -8,6 +7,8 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 
 import { CHATBOX } from '@graasp/translations';
+
+import { useChatboxTranslation } from '@/utils/utils';
 
 const RootContainer = styled('div')({
   flexGrow: 1,
@@ -25,7 +26,7 @@ type Props = {
 };
 
 const Header: FC<Props> = ({ title }) => {
-  const { t } = useTranslation();
+  const { t } = useChatboxTranslation();
 
   return (
     <RootContainer>

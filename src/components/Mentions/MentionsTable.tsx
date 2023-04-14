@@ -1,9 +1,8 @@
-import { List } from 'immutable';
-
 import { FC, ReactElement, useState } from 'react';
-import { useTranslation } from 'react-i18next';
 
-import { Check, Close, FiberManualRecord } from '@mui/icons-material';
+import Check from '@mui/icons-material/Check';
+import Close from '@mui/icons-material/Close';
+import FiberManualRecord from '@mui/icons-material/FiberManualRecord';
 import {
   Grid,
   IconButton,
@@ -24,6 +23,10 @@ import {
 import { ChatMentionRecord } from '@graasp/sdk/frontend';
 import { CHATBOX } from '@graasp/translations';
 import { Button } from '@graasp/ui';
+
+import { List } from 'immutable';
+
+import { useChatboxTranslation } from '@/utils/utils';
 
 import MessageBody from '../Chatbox/MessageBody';
 import ConfirmationDialog from '../common/ConfirmationDialog';
@@ -49,7 +52,7 @@ const MentionsTable: FC<Props> = ({
   clearAllMentions,
 }) => {
   const [openConfirmation, setOpenConfirmation] = useState(false);
-  const { t } = useTranslation();
+  const { t } = useChatboxTranslation();
   const markAsRead = (id: string): void => {
     patchMention({ id: id, status: MentionStatus.READ });
   };
@@ -58,7 +61,7 @@ const MentionsTable: FC<Props> = ({
     if (!mentions || !mentions.size) {
       return (
         <TableRow>
-          <TableCell colSpan={4}>No Notifications</TableCell>
+          <TableCell colSpan={4}>{t(CHATBOX.EMPTY_NOTIFICATIONS)}</TableCell>
         </TableRow>
       );
     }

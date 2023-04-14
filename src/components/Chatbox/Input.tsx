@@ -1,5 +1,4 @@
 import React, { FC, ReactElement, RefObject, useEffect, useState } from 'react';
-import { useTranslation } from 'react-i18next';
 import {
   Mention,
   MentionItem,
@@ -15,22 +14,23 @@ import IconButton from '@mui/material/IconButton';
 import { MessageBodyType } from '@graasp/sdk';
 import { CHATBOX } from '@graasp/translations';
 
+import FullWidthWrapper from '@/components/common/FullWidthWrapper';
 import {
   charCounterCypress,
   inputTextFieldCypress,
   inputTextFieldTextAreaCypress,
   sendButtonCypress,
-} from '../../config/selectors';
+} from '@/config/selectors';
 import {
   ALL_MEMBERS_ID,
   ALL_MEMBERS_SUGGESTION,
   GRAASP_MENTION_COLOR,
   HARD_MAX_MESSAGE_LENGTH,
-} from '../../constants';
-import { useCurrentMemberContext } from '../../context/CurrentMemberContext';
-import { useMessagesContext } from '../../context/MessagesContext';
-import { MENTION_MARKUP } from '../../utils/mentions';
-import FullWidthWrapper from '../common/FullWidthWrapper';
+} from '@/constants';
+import { useCurrentMemberContext } from '@/context/CurrentMemberContext';
+import { useMessagesContext } from '@/context/MessagesContext';
+import { MENTION_MARKUP } from '@/utils/mentions';
+import { useChatboxTranslation } from '@/utils/utils';
 
 const HelperText = styled(Typography)(({ theme }) => ({
   whiteSpace: 'pre',
@@ -120,7 +120,7 @@ const Input: FC<Props> = ({
 
   const { members } = useMessagesContext();
   const { id: currentMemberId } = useCurrentMemberContext();
-  const { t } = useTranslation();
+  const { t } = useChatboxTranslation();
   const [currentMentions, setCurrentMentions] = useState<string[]>([]);
   const [plainTextMessage, setPlainTextMessage] = useState<string>('');
 

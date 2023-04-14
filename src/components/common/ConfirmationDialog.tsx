@@ -1,5 +1,4 @@
 import { FC, ReactElement } from 'react';
-import { useTranslation } from 'react-i18next';
 
 import {
   Dialog,
@@ -14,7 +13,8 @@ import { Button } from '@graasp/ui';
 import {
   cancelDialogButtonCypress,
   confirmDialogButtonCypress,
-} from '../../config/selectors';
+} from '@/config/selectors';
+import { useChatboxTranslation } from '@/utils/utils';
 
 type Props = {
   open: boolean;
@@ -35,7 +35,7 @@ const ConfirmationDialog: FC<Props> = ({
   onConfirm,
   onCancel,
 }) => {
-  const { t } = useTranslation();
+  const { t } = useChatboxTranslation();
 
   return (
     <Dialog open={open}>

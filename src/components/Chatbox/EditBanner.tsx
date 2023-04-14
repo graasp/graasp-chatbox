@@ -1,7 +1,7 @@
 import { FC } from 'react';
-import { useTranslation } from 'react-i18next';
 
-import { Close, Edit } from '@mui/icons-material';
+import Close from '@mui/icons-material/Close';
+import Edit from '@mui/icons-material/Edit';
 import { styled } from '@mui/material';
 import Box from '@mui/material/Box';
 import Divider from '@mui/material/Divider';
@@ -15,9 +15,10 @@ import {
   editBannerCloseButtonCypress,
   editBannerCypress,
   editBannerOldTextCypress,
-} from '../../config/selectors';
-import { useEditingContext } from '../../context/EditingContext';
-import { normalizeMentions } from '../../utils/mentions';
+} from '@/config/selectors';
+import { useEditingContext } from '@/context/EditingContext';
+import { normalizeMentions } from '@/utils/mentions';
+import { useChatboxTranslation } from '@/utils/utils';
 
 const Container = styled(Box)({
   display: 'flex',
@@ -47,7 +48,7 @@ type Props = {
 
 const EditBanner: FC<Props> = ({ onClose, editedText }) => {
   const { open } = useEditingContext();
-  const { t } = useTranslation();
+  const { t } = useChatboxTranslation();
   if (!open) {
     return null;
   }

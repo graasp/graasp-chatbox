@@ -14,11 +14,11 @@ import {
   styled,
 } from '@mui/material';
 
+import { MentionButton } from '@graasp/chatbox';
 import { MUTATION_KEYS } from '@graasp/query-client';
 import { ChatMention } from '@graasp/sdk';
 import buildI18n, { namespaces } from '@graasp/translations';
 
-import { MentionButton } from '@graasp/chatbox';
 import {
   DEFAULT_CHAT_ID,
   DEFAULT_LANG,

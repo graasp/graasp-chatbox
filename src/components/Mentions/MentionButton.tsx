@@ -1,24 +1,24 @@
-import { List } from 'immutable';
-
-import { FC, useMemo, useState } from 'react';
-import { I18nextProvider } from 'react-i18next';
+import { FC, useState } from 'react';
 import { UseQueryResult } from 'react-query';
 
-import { Notifications } from '@mui/icons-material';
-import { Badge, BadgeProps, IconButton } from '@mui/material';
+import Notifications from '@mui/icons-material/Notifications';
+import { Badge, BadgeProps, IconButton, SvgIconProps } from '@mui/material';
 
 import { MentionStatus } from '@graasp/sdk';
 import { MemberMentionsRecord, MemberRecord } from '@graasp/sdk/frontend';
-import buildI18n, { CHATBOX, langs, namespaces } from '@graasp/translations';
+import { CHATBOX } from '@graasp/translations';
 
-import { mentionButtonCypress } from '../../config/selectors';
+import { List } from 'immutable';
+
+import { mentionButtonCypress } from '@/config/selectors';
+import { useChatboxTranslation } from '@/utils/utils';
+
 import MentionsDialog from './MentionsDialog';
 import MentionsTable from './MentionsTable';
 
 type Props = {
-  color?: 'primary' | 'secondary';
+  color?: SvgIconProps['color'];
   badgeColor?: BadgeProps['color'];
-  lang?: string;
   useMentions: (
     options?: { getUpdates?: boolean | undefined } | undefined,
   ) => UseQueryResult<MemberMentionsRecord>;
@@ -29,21 +29,15 @@ type Props = {
 };
 
 const MentionButton: FC<Props> = ({
-  color = 'primary',
-  badgeColor = 'warning',
-  lang = langs.en,
+  color = 'secondary',
+  badgeColor = 'primary',
   useMentions,
   useMembers,
   patchMentionFunction,
   deleteMentionFunction,
   clearAllMentionsFunction,
 }) => {
-  const i18n = useMemo(() => {
-    const i18nInstance = buildI18n(namespaces.chatbox);
-    i18nInstance.changeLanguage(lang);
-    return i18nInstance;
-  }, [lang]);
-  const t = i18n.t;
+  const { t } = useChatboxTranslation();
 
   const { data: memberMentions } = useMentions();
   const mentions = memberMentions?.mentions;
@@ -66,35 +60,34 @@ const MentionButton: FC<Props> = ({
 
   return (
     <div>
-      <I18nextProvider i18n={i18n}>
-        <IconButton
-          data-cy={mentionButtonCypress}
-          onClick={(): void => setOpen(true)}
-        >
-          <Badge
-            overlap="circular"
-            color={badgeColor}
-            badgeContent={
-              mentions?.filter((m) => m.status === MentionStatus.UNREAD)
-                ?.size || 0
-            }
-          >
-            <Notifications color={color} />
-          </Badge>
-        </IconButton>
-        <MentionsDialog
-          content={
-            <MentionsTable
-              mentions={mentionsWithMembers}
-              patchMention={patchMentionFunction}
-              deleteMention={deleteMentionFunction}
-              clearAllMentions={clearAllMentionsFunction}
-            />
+      <IconButton
+        data-cy={mentionButtonCypress}
+        onClick={(): void => setOpen(true)}
+      >
+        <Badge
+          component="div"
+          overlap="circular"
+          color={badgeColor}
+          badgeContent={
+            mentions?.filter((m) => m.status === MentionStatus.UNREAD)?.size ||
+            0
           }
-          open={open}
-          setOpen={setOpen}
-        />
-      </I18nextProvider>
+        >
+          <Notifications color={color} />
+        </Badge>
+      </IconButton>
+      <MentionsDialog
+        content={
+          <MentionsTable
+            mentions={mentionsWithMembers}
+            patchMention={patchMentionFunction}
+            deleteMention={deleteMentionFunction}
+            clearAllMentions={clearAllMentionsFunction}
+          />
+        }
+        open={open}
+        setOpen={setOpen}
+      />
     </div>
   );
 };
