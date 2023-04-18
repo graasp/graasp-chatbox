@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.1](https://github.com/graasp/graasp-chatbox/compare/v1.2.0...v1.2.1) (2023-04-18)
+
+
+### Bug Fixes
+
+* **deps:** externalize graasp deps ([#91](https://github.com/graasp/graasp-chatbox/issues/91)) ([1ab3f15](https://github.com/graasp/graasp-chatbox/commit/1ab3f15efc25361275bbe7b9b2ae9b4d0397bf03))
+
 ## [1.2.0](https://github.com/graasp/graasp-chatbox/compare/v1.1.0...v1.2.0) (2023-04-14)
 
 
