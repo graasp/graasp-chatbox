@@ -2701,6 +2701,7 @@ __metadata:
     "@mui/icons-material": ^5.11.11
     "@mui/lab": ^5.0.0-alpha.121
     "@mui/material": ^5.11.11
+    i18next: 21.8.1
     immutable: ^4.3.0
     react: ^17.0.0
     react-dom: "*"
