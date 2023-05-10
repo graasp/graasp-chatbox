@@ -58,7 +58,7 @@ const MessageActions: FC<Props> = ({
   };
 
   const handleDeleteMessage = (): void => {
-    deleteMessageFunction?.({ chatId: message.chatId, id: message.id });
+    deleteMessageFunction?.({ itemId: message.item.id, messageId: message.id });
     handleOnCloseMenu();
   };
 

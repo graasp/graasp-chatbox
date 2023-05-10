@@ -42,12 +42,12 @@ const InputBar: FC<Props> = ({
   const handleSendMessageFunction = (body: MessageBodyType): void => {
     if (open) {
       editMessageFunction?.({
-        id: messageId,
-        chatId,
+        messageId: messageId,
+        itemId: chatId,
         ...body,
       });
     } else {
-      sendMessageFunction?.({ chatId, ...body });
+      sendMessageFunction?.({ itemId: chatId, ...body });
     }
     // reset editing
     cancelEdit();

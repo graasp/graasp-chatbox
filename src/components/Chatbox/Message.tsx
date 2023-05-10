@@ -64,7 +64,7 @@ const Message: FC<Props> = ({ message, currentMember, member }) => {
     id: member?.id,
     size: 'small',
   });
-  const creatorId = message.creator.id;
+  const creatorId = message.creator?.id;
   const isOwnMessage = creatorId === currentMember.id;
   const creatorName = member?.name
     ? truncate(member?.name, { length: MAX_USERNAME_LENGTH })

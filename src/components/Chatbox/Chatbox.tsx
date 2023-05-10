@@ -3,7 +3,7 @@ import { I18nextProvider } from 'react-i18next';
 
 import { StyledEngineProvider, styled } from '@mui/material';
 
-import { MemberRecord } from '@graasp/sdk/frontend';
+import { ItemChatRecord, MemberRecord } from '@graasp/sdk/frontend';
 import buildI18n, { langs, namespaces } from '@graasp/translations';
 
 import { List } from 'immutable';
@@ -15,7 +15,6 @@ import { HooksContextProvider } from '../../context/HooksContext';
 import { MessagesContextProvider } from '../../context/MessagesContext';
 import {
   AvatarHookType,
-  ChatMessageList,
   DeleteMessageFunctionType,
   EditMessageFunctionType,
   SendMessageFunctionType,
@@ -41,7 +40,7 @@ const InputContainer = styled('div')({
 type Props = {
   id?: string;
   sendMessageBoxId?: string;
-  messages?: ChatMessageList;
+  messages?: ItemChatRecord;
   isLoading?: boolean;
   sendMessageFunction?: SendMessageFunctionType;
   deleteMessageFunction?: DeleteMessageFunctionType;

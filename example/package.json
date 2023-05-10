@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "@graasp/chatbox": "link:..",
-    "@graasp/query-client": "0.4.0",
+    "@graasp/query-client": "github:graasp/graasp-query-client#typeorm",
     "@mui/icons-material": "link:../node_modules/@mui/icons-material",
     "@mui/material": "link:../node_modules/@mui/material",
     "@types/jest": "link:../node_modules/@types/jest",

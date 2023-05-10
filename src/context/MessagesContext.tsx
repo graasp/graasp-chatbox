@@ -1,13 +1,11 @@
 import React, { FC, PropsWithChildren } from 'react';
 
-import { MemberRecord } from '@graasp/sdk/frontend';
+import { ItemChatRecord, MemberRecord } from '@graasp/sdk/frontend';
 
 import { List } from 'immutable';
 
-import { ChatMessageList } from '../types';
-
 export type MessagesContextType = {
-  messages?: ChatMessageList;
+  messages?: ItemChatRecord;
   chatId: string;
   members: List<MemberRecord>;
 };
@@ -18,7 +16,7 @@ export const MessagesContext = React.createContext<MessagesContextType>({
 });
 
 type Props = {
-  messages?: ChatMessageList;
+  messages?: ItemChatRecord;
   chatId: string;
   members?: List<MemberRecord>;
 };

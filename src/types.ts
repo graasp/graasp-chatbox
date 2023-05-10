@@ -6,11 +6,6 @@ import {
   PatchChatMessageParamType,
   PostChatMessageParamType,
 } from '@graasp/sdk';
-import { ChatMessageRecord } from '@graasp/sdk/frontend';
-
-import { List } from 'immutable';
-
-export type ChatMessageList = List<ChatMessageRecord>;
 
 export type AvatarHookType = (args: {
   id?: string;

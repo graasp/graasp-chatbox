@@ -74,7 +74,7 @@ const MentionsTable: FC<Props> = ({
           onClick={(): void => {
             const link = buildItemLinkForBuilder({
               origin: window.location.origin,
-              itemId: getIdsFromPath(m.item.path).slice(-1)[0],
+              itemId: getIdsFromPath(m.message.item.path).slice(-1)[0],
               chatOpen: true,
             });
             markAsRead(m.id);
@@ -87,9 +87,9 @@ const MentionsTable: FC<Props> = ({
             )}
           </TableCell>
           <TableCell>
-            <MessageBody messageBody={m.message} />
+            <MessageBody messageBody={m.message.body} />
           </TableCell>
-          <TableCell>{m.creator}</TableCell>
+          <TableCell>{m.message.creator?.name}</TableCell>
           <TableCell>
             <Grid container direction="row">
               <Grid item>
