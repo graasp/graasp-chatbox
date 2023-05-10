@@ -73,9 +73,7 @@ const Messages: FC<Props> = ({
     message.creator?.id === currentMember.id;
 
   const messagesByDay = messages
-    ?.groupBy(({ createdAt }) =>
-      moment(createdAt as unknown as string).format(DEFAULT_DATE_FORMAT),
-    )
+    ?.groupBy(({ createdAt }) => moment(createdAt).format(DEFAULT_DATE_FORMAT))
     // transform to array to avoid printing the first key
     .toArray();
 

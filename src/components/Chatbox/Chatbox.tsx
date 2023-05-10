@@ -1,10 +1,8 @@
-import { FC, useMemo } from 'react';
-import { I18nextProvider } from 'react-i18next';
+import { FC } from 'react';
 
 import { StyledEngineProvider, styled } from '@mui/material';
 
 import { ItemChatRecord, MemberRecord } from '@graasp/sdk/frontend';
-import buildI18n, { langs, namespaces } from '@graasp/translations';
 
 import { List } from 'immutable';
 
@@ -49,7 +47,6 @@ type Props = {
   chatId: string;
   showHeader?: boolean;
   showAdminTools?: boolean;
-  lang?: string;
   currentMember: MemberRecord;
   members?: List<MemberRecord>;
 };
@@ -66,53 +63,44 @@ const Chatbox: FC<Props> = ({
   chatId,
   showHeader = false,
   showAdminTools = false,
-  lang = langs.en,
   currentMember,
   members,
 }) => {
-  const i18n = useMemo(() => {
-    const i18nInstance = buildI18n(namespaces.chatbox);
-    i18nInstance.changeLanguage(lang);
-    return i18nInstance;
-  }, [lang]);
-
   if (isLoading) {
     return null;
   }
 
   return (
     <StyledEngineProvider injectFirst>
-      <I18nextProvider i18n={i18n}>
-        <EditingContextProvider>
-          <HooksContextProvider useAvatarUrl={useAvatarUrl}>
-            <CurrentMemberContextProvider currentMember={currentMember}>
-              <MessagesContextProvider
-                chatId={chatId}
-                members={members}
-                messages={messages}
-              >
-                <>
-                  {showHeader && <Header />}
-                  <ChatboxContainer id={id}>
-                    <Messages
-                      currentMember={currentMember}
-                      isAdmin={showAdminTools}
-                      deleteMessageFunction={deleteMessageFunction}
+      <EditingContextProvider>
+        <HooksContextProvider useAvatarUrl={useAvatarUrl}>
+          <CurrentMemberContextProvider currentMember={currentMember}>
+            <MessagesContextProvider
+              chatId={chatId}
+              members={members}
+              messages={messages}
+            >
+              <>
+                {showHeader && <Header />}
+                <ChatboxContainer id={id}>
+                  <Messages
+                    currentMember={currentMember}
+                    isAdmin={showAdminTools}
+                    deleteMessageFunction={deleteMessageFunction}
+                  />
+                  <InputContainer>
+                    <InputBar
+                      sendMessageBoxId={sendMessageBoxId}
+                      sendMessageFunction={sendMessageFunction}
+                      editMessageFunction={editMessageFunction}
                     />
-                    <InputContainer>
-                      <InputBar
-                        sendMessageBoxId={sendMessageBoxId}
-                        sendMessageFunction={sendMessageFunction}
-                        editMessageFunction={editMessageFunction}
-                      />
-                    </InputContainer>
-                  </ChatboxContainer>
-                </>
-              </MessagesContextProvider>
-            </CurrentMemberContextProvider>
-          </HooksContextProvider>
-        </EditingContextProvider>
-      </I18nextProvider>
+                  </InputContainer>
+                </ChatboxContainer>
+              </>
+            </MessagesContextProvider>
+          </CurrentMemberContextProvider>
+        </HooksContextProvider>
+      </EditingContextProvider>
     </StyledEngineProvider>
   );
 };
