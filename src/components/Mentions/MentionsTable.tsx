@@ -54,7 +54,7 @@ const MentionsTable: FC<Props> = ({
   const [openConfirmation, setOpenConfirmation] = useState(false);
   const { t } = useChatboxTranslation();
   const markAsRead = (id: string): void => {
-    patchMention({ id: id, status: MentionStatus.READ });
+    patchMention({ id: id, status: MentionStatus.Read });
   };
 
   const renderMentionTableContent = (): ReactElement | ReactElement[] => {
@@ -82,7 +82,7 @@ const MentionsTable: FC<Props> = ({
           }}
         >
           <TableCell>
-            {m.status === MentionStatus.UNREAD && (
+            {m.status === MentionStatus.Unread && (
               <FiberManualRecord fontSize="small" color="primary" />
             )}
           </TableCell>
@@ -130,9 +130,9 @@ const MentionsTable: FC<Props> = ({
           variant="outlined"
           onClick={(): void => {
             mentions
-              ?.filter((m) => m.status === MentionStatus.UNREAD)
+              ?.filter((m) => m.status === MentionStatus.Unread)
               .map((m) =>
-                patchMention({ id: m.id, status: MentionStatus.READ }),
+                patchMention({ id: m.id, status: MentionStatus.Read }),
               );
           }}
         >

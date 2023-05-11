@@ -5,7 +5,9 @@ import Notifications from '@mui/icons-material/Notifications';
 import { Badge, BadgeProps, IconButton, SvgIconProps } from '@mui/material';
 
 import { MentionStatus } from '@graasp/sdk';
-import { MemberMentionsRecord } from '@graasp/sdk/frontend';
+import { ChatMentionRecord } from '@graasp/sdk/frontend';
+
+import { List } from 'immutable';
 
 import { mentionButtonCypress } from '@/config/selectors';
 
@@ -17,7 +19,7 @@ type Props = {
   badgeColor?: BadgeProps['color'];
   useMentions: (
     options?: { getUpdates?: boolean | undefined } | undefined,
-  ) => UseQueryResult<MemberMentionsRecord>;
+  ) => UseQueryResult<List<ChatMentionRecord>>;
   patchMentionFunction: (args: { id: string; status: string }) => void;
   deleteMentionFunction: (id: string) => void;
   clearAllMentionsFunction: () => void;
@@ -31,8 +33,7 @@ const MentionButton: FC<Props> = ({
   deleteMentionFunction,
   clearAllMentionsFunction,
 }) => {
-  const { data: memberMentions } = useMentions();
-  const mentions = memberMentions?.mentions;
+  const { data: mentions } = useMentions();
 
   const [open, setOpen] = useState(false);
 
@@ -47,7 +48,7 @@ const MentionButton: FC<Props> = ({
           overlap="circular"
           color={badgeColor}
           badgeContent={
-            mentions?.filter((m) => m.status === MentionStatus.UNREAD)?.size ||
+            mentions?.filter((m) => m.status === MentionStatus.Unread)?.size ||
             0
           }
         >
