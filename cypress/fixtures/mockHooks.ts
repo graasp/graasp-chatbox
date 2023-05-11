@@ -72,25 +72,3 @@ export const mockUseMentions =
       data: MEMBER_MENTIONS,
     } as unknown as QueryObserverResult<MemberMentionsRecord>;
   };
-
-export const mockUseMembers = (): QueryObserverResult<List<MemberRecord>> => {
-  const defaultMember: Member = {
-    id: '',
-    name: '',
-    extra: {},
-    type: MemberType.Individual,
-    email: 'default@mail.com',
-    createdAt: new Date(),
-    updatedAt: new Date(),
-  };
-
-  const createMember = (member: Partial<Member>): MemberRecord =>
-    convertJs({ ...defaultMember, ...member });
-
-  return {
-    data: List([
-      createMember({ id: MEMBERS.ANNA.id, name: MEMBERS.ANNA.name }),
-      createMember({ id: MEMBERS.BOB.id, name: MEMBERS.BOB.name }),
-    ]),
-  } as unknown as QueryObserverResult<List<MemberRecord>>;
-};

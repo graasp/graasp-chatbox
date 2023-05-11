@@ -188,7 +188,6 @@ const ChatboxTest: FC = () => {
           <MentionButton
             color="primary"
             useMentions={hooks.useMentions}
-            useMembers={hooks.useMembers}
             patchMentionFunction={patchMentionFunction}
             deleteMentionFunction={deleteMentionFunction}
             clearAllMentionsFunction={clearAllMentionsFunction}

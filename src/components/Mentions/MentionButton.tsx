@@ -5,9 +5,7 @@ import Notifications from '@mui/icons-material/Notifications';
 import { Badge, BadgeProps, IconButton, SvgIconProps } from '@mui/material';
 
 import { MentionStatus } from '@graasp/sdk';
-import { MemberMentionsRecord, MemberRecord } from '@graasp/sdk/frontend';
-
-import { List } from 'immutable';
+import { MemberMentionsRecord } from '@graasp/sdk/frontend';
 
 import { mentionButtonCypress } from '@/config/selectors';
 
@@ -20,7 +18,6 @@ type Props = {
   useMentions: (
     options?: { getUpdates?: boolean | undefined } | undefined,
   ) => UseQueryResult<MemberMentionsRecord>;
-  useMembers: (memberIds: string[]) => UseQueryResult<List<MemberRecord>>;
   patchMentionFunction: (args: { id: string; status: string }) => void;
   deleteMentionFunction: (id: string) => void;
   clearAllMentionsFunction: () => void;
