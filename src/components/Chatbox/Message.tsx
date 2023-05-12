@@ -49,7 +49,7 @@ const AvatarContainer = styled(Box)({
 
 type Props = {
   message: ChatMessageRecord;
-  currentMember: MemberRecord;
+  currentMember?: MemberRecord;
   member?: MemberRecord;
 };
 
@@ -65,7 +65,7 @@ const Message: FC<Props> = ({ message, currentMember, member }) => {
     size: 'small',
   });
   const creatorId = message.creator?.id;
-  const isOwnMessage = creatorId === currentMember.id;
+  const isOwnMessage = creatorId === currentMember?.id;
   const creatorName = member?.name
     ? truncate(member?.name, { length: MAX_USERNAME_LENGTH })
     : DEFAULT_USER_NAME;

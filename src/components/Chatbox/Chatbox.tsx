@@ -47,7 +47,7 @@ type Props = {
   chatId: string;
   showHeader?: boolean;
   showAdminTools?: boolean;
-  currentMember: MemberRecord;
+  currentMember?: MemberRecord;
   members?: List<MemberRecord>;
 };
 

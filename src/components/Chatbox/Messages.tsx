@@ -43,7 +43,7 @@ const SingleMessageContainer = styled(Box)({
 });
 
 type Props = {
-  currentMember: MemberRecord;
+  currentMember?: MemberRecord;
   isAdmin?: boolean;
   deleteMessageFunction?: DeleteMessageFunctionType;
 };
@@ -70,7 +70,7 @@ const Messages: FC<Props> = ({
   }, [ref, messages, open]);
 
   const isOwn = (message: ChatMessageRecord): boolean =>
-    message.creator?.id === currentMember.id;
+    message.creator?.id === currentMember?.id;
 
   const messagesByDay = messages
     ?.groupBy(({ createdAt }) => moment(createdAt).format(DEFAULT_DATE_FORMAT))
