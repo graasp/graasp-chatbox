@@ -48,10 +48,10 @@
   "peerDependencies": {
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",
-    "@graasp/query-client": "^0.4.0",
-    "@graasp/sdk": "^0.10.0",
-    "@graasp/translations": "^1.10.0",
-    "@graasp/ui": "^2.3.1",
+    "@graasp/query-client": "^1.0.0",
+    "@graasp/sdk": "^1.0.0",
+    "@graasp/translations": "^1.13.0",
+    "@graasp/ui": "^3.0.0",
     "@mui/icons-material": "^5.11.11",
     "@mui/lab": "^5.0.0-alpha.121",
     "@mui/material": "^5.11.11",
@@ -82,10 +82,10 @@
     "@cypress/react": "7.0.2",
     "@emotion/react": "11.10.6",
     "@emotion/styled": "11.10.6",
-    "@graasp/query-client": "github:graasp/graasp-query-client#typeorm",
-    "@graasp/sdk": "github:graasp/graasp-sdk#typeorm",
-    "@graasp/translations": "1.12.0",
-    "@graasp/ui": "github:graasp/graasp-ui#typeorm",
+    "@graasp/query-client": "1.0.0-rc1",
+    "@graasp/sdk": "1.0.0-rc1",
+    "@graasp/translations": "1.13.0",
+    "@graasp/ui": "3.0.0-rc1",
     "@mui/icons-material": "5.11.11",
     "@mui/lab": "5.0.0-alpha.121",
     "@mui/material": "5.11.11",
@@ -132,7 +132,6 @@
   },
   "resolutions": {
     "@types/react": "17.0.2",
-    "@graasp/sdk": "github:graasp/graasp-sdk#typeorm",
     "immutable": "4.3.0"
   },
   "packageManager": "yarn@3.5.0"

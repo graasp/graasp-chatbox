@@ -2501,10 +2501,10 @@ __metadata:
     "@cypress/react": 7.0.2
     "@emotion/react": 11.10.6
     "@emotion/styled": 11.10.6
-    "@graasp/query-client": "github:graasp/graasp-query-client#typeorm"
-    "@graasp/sdk": "github:graasp/graasp-sdk#typeorm"
-    "@graasp/translations": 1.12.0
-    "@graasp/ui": "github:graasp/graasp-ui#typeorm"
+    "@graasp/query-client": 1.0.0-rc1
+    "@graasp/sdk": 1.0.0-rc1
+    "@graasp/translations": 1.13.0
+    "@graasp/ui": 3.0.0-rc1
     "@mui/icons-material": 5.11.11
     "@mui/lab": 5.0.0-alpha.121
     "@mui/material": 5.11.11
@@ -2560,10 +2560,10 @@ __metadata:
   peerDependencies:
     "@emotion/react": ^11.10.6
     "@emotion/styled": ^11.10.6
-    "@graasp/query-client": ^0.4.0
-    "@graasp/sdk": ^0.10.0
-    "@graasp/translations": ^1.10.0
-    "@graasp/ui": ^2.3.1
+    "@graasp/query-client": ^1.0.0
+    "@graasp/sdk": ^1.0.0
+    "@graasp/translations": ^1.13.0
+    "@graasp/ui": ^3.0.0
     "@mui/icons-material": ^5.11.11
     "@mui/lab": ^5.0.0-alpha.121
     "@mui/material": ^5.11.11
@@ -2607,6 +2607,25 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@graasp/query-client@npm:1.0.0-rc1":
+  version: 1.0.0-rc1
+  resolution: "@graasp/query-client@npm:1.0.0-rc1"
+  dependencies:
+    "@graasp/sdk": 1.0.0-rc1
+    "@graasp/translations": 1.13.0
+    axios: 0.27.2
+    crypto-js: 4.1.1
+    http-status-codes: 2.2.0
+    immutable: 4.3.0
+    qs: 6.11.1
+    react-query: 3.39.3
+    uuid: 9.0.0
+  peerDependencies:
+    react: ^17.0.0
+  checksum: 7e06c40b7b9375a2c84c703edc301988a0cdd57fa122d549f494f465e98cb719973c6c01fc4cfe0cff05764ee6300ffb09c80b0c4c14438020356f079914221a
+  languageName: node
+  linkType: hard
+
 "@graasp/sdk@github:graasp/graasp-sdk#typeorm":
   version: 0.12.0
   resolution: "@graasp/sdk@https://github.com/graasp/graasp-sdk.git#commit=6c8b8bd1ada005605893429207093a0becc60a85"
@@ -2626,12 +2645,22 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@graasp/translations@npm:1.12.0":
-  version: 1.12.0
-  resolution: "@graasp/translations@npm:1.12.0"
+"@graasp/sdk@npm:1.0.0-rc1":
+  version: 1.0.0-rc1
+  resolution: "@graasp/sdk@npm:1.0.0-rc1"
   dependencies:
-    i18next: 21.8.1
-  checksum: 0c8f21bd9116b9b248575e3b94b0bcfaa431e5ae4af9310423f23341df613a409874dc8f96961781090f018c659e6263b72f75d7b0b55127e62b164425669950
+    "@fastify/secure-session": 5.3.0
+    "@graasp/etherpad-api": 2.1.1
+    aws-sdk: 2.1370.0
+    fastify: 4.17.0
+    fluent-json-schema: 4.1.0
+    immutable: 4.3.0
+    js-cookie: 3.0.5
+    qs: 6.11.1
+    typeorm: 0.3.15
+    uuid: 9.0.0
+    validator: 13.9.0
+  checksum: 7d542c1c92d0846adade40b98c4c9915a3a7c1bf2abc404eae062e2b0dd249bf10d81e19d465bbf5bdfe2d2f4667277b03636ea032ebe616dc90203be7771845
   languageName: node
   linkType: hard
 
@@ -2644,23 +2673,22 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@graasp/ui@github:graasp/graasp-ui#typeorm":
-  version: 2.5.0
-  resolution: "@graasp/ui@https://github.com/graasp/graasp-ui.git#commit=277183c0eb8a974da72b74dde827afb181f9e639"
+"@graasp/ui@npm:3.0.0-rc1":
+  version: 3.0.0-rc1
+  resolution: "@graasp/ui@npm:3.0.0-rc1"
   dependencies:
-    "@graasp/sdk": "github:graasp/graasp-sdk#typeorm"
-    clsx: 1.1.1
+    "@graasp/sdk": 1.0.0-rc1
+    clsx: 1.2.1
     http-status-codes: 2.2.0
     immutable: 4.3.0
-    katex: 0.16.0
+    katex: 0.16.7
     lodash.truncate: 4.4.2
-    qs: 6.11.0
+    qs: 6.11.2
     quill-emoji: 0.2.0
     react-cookie-consent: 7.4.1
-    react-i18next: 11.17.0
-    react-quill: 2.0.0-beta.4
-    react-rnd: 10.3.7
-    react-text-mask: 5.4.3
+    react-quill: 2.0.0
+    react-rnd: 10.4.1
+    react-text-mask: 5.5.0
     uuid: 9.0.0
   peerDependencies:
     "@emotion/react": ~11.10.6
@@ -2668,18 +2696,19 @@ __metadata:
     "@mui/icons-material": ~5.11.9
     "@mui/lab": ~5.0.0-alpha.120
     "@mui/material": ~5.11.9
-    ag-grid-community: 28.1.1
-    ag-grid-react: 28.1.1
-    i18next: ~21.8.9
-    react: 17.0.2
-    react-dom: 17.0.2
-    react-router-dom: 6.2.2
+    ag-grid-community: ^28.1.1
+    ag-grid-react: ^28.1.1
+    i18next: ^22.4.15
+    react: ^17.0.2
+    react-dom: ^17.0.2
+    react-i18next: ^12.2.0
+    react-router-dom: ^6.11.0
   peerDependenciesMeta:
     ag-grid-community:
       optional: true
     ag-grid-react:
       optional: true
-  checksum: 6a4f790c8b0d625b99a32eb8e8beb659978b053b5065fea1bf7757291723a1c6c9d8cd2a30e912ffaf8b15435579ce54b119adba98176c208925259ab770c0bf
+  checksum: a9287f96a5409c572aede839a1fc947ecc8cb4af1661efe57343b097c0ec1bd3124a224894f7205c77d78a6dc2d76034f001f196d048273469b992b96dbcc014
   languageName: node
   linkType: hard
 
@@ -6323,14 +6352,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"clsx@npm:1.1.1":
-  version: 1.1.1
-  resolution: "clsx@npm:1.1.1"
-  checksum: ff052650329773b9b245177305fc4c4dc3129f7b2be84af4f58dc5defa99538c61d4207be7419405a5f8f3d92007c954f4daba5a7b74e563d5de71c28c830063
-  languageName: node
-  linkType: hard
-
-"clsx@npm:^1.1.1, clsx@npm:^1.2.1":
+"clsx@npm:1.2.1, clsx@npm:^1.1.1, clsx@npm:^1.2.1":
   version: 1.2.1
   resolution: "clsx@npm:1.2.1"
   checksum: 30befca8019b2eb7dbad38cff6266cf543091dae2825c856a62a8ccf2c3ab9c2907c4d12b288b73101196767f66812365400a227581484a05f968b0307cfaf12
@@ -6484,7 +6506,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"commander@npm:^8.0.0, commander@npm:^8.3.0":
+"commander@npm:^8.3.0":
   version: 8.3.0
   resolution: "commander@npm:8.3.0"
   checksum: 0f82321821fc27b83bd409510bb9deeebcfa799ff0bf5d102128b500b7af22872c0c92cb6a0ebc5a4cf19c6b550fba9cedfa7329d18c6442a625f851377bacf0
@@ -9869,7 +9891,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"html-escaper@npm:^2.0.0, html-escaper@npm:^2.0.2":
+"html-escaper@npm:^2.0.0":
   version: 2.0.2
   resolution: "html-escaper@npm:2.0.2"
   checksum: d2df2da3ad40ca9ee3a39c5cc6475ef67c8f83c234475f24d8e9ce0dc80a2c82df8e1d6fa78ddd1e9022a586ea1bd247a615e80a5cd9273d90111ddda7d9e974
@@ -11700,14 +11722,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"katex@npm:0.16.0":
-  version: 0.16.0
-  resolution: "katex@npm:0.16.0"
+"katex@npm:0.16.7":
+  version: 0.16.7
+  resolution: "katex@npm:0.16.7"
   dependencies:
-    commander: ^8.0.0
+    commander: ^8.3.0
   bin:
     katex: cli.js
-  checksum: 0e094523544b3c921e55da8cf1a9ea2718213c621af508af9fc03859b97dc73280f478fbfede5a8b32948210c3596c5a637dd64e0e28e31d6c617b5d50c29762
+  checksum: 6c3f61e28820ecba074a149d17be6d731d8a950cdd7826851e16f2b0f3627c4119acd8c6e4fb86950063c4e99a6e478720ea6cca3dc82e59bbca81001ee00b70
   languageName: node
   linkType: hard
 
@@ -14786,7 +14808,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prop-types@npm:^15.0.0, prop-types@npm:^15.5.6, prop-types@npm:^15.5.8, prop-types@npm:^15.6.0, prop-types@npm:^15.6.2, prop-types@npm:^15.7.2, prop-types@npm:^15.8.1":
+"prop-types@npm:^15.0.0, prop-types@npm:^15.5.6, prop-types@npm:^15.5.8, prop-types@npm:^15.6.2, prop-types@npm:^15.7.2, prop-types@npm:^15.8.1":
   version: 15.8.1
   resolution: "prop-types@npm:15.8.1"
   dependencies:
@@ -14881,6 +14903,15 @@ __metadata:
   dependencies:
     side-channel: ^1.0.4
   checksum: 82ee78ef12a16f3372fae5b64f76f8aedecb000feea882bbff1af146c147f6eb66b08f9c3f34d7e076f28563586956318b9b2ca41141846cdd6d5ad6f241d52f
+  languageName: node
+  linkType: hard
+
+"qs@npm:6.11.2":
+  version: 6.11.2
+  resolution: "qs@npm:6.11.2"
+  dependencies:
+    side-channel: ^1.0.4
+  checksum: e812f3c590b2262548647d62f1637b6989cc56656dc960b893fe2098d96e1bd633f36576f4cd7564dfbff9db42e17775884db96d846bebe4f37420d073ecdc0b
   languageName: node
   linkType: hard
 
@@ -15092,16 +15123,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-draggable@npm:4.4.4":
-  version: 4.4.4
-  resolution: "react-draggable@npm:4.4.4"
+"react-draggable@npm:4.4.5":
+  version: 4.4.5
+  resolution: "react-draggable@npm:4.4.5"
   dependencies:
     clsx: ^1.1.1
-    prop-types: ^15.6.0
+    prop-types: ^15.8.1
   peerDependencies:
     react: ">= 16.3.0"
     react-dom: ">= 16.3.0"
-  checksum: b8258a58938c261a79f1b9ffd67774283c1ac732423c1c9c9f5fe4d17a06886edd659891e445ba089828ca59f1885e5b909262e24cf60640b8ed05c8499c88bb
+  checksum: 21c3775db086e13020967627c20acd41d1ddbc7c7d7fca51491a5bbb54a0aa7e1730a4bc9af17141eb50a4954e547a5e25b2368f5f54b70db6f2686a897bacf2
   languageName: node
   linkType: hard
 
@@ -15109,25 +15140,6 @@ __metadata:
   version: 6.0.11
   resolution: "react-error-overlay@npm:6.0.11"
   checksum: ce7b44c38fadba9cedd7c095cf39192e632daeccf1d0747292ed524f17dcb056d16bc197ddee5723f9dd888f0b9b19c3b486c430319e30504289b9296f2d2c42
-  languageName: node
-  linkType: hard
-
-"react-i18next@npm:11.17.0":
-  version: 11.17.0
-  resolution: "react-i18next@npm:11.17.0"
-  dependencies:
-    "@babel/runtime": ^7.14.5
-    html-escaper: ^2.0.2
-    html-parse-stringify: ^3.0.1
-  peerDependencies:
-    i18next: ">= 19.0.0"
-    react: ">= 16.8.0"
-  peerDependenciesMeta:
-    react-dom:
-      optional: true
-    react-native:
-      optional: true
-  checksum: 0ed6823af56f4133bf1664262206be6651cbea95e2f9275411d6346c6b8009e277b32fe60702fd06607d13b8979913bd013da702e25fa3f4e1bd73e403417296
   languageName: node
   linkType: hard
 
@@ -15229,17 +15241,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-quill@npm:2.0.0-beta.4":
-  version: 2.0.0-beta.4
-  resolution: "react-quill@npm:2.0.0-beta.4"
+"react-quill@npm:2.0.0":
+  version: 2.0.0
+  resolution: "react-quill@npm:2.0.0"
   dependencies:
     "@types/quill": ^1.3.10
     lodash: ^4.17.4
     quill: ^1.3.7
   peerDependencies:
-    react: ^16 || ^17
-    react-dom: ^16 || ^17
-  checksum: bec76caae579d199d47b475af2236321c902dd468bd9b6a688c6bc1b4c8ddcf8407348ae3a490f9e45b6e33dc7d0fffe026ccd595297440c2623964d5f466c29
+    react: ^16 || ^17 || ^18
+    react-dom: ^16 || ^17 || ^18
+  checksum: 568e28656ae3a40944d5c4cc9d35accc21834cf15b61a74af4566d8772eb152ce65c0d5ea6da65918cb5c9453c1a2041c60c4a19819bf319bee2e067b613d32b
   languageName: node
   linkType: hard
 
@@ -15257,17 +15269,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-rnd@npm:10.3.7":
-  version: 10.3.7
-  resolution: "react-rnd@npm:10.3.7"
+"react-rnd@npm:10.4.1":
+  version: 10.4.1
+  resolution: "react-rnd@npm:10.4.1"
   dependencies:
     re-resizable: 6.9.6
-    react-draggable: 4.4.4
+    react-draggable: 4.4.5
     tslib: 2.3.1
   peerDependencies:
     react: ">=16.3.0"
     react-dom: ">=16.3.0"
-  checksum: 312c08f21b6ef9dcfa2e4823ebf63a3142793168b02b2cd54327587ad8159d409577428c6c363e3805ba437403dcfc708df39ebc83b423e9d71002e3fca3f3fc
+  checksum: 65741a091dab3c22093f27d89036a2989d09e1701c08bf7dc3c8322b14c92bf9a78e38a47e7cf2c4873dd5e90fae0666a9e5a9b75e843685dc49ea6392232cca
   languageName: node
   linkType: hard
 
@@ -15362,14 +15374,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-text-mask@npm:5.4.3":
-  version: 5.4.3
-  resolution: "react-text-mask@npm:5.4.3"
+"react-text-mask@npm:5.5.0":
+  version: 5.5.0
+  resolution: "react-text-mask@npm:5.5.0"
   dependencies:
     prop-types: ^15.5.6
   peerDependencies:
-    react: ^0.14.0 || ^15.0.0 || ^16.0.0
-  checksum: ee9c560f47d2f67d0193636eeea36852503d6d7bfd16d75ecb8170256606923d786bbb3511971deedbd01136340acf597fe2b6ba0be3cddb2a17a602767eb7b9
+    react: ^0.14.0 || ^15.0.0 || ^16.0.0 || ^17.0.0 || ^18.0.0
+  checksum: ccfd425a66cf074fd3e4823bf4d1a4f07caf81309f7c1461e524c32ae53b17a666855a8dcc1c73206e9d8e4a6a9460f66f767aac6ba18034b663521848294c5c
   languageName: node
   linkType: hard
 

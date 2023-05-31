@@ -131,7 +131,7 @@ describe('Edit action', () => {
     const secondMessageIndex = 1;
     cy.get(dataCyWrapper(editBannerOldTextCypress)).should(
       'contain.text',
-      CHAT_MESSAGES.filter((m) => m.creator.id === CURRENT_MEMBER.id)[
+      CHAT_MESSAGES.filter((m) => m.creator?.id === CURRENT_MEMBER.id)[
         firstMessageIndex
       ].body,
     );
@@ -140,7 +140,7 @@ describe('Edit action', () => {
       .click();
     cy.get(dataCyWrapper(editMenuItemCypress)).click();
     const oldTextMessage = CHAT_MESSAGES.filter(
-      (m) => m.creator.id === CURRENT_MEMBER.id,
+      (m) => m.creator?.id === CURRENT_MEMBER.id,
     )[secondMessageIndex].body;
     cy.get(dataCyWrapper(editBannerOldTextCypress)).should(
       'contain.text',

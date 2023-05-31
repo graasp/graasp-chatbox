@@ -1,4 +1,9 @@
-import { ChatMessage } from '@graasp/sdk';
+import {
+  ChatMessage,
+  FolderItemType,
+  ItemType,
+  buildPathFromIds,
+} from '@graasp/sdk';
 
 import { v4 } from 'uuid';
 
@@ -6,6 +11,18 @@ import { getMentionMarkupFromMember } from '../../src';
 import { CURRENT_MEMBER, MEMBERS } from './members';
 
 export const CHAT_ID = v4();
+export const ITEM_CHAT: FolderItemType = {
+  id: CHAT_ID,
+  name: 'Item chat',
+  description: 'A description',
+  path: buildPathFromIds(CHAT_ID),
+  type: ItemType.FOLDER,
+  extra: { [ItemType.FOLDER]: { childrenOrder: [] } },
+  settings: {},
+  creator: CURRENT_MEMBER,
+  createdAt: new Date(),
+  updatedAt: new Date(),
+};
 export const MOCK_MESSAGE_BODY = 'This is a message';
 
 export const getMockMessage = ({
@@ -13,7 +30,7 @@ export const getMockMessage = ({
   message = MOCK_MESSAGE_BODY,
 }): ChatMessage => ({
   id: v4(),
-  chatId: CHAT_ID,
+  item: ITEM_CHAT,
   creator: member,
   createdAt: new Date(),
   updatedAt: new Date(),
@@ -23,7 +40,7 @@ export const getMockMessage = ({
 export const CHAT_MESSAGES: ChatMessage[] = [
   {
     id: v4(),
-    chatId: CHAT_ID,
+    item: ITEM_CHAT,
     creator: CURRENT_MEMBER,
     createdAt: new Date(),
     updatedAt: new Date(),
@@ -31,7 +48,7 @@ export const CHAT_MESSAGES: ChatMessage[] = [
   },
   {
     id: v4(),
-    chatId: CHAT_ID,
+    item: ITEM_CHAT,
     creator: MEMBERS.BOB,
     createdAt: new Date(),
     updatedAt: new Date(),
@@ -39,7 +56,7 @@ export const CHAT_MESSAGES: ChatMessage[] = [
   },
   {
     id: v4(),
-    chatId: CHAT_ID,
+    item: ITEM_CHAT,
     creator: MEMBERS.BOB,
     createdAt: new Date(),
     updatedAt: new Date(),
@@ -47,7 +64,7 @@ export const CHAT_MESSAGES: ChatMessage[] = [
   },
   {
     id: v4(),
-    chatId: CHAT_ID,
+    item: ITEM_CHAT,
     creator: CURRENT_MEMBER,
     createdAt: new Date(),
     updatedAt: new Date(),
