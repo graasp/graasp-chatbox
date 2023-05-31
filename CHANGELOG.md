@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.0.0-rc.1](https://github.com/graasp/graasp-chatbox/compare/v1.2.1...v2.0.0-rc.1) (2023-05-31)
+
+
+### Bug Fixes
+
+* typeorm fixes ([#86](https://github.com/graasp/graasp-chatbox/issues/86)) ([84f4e38](https://github.com/graasp/graasp-chatbox/commit/84f4e3874a24d543a19e9547987cbc2818e711c4))
+
 ## [1.2.1](https://github.com/graasp/graasp-chatbox/compare/v1.2.0...v1.2.1) (2023-04-18)
 
 
