@@ -148,7 +148,7 @@ const Input: FC<Props> = ({
       if (currentMentions.includes(ALL_MEMBERS_ID) && members?.size) {
         expandedMentions = members.map((m) => m.id).toArray();
       }
-      sendMessageFunction?.({ message: textInput, mentions: expandedMentions });
+      sendMessageFunction?.({ body: textInput, mentions: expandedMentions });
       // reset input content
       setTextInput('');
       setPlainTextMessage('');

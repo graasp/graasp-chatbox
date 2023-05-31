@@ -5,13 +5,11 @@ import Notifications from '@mui/icons-material/Notifications';
 import { Badge, BadgeProps, IconButton, SvgIconProps } from '@mui/material';
 
 import { MentionStatus } from '@graasp/sdk';
-import { MemberMentionsRecord, MemberRecord } from '@graasp/sdk/frontend';
-import { CHATBOX } from '@graasp/translations';
+import { ChatMentionRecord } from '@graasp/sdk/frontend';
 
 import { List } from 'immutable';
 
 import { mentionButtonCypress } from '@/config/selectors';
-import { useChatboxTranslation } from '@/utils/utils';
 
 import MentionsDialog from './MentionsDialog';
 import MentionsTable from './MentionsTable';
@@ -21,8 +19,7 @@ type Props = {
   badgeColor?: BadgeProps['color'];
   useMentions: (
     options?: { getUpdates?: boolean | undefined } | undefined,
-  ) => UseQueryResult<MemberMentionsRecord>;
-  useMembers: (memberIds: string[]) => UseQueryResult<List<MemberRecord>>;
+  ) => UseQueryResult<List<ChatMentionRecord>>;
   patchMentionFunction: (args: { id: string; status: string }) => void;
   deleteMentionFunction: (id: string) => void;
   clearAllMentionsFunction: () => void;
@@ -32,29 +29,11 @@ const MentionButton: FC<Props> = ({
   color = 'secondary',
   badgeColor = 'primary',
   useMentions,
-  useMembers,
   patchMentionFunction,
   deleteMentionFunction,
   clearAllMentionsFunction,
 }) => {
-  const { t } = useChatboxTranslation();
-
-  const { data: memberMentions } = useMentions();
-  const mentions = memberMentions?.mentions;
-
-  // get member ids from the mentions
-  const memberIds = Array.from(new Set(mentions?.map((m) => m.creator)));
-  const { data: members = List<MemberRecord>() } = useMembers(memberIds);
-
-  // add member names to mentions
-  const mentionsWithMembers = mentions?.map((m) => {
-    return m.update(
-      'creator',
-      () =>
-        members.find((u) => u.id === m.creator)?.name ||
-        t(CHATBOX.ANONYMOUS_USER),
-    );
-  });
+  const { data: mentions } = useMentions();
 
   const [open, setOpen] = useState(false);
 
@@ -69,7 +48,7 @@ const MentionButton: FC<Props> = ({
           overlap="circular"
           color={badgeColor}
           badgeContent={
-            mentions?.filter((m) => m.status === MentionStatus.UNREAD)?.size ||
+            mentions?.filter((m) => m.status === MentionStatus.Unread)?.size ||
             0
           }
         >
@@ -79,7 +58,7 @@ const MentionButton: FC<Props> = ({
       <MentionsDialog
         content={
           <MentionsTable
-            mentions={mentionsWithMembers}
+            mentions={mentions}
             patchMention={patchMentionFunction}
             deleteMention={deleteMentionFunction}
             clearAllMentions={clearAllMentionsFunction}

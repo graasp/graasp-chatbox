@@ -31,7 +31,7 @@ describe('Mention Highlighting', () => {
         currentMember={convertJs(MEMBERS.ANNA)}
         members={convertJs(Object.values(MEMBERS))}
         messages={convertJs([annaMessage, allMessage])}
-        useAvatarHook={fakeHook}
+        useAvatarUrl={fakeHook}
       />,
     );
     cy.get(dataCyWrapper(messageIdCyWrapper(annaMessage.id))).should(

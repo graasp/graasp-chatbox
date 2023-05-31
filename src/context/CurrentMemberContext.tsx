@@ -16,7 +16,7 @@ export const CurrentMemberContext = React.createContext({
 
 type Props = {
   children: ReactElement | ReactElement[];
-  currentMember: MemberRecord;
+  currentMember?: MemberRecord;
 };
 
 export const CurrentMemberContextProvider: FC<Props> = ({
@@ -25,7 +25,7 @@ export const CurrentMemberContextProvider: FC<Props> = ({
 }) => {
   return (
     <CurrentMemberContext.Provider
-      value={currentMember.toJS() as CurrentMemberContextType}
+      value={currentMember?.toJS() as CurrentMemberContextType}
     >
       {children}
     </CurrentMemberContext.Provider>

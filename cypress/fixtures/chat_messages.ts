@@ -1,10 +1,28 @@
+import {
+  ChatMessage,
+  FolderItemType,
+  ItemType,
+  buildPathFromIds,
+} from '@graasp/sdk';
+
 import { v4 } from 'uuid';
 
 import { getMentionMarkupFromMember } from '../../src';
-import { ChatMessage } from '../../src/types';
 import { CURRENT_MEMBER, MEMBERS } from './members';
 
 export const CHAT_ID = v4();
+export const ITEM_CHAT: FolderItemType = {
+  id: CHAT_ID,
+  name: 'Item chat',
+  description: 'A description',
+  path: buildPathFromIds(CHAT_ID),
+  type: ItemType.FOLDER,
+  extra: { [ItemType.FOLDER]: { childrenOrder: [] } },
+  settings: {},
+  creator: CURRENT_MEMBER,
+  createdAt: new Date(),
+  updatedAt: new Date(),
+};
 export const MOCK_MESSAGE_BODY = 'This is a message';
 
 export const getMockMessage = ({
@@ -12,44 +30,44 @@ export const getMockMessage = ({
   message = MOCK_MESSAGE_BODY,
 }): ChatMessage => ({
   id: v4(),
-  chatId: CHAT_ID,
-  creator: member.id,
-  createdAt: new Date().toISOString(),
-  updatedAt: new Date().toISOString(),
+  item: ITEM_CHAT,
+  creator: member,
+  createdAt: new Date(),
+  updatedAt: new Date(),
   body: message,
 });
 
-export const CHAT_MESSAGES = [
+export const CHAT_MESSAGES: ChatMessage[] = [
   {
     id: v4(),
-    chatId: CHAT_ID,
-    creator: CURRENT_MEMBER.id,
-    createdAt: new Date().toISOString(),
-    updatedAt: new Date().toISOString(),
+    item: ITEM_CHAT,
+    creator: CURRENT_MEMBER,
+    createdAt: new Date(),
+    updatedAt: new Date(),
     body: 'Some really long text that is going to be wrapped to the next line i think, we need to test.\nOn multiple lines',
   },
   {
     id: v4(),
-    chatId: CHAT_ID,
-    creator: MEMBERS.BOB.id,
-    createdAt: new Date().toISOString(),
-    updatedAt: new Date().toISOString(),
+    item: ITEM_CHAT,
+    creator: MEMBERS.BOB,
+    createdAt: new Date(),
+    updatedAt: new Date(),
     body: 'A lengthy response to the previous message that i think a lot of people will like to read, since it really goes in deep into the topic.\nAnd here also a preview of the next topic.\n\nSigned Bob',
   },
   {
     id: v4(),
-    chatId: CHAT_ID,
-    creator: MEMBERS.BOB.id,
-    createdAt: new Date().toISOString(),
-    updatedAt: new Date().toISOString(),
+    item: ITEM_CHAT,
+    creator: MEMBERS.BOB,
+    createdAt: new Date(),
+    updatedAt: new Date(),
     body: 'And here a text with 2\n\nLine breaks',
   },
   {
     id: v4(),
-    chatId: CHAT_ID,
-    creator: CURRENT_MEMBER.id,
-    createdAt: new Date().toISOString(),
-    updatedAt: new Date().toISOString(),
+    item: ITEM_CHAT,
+    creator: CURRENT_MEMBER,
+    createdAt: new Date(),
+    updatedAt: new Date(),
     body: 'Message',
   },
 ];

@@ -1,9 +1,9 @@
 /// <reference types="../support/cypress" />
-import { v4 } from 'uuid';
-
 import React from 'react';
 
 import { convertJs } from '@graasp/sdk';
+
+import { v4 } from 'uuid';
 
 import Chatbox from '../../src/components/Chatbox/Chatbox';
 import {
@@ -29,7 +29,7 @@ describe('Render Avatar', () => {
         currentMember={convertJs(MEMBERS.ANNA)}
         members={convertJs(Object.values(MEMBERS))}
         messages={convertJs(CHAT_MESSAGES)}
-        useAvatarHook={fakeHook}
+        useAvatarUrl={fakeHook}
       />,
     );
   });
@@ -42,7 +42,7 @@ describe('Render Avatar', () => {
         currentMember={convertJs(MEMBERS.ANNA)}
         members={convertJs(Object.values(MEMBERS))}
         messages={convertJs(CHAT_MESSAGES)}
-        useAvatarHook={fakeHook}
+        useAvatarUrl={fakeHook}
       />,
     );
     cy.get(`@${fakeHookName}`).should('have.been.called');
@@ -58,7 +58,7 @@ describe('Autofocus input field', () => {
         currentMember={convertJs(MEMBERS.ANNA)}
         members={convertJs(Object.values(MEMBERS))}
         messages={convertJs(CHAT_MESSAGES)}
-        useAvatarHook={fakeHook}
+        useAvatarUrl={fakeHook}
       />,
     ).then(() =>
       cy.get(`#${inputTextFieldTextAreaCypress}`).should('be.focused'),
@@ -94,7 +94,7 @@ describe('Messages container', () => {
             id: lastId,
           },
         ])}
-        useAvatarHook={fakeHook}
+        useAvatarUrl={fakeHook}
       />,
     ).then(() => {
       cy.get(dataCyWrapper(messageIdCyWrapper(lastId))).should('be.visible');

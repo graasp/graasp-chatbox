@@ -1,8 +1,3 @@
-import Highlight, { Language, defaultProps } from 'prism-react-renderer';
-import vsLight from 'prism-react-renderer/themes/vsLight';
-import remarkBreaks from 'remark-breaks';
-import remarkGfm from 'remark-gfm';
-
 import { FC, ReactElement } from 'react';
 import ReactMarkdown from 'react-markdown';
 import { CodeProps } from 'react-markdown/lib/ast-to-react';
@@ -10,6 +5,11 @@ import { CodeProps } from 'react-markdown/lib/ast-to-react';
 import { styled } from '@mui/material';
 
 import { Member } from '@graasp/sdk';
+
+import Highlight, { Language, defaultProps } from 'prism-react-renderer';
+import vsLight from 'prism-react-renderer/themes/vsLight';
+import remarkBreaks from 'remark-breaks';
+import remarkGfm from 'remark-gfm';
 
 import {
   ALL_MEMBERS_ID,

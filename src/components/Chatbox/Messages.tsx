@@ -1,11 +1,11 @@
-import moment from 'moment';
-
 import { FC, Fragment, useEffect, useRef } from 'react';
 
 import { styled } from '@mui/material';
 import Box from '@mui/material/Box';
 
 import { ChatMessageRecord, MemberRecord } from '@graasp/sdk/frontend';
+
+import moment from 'moment';
 
 import { messagesContainerCypress } from '../../config/selectors';
 import { DEFAULT_DATE_FORMAT, SCROLL_SAFETY_MARGIN } from '../../constants';
@@ -43,7 +43,7 @@ const SingleMessageContainer = styled(Box)({
 });
 
 type Props = {
-  currentMember: MemberRecord;
+  currentMember?: MemberRecord;
   isAdmin?: boolean;
   deleteMessageFunction?: DeleteMessageFunctionType;
 };
@@ -70,7 +70,7 @@ const Messages: FC<Props> = ({
   }, [ref, messages, open]);
 
   const isOwn = (message: ChatMessageRecord): boolean =>
-    message.creator === currentMember.get('id');
+    message.creator?.id === currentMember?.id;
 
   const messagesByDay = messages
     ?.groupBy(({ createdAt }) => moment(createdAt).format(DEFAULT_DATE_FORMAT))
@@ -95,7 +95,9 @@ const Messages: FC<Props> = ({
                   <Message
                     currentMember={currentMember}
                     message={message}
-                    member={members?.find(({ id }) => id === message.creator)}
+                    member={members?.find(
+                      ({ id }) => id === message.creator?.id,
+                    )}
                   />
                   {(isOwnMessage || isAdmin) && (
                     <MessageActions

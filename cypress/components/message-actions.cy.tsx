@@ -28,7 +28,7 @@ describe('Message actions', () => {
         currentMember={convertJs(MEMBERS.ANNA)}
         members={convertJs(Object.values(MEMBERS))}
         messages={convertJs(CHAT_MESSAGES)}
-        useAvatarHook={fakeHook}
+        useAvatarUrl={fakeHook}
       />,
     );
   });
@@ -57,7 +57,7 @@ describe('Delete action', () => {
         members={convertJs(Object.values(MEMBERS))}
         messages={convertJs(CHAT_MESSAGES)}
         deleteMessageFunction={deleteMessageSpy}
-        useAvatarHook={fakeHook}
+        useAvatarUrl={fakeHook}
       />,
     );
     cy.get(dataCyWrapper(messageActionsButtonCypress))
@@ -84,7 +84,7 @@ describe('Edit action', () => {
         messages={convertJs(CHAT_MESSAGES)}
         editMessageFunction={editMessageSpy}
         sendMessageFunction={sendMessageSpy}
-        useAvatarHook={fakeHook}
+        useAvatarUrl={fakeHook}
       />,
     );
 
@@ -131,7 +131,7 @@ describe('Edit action', () => {
     const secondMessageIndex = 1;
     cy.get(dataCyWrapper(editBannerOldTextCypress)).should(
       'contain.text',
-      CHAT_MESSAGES.filter((m) => m.creator === CURRENT_MEMBER.id)[
+      CHAT_MESSAGES.filter((m) => m.creator?.id === CURRENT_MEMBER.id)[
         firstMessageIndex
       ].body,
     );
@@ -140,7 +140,7 @@ describe('Edit action', () => {
       .click();
     cy.get(dataCyWrapper(editMenuItemCypress)).click();
     const oldTextMessage = CHAT_MESSAGES.filter(
-      (m) => m.creator === CURRENT_MEMBER.id,
+      (m) => m.creator?.id === CURRENT_MEMBER.id,
     )[secondMessageIndex].body;
     cy.get(dataCyWrapper(editBannerOldTextCypress)).should(
       'contain.text',

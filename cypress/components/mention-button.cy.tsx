@@ -7,7 +7,7 @@ import {
   mentionButtonCypress,
 } from '../../src/config/selectors';
 import { spyMethod } from '../fixtures/chat_messages';
-import { mockUseMembers, mockUseMentions } from '../fixtures/mockHooks';
+import { mockUseMentions } from '../fixtures/mockHooks';
 
 describe('Mention Button', () => {
   it('should show mention button', () => {
@@ -22,7 +22,6 @@ describe('Mention Button', () => {
         deleteMentionFunction={deleteMentionSpy}
         patchMentionFunction={patchMentionSpy}
         useMentions={mockUseMentions}
-        useMembers={mockUseMembers}
       />,
     ).then(() => {
       cy.get(dataCyWrapper(mentionButtonCypress)).should('exist').click();

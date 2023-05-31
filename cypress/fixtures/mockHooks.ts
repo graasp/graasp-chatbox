@@ -1,17 +1,14 @@
 /// <reference types="../cypress"/>
+import { QueryObserverResult } from 'react-query';
+
+import { ChatMention, MentionStatus, convertJs } from '@graasp/sdk';
+import { ChatMentionRecord } from '@graasp/sdk/frontend';
+
 import { List } from 'immutable';
 import { v4 } from 'uuid';
 
-import { QueryObserverResult } from 'react-query';
-
-import { Member, MemberType, MentionStatus, convertJs } from '@graasp/sdk';
-import {
-  ChatMention,
-  MemberMentionsRecord,
-  MemberRecord,
-} from '@graasp/sdk/frontend';
-
 import { CHAT_MESSAGES } from './chat_messages';
+import { MOCK_ITEM } from './item';
 import { CURRENT_MEMBER, MEMBERS } from './members';
 
 type SpyHookType = {
@@ -19,13 +16,13 @@ type SpyHookType = {
   name: string;
 };
 
-const USE_AVATAR_HOOK_NAME = 'useAvatarHook';
+const USE_AVATAR_HOOK_NAME = 'useAvatarUrl';
 
 export const mockUseAvatar = (): SpyHookType => ({
   hook: cy
     .spy(() => {
       return {
-        data: new Blob(['someText']),
+        data: 'someText',
         isLoading: false,
         isFetching: false,
       };
@@ -34,60 +31,46 @@ export const mockUseAvatar = (): SpyHookType => ({
   name: USE_AVATAR_HOOK_NAME,
 });
 
-export const mockUseMentions =
-  (): QueryObserverResult<MemberMentionsRecord> => {
-    const defaultMention: ChatMention = {
-      id: '',
-      itemPath: 'some itemPath',
-      message: 'a message',
-      messageId: '',
-      memberId: CURRENT_MEMBER.id,
-      creator: MEMBERS.BOB.id,
-      createdAt: new Date().toISOString(),
-      updatedAt: new Date().toISOString(),
-      status: MentionStatus.UNREAD,
-    };
-
-    const CHAT_MENTION_1: ChatMention = {
-      ...defaultMention,
-      id: v4(),
-      creator: MEMBERS.BOB.id,
-      messageId: CHAT_MESSAGES[0].id,
-    };
-    const CHAT_MENTION_2: ChatMention = {
-      ...defaultMention,
-      id: v4(),
-      creator: MEMBERS.ANNA.id,
-      messageId: CHAT_MESSAGES[1].id,
-    };
-
-    const MEMBER_MENTIONS: MemberMentionsRecord = convertJs({
-      memberId: CURRENT_MEMBER.id,
-      mentions: [CHAT_MENTION_1, CHAT_MENTION_2],
-    });
-    return {
-      data: MEMBER_MENTIONS,
-    } as unknown as QueryObserverResult<MemberMentionsRecord>;
+export const mockUseMentions = (): QueryObserverResult<
+  List<ChatMentionRecord>
+> => {
+  const defaultMessage = {
+    id: v4(),
+    item: MOCK_ITEM,
+    creator: MEMBERS.BOB,
+    body: 'some message',
+    createdAt: new Date(),
+    updatedAt: new Date(),
   };
-
-export const mockUseMembers = (): QueryObserverResult<List<MemberRecord>> => {
-  const defaultMember: Member = {
+  const defaultMention: ChatMention = {
     id: '',
-    name: '',
-    extra: {},
-    type: MemberType.Individual,
-    email: 'default@mail.com',
-    createdAt: 'somedate',
-    updatedAt: 'someotherDate',
+    message: defaultMessage,
+    member: CURRENT_MEMBER,
+    createdAt: new Date(),
+    updatedAt: new Date(),
+    status: MentionStatus.Unread,
   };
 
-  const createMember = (member: Partial<Member>): MemberRecord =>
-    convertJs({ ...defaultMember, ...member });
+  const CHAT_MENTION_1: ChatMention = {
+    ...defaultMention,
+    id: v4(),
+    message: { ...defaultMessage, id: CHAT_MESSAGES[0].id },
+  };
+  const CHAT_MENTION_2: ChatMention = {
+    ...defaultMention,
+    id: v4(),
+    message: {
+      ...defaultMessage,
+      id: CHAT_MESSAGES[1].id,
+      creator: MEMBERS.ANNA,
+    },
+  };
 
+  const MEMBER_MENTIONS: List<ChatMentionRecord> = convertJs([
+    CHAT_MENTION_1,
+    CHAT_MENTION_2,
+  ]);
   return {
-    data: List([
-      createMember({ id: MEMBERS.ANNA.id, name: MEMBERS.ANNA.name }),
-      createMember({ id: MEMBERS.BOB.id, name: MEMBERS.BOB.name }),
-    ]),
-  } as unknown as QueryObserverResult<List<MemberRecord>>;
+    data: MEMBER_MENTIONS,
+  } as unknown as QueryObserverResult<List<ChatMentionRecord>>;
 };

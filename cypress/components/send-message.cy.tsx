@@ -1,9 +1,9 @@
 /// <reference types="../support/cypress"/>
-import { List } from 'immutable';
-
 import React from 'react';
 
 import { convertJs } from '@graasp/sdk';
+
+import { List } from 'immutable';
 
 import Chatbox from '../../src/components/Chatbox/Chatbox';
 import {
@@ -33,7 +33,7 @@ describe('Enter text', () => {
         currentMember={convertJs(MEMBERS.ANNA)}
         members={List(convertJs(Object.values(MEMBERS)))}
         messages={List(convertJs(CHAT_MESSAGES))}
-        useAvatarHook={fakeHook}
+        useAvatarUrl={fakeHook}
       />,
     );
   });
@@ -67,7 +67,7 @@ describe('Send message', () => {
         members={List(convertJs(Object.values(MEMBERS)))}
         messages={List(convertJs(CHAT_MESSAGES))}
         sendMessageFunction={sendMessageSpy}
-        useAvatarHook={fakeHook}
+        useAvatarUrl={fakeHook}
       />,
     );
     cy.get(dataCyWrapper(inputTextFieldCypress)).type(inputText);
@@ -86,7 +86,7 @@ describe('Send message', () => {
         members={List(convertJs(Object.values(MEMBERS)))}
         messages={List(convertJs(CHAT_MESSAGES))}
         sendMessageFunction={sendMessageSpy}
-        useAvatarHook={fakeHook}
+        useAvatarUrl={fakeHook}
       />,
     );
     cy.get(dataCyWrapper(inputTextFieldCypress))
@@ -108,7 +108,7 @@ describe('Message Length', () => {
         members={List(convertJs(Object.values(MEMBERS)))}
         messages={List(convertJs(CHAT_MESSAGES))}
         sendMessageFunction={sendMessageSpy}
-        useAvatarHook={fakeHook}
+        useAvatarUrl={fakeHook}
       />,
     );
   });

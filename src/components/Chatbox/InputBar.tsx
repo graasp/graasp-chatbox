@@ -42,12 +42,13 @@ const InputBar: FC<Props> = ({
   const handleSendMessageFunction = (body: MessageBodyType): void => {
     if (open) {
       editMessageFunction?.({
-        id: messageId,
-        chatId,
-        body,
+        messageId: messageId,
+        itemId: chatId,
+        // todo: here we only send an update of the text and leave out the mention update
+        body: body.body,
       });
     } else {
-      sendMessageFunction?.({ chatId, body });
+      sendMessageFunction?.({ itemId: chatId, ...body });
     }
     // reset editing
     cancelEdit();

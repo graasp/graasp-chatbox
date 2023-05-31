@@ -1,12 +1,10 @@
-import { List } from 'immutable';
-
-import { FC, useMemo } from 'react';
-import { I18nextProvider } from 'react-i18next';
+import { FC } from 'react';
 
 import { StyledEngineProvider, styled } from '@mui/material';
 
-import { MemberRecord } from '@graasp/sdk/frontend';
-import buildI18n, { langs, namespaces } from '@graasp/translations';
+import { ItemChatRecord, MemberRecord } from '@graasp/sdk/frontend';
+
+import { List } from 'immutable';
 
 import { CONTAINER_HEIGHT_SAFETY_MARGIN } from '../../constants';
 import { CurrentMemberContextProvider } from '../../context/CurrentMemberContext';
@@ -15,7 +13,6 @@ import { HooksContextProvider } from '../../context/HooksContext';
 import { MessagesContextProvider } from '../../context/MessagesContext';
 import {
   AvatarHookType,
-  ChatMessageList,
   DeleteMessageFunctionType,
   EditMessageFunctionType,
   SendMessageFunctionType,
@@ -41,17 +38,16 @@ const InputContainer = styled('div')({
 type Props = {
   id?: string;
   sendMessageBoxId?: string;
-  messages?: ChatMessageList;
+  messages?: ItemChatRecord;
   isLoading?: boolean;
   sendMessageFunction?: SendMessageFunctionType;
   deleteMessageFunction?: DeleteMessageFunctionType;
   editMessageFunction?: EditMessageFunctionType;
-  useAvatarHook: AvatarHookType;
+  useAvatarUrl: AvatarHookType;
   chatId: string;
   showHeader?: boolean;
   showAdminTools?: boolean;
-  lang?: string;
-  currentMember: MemberRecord;
+  currentMember?: MemberRecord;
   members?: List<MemberRecord>;
 };
 
@@ -61,59 +57,50 @@ const Chatbox: FC<Props> = ({
   sendMessageFunction,
   deleteMessageFunction,
   editMessageFunction,
-  useAvatarHook,
+  useAvatarUrl,
   messages,
   isLoading,
   chatId,
   showHeader = false,
   showAdminTools = false,
-  lang = langs.en,
   currentMember,
   members,
 }) => {
-  const i18n = useMemo(() => {
-    const i18nInstance = buildI18n(namespaces.chatbox);
-    i18nInstance.changeLanguage(lang);
-    return i18nInstance;
-  }, [lang]);
-
   if (isLoading) {
     return null;
   }
 
   return (
     <StyledEngineProvider injectFirst>
-      <I18nextProvider i18n={i18n}>
-        <EditingContextProvider>
-          <HooksContextProvider useAvatarHook={useAvatarHook}>
-            <CurrentMemberContextProvider currentMember={currentMember}>
-              <MessagesContextProvider
-                chatId={chatId}
-                members={members}
-                messages={messages}
-              >
-                <>
-                  {showHeader && <Header />}
-                  <ChatboxContainer id={id}>
-                    <Messages
-                      currentMember={currentMember}
-                      isAdmin={showAdminTools}
-                      deleteMessageFunction={deleteMessageFunction}
+      <EditingContextProvider>
+        <HooksContextProvider useAvatarUrl={useAvatarUrl}>
+          <CurrentMemberContextProvider currentMember={currentMember}>
+            <MessagesContextProvider
+              chatId={chatId}
+              members={members}
+              messages={messages}
+            >
+              <>
+                {showHeader && <Header />}
+                <ChatboxContainer id={id}>
+                  <Messages
+                    currentMember={currentMember}
+                    isAdmin={showAdminTools}
+                    deleteMessageFunction={deleteMessageFunction}
+                  />
+                  <InputContainer>
+                    <InputBar
+                      sendMessageBoxId={sendMessageBoxId}
+                      sendMessageFunction={sendMessageFunction}
+                      editMessageFunction={editMessageFunction}
                     />
-                    <InputContainer>
-                      <InputBar
-                        sendMessageBoxId={sendMessageBoxId}
-                        sendMessageFunction={sendMessageFunction}
-                        editMessageFunction={editMessageFunction}
-                      />
-                    </InputContainer>
-                  </ChatboxContainer>
-                </>
-              </MessagesContextProvider>
-            </CurrentMemberContextProvider>
-          </HooksContextProvider>
-        </EditingContextProvider>
-      </I18nextProvider>
+                  </InputContainer>
+                </ChatboxContainer>
+              </>
+            </MessagesContextProvider>
+          </CurrentMemberContextProvider>
+        </HooksContextProvider>
+      </EditingContextProvider>
     </StyledEngineProvider>
   );
 };

@@ -54,7 +54,7 @@ const MentionsTable: FC<Props> = ({
   const [openConfirmation, setOpenConfirmation] = useState(false);
   const { t } = useChatboxTranslation();
   const markAsRead = (id: string): void => {
-    patchMention({ id: id, status: MentionStatus.READ });
+    patchMention({ id: id, status: MentionStatus.Read });
   };
 
   const renderMentionTableContent = (): ReactElement | ReactElement[] => {
@@ -65,6 +65,7 @@ const MentionsTable: FC<Props> = ({
         </TableRow>
       );
     }
+
     return mentions
       .map((m) => (
         <StyledRow
@@ -73,7 +74,7 @@ const MentionsTable: FC<Props> = ({
           onClick={(): void => {
             const link = buildItemLinkForBuilder({
               origin: window.location.origin,
-              itemId: getIdsFromPath(m.itemPath).slice(-1)[0],
+              itemId: getIdsFromPath(m.message.item.path).slice(-1)[0],
               chatOpen: true,
             });
             markAsRead(m.id);
@@ -81,14 +82,14 @@ const MentionsTable: FC<Props> = ({
           }}
         >
           <TableCell>
-            {m.status === MentionStatus.UNREAD && (
+            {m.status === MentionStatus.Unread && (
               <FiberManualRecord fontSize="small" color="primary" />
             )}
           </TableCell>
           <TableCell>
-            <MessageBody messageBody={m.message} />
+            <MessageBody messageBody={m.message.body} />
           </TableCell>
-          <TableCell>{m.creator}</TableCell>
+          <TableCell>{m.message.creator?.name}</TableCell>
           <TableCell>
             <Grid container direction="row">
               <Grid item>
@@ -129,9 +130,9 @@ const MentionsTable: FC<Props> = ({
           variant="outlined"
           onClick={(): void => {
             mentions
-              ?.filter((m) => m.status === MentionStatus.UNREAD)
+              ?.filter((m) => m.status === MentionStatus.Unread)
               .map((m) =>
-                patchMention({ id: m.id, status: MentionStatus.READ }),
+                patchMention({ id: m.id, status: MentionStatus.Read }),
               );
           }}
         >
