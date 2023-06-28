@@ -48,10 +48,10 @@
   "peerDependencies": {
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",
-    "@graasp/query-client": "^1.0.0",
-    "@graasp/sdk": "^1.0.0",
-    "@graasp/translations": "^1.13.0",
-    "@graasp/ui": "^3.0.0",
+    "@graasp/query-client": "*",
+    "@graasp/sdk": "^1.1.0",
+    "@graasp/translations": "^1.15.0",
+    "@graasp/ui": "^3.2.0",
     "@mui/icons-material": "^5.11.11",
     "@mui/lab": "^5.0.0-alpha.121",
     "@mui/material": "^5.11.11",
@@ -82,7 +82,7 @@
     "@cypress/react": "7.0.2",
     "@emotion/react": "11.10.6",
     "@emotion/styled": "11.10.6",
-    "@graasp/query-client": "1.0.0-rc1",
+    "@graasp/query-client": "github:graasp/graasp-query-client#use-query-client",
     "@graasp/sdk": "1.0.0-rc1",
     "@graasp/translations": "1.13.0",
     "@graasp/ui": "3.0.0-rc1",
@@ -132,7 +132,8 @@
   },
   "resolutions": {
     "@types/react": "17.0.2",
-    "immutable": "4.3.0"
+    "immutable": "4.3.0",
+    "@graasp/sdk": "1.1.0"
   },
   "packageManager": "yarn@3.5.0"
 }

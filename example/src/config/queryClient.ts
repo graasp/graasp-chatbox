@@ -4,9 +4,10 @@ import { API_HOST } from './constants';
 
 const {
   queryClient,
+  useQueryClient,
   QueryClientProvider,
   hooks,
-  useMutation,
+  mutations,
   ReactQueryDevtools,
 } = configureQueryClient({
   API_HOST,
@@ -23,8 +24,9 @@ const {
 
 export {
   queryClient,
+  useQueryClient,
   QueryClientProvider,
   hooks,
-  useMutation,
+  mutations,
   ReactQueryDevtools,
 };
