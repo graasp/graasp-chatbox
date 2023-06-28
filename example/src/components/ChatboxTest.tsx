@@ -15,8 +15,6 @@ import {
 } from '@mui/material';
 
 import { MentionButton } from '@graasp/chatbox';
-import { MUTATION_KEYS } from '@graasp/query-client';
-import { ChatMention } from '@graasp/sdk';
 import buildI18n, { namespaces } from '@graasp/translations';
 
 import {
@@ -24,7 +22,7 @@ import {
   DEFAULT_LANG,
   GRAASP_PANEL_WIDTH,
 } from '../config/constants';
-import { hooks, useMutation } from '../config/queryClient';
+import { hooks, mutations } from '../config/queryClient';
 import ChatboxWrapper from './ChatboxWrapper';
 
 const TextInputControl = styled(FormControlLabel)({
@@ -77,29 +75,16 @@ const ChatboxTest: FC = () => {
   const memberId = currentMember?.get('id') as string;
 
   // mutations to handle the mentions
-  const { mutate: patchMentionMutate } = useMutation<
-    ChatMention,
-    unknown,
-    { memberId: string; id: string; status: string }
-  >(MUTATION_KEYS.PATCH_MENTION);
+  const { mutate: patchMentionMutate } = mutations.usePatchMention();
   const patchMentionFunction = (args: { id: string; status: string }): void =>
     patchMentionMutate({ memberId, ...args });
 
-  const { mutate: deleteMentionMutate } = useMutation<
-    ChatMention,
-    unknown,
-    { memberId: string; mentionId: string }
-  >(MUTATION_KEYS.DELETE_MENTION);
+  const { mutate: deleteMentionMutate } = mutations.useDeleteMention();
   const deleteMentionFunction = (mentionId: string): void =>
-    deleteMentionMutate({ memberId, mentionId });
+    deleteMentionMutate(mentionId);
 
-  const { mutate: clearAllMentionsMutate } = useMutation<
-    ChatMention[],
-    unknown,
-    { memberId: string }
-  >(MUTATION_KEYS.CLEAR_MENTIONS);
-  const clearAllMentionsFunction = (): void =>
-    clearAllMentionsMutate({ memberId });
+  const { mutate: clearAllMentionsMutate } = mutations.useClearMentions();
+  const clearAllMentionsFunction = (): void => clearAllMentionsMutate();
 
   // adapt the width of the chatbox to simulate the width used on Graasp
   const onChangePanelWidth = (
@@ -194,11 +179,7 @@ const ChatboxTest: FC = () => {
           />
         </TestContainer>
         <ChatboxContainer>
-          <ChatboxWrapper
-            chatId={chatId}
-            lang={lang}
-            showAdminTools={showTools}
-          />
+          <ChatboxWrapper chatId={chatId} showAdminTools={showTools} />
         </ChatboxContainer>
       </Container>
     </I18nextProvider>
