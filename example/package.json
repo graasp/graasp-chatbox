@@ -16,7 +16,7 @@
     "@mui/material": "link:../node_modules/@mui/material",
     "immutable": "link:../node_modules/immutable",
     "react-scripts": "5.0.1",
-    "typescript": "4.9.4"
+    "typescript": "4.9.5"
   },
   "devDependencies": {
     "@babel/plugin-syntax-object-rest-spread": "7.8.3",
@@ -26,7 +26,7 @@
     "@types/react-dom": "link:../node_modules/@types/react-dom",
     "react": "17.0.2",
     "react-dom": "17.0.2",
-    "react-i18next": "12.0.0"
+    "react-i18next": "12.3.1"
   },
   "browserslist": {
     "production": [
