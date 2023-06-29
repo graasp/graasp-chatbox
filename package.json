@@ -122,10 +122,10 @@
     "react-router-dom": "6.14.0",
     "react-scripts": "5.0.1",
     "rimraf": "3.0.2",
-    "rollup": "2.77.0",
+    "rollup": "2.79.1",
     "rollup-plugin-visualizer": "5.9.0",
-    "ts-loader": "9.3.1",
-    "tslib": "2.5.0",
+    "ts-loader": "9.4.4",
+    "tslib": "2.6.0",
     "typescript": "4.9.5",
     "vite": "4.3.9",
     "vite-plugin-dts": "2.3.0"
