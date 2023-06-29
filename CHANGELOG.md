@@ -1,5 +1,18 @@
 # Changelog
 
+## [2.0.0](https://github.com/graasp/graasp-chatbox/compare/v2.0.0-rc.1...v2.0.0) (2023-06-29)
+
+
+### Bug Fixes
+
+* **deps:** update @graasp/query-client to 1.1.1 ([#104](https://github.com/graasp/graasp-chatbox/issues/104)) ([343e6a7](https://github.com/graasp/graasp-chatbox/commit/343e6a767a6e2f474ba0ea39d8c94082fbb57ae5))
+* **deps:** update dependencies and adapt for new query-client ([#94](https://github.com/graasp/graasp-chatbox/issues/94)) ([28e9491](https://github.com/graasp/graasp-chatbox/commit/28e94914294f93de1cec084077dca7f6771491a8))
+
+
+### chore
+
+* **deps:** update dependency @graasp/sdk to v1.1.1 ([#99](https://github.com/graasp/graasp-chatbox/issues/99)) ([a23e496](https://github.com/graasp/graasp-chatbox/commit/a23e496c9a720d5fe77e76e0450244f9bc3b20d1))
+
 ## [2.0.0-rc.1](https://github.com/graasp/graasp-chatbox/compare/v1.2.1...v2.0.0-rc.1) (2023-05-31)
 
 
