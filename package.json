@@ -135,5 +135,5 @@
     "immutable": "4.3.0",
     "@graasp/sdk": "1.1.1"
   },
-  "packageManager": "yarn@3.5.0"
+  "packageManager": "yarn@3.6.0"
 }
