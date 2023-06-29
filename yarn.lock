@@ -3728,7 +3728,7 @@ __metadata:
     "@cypress/react": 7.0.3
     "@emotion/react": 11.11.1
     "@emotion/styled": 11.11.0
-    "@graasp/query-client": "github:graasp/graasp-query-client#use-query-client"
+    "@graasp/query-client": 1.1.1
     "@graasp/sdk": 1.1.0
     "@graasp/translations": 1.15.0
     "@graasp/ui": 3.2.0
@@ -3815,12 +3815,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@graasp/query-client@github:graasp/graasp-query-client#use-query-client":
-  version: 1.0.1
-  resolution: "@graasp/query-client@https://github.com/graasp/graasp-query-client.git#commit=853114943c53da9823b7b233a129d442b35c4382"
+"@graasp/query-client@npm:1.1.1":
+  version: 1.1.1
+  resolution: "@graasp/query-client@npm:1.1.1"
   dependencies:
-    "@graasp/sdk": 1.0.0
-    "@graasp/translations": 1.13.0
+    "@graasp/sdk": 1.1.1
+    "@graasp/translations": 1.15.0
     axios: 0.27.2
     crypto-js: 4.1.1
     http-status-codes: 2.2.0
@@ -3830,7 +3830,7 @@ __metadata:
     uuid: 9.0.0
   peerDependencies:
     react: ^17.0.0
-  checksum: 3edd1d8081fdd6d8d36499747bfcfc42e6641552a672f3df07dab9b20c661b1849aaa8de25eef698a3247c8d23ff9355be698153bc9883d6427cea9b29afe3a3
+  checksum: 0cee4e1b1353b3702efcd5ef2c80aedb6a6e53ed670114e2611ae4263e57c9d2f916716b0098ce79ef779cc2e9207ad2972915a06f21a208a540978951328e82
   languageName: node
   linkType: hard
 
@@ -3850,15 +3850,6 @@ __metadata:
     uuid: 9.0.0
     validator: 13.9.0
   checksum: 48eda9d8528591df34f27763cd86835b3f2be52c22eb21cf0d432b5a21ef8a2654c910528178611883d1bb05f0b4908b69771cd5fbebbd19c2cebbc1994dbd3b
-  languageName: node
-  linkType: hard
-
-"@graasp/translations@npm:1.13.0":
-  version: 1.13.0
-  resolution: "@graasp/translations@npm:1.13.0"
-  dependencies:
-    i18next: 22.4.15
-  checksum: 319a62cf134e7427f31ba8fb7e9e91b536b9e97b05f773f0d459c42ab933a54c9175af3aa5017b82fcfdf91b934e5faf0f6a7c6dfb98e0b788698ebf2a9a64e1
   languageName: node
   linkType: hard
 
@@ -10898,7 +10889,7 @@ __metadata:
   dependencies:
     "@babel/plugin-syntax-object-rest-spread": 7.8.3
     "@graasp/chatbox": "link:.."
-    "@graasp/query-client": "github:graasp/graasp-query-client#use-query-client"
+    "@graasp/query-client": 1.1.1
     "@mui/icons-material": "link:../node_modules/@mui/icons-material"
     "@mui/material": "link:../node_modules/@mui/material"
     "@types/jest": "link:../node_modules/@types/jest"
