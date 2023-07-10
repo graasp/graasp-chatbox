@@ -86,7 +86,7 @@
     "@graasp/sdk": "1.1.1",
     "@graasp/translations": "1.15.0",
     "@graasp/ui": "3.2.0",
-    "@mui/icons-material": "5.11.16",
+    "@mui/icons-material": "5.13.7",
     "@mui/lab": "5.0.0-alpha.135",
     "@mui/material": "5.13.7",
     "@trivago/prettier-plugin-sort-imports": "4.1.1",
