@@ -70,7 +70,7 @@
     "react-query": "3.39.3",
     "remark-breaks": "3.0.3",
     "remark-gfm": "3.0.1",
-    "tsc-alias": "1.8.2"
+    "tsc-alias": "1.8.7"
   },
   "browserslist": [
     "last 1 Chrome version"
