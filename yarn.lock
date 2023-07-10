@@ -3905,7 +3905,7 @@ __metadata:
     "@types/jest": 29.5.3
     "@types/lodash.truncate": 4.4.7
     "@types/material-ui": 0.21.12
-    "@types/node": 17.0.45
+    "@types/node": 18.16.19
     "@types/react": 17.0.62
     "@types/react-dom": 17.0.20
     "@types/react-mentions": 4.1.8
@@ -5614,10 +5614,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:17.0.45":
-  version: 17.0.45
-  resolution: "@types/node@npm:17.0.45"
-  checksum: aa04366b9103b7d6cfd6b2ef64182e0eaa7d4462c3f817618486ea0422984c51fc69fd0d436eae6c9e696ddfdbec9ccaa27a917f7c2e8c75c5d57827fe3d95e8
+"@types/node@npm:18.16.19":
+  version: 18.16.19
+  resolution: "@types/node@npm:18.16.19"
+  checksum: 63c31f09616508aa7135380a4c79470a897b75f9ff3a70eb069e534dfabdec3f32fb0f9df5939127f1086614d980ddea0fa5e8cc29a49103c4f74cd687618aaf
   languageName: node
   linkType: hard
 
