@@ -3935,7 +3935,7 @@ __metadata:
     react-dom: 17.0.2
     react-i18next: 12.3.1
     react-markdown: 8.0.7
-    react-mentions: 4.4.9
+    react-mentions: 4.4.10
     react-query: 3.39.3
     react-router-dom: 6.14.0
     react-scripts: 5.0.1
@@ -16612,9 +16612,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-mentions@npm:4.4.9":
-  version: 4.4.9
-  resolution: "react-mentions@npm:4.4.9"
+"react-mentions@npm:4.4.10":
+  version: 4.4.10
+  resolution: "react-mentions@npm:4.4.10"
   dependencies:
     "@babel/runtime": 7.4.5
     invariant: ^2.2.4
@@ -16623,7 +16623,7 @@ __metadata:
   peerDependencies:
     react: ">=16.8.3"
     react-dom: ">=16.8.3"
-  checksum: d67d1b4cb6008544775cbe4248d5a5290da16b372da6181bffd6b47d08c74836d9a3062ddae576180ccdf5cc2e4c56b698b89dd951ea2b3bf12aa706af2a627b
+  checksum: 66f3ba6e27ea5b2aea354faa664b64f1f89459c70c0f78c4845418d85c1cae2ca9d20800dc39c1ee1a9c10271c85123376c97808be393b2bf6e12ec9f79e4ae4
   languageName: node
   linkType: hard
 
