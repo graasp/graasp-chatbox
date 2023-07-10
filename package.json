@@ -93,7 +93,7 @@
     "@types/jest": "27.5.2",
     "@types/lodash.truncate": "4.4.7",
     "@types/material-ui": "0.21.12",
-    "@types/node": "17.0.45",
+    "@types/node": "18.16.19",
     "@types/react": "17.0.62",
     "@types/react-dom": "17.0.20",
     "@types/react-mentions": "4.1.8",
