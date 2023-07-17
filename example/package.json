@@ -16,7 +16,7 @@
     "@mui/material": "link:../node_modules/@mui/material",
     "immutable": "link:../node_modules/immutable",
     "react-scripts": "5.0.1",
-    "typescript": "4.9.5"
+    "typescript": "5.1.6"
   },
   "devDependencies": {
     "@babel/plugin-syntax-object-rest-spread": "7.8.3",
