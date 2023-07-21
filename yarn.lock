@@ -3496,10 +3496,10 @@ __metadata:
     "@cypress/react": 7.0.3
     "@emotion/react": 11.11.1
     "@emotion/styled": 11.11.0
-    "@graasp/query-client": 1.1.1
-    "@graasp/sdk": 1.1.1
-    "@graasp/translations": 1.15.0
-    "@graasp/ui": 3.2.0
+    "@graasp/query-client": 1.1.5
+    "@graasp/sdk": 1.1.3
+    "@graasp/translations": 1.15.1
+    "@graasp/ui": 3.2.4
     "@mui/icons-material": 5.13.7
     "@mui/lab": 5.0.0-alpha.135
     "@mui/material": 5.13.7
@@ -3516,7 +3516,7 @@ __metadata:
     "@typescript-eslint/parser": 6.1.0
     "@vitejs/plugin-react": 4.0.3
     cross-env: 7.0.3
-    cypress: 12.17.1
+    cypress: 12.17.2
     env-cmd: 10.1.0
     eslint: 8.44.0
     eslint-config-prettier: 8.8.0
@@ -3528,7 +3528,7 @@ __metadata:
     eslint-plugin-react: 7.32.2
     husky: 8.0.3
     i18next: 21.10.0
-    immutable: 4.3.0
+    immutable: 4.3.1
     lodash.truncate: 4.4.2
     moment: 2.29.4
     prettier: 2.8.8
@@ -3539,7 +3539,7 @@ __metadata:
     react-markdown: 8.0.7
     react-mentions: 4.4.10
     react-query: 3.39.3
-    react-router-dom: 6.14.0
+    react-router-dom: 6.14.2
     react-scripts: 5.0.1
     remark-breaks: 3.0.3
     remark-gfm: 3.0.1
@@ -3550,7 +3550,7 @@ __metadata:
     tsc-alias: 1.8.7
     tslib: 2.6.0
     typescript: 5.1.6
-    vite: 4.4.2
+    vite: 4.4.6
     vite-plugin-dts: 3.3.1
   peerDependencies:
     "@emotion/react": ^11.10.6
@@ -3583,25 +3583,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@graasp/query-client@npm:1.1.1":
-  version: 1.1.1
-  resolution: "@graasp/query-client@npm:1.1.1"
-  dependencies:
-    "@graasp/sdk": 1.1.1
-    "@graasp/translations": 1.15.0
-    axios: 0.27.2
-    crypto-js: 4.1.1
-    http-status-codes: 2.2.0
-    immutable: 4.3.0
-    qs: 6.11.1
-    react-query: 3.39.3
-    uuid: 9.0.0
-  peerDependencies:
-    react: ^17.0.0
-  checksum: 0cee4e1b1353b3702efcd5ef2c80aedb6a6e53ed670114e2611ae4263e57c9d2f916716b0098ce79ef779cc2e9207ad2972915a06f21a208a540978951328e82
-  languageName: node
-  linkType: hard
-
 "@graasp/query-client@npm:1.1.4":
   version: 1.1.4
   resolution: "@graasp/query-client@npm:1.1.4"
@@ -3618,6 +3599,25 @@ __metadata:
   peerDependencies:
     react: ^17.0.0
   checksum: 0d18d9f5b0f6cf6568d2ee693be7cf941b98cc8a27964f5fca4f24f3f4fdc3d2eb597ed5cb44cab1afa745c176fb8168c9f88261890ca7d2348c352416b5cd36
+  languageName: node
+  linkType: hard
+
+"@graasp/query-client@npm:1.1.5":
+  version: 1.1.5
+  resolution: "@graasp/query-client@npm:1.1.5"
+  dependencies:
+    "@graasp/sdk": 1.1.2
+    "@graasp/translations": 1.15.0
+    axios: 0.27.2
+    crypto-js: 4.1.1
+    http-status-codes: 2.2.0
+    immutable: 4.3.0
+    qs: 6.11.2
+    react-query: 3.39.3
+    uuid: 9.0.0
+  peerDependencies:
+    react: ^17.0.0
+  checksum: 6e7303043ff731eddd2d2172586c4d8bb425a14bf359285c9f80f036e320aa86777ad8129c516d76f40e760b2963d2af8add7fdba37b970b9146be0c1b1d2cdd
   languageName: node
   linkType: hard
 
@@ -3649,32 +3649,41 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@graasp/ui@npm:3.2.0":
-  version: 3.2.0
-  resolution: "@graasp/ui@npm:3.2.0"
+"@graasp/translations@npm:1.15.1":
+  version: 1.15.1
+  resolution: "@graasp/translations@npm:1.15.1"
   dependencies:
-    "@graasp/sdk": 1.1.0
+    i18next: 22.4.15
+  checksum: 7bb22e24b88ea1a2aed01beb8ecb9cb487ee4c0f0160e2f4159054200a402f387f016b52afce5b7034a3b50431bad9a8ebb20335c6e79af3dce1341bfe3b593f
+  languageName: node
+  linkType: hard
+
+"@graasp/ui@npm:3.2.4":
+  version: 3.2.4
+  resolution: "@graasp/ui@npm:3.2.4"
+  dependencies:
+    "@graasp/sdk": 1.1.2
     clsx: 1.2.1
     http-status-codes: 2.2.0
     immutable: 4.3.0
-    katex: 0.16.7
+    katex: 0.16.8
     lodash.truncate: 4.4.2
     qs: 6.11.2
     quill-emoji: 0.2.0
-    react-cookie-consent: 7.4.1
+    react-cookie-consent: 8.0.1
     react-quill: 2.0.0-beta.4
     react-rnd: 10.4.1
     react-text-mask: 5.5.0
     uuid: 9.0.0
   peerDependencies:
-    "@emotion/react": ~11.10.6
-    "@emotion/styled": ~11.10.6
-    "@mui/icons-material": ~5.11.9
+    "@emotion/react": ~11.10.6 || ~11.11.0
+    "@emotion/styled": ~11.10.6 || ~11.11.0
+    "@mui/icons-material": ~5.11.9 || ~5.13.0 || ~5.14.0
     "@mui/lab": ~5.0.0-alpha.120
-    "@mui/material": ~5.11.9
+    "@mui/material": ~5.11.9 || ~5.13.0 || ~5.14.0
     ag-grid-community: ^28.1.1
     ag-grid-react: ^28.1.1
-    i18next: ^22.4.15
+    i18next: ^22.4.15 || ^23.0.0
     react: ^17.0.2
     react-dom: ^17.0.2
     react-i18next: ^12.2.0
@@ -3684,7 +3693,7 @@ __metadata:
       optional: true
     ag-grid-react:
       optional: true
-  checksum: 2bd2d1df239c8c748649aab71ad24b8e7ab806f79d24870a24139ccca5a6f8abf11949794604a9e78dceee64d32a5b934d9a51187c187b11f19a6afa67f231dc
+  checksum: 7a7847e97f3aef884d6bae19ae208ce542213742f0e8825d9fe38c51ceac7e9772248e8fdc03ee8ee885e1b19cf4c324291a33fd51a92e7fe5c2080e207a9240
   languageName: node
   linkType: hard
 
@@ -4500,10 +4509,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@remix-run/router@npm:1.7.0":
-  version: 1.7.0
-  resolution: "@remix-run/router@npm:1.7.0"
-  checksum: 80cab2fda9e4b9047c991e9b05b8bda8afa2adf7b85c785d7e6f593a399eb264d6a74302438babc81833b5d304eae0b22832f27552b1601e2ca9001d94b8e174
+"@remix-run/router@npm:1.7.2":
+  version: 1.7.2
+  resolution: "@remix-run/router@npm:1.7.2"
+  checksum: ea43bb662f1f5c93965989b1667fb6e8a301cb69c44341ee92c81cb15ea685b494168e5905593b5777d59058f1455b4b58083d5b895f04382e49362e420d7af4
   languageName: node
   linkType: hard
 
@@ -8719,9 +8728,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cypress@npm:12.17.1":
-  version: 12.17.1
-  resolution: "cypress@npm:12.17.1"
+"cypress@npm:12.17.2":
+  version: 12.17.2
+  resolution: "cypress@npm:12.17.2"
   dependencies:
     "@cypress/request": ^2.88.11
     "@cypress/xvfb": ^1.2.4
@@ -8767,7 +8776,7 @@ __metadata:
     yauzl: ^2.10.0
   bin:
     cypress: bin/cypress
-  checksum: 1f042e3e5931498bdf826cba09060939349e677fca8654c9695760acbec5a424cb69d3445ace57cf80deb496d770ffe571ef791dff72af24e7f560ee43986ee4
+  checksum: 19144db1fe02d92270de71f69ece324affd2f60bafa2f7018440c00907f837b1f8556926206df8b6e7b1c9890d250435730656ccb4a5a31e7872b24dd79c0af8
   languageName: node
   linkType: hard
 
@@ -11919,10 +11928,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"immutable@npm:4.3.0":
-  version: 4.3.0
-  resolution: "immutable@npm:4.3.0"
-  checksum: bbd7ea99e2752e053323543d6ff1cc71a4b4614fa6121f321ca766db2bd2092f3f1e0a90784c5431350b7344a4f792fa002eac227062d59b9377b6c09063b58b
+"immutable@npm:4.3.1":
+  version: 4.3.1
+  resolution: "immutable@npm:4.3.1"
+  checksum: a3a5ba29bd43f3f9a2e4d599763d7455d11a0ea57e50bf43f2836672fc80003e90d69f2a4f5b589f1f3d6986faf97f08ce1e253583740dd33c00adebab88b217
   languageName: node
   linkType: hard
 
@@ -13492,14 +13501,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"katex@npm:0.16.7":
-  version: 0.16.7
-  resolution: "katex@npm:0.16.7"
+"katex@npm:0.16.8":
+  version: 0.16.8
+  resolution: "katex@npm:0.16.8"
   dependencies:
     commander: ^8.3.0
   bin:
     katex: cli.js
-  checksum: 6c3f61e28820ecba074a149d17be6d731d8a950cdd7826851e16f2b0f3627c4119acd8c6e4fb86950063c4e99a6e478720ea6cca3dc82e59bbca81001ee00b70
+  checksum: 4e75b4786101cc5eca0404bb814b2985bec506846f9015e9bf00207a3af14215e341ee62b6e7af2455a1032f8244e47a754642f250eea43d7b8007146ac01fae
   languageName: node
   linkType: hard
 
@@ -16506,14 +16515,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postcss@npm:^8.4.24":
-  version: 8.4.25
-  resolution: "postcss@npm:8.4.25"
+"postcss@npm:^8.4.26":
+  version: 8.4.27
+  resolution: "postcss@npm:8.4.27"
   dependencies:
     nanoid: ^3.3.6
     picocolors: ^1.0.0
     source-map-js: ^1.0.2
-  checksum: 9ed3ab8af43ad5210c28f56f916fd9b8c9f94fbeaebbf645dcf579bc28bdd8056c2a7ecc934668d399b81fedb6128f0c4b299f931e50454964bc911c25a3a0a2
+  checksum: 1cdd0c298849df6cd65f7e646a3ba36870a37b65f55fd59d1a165539c263e9b4872a402bf4ed1ca1bc31f58b68b2835545e33ea1a23b161a1f8aa6d5ded81e78
   languageName: node
   linkType: hard
 
@@ -16666,7 +16675,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prop-types@npm:^15.0.0, prop-types@npm:^15.5.6, prop-types@npm:^15.5.8, prop-types@npm:^15.6.2, prop-types@npm:^15.7.2, prop-types@npm:^15.8.1":
+"prop-types@npm:^15.0.0, prop-types@npm:^15.5.6, prop-types@npm:^15.5.8, prop-types@npm:^15.6.2, prop-types@npm:^15.8.1":
   version: 15.8.1
   resolution: "prop-types@npm:15.8.1"
   dependencies:
@@ -16745,15 +16754,6 @@ __metadata:
   dependencies:
     side-channel: ^1.0.4
   checksum: 6e1f29dd5385f7488ec74ac7b6c92f4d09a90408882d0c208414a34dd33badc1a621019d4c799a3df15ab9b1d0292f97c1dd71dc7c045e69f81a8064e5af7297
-  languageName: node
-  linkType: hard
-
-"qs@npm:6.11.1":
-  version: 6.11.1
-  resolution: "qs@npm:6.11.1"
-  dependencies:
-    side-channel: ^1.0.4
-  checksum: 82ee78ef12a16f3372fae5b64f76f8aedecb000feea882bbff1af146c147f6eb66b08f9c3f34d7e076f28563586956318b9b2ca41141846cdd6d5ad6f241d52f
   languageName: node
   linkType: hard
 
@@ -16910,15 +16910,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-cookie-consent@npm:7.4.1":
-  version: 7.4.1
-  resolution: "react-cookie-consent@npm:7.4.1"
+"react-cookie-consent@npm:8.0.1":
+  version: 8.0.1
+  resolution: "react-cookie-consent@npm:8.0.1"
   dependencies:
     js-cookie: ^2.2.1
-    prop-types: ^15.7.2
   peerDependencies:
-    react: ^16.13.1 || ^17.0.0 || ^18.0.0
-  checksum: 05ab24f7e028da89160baa51c1c2eb62156a98c8e0b55d6548fc95aba8a7e325b06637c1aa1a974b9456f2f1316082dda73ac3b6448fd79ac4cccecda195e4ed
+    react: ">=16"
+  checksum: c99f3e40e3091c439956498158b5b8906cce170763836d6fade98a06ce667eca25aaf3bc407e10a6fb72fc44e5178a2ebf14cbbe4e1b5684a74b7d7f484bd359
   languageName: node
   linkType: hard
 
@@ -17127,27 +17126,27 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-router-dom@npm:6.14.0":
-  version: 6.14.0
-  resolution: "react-router-dom@npm:6.14.0"
+"react-router-dom@npm:6.14.2":
+  version: 6.14.2
+  resolution: "react-router-dom@npm:6.14.2"
   dependencies:
-    "@remix-run/router": 1.7.0
-    react-router: 6.14.0
+    "@remix-run/router": 1.7.2
+    react-router: 6.14.2
   peerDependencies:
     react: ">=16.8"
     react-dom: ">=16.8"
-  checksum: 66800b8779f5ae9f8b8e1f41e25599519a40c532e020a8c1450e1645d2c8cc8351e51ed0f2516584681e9a509c6c40f629f2d80663123e132c68022c0edced03
+  checksum: a53dbc566ecab7890b829d42d38553684f704803c1f615db1bd6aa2d71542c369a1a79e4385be31ae71a14b72ddbcd0d8b51188248c2bccd44e015050d1927df
   languageName: node
   linkType: hard
 
-"react-router@npm:6.14.0":
-  version: 6.14.0
-  resolution: "react-router@npm:6.14.0"
+"react-router@npm:6.14.2":
+  version: 6.14.2
+  resolution: "react-router@npm:6.14.2"
   dependencies:
-    "@remix-run/router": 1.7.0
+    "@remix-run/router": 1.7.2
   peerDependencies:
     react: ">=16.8"
-  checksum: 50a941746d12e81cea5495505c1afbcd099cc7d497624b013454cfd5a360d9403578f8fb3df17973bf775fbff91cb76477448023d537215e6aa71a8b85ae95bd
+  checksum: 7507bf5732b3a8ddbd901c2061216eebca73e194449bff58acc1445171e22bdda36b455b8af066e467748ebfb5875b3c0a565941c46af65c6f653a6ed0dc4fe4
   languageName: node
   linkType: hard
 
@@ -20079,13 +20078,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vite@npm:4.4.2":
-  version: 4.4.2
-  resolution: "vite@npm:4.4.2"
+"vite@npm:4.4.6":
+  version: 4.4.6
+  resolution: "vite@npm:4.4.6"
   dependencies:
     esbuild: ^0.18.10
     fsevents: ~2.3.2
-    postcss: ^8.4.24
+    postcss: ^8.4.26
     rollup: ^3.25.2
   peerDependencies:
     "@types/node": ">= 14"
@@ -20115,7 +20114,7 @@ __metadata:
       optional: true
   bin:
     vite: bin/vite.js
-  checksum: 37a1c3a0ccc4b80c0a696203d3608d6bf7dc98219ddc178e528b972e3305af9ab8f92dea455421024e98c59372f6a97b1b4cc409a05f757a64bff830610053c6
+  checksum: 5a821897f1e03f9786f827acb89e3117a79b8901d184bbc3a2e48d6404b37975a5cdeb6b6969ec24ed1e81d96f1959ed6f9426cbb64501d1e4770bdb20f9c02f
   languageName: node
   linkType: hard
 
