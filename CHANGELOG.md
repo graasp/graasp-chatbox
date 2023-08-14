@@ -1,5 +1,15 @@
 # Changelog
 
+## [2.0.1](https://github.com/graasp/graasp-chatbox/compare/v2.0.0...v2.0.1) (2023-08-14)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @graasp/query-client to v1.1.4 ([#114](https://github.com/graasp/graasp-chatbox/issues/114)) ([2e08832](https://github.com/graasp/graasp-chatbox/commit/2e08832ac4a7354a596e4ee4c421aad8e207e4c2))
+* **deps:** update dependency react-mentions to v4.4.10 ([#119](https://github.com/graasp/graasp-chatbox/issues/119)) ([359b3aa](https://github.com/graasp/graasp-chatbox/commit/359b3aab4fd8bdbc7dfa122faa3aa686a8230b11))
+* **deps:** update dependency tsc-alias to v1.8.7 ([#106](https://github.com/graasp/graasp-chatbox/issues/106)) ([3345457](https://github.com/graasp/graasp-chatbox/commit/334545799d58e7d355e0ce80289eb18d65dfc97d))
+* remove process.env define ([#136](https://github.com/graasp/graasp-chatbox/issues/136)) ([d431bba](https://github.com/graasp/graasp-chatbox/commit/d431bbad6dfa42656a2c34250b818bee21542f28))
+
 ## [2.0.0](https://github.com/graasp/graasp-chatbox/compare/v2.0.0-rc.1...v2.0.0) (2023-06-29)
 
 
