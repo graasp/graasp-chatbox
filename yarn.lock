@@ -3551,7 +3551,7 @@ __metadata:
     remark-breaks: 3.0.3
     remark-gfm: 3.0.1
     rimraf: 3.0.2
-    rollup: 2.79.1
+    rollup: 3.29.4
     rollup-plugin-visualizer: 5.9.2
     ts-loader: 9.4.4
     tsc-alias: 1.8.7
@@ -17938,7 +17938,21 @@ __metadata:
   languageName: node
   linkType: hard
 
-"rollup@npm:2.79.1, rollup@npm:^2.43.1":
+"rollup@npm:3.29.4":
+  version: 3.29.4
+  resolution: "rollup@npm:3.29.4"
+  dependencies:
+    fsevents: ~2.3.2
+  dependenciesMeta:
+    fsevents:
+      optional: true
+  bin:
+    rollup: dist/bin/rollup
+  checksum: 8bb20a39c8d91130825159c3823eccf4dc2295c9a0a5c4ed851a5bf2167dbf24d9a29f23461a54c955e5506395e6cc188eafc8ab0e20399d7489fb33793b184e
+  languageName: node
+  linkType: hard
+
+"rollup@npm:^2.43.1":
   version: 2.79.1
   resolution: "rollup@npm:2.79.1"
   dependencies:
