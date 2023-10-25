@@ -3590,11 +3590,11 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@graasp/query-client@npm:1.1.4":
-  version: 1.1.4
-  resolution: "@graasp/query-client@npm:1.1.4"
+"@graasp/query-client@npm:1.1.5":
+  version: 1.1.5
+  resolution: "@graasp/query-client@npm:1.1.5"
   dependencies:
-    "@graasp/sdk": 1.1.1
+    "@graasp/sdk": 1.1.2
     "@graasp/translations": 1.15.0
     axios: 0.27.2
     crypto-js: 4.1.1
@@ -3605,7 +3605,7 @@ __metadata:
     uuid: 9.0.0
   peerDependencies:
     react: ^17.0.0
-  checksum: 0d18d9f5b0f6cf6568d2ee693be7cf941b98cc8a27964f5fca4f24f3f4fdc3d2eb597ed5cb44cab1afa745c176fb8168c9f88261890ca7d2348c352416b5cd36
+  checksum: 6e7303043ff731eddd2d2172586c4d8bb425a14bf359285c9f80f036e320aa86777ad8129c516d76f40e760b2963d2af8add7fdba37b970b9146be0c1b1d2cdd
   languageName: node
   linkType: hard
 
@@ -11489,7 +11489,7 @@ __metadata:
   dependencies:
     "@babel/plugin-syntax-object-rest-spread": 7.8.3
     "@graasp/chatbox": "link:.."
-    "@graasp/query-client": 1.1.4
+    "@graasp/query-client": 1.1.5
     "@mui/icons-material": "link:../node_modules/@mui/icons-material"
     "@mui/material": "link:../node_modules/@mui/material"
     "@types/jest": "link:../node_modules/@types/jest"
