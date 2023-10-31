@@ -2,9 +2,7 @@ import { FC } from 'react';
 
 import { StyledEngineProvider, styled } from '@mui/material';
 
-import { ItemChatRecord, MemberRecord } from '@graasp/sdk/frontend';
-
-import { List } from 'immutable';
+import { ChatMessage, CompleteMember, Member } from '@graasp/sdk';
 
 import { CONTAINER_HEIGHT_SAFETY_MARGIN } from '../../constants';
 import { CurrentMemberContextProvider } from '../../context/CurrentMemberContext';
@@ -38,7 +36,7 @@ const InputContainer = styled('div')({
 type Props = {
   id?: string;
   sendMessageBoxId?: string;
-  messages?: ItemChatRecord;
+  messages?: ChatMessage[];
   isLoading?: boolean;
   sendMessageFunction?: SendMessageFunctionType;
   deleteMessageFunction?: DeleteMessageFunctionType;
@@ -47,8 +45,8 @@ type Props = {
   chatId: string;
   showHeader?: boolean;
   showAdminTools?: boolean;
-  currentMember?: MemberRecord;
-  members?: List<MemberRecord>;
+  currentMember?: CompleteMember;
+  members?: Member[];
 };
 
 const Chatbox: FC<Props> = ({

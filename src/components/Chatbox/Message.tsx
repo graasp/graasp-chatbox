@@ -5,7 +5,7 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import grey from '@mui/material/colors/grey';
 
-import { ChatMessageRecord, MemberRecord } from '@graasp/sdk/frontend';
+import { ChatMessage, Member } from '@graasp/sdk';
 import { CHATBOX } from '@graasp/translations';
 import { Avatar } from '@graasp/ui';
 
@@ -48,9 +48,9 @@ const AvatarContainer = styled(Box)({
 });
 
 type Props = {
-  message: ChatMessageRecord;
-  currentMember?: MemberRecord;
-  member?: MemberRecord;
+  message: ChatMessage;
+  currentMember?: Member;
+  member?: Member;
 };
 
 const Message: FC<Props> = ({ message, currentMember, member }) => {

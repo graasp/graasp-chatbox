@@ -4,8 +4,6 @@ import { CodeProps } from 'react-markdown/lib/ast-to-react';
 
 import { styled } from '@mui/material';
 
-import { Member } from '@graasp/sdk';
-
 import Highlight, { Language, defaultProps } from 'prism-react-renderer';
 import vsLight from 'prism-react-renderer/themes/vsLight';
 import remarkBreaks from 'remark-breaks';
@@ -89,9 +87,9 @@ type Props = {
 };
 
 const MessageBody: FC<Props> = ({ messageBody }) => {
-  const { id: currentMemberId } = useCurrentMemberContext();
+  const currentMember = useCurrentMemberContext();
   const { members } = useMessagesContext();
-
+  const currentMemberId = currentMember?.id;
   const renderCode = ({
     inline,
     className: classNameInit,
@@ -109,9 +107,8 @@ const MessageBody: FC<Props> = ({ messageBody }) => {
     ) {
       const userId = mention?.groups?.id || legacyMention?.groups?.id;
       const userName =
-        [...(members.toJS() as Member[]), ALL_MEMBERS_MEMBER].find(
-          (m) => m.id === userId,
-        )?.name || UNKNOWN_USER_NAME;
+        [...members, ALL_MEMBERS_MEMBER].find((m) => m.id === userId)?.name ||
+        UNKNOWN_USER_NAME;
 
       return (
         <span

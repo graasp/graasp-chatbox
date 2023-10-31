@@ -4,10 +4,7 @@ import { UseQueryResult } from 'react-query';
 import Notifications from '@mui/icons-material/Notifications';
 import { Badge, BadgeProps, IconButton, SvgIconProps } from '@mui/material';
 
-import { MentionStatus } from '@graasp/sdk';
-import { ChatMentionRecord } from '@graasp/sdk/frontend';
-
-import { List } from 'immutable';
+import { ChatMention, MentionStatus } from '@graasp/sdk';
 
 import { mentionButtonCypress } from '@/config/selectors';
 
@@ -19,7 +16,7 @@ type Props = {
   badgeColor?: BadgeProps['color'];
   useMentions: (
     options?: { getUpdates?: boolean | undefined } | undefined,
-  ) => UseQueryResult<List<ChatMentionRecord>>;
+  ) => UseQueryResult<ChatMention[]>;
   patchMentionFunction: (args: { id: string; status: string }) => void;
   deleteMentionFunction: (id: string) => void;
   clearAllMentionsFunction: () => void;
@@ -48,8 +45,8 @@ const MentionButton: FC<Props> = ({
           overlap="circular"
           color={badgeColor}
           badgeContent={
-            mentions?.filter((m) => m.status === MentionStatus.Unread)?.size ||
-            0
+            mentions?.filter((m) => m.status === MentionStatus.Unread)
+              ?.length || 0
           }
         >
           <Notifications color={color} />

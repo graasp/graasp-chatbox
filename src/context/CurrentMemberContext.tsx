@@ -1,22 +1,15 @@
 import React, { FC, ReactElement } from 'react';
 
-import { MemberRecord } from '@graasp/sdk/frontend';
+import { CompleteMember } from '@graasp/sdk';
 
-export type CurrentMemberContextType = {
-  id: string;
-  name: string;
-  type: string;
-};
+export type CurrentMemberContextType = CompleteMember | undefined;
 
-export const CurrentMemberContext = React.createContext({
-  id: '',
-  name: '',
-  type: '',
-});
+export const CurrentMemberContext =
+  React.createContext<CurrentMemberContextType>(undefined);
 
 type Props = {
   children: ReactElement | ReactElement[];
-  currentMember?: MemberRecord;
+  currentMember?: CompleteMember;
 };
 
 export const CurrentMemberContextProvider: FC<Props> = ({
@@ -24,9 +17,7 @@ export const CurrentMemberContextProvider: FC<Props> = ({
   currentMember,
 }) => {
   return (
-    <CurrentMemberContext.Provider
-      value={currentMember?.toJS() as CurrentMemberContextType}
-    >
+    <CurrentMemberContext.Provider value={currentMember}>
       {children}
     </CurrentMemberContext.Provider>
   );
