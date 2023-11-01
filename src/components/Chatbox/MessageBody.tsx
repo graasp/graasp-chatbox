@@ -89,7 +89,6 @@ type Props = {
 const MessageBody: FC<Props> = ({ messageBody }) => {
   const currentMember = useCurrentMemberContext();
   const { members } = useMessagesContext();
-  const currentMemberId = currentMember?.id;
   const renderCode = ({
     inline,
     className: classNameInit,
@@ -113,7 +112,7 @@ const MessageBody: FC<Props> = ({ messageBody }) => {
       return (
         <span
           style={{
-            ...((userId === currentMemberId || userId === ALL_MEMBERS_ID) && {
+            ...((userId === currentMember?.id || userId === ALL_MEMBERS_ID) && {
               backgroundColor: '#e3c980',
             }),
             fontWeight: 'bold',
