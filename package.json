@@ -131,10 +131,8 @@
     "vite-plugin-dts": "3.4.0"
   },
   "resolutions": {
-    "@types/react": "17.0.62",
-    "@graasp/query-client": "github:graasp/graasp-query-client#433-remove-immutable",
     "@graasp/sdk": "github:graasp/graasp-sdk#remove-frontend",
-    "@graasp/ui": "github:graasp/graasp-ui#remove-immutable"
+    "@types/react": "17.0.62"
   },
   "packageManager": "yarn@3.6.1"
 }
