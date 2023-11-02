@@ -72,7 +72,6 @@ const Messages: FC<Props> = ({
 
   const isOwn = (message: ChatMessage): boolean =>
     message.creator?.id === currentMember?.id;
-
   const messagesByDay = Object.entries(
     groupBy(messages, ({ createdAt }) =>
       moment(createdAt).format(DEFAULT_DATE_FORMAT),

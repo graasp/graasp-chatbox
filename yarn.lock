@@ -3500,22 +3500,21 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@graasp/query-client@npm:1.1.4":
-  version: 1.1.4
-  resolution: "@graasp/query-client@npm:1.1.4"
+"@graasp/query-client@github:graasp/graasp-query-client#433-remove-immutable":
+  version: 1.11.1
+  resolution: "@graasp/query-client@https://github.com/graasp/graasp-query-client.git#commit=acacdb2654303c63a05aaea418ac28fabd7d3e6d"
   dependencies:
-    "@graasp/sdk": 1.1.1
-    "@graasp/translations": 1.15.0
+    "@graasp/sdk": "github:graasp/graasp-sdk#remove-frontend"
+    "@graasp/translations": 1.19.4
     axios: 0.27.2
     crypto-js: 4.1.1
-    http-status-codes: 2.2.0
-    immutable: 4.3.0
+    http-status-codes: 2.3.0
     qs: 6.11.2
     react-query: 3.39.3
-    uuid: 9.0.0
+    uuid: 9.0.1
   peerDependencies:
-    react: ^17.0.0
-  checksum: 0d18d9f5b0f6cf6568d2ee693be7cf941b98cc8a27964f5fca4f24f3f4fdc3d2eb597ed5cb44cab1afa745c176fb8168c9f88261890ca7d2348c352416b5cd36
+    react: ^17.0.0 || ^18.0.0
+  checksum: fdbf25442795f6506a6159f770f04ca626d05e001ad374307eab67f7ee137c63644f64838b80d949ccf8b249b7e9adc9cc2f9514569c02f9f4dd1bb423999044
   languageName: node
   linkType: hard
 
@@ -3555,15 +3554,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@graasp/translations@npm:1.15.0":
-  version: 1.15.0
-  resolution: "@graasp/translations@npm:1.15.0"
-  dependencies:
-    i18next: 22.4.15
-  checksum: e073b83374462f2d108f1d697b7aa14460d05f4ec2e10757db0e0a0a72574bff4721f997851d8e88e871f3704c8bcf887533590dd7acdcbf9d607109bae25c8a
-  languageName: node
-  linkType: hard
-
 "@graasp/translations@npm:1.17.0":
   version: 1.17.0
   resolution: "@graasp/translations@npm:1.17.0"
@@ -3579,6 +3569,15 @@ __metadata:
   dependencies:
     i18next: 22.4.15
   checksum: c5d711c95af9d225eff343a84da5099dc10cb243d78796d5f4daa7a3941d564770a3a9b84f55d3e7b2f95894033245912326928127824cda0611de35ccf30bbe
+  languageName: node
+  linkType: hard
+
+"@graasp/translations@npm:1.19.4":
+  version: 1.19.4
+  resolution: "@graasp/translations@npm:1.19.4"
+  dependencies:
+    i18next: 23.6.0
+  checksum: 50bd0ee306b1ffe0387987ca09922f6f1f4a348fb7f82169826e6fa58a132614eb92a1aedb4fbc0af514aa82af210db2d560d9be2ff2b201b0dc01c4cf542bdd
   languageName: node
   linkType: hard
 
@@ -11415,7 +11414,8 @@ __metadata:
   dependencies:
     "@babel/plugin-syntax-object-rest-spread": 7.8.3
     "@graasp/chatbox": "link:.."
-    "@graasp/query-client": 1.1.4
+    "@graasp/query-client": "github:graasp/graasp-query-client#433-remove-immutable"
+    "@graasp/sdk": "github:graasp/graasp-sdk#remove-frontend"
     "@mui/icons-material": "link:../node_modules/@mui/icons-material"
     "@mui/material": "link:../node_modules/@mui/material"
     "@types/jest": "link:../node_modules/@types/jest"
@@ -11835,6 +11835,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"http-status-codes@npm:2.3.0":
+  version: 2.3.0
+  resolution: "http-status-codes@npm:2.3.0"
+  checksum: dae3b99e0155441b6df28e8265ff27c56a45f82c6092f736414233e9ccf063d5ea93c1e1279e8b499c4642e2538b37995c76b1640ed3f615d0e2883d3a1dcfd5
+  languageName: node
+  linkType: hard
+
 "https-proxy-agent@npm:^5.0.0":
   version: 5.0.1
   resolution: "https-proxy-agent@npm:5.0.1"
@@ -11899,6 +11906,15 @@ __metadata:
   dependencies:
     "@babel/runtime": ^7.20.6
   checksum: fced898227983e439c59e7aa6e7b87e53ad1b8a1c85f0613a968881418266e5336e9443831125590559796075d516fe3dbf8118679c894094a0a404be78b02a2
+  languageName: node
+  linkType: hard
+
+"i18next@npm:23.6.0":
+  version: 23.6.0
+  resolution: "i18next@npm:23.6.0"
+  dependencies:
+    "@babel/runtime": ^7.22.5
+  checksum: 0898be75ce56a5901eb9763c8cd941a23cfc24fbe7b32ba0479c08f58c40c1c88c95596430154a6250087ec76d150335144b2cb637ebaa443490b9af7b6e275e
   languageName: node
   linkType: hard
 

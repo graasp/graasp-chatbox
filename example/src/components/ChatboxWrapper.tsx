@@ -1,4 +1,4 @@
-import { Member, MemberType, convertJs } from '@graasp/sdk';
+import { CompleteMember,  MemberType,  } from '@graasp/sdk';
 
 import { v4 } from 'uuid';
 
@@ -22,19 +22,19 @@ const ChatboxWrapper = ({
   const { data: memberships } = hooks.useItemMemberships(chatId);
 
   const memberIds: string[] =
-    (memberships?.size && memberships?.map((m) => m.member.id)?.toArray()) ||
+    (memberships?.length && memberships?.map((m) => m.member.id)) ||
     [];
   const { data: members } = hooks.useMembers(memberIds);
-  const defaultCurrentMember: Member = {
+  const defaultCurrentMember: CompleteMember = {
     id: v4(),
     name: 'default-member',
     email: 'default-email',
     type: MemberType.Individual,
-    createdAt: new Date(),
-    updatedAt: new Date(),
+    createdAt: new Date().toISOString(),
+    updatedAt: new Date().toISOString(),
     extra: {},
   };
-  const member = currentMember || convertJs(defaultCurrentMember);
+  const member = currentMember || (defaultCurrentMember);
 
   const { mutate: sendMessage } = mutations.usePostItemChatMessage();
   const { mutate: deleteMessage } = mutations.useDeleteItemChatMessage();
@@ -46,7 +46,7 @@ const ChatboxWrapper = ({
       showHeader={showHeader}
       showAdminTools={showAdminTools}
       currentMember={member}
-      members={members?.data?.toSeq()?.toList()}
+      members={members ? Object.values(members?.data):[]}
       messages={chatMessages}
       sendMessageFunction={sendMessage}
       deleteMessageFunction={deleteMessage}

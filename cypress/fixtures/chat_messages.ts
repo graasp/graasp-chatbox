@@ -20,8 +20,8 @@ export const ITEM_CHAT: FolderItemType = {
   extra: { [ItemType.FOLDER]: { childrenOrder: [] } },
   settings: {},
   creator: CURRENT_MEMBER,
-  createdAt: new Date(),
-  updatedAt: new Date(),
+  createdAt: new Date().toISOString(),
+  updatedAt:new Date().toISOString(),
 };
 export const MOCK_MESSAGE_BODY = 'This is a message';
 
@@ -32,8 +32,8 @@ export const getMockMessage = ({
   id: v4(),
   item: ITEM_CHAT,
   creator: member,
-  createdAt: new Date(),
-  updatedAt: new Date(),
+  createdAt:new Date().toISOString(),
+  updatedAt:new Date().toISOString(),
   body: message,
 });
 
@@ -42,32 +42,32 @@ export const CHAT_MESSAGES: ChatMessage[] = [
     id: v4(),
     item: ITEM_CHAT,
     creator: CURRENT_MEMBER,
-    createdAt: new Date(),
-    updatedAt: new Date(),
+    createdAt:new Date().toISOString(),
+    updatedAt:new Date().toISOString(),
     body: 'Some really long text that is going to be wrapped to the next line i think, we need to test.\nOn multiple lines',
   },
   {
     id: v4(),
     item: ITEM_CHAT,
     creator: MEMBERS.BOB,
-    createdAt: new Date(),
-    updatedAt: new Date(),
+    createdAt:new Date().toISOString(),
+    updatedAt:new Date().toISOString(),
     body: 'A lengthy response to the previous message that i think a lot of people will like to read, since it really goes in deep into the topic.\nAnd here also a preview of the next topic.\n\nSigned Bob',
   },
   {
     id: v4(),
     item: ITEM_CHAT,
     creator: MEMBERS.BOB,
-    createdAt: new Date(),
-    updatedAt: new Date(),
+    createdAt:new Date().toISOString(),
+    updatedAt:new Date().toISOString(),
     body: 'And here a text with 2\n\nLine breaks',
   },
   {
     id: v4(),
     item: ITEM_CHAT,
     creator: CURRENT_MEMBER,
-    createdAt: new Date(),
-    updatedAt: new Date(),
+    createdAt:new Date().toISOString(),
+    updatedAt:new Date().toISOString(),
     body: 'Message',
   },
 ];

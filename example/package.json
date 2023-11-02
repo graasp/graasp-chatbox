@@ -11,7 +11,8 @@
   },
   "dependencies": {
     "@graasp/chatbox": "link:..",
-    "@graasp/query-client": "1.1.4",
+    "@graasp/query-client": "github:graasp/graasp-query-client#433-remove-immutable",
+    "@graasp/sdk": "github:graasp/graasp-sdk#remove-frontend",
     "@mui/icons-material": "link:../node_modules/@mui/icons-material",
     "@mui/material": "link:../node_modules/@mui/material",
     "react-scripts": "5.0.1",

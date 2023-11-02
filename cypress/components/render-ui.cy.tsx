@@ -1,7 +1,6 @@
 /// <reference types="../support/cypress" />
 import React from 'react';
 
-import { convertJs } from '@graasp/sdk';
 
 import { v4 } from 'uuid';
 
@@ -26,9 +25,9 @@ describe('Render Avatar', () => {
     cy.mount(
       <Chatbox
         chatId={CHAT_ID}
-        currentMember={convertJs(MEMBERS.ANNA)}
-        members={convertJs(Object.values(MEMBERS))}
-        messages={convertJs(CHAT_MESSAGES)}
+        currentMember={(MEMBERS.ANNA)}
+        members={(Object.values(MEMBERS))}
+        messages={(CHAT_MESSAGES)}
         useAvatarUrl={fakeHook}
       />,
     );
@@ -39,9 +38,9 @@ describe('Render Avatar', () => {
     cy.mount(
       <Chatbox
         chatId={CHAT_ID}
-        currentMember={convertJs(MEMBERS.ANNA)}
-        members={convertJs(Object.values(MEMBERS))}
-        messages={convertJs(CHAT_MESSAGES)}
+        currentMember={(MEMBERS.ANNA)}
+        members={(Object.values(MEMBERS))}
+        messages={(CHAT_MESSAGES)}
         useAvatarUrl={fakeHook}
       />,
     );
@@ -55,9 +54,9 @@ describe('Autofocus input field', () => {
     cy.mount(
       <Chatbox
         chatId={CHAT_ID}
-        currentMember={convertJs(MEMBERS.ANNA)}
-        members={convertJs(Object.values(MEMBERS))}
-        messages={convertJs(CHAT_MESSAGES)}
+        currentMember={(MEMBERS.ANNA)}
+        members={(Object.values(MEMBERS))}
+        messages={(CHAT_MESSAGES)}
         useAvatarUrl={fakeHook}
       />,
     ).then(() =>
@@ -74,9 +73,9 @@ describe('Messages container', () => {
     cy.mount(
       <Chatbox
         chatId={CHAT_ID}
-        currentMember={convertJs(MEMBERS.ANNA)}
-        members={convertJs(Object.values(MEMBERS))}
-        messages={convertJs([
+        currentMember={(MEMBERS.ANNA)}
+        members={(Object.values(MEMBERS))}
+        messages={([
           {
             ...CHAT_MESSAGES[0],
             id: firstId,
