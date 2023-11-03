@@ -1,5 +1,21 @@
 # Changelog
 
+## [3.0.0](https://github.com/graasp/graasp-chatbox/compare/v2.0.1...v3.0.0) (2023-11-03)
+
+
+### ⚠ BREAKING CHANGES
+
+* remove immutable ([#141](https://github.com/graasp/graasp-chatbox/issues/141))
+
+### Features
+
+* remove immutable ([#141](https://github.com/graasp/graasp-chatbox/issues/141)) ([cb0eb86](https://github.com/graasp/graasp-chatbox/commit/cb0eb86c1b5b0672abfdbcc9842c1de440efd318))
+
+
+### Bug Fixes
+
+* add plugin setting ([adc524e](https://github.com/graasp/graasp-chatbox/commit/adc524e107a2d826f1a61e6f671c866ee64b230f))
+
 ## [2.0.1](https://github.com/graasp/graasp-chatbox/compare/v2.0.0...v2.0.1) (2023-08-14)
 
 
