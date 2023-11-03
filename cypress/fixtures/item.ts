@@ -1,4 +1,4 @@
-import { DiscriminatedItem,  ItemType } from '@graasp/sdk';
+import { DiscriminatedItem, ItemType } from '@graasp/sdk';
 
 import { CURRENT_MEMBER } from './members';
 
@@ -13,6 +13,6 @@ export const MOCK_ITEM: DiscriminatedItem = {
   updatedAt: new Date().toISOString(),
   type: ItemType.FOLDER,
   extra: {
-    folder:{childrenOrder:[]}
+    folder: { childrenOrder: [] },
   },
 };

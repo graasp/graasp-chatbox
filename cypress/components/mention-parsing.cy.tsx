@@ -1,7 +1,6 @@
 /// <reference types="../support/cypress"/>
 import React from 'react';
 
-
 import { LEGACY_MENTION_MARKUP, getMentionMarkupFromMember } from '../../src';
 import Chatbox from '../../src/components/Chatbox/Chatbox';
 import { dataCyWrapper, messageIdCyWrapper } from '../../src/config/selectors';
@@ -27,9 +26,9 @@ describe('Mention Highlighting', () => {
     cy.mount(
       <Chatbox
         chatId={CHAT_ID}
-        currentMember={(MEMBERS.ANNA)}
-        members={(Object.values(MEMBERS))}
-        messages={([annaMessage, allMessage])}
+        currentMember={MEMBERS.ANNA}
+        members={Object.values(MEMBERS)}
+        messages={[annaMessage, allMessage]}
         useAvatarUrl={fakeHook}
       />,
     );

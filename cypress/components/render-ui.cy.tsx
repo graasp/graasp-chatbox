@@ -1,7 +1,6 @@
 /// <reference types="../support/cypress" />
 import React from 'react';
 
-
 import { v4 } from 'uuid';
 
 import Chatbox from '../../src/components/Chatbox/Chatbox';
@@ -25,9 +24,9 @@ describe('Render Avatar', () => {
     cy.mount(
       <Chatbox
         chatId={CHAT_ID}
-        currentMember={(MEMBERS.ANNA)}
-        members={(Object.values(MEMBERS))}
-        messages={(CHAT_MESSAGES)}
+        currentMember={MEMBERS.ANNA}
+        members={Object.values(MEMBERS)}
+        messages={CHAT_MESSAGES}
         useAvatarUrl={fakeHook}
       />,
     );
@@ -38,9 +37,9 @@ describe('Render Avatar', () => {
     cy.mount(
       <Chatbox
         chatId={CHAT_ID}
-        currentMember={(MEMBERS.ANNA)}
-        members={(Object.values(MEMBERS))}
-        messages={(CHAT_MESSAGES)}
+        currentMember={MEMBERS.ANNA}
+        members={Object.values(MEMBERS)}
+        messages={CHAT_MESSAGES}
         useAvatarUrl={fakeHook}
       />,
     );
@@ -54,9 +53,9 @@ describe('Autofocus input field', () => {
     cy.mount(
       <Chatbox
         chatId={CHAT_ID}
-        currentMember={(MEMBERS.ANNA)}
-        members={(Object.values(MEMBERS))}
-        messages={(CHAT_MESSAGES)}
+        currentMember={MEMBERS.ANNA}
+        members={Object.values(MEMBERS)}
+        messages={CHAT_MESSAGES}
         useAvatarUrl={fakeHook}
       />,
     ).then(() =>
@@ -73,9 +72,9 @@ describe('Messages container', () => {
     cy.mount(
       <Chatbox
         chatId={CHAT_ID}
-        currentMember={(MEMBERS.ANNA)}
-        members={(Object.values(MEMBERS))}
-        messages={([
+        currentMember={MEMBERS.ANNA}
+        members={Object.values(MEMBERS)}
+        messages={[
           {
             ...CHAT_MESSAGES[0],
             id: firstId,
@@ -92,7 +91,7 @@ describe('Messages container', () => {
             ...CHAT_MESSAGES[0],
             id: lastId,
           },
-        ])}
+        ]}
         useAvatarUrl={fakeHook}
       />,
     ).then(() => {

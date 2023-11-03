@@ -1,7 +1,7 @@
 /// <reference types="../cypress"/>
 import { QueryObserverResult } from 'react-query';
 
-import { ChatMention, ChatMessage, MentionStatus,  } from '@graasp/sdk';
+import { ChatMention, ChatMessage, MentionStatus } from '@graasp/sdk';
 
 import { v4 } from 'uuid';
 
@@ -30,7 +30,7 @@ export const mockUseAvatar = (): SpyHookType => ({
 });
 
 export const mockUseMentions = (): QueryObserverResult<ChatMention[]> => {
-  const defaultMessage:ChatMessage = {
+  const defaultMessage: ChatMessage = {
     id: v4(),
     item: MOCK_ITEM,
     creator: MEMBERS.BOB,
@@ -62,10 +62,7 @@ export const mockUseMentions = (): QueryObserverResult<ChatMention[]> => {
     },
   };
 
-  const MEMBER_MENTIONS: ChatMention[] = ([
-    CHAT_MENTION_1,
-    CHAT_MENTION_2,
-  ]);
+  const MEMBER_MENTIONS: ChatMention[] = [CHAT_MENTION_1, CHAT_MENTION_2];
   return {
     data: MEMBER_MENTIONS,
   } as unknown as QueryObserverResult<ChatMention[]>;

@@ -1,4 +1,4 @@
-import { Member,  } from '@graasp/sdk';
+import { Member } from '@graasp/sdk';
 
 export const MEMBERS: { [key: string]: Member } = {
   ANNA: {
