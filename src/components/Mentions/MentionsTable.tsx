@@ -16,15 +16,13 @@ import {
 } from '@mui/material';
 
 import {
+  ChatMention,
   MentionStatus,
   buildItemLinkForBuilder,
   getIdsFromPath,
 } from '@graasp/sdk';
-import { ChatMentionRecord } from '@graasp/sdk/frontend';
 import { CHATBOX } from '@graasp/translations';
 import { Button } from '@graasp/ui';
-
-import { List } from 'immutable';
 
 import { useChatboxTranslation } from '@/utils/utils';
 
@@ -39,7 +37,7 @@ const StyledRow = styled(TableRow)({
 });
 
 type Props = {
-  mentions?: List<ChatMentionRecord>;
+  mentions?: ChatMention[];
   patchMention: (args: { id: string; status: string }) => void;
   clearAllMentions: () => void;
   deleteMention: (id: string) => void;
@@ -58,7 +56,7 @@ const MentionsTable: FC<Props> = ({
   };
 
   const renderMentionTableContent = (): ReactElement | ReactElement[] => {
-    if (!mentions || !mentions.size) {
+    if (!mentions || !mentions.length) {
       return (
         <TableRow>
           <TableCell colSpan={4}>{t(CHATBOX.EMPTY_NOTIFICATIONS)}</TableCell>
@@ -66,61 +64,59 @@ const MentionsTable: FC<Props> = ({
       );
     }
 
-    return mentions
-      .map((m) => (
-        <StyledRow
-          key={m.id}
-          hover
-          onClick={(): void => {
-            const link = buildItemLinkForBuilder({
-              origin: window.location.origin,
-              itemId: getIdsFromPath(m.message.item.path).slice(-1)[0],
-              chatOpen: true,
-            });
-            markAsRead(m.id);
-            window.location.href = link;
-          }}
-        >
-          <TableCell>
-            {m.status === MentionStatus.Unread && (
-              <FiberManualRecord fontSize="small" color="primary" />
-            )}
-          </TableCell>
-          <TableCell>
-            <MessageBody messageBody={m.message.body} />
-          </TableCell>
-          <TableCell>{m.message.creator?.name}</TableCell>
-          <TableCell>
-            <Grid container direction="row">
-              <Grid item>
-                <Tooltip title={t(CHATBOX.MARK_AS_READ)}>
-                  <IconButton
-                    onClick={(e): void => {
-                      e.stopPropagation();
-                      markAsRead(m.id);
-                    }}
-                  >
-                    <Check color="primary" />
-                  </IconButton>
-                </Tooltip>
-              </Grid>
-              <Grid item>
-                <Tooltip title={t(CHATBOX.DELETE_TOOLTIP)}>
-                  <IconButton
-                    onClick={(e): void => {
-                      e.stopPropagation();
-                      deleteMention(m.id);
-                    }}
-                  >
-                    <Close color="primary" />
-                  </IconButton>
-                </Tooltip>
-              </Grid>
+    return mentions.map((m) => (
+      <StyledRow
+        key={m.id}
+        hover
+        onClick={(): void => {
+          const link = buildItemLinkForBuilder({
+            origin: window.location.origin,
+            itemId: getIdsFromPath(m.message.item.path).slice(-1)[0],
+            chatOpen: true,
+          });
+          markAsRead(m.id);
+          window.location.href = link;
+        }}
+      >
+        <TableCell>
+          {m.status === MentionStatus.Unread && (
+            <FiberManualRecord fontSize="small" color="primary" />
+          )}
+        </TableCell>
+        <TableCell>
+          <MessageBody messageBody={m.message.body} />
+        </TableCell>
+        <TableCell>{m.message.creator?.name}</TableCell>
+        <TableCell>
+          <Grid container direction="row">
+            <Grid item>
+              <Tooltip title={t(CHATBOX.MARK_AS_READ)}>
+                <IconButton
+                  onClick={(e): void => {
+                    e.stopPropagation();
+                    markAsRead(m.id);
+                  }}
+                >
+                  <Check color="primary" />
+                </IconButton>
+              </Tooltip>
             </Grid>
-          </TableCell>
-        </StyledRow>
-      ))
-      .toArray();
+            <Grid item>
+              <Tooltip title={t(CHATBOX.DELETE_TOOLTIP)}>
+                <IconButton
+                  onClick={(e): void => {
+                    e.stopPropagation();
+                    deleteMention(m.id);
+                  }}
+                >
+                  <Close color="primary" />
+                </IconButton>
+              </Tooltip>
+            </Grid>
+          </Grid>
+        </TableCell>
+      </StyledRow>
+    ));
   };
 
   return (

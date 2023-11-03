@@ -119,18 +119,23 @@ const Input: FC<Props> = ({
   };
 
   const { members } = useMessagesContext();
-  const { id: currentMemberId } = useCurrentMemberContext();
+  const currentMember = useCurrentMemberContext();
   const { t } = useChatboxTranslation();
   const [currentMentions, setCurrentMentions] = useState<string[]>([]);
   const [plainTextMessage, setPlainTextMessage] = useState<string>('');
+
+  if (!currentMember) {
+    return null;
+  }
+
+  const { id: currentMemberId } = currentMember;
 
   // exclude self from suggestions and add @all pseudo member
   const memberSuggestions: SuggestionDataItem[] = [
     ALL_MEMBERS_SUGGESTION,
     ...(members
       ?.filter((m) => m.id !== currentMemberId)
-      ?.map((m) => ({ id: m.id, display: m.name }))
-      ?.toArray() || []),
+      ?.map((m) => ({ id: m.id, display: m.name })) || []),
   ];
 
   // compute if message exceeds max length
@@ -145,8 +150,8 @@ const Input: FC<Props> = ({
     if (textInput) {
       let expandedMentions: string[] = currentMentions;
       // expand '@all' to all members in mentions array (skip if there are no members)
-      if (currentMentions.includes(ALL_MEMBERS_ID) && members?.size) {
-        expandedMentions = members.map((m) => m.id).toArray();
+      if (currentMentions.includes(ALL_MEMBERS_ID) && members?.length) {
+        expandedMentions = members.map((m) => m.id);
       }
       sendMessageFunction?.({ body: textInput, mentions: expandedMentions });
       // reset input content

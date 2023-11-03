@@ -11,10 +11,10 @@
   },
   "dependencies": {
     "@graasp/chatbox": "link:..",
-    "@graasp/query-client": "1.1.4",
+    "@graasp/query-client": "2.0.0",
+    "@graasp/sdk": "2.0.0",
     "@mui/icons-material": "link:../node_modules/@mui/icons-material",
     "@mui/material": "link:../node_modules/@mui/material",
-    "immutable": "link:../node_modules/immutable",
     "react-scripts": "5.0.1",
     "typescript": "5.1.6"
   },

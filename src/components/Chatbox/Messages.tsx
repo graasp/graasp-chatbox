@@ -3,8 +3,9 @@ import { FC, Fragment, useEffect, useRef } from 'react';
 import { styled } from '@mui/material';
 import Box from '@mui/material/Box';
 
-import { ChatMessageRecord, MemberRecord } from '@graasp/sdk/frontend';
+import { ChatMessage, CompleteMember } from '@graasp/sdk';
 
+import groupBy from 'lodash.groupby';
 import moment from 'moment';
 
 import { messagesContainerCypress } from '../../config/selectors';
@@ -43,7 +44,7 @@ const SingleMessageContainer = styled(Box)({
 });
 
 type Props = {
-  currentMember?: MemberRecord;
+  currentMember?: CompleteMember | null;
   isAdmin?: boolean;
   deleteMessageFunction?: DeleteMessageFunctionType;
 };
@@ -69,13 +70,13 @@ const Messages: FC<Props> = ({
     }
   }, [ref, messages, open]);
 
-  const isOwn = (message: ChatMessageRecord): boolean =>
+  const isOwn = (message: ChatMessage): boolean =>
     message.creator?.id === currentMember?.id;
-
-  const messagesByDay = messages
-    ?.groupBy(({ createdAt }) => moment(createdAt).format(DEFAULT_DATE_FORMAT))
-    // transform to array to avoid printing the first key
-    .toArray();
+  const messagesByDay = Object.entries(
+    groupBy(messages, ({ createdAt }) =>
+      moment(createdAt).format(DEFAULT_DATE_FORMAT),
+    ),
+  );
 
   return (
     <Container ref={ref} data-cy={messagesContainerCypress}>

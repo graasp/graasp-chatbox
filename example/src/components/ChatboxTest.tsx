@@ -72,12 +72,16 @@ const ChatboxTest: FC = () => {
   }, [window.location.pathname]);
 
   const { data: currentMember } = hooks.useCurrentMember();
-  const memberId = currentMember?.get('id') as string;
+  const memberId = currentMember?.id;
 
   // mutations to handle the mentions
   const { mutate: patchMentionMutate } = mutations.usePatchMention();
-  const patchMentionFunction = (args: { id: string; status: string }): void =>
+  const patchMentionFunction = (args: { id: string; status: string }): void => {
+    if (!memberId) {
+      return console.error('memberId is not defined');
+    }
     patchMentionMutate({ memberId, ...args });
+  };
 
   const { mutate: deleteMentionMutate } = mutations.useDeleteMention();
   const deleteMentionFunction = (mentionId: string): void =>
@@ -111,7 +115,7 @@ const ChatboxTest: FC = () => {
         <TestContainer>
           <Typography variant="h5">Test parameters</Typography>
           <Typography variant="body1">
-            Current User: {currentMember?.get('name')}
+            Current User: {currentMember?.name}
           </Typography>
           <TextInputControl
             control={

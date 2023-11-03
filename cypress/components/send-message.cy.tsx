@@ -1,10 +1,6 @@
 /// <reference types="../support/cypress"/>
 import React from 'react';
 
-import { convertJs } from '@graasp/sdk';
-
-import { List } from 'immutable';
-
 import Chatbox from '../../src/components/Chatbox/Chatbox';
 import {
   charCounterCypress,
@@ -30,9 +26,9 @@ describe('Enter text', () => {
     cy.mount(
       <Chatbox
         chatId={CHAT_ID}
-        currentMember={convertJs(MEMBERS.ANNA)}
-        members={List(convertJs(Object.values(MEMBERS)))}
-        messages={List(convertJs(CHAT_MESSAGES))}
+        currentMember={MEMBERS.ANNA}
+        members={Object.values(MEMBERS)}
+        messages={CHAT_MESSAGES}
         useAvatarUrl={fakeHook}
       />,
     );
@@ -63,9 +59,9 @@ describe('Send message', () => {
     cy.mount(
       <Chatbox
         chatId={CHAT_ID}
-        currentMember={convertJs(MEMBERS.ANNA)}
-        members={List(convertJs(Object.values(MEMBERS)))}
-        messages={List(convertJs(CHAT_MESSAGES))}
+        currentMember={MEMBERS.ANNA}
+        members={Object.values(MEMBERS)}
+        messages={CHAT_MESSAGES}
         sendMessageFunction={sendMessageSpy}
         useAvatarUrl={fakeHook}
       />,
@@ -82,9 +78,9 @@ describe('Send message', () => {
     cy.mount(
       <Chatbox
         chatId={CHAT_ID}
-        currentMember={convertJs(MEMBERS.ANNA)}
-        members={List(convertJs(Object.values(MEMBERS)))}
-        messages={List(convertJs(CHAT_MESSAGES))}
+        currentMember={MEMBERS.ANNA}
+        members={Object.values(MEMBERS)}
+        messages={CHAT_MESSAGES}
         sendMessageFunction={sendMessageSpy}
         useAvatarUrl={fakeHook}
       />,
@@ -104,9 +100,9 @@ describe('Message Length', () => {
     cy.mount(
       <Chatbox
         chatId={CHAT_ID}
-        currentMember={convertJs(MEMBERS.ANNA)}
-        members={List(convertJs(Object.values(MEMBERS)))}
-        messages={List(convertJs(CHAT_MESSAGES))}
+        currentMember={MEMBERS.ANNA}
+        members={Object.values(MEMBERS)}
+        messages={CHAT_MESSAGES}
         sendMessageFunction={sendMessageSpy}
         useAvatarUrl={fakeHook}
       />,

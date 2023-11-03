@@ -12,7 +12,7 @@ import {
   styled,
 } from '@mui/material';
 
-import { ChatMessageRecord } from '@graasp/sdk/frontend';
+import { ChatMessage } from '@graasp/sdk';
 import { CHATBOX } from '@graasp/translations';
 
 import {
@@ -26,7 +26,7 @@ import { DeleteMessageFunctionType } from '@/types';
 import { useChatboxTranslation } from '@/utils/utils';
 
 type Props = {
-  message: ChatMessageRecord;
+  message: ChatMessage;
   isOwn?: boolean;
   deleteMessageFunction?: DeleteMessageFunctionType;
 };
