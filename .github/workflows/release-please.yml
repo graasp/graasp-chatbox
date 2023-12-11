@@ -8,33 +8,24 @@ jobs:
   release-please:
     runs-on: ubuntu-latest
     steps:
-      - uses: google-github-actions/release-please-action@v3
+      - uses: google-github-actions/release-please-action@v4
         id: release
         with:
           release-type: node
-          package-name: graasp-chatbox
-          changelog-types: '[{"type":"feat","section":"Features","hidden":false},{"type":"fix","section":"Bug Fixes","hidden":false},{"type":"docs","section":"Documentation","hidden":false}]'
 
-      - uses: actions/checkout@v3
-        if: ${{ steps.release.outputs.releases_created }}
+      - uses: actions/checkout@v4
+        if: ${{ steps.release.outputs.releases_created == "true" }}
         with:
           ref: ${{ steps.release.outputs.tag_name }}
-
-      - name: Tag major and minor versions
-        uses: jacobsvante/tag-major-minor-action@v0.1
-        if: ${{ steps.release.outputs.releases_created }}
-        with:
-          major: ${{ steps.release.outputs.major }}
-          minor: ${{ steps.release.outputs.minor }}
-
-      - name: Publish to NPM
-        uses: graasp/graasp-deploy/.github/actions/publish-to-npm@v1
-        with:
-          npm-token: ${{ secrets.NPM_TOKEN }}
-        if: ${{ steps.release.outputs.releases_created }}
 
       - name: Auto Tag
         uses: graasp/graasp-deploy/.github/actions/auto-tag-after-release@v1
         with:
           releases_created: ${{ steps.release.outputs.releases_created }}
           tag_name: ${{ steps.release.outputs.tag_name }}
+
+      - name: Publish to NPM
+        uses: graasp/graasp-deploy/.github/actions/publish-to-npm@v1
+        with:
+          npm-token: ${{ secrets.NPM_TOKEN }}
+        if: ${{ steps.release.outputs.releases_created == "true" }}
