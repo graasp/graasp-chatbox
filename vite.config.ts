@@ -35,6 +35,8 @@ export default ({ mode }: { mode: string }): UserConfigExport => {
         // into your library
         external: [
           'react',
+          'i18next',
+          'react-i18next',
           'react-dom',
           '@mui/material',
           '@mui/lab',
@@ -45,13 +47,6 @@ export default ({ mode }: { mode: string }): UserConfigExport => {
           '@graasp/sdk',
           '@graasp/translations',
         ],
-        output: {
-          // Provide global variables to use in the UMD build
-          // for externalized deps
-          globals: {
-            react: 'React',
-          },
-        },
       },
     },
   });
