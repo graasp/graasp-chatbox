@@ -10,7 +10,7 @@ import { UseQueryResult } from '@tanstack/react-query';
 export type AvatarHookType = (args: {
   id?: string;
   size?: string;
-}) => UseQueryResult<string | undefined>;
+}) => UseQueryResult<string, Error>;
 
 export type PartialMemberDisplay = Pick<Member, 'name' | 'id'>;
 
