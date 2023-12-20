@@ -1,11 +1,11 @@
+import { UseQueryResult } from 'react-query';
+
 import {
   DeleteChatMessageParamType,
   Member,
   PatchChatMessageParamType,
   PostChatMessageParamType,
 } from '@graasp/sdk';
-
-import { UseQueryResult } from '@tanstack/react-query';
 
 export type AvatarHookType = (args: {
   id?: string;

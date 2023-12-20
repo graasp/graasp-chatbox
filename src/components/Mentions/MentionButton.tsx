@@ -1,11 +1,10 @@
 import { useState } from 'react';
+import { UseQueryResult } from 'react-query';
 
 import { Notifications } from '@mui/icons-material';
 import { Badge, BadgeProps, IconButton, SvgIconProps } from '@mui/material';
 
 import { ChatMention, MentionStatus } from '@graasp/sdk';
-
-import { UseQueryResult } from '@tanstack/react-query';
 
 import { mentionButtonCypress } from '../../config/selectors';
 import MentionsDialog from './MentionsDialog';
