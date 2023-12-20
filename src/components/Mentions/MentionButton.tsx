@@ -1,13 +1,13 @@
-import { FC, useState } from 'react';
-import { UseQueryResult } from 'react-query';
+import { useState } from 'react';
 
-import Notifications from '@mui/icons-material/Notifications';
+import { Notifications } from '@mui/icons-material';
 import { Badge, BadgeProps, IconButton, SvgIconProps } from '@mui/material';
 
 import { ChatMention, MentionStatus } from '@graasp/sdk';
 
-import { mentionButtonCypress } from '@/config/selectors';
+import { UseQueryResult } from '@tanstack/react-query';
 
+import { mentionButtonCypress } from '../../config/selectors';
 import MentionsDialog from './MentionsDialog';
 import MentionsTable from './MentionsTable';
 
@@ -22,14 +22,14 @@ type Props = {
   clearAllMentionsFunction: () => void;
 };
 
-const MentionButton: FC<Props> = ({
+const MentionButton = ({
   color = 'secondary',
   badgeColor = 'primary',
   useMentions,
   patchMentionFunction,
   deleteMentionFunction,
   clearAllMentionsFunction,
-}) => {
+}: Props): JSX.Element => {
   const { data: mentions } = useMentions();
 
   const [open, setOpen] = useState(false);

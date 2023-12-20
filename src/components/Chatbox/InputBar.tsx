@@ -1,11 +1,12 @@
 import { FC, useEffect, useRef, useState } from 'react';
 
+import { Box } from '@mui/material';
+
 import { MessageBodyType } from '@graasp/sdk';
 
 import { useEditingContext } from '../../context/EditingContext';
 import { useMessagesContext } from '../../context/MessagesContext';
 import { EditMessageFunctionType, SendMessageFunctionType } from '../../types';
-import FullWidthWrapper from '../common/FullWidthWrapper';
 import EditBanner from './EditBanner';
 import Input from './Input';
 
@@ -55,7 +56,7 @@ const InputBar: FC<Props> = ({
   };
 
   return (
-    <FullWidthWrapper>
+    <Box width="100%">
       <EditBanner onClose={handleOnCloseEditingBanner} editedText={body} />
       <Input
         id={sendMessageBoxId}
@@ -64,7 +65,7 @@ const InputBar: FC<Props> = ({
         setTextInput={setTextInput}
         sendMessageFunction={handleSendMessageFunction}
       />
-    </FullWidthWrapper>
+    </Box>
   );
 };
 

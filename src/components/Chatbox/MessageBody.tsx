@@ -1,11 +1,9 @@
 import { FC, ReactElement } from 'react';
-import ReactMarkdown from 'react-markdown';
-import { CodeProps } from 'react-markdown/lib/ast-to-react';
+import ReactMarkdown, { ExtraProps } from 'react-markdown';
 
 import { styled } from '@mui/material';
 
-import Highlight, { Language, defaultProps } from 'prism-react-renderer';
-import vsLight from 'prism-react-renderer/themes/vsLight';
+import { Highlight, Language, themes } from 'prism-react-renderer';
 import remarkBreaks from 'remark-breaks';
 import remarkGfm from 'remark-gfm';
 
@@ -89,20 +87,20 @@ type Props = {
 const MessageBody: FC<Props> = ({ messageBody }) => {
   const currentMember = useCurrentMemberContext();
   const { members } = useMessagesContext();
-  const renderCode = ({
-    inline,
-    className: classNameInit,
-    children: codeContent,
-    ...props
-  }: CodeProps): ReactElement => {
-    const match = (classNameInit || '').match(/language-(\w+)/);
-    const mentionText = codeContent.join('');
+
+  function code(
+    props: JSX.IntrinsicElements['code'] & ExtraProps,
+  ): JSX.Element {
+    const { className: language, children, ...rest } = props;
+
+    const match = /language-(\w+)/.exec(language || '');
+    const mentionText = String(children).replace(/\n$/, '');
     // try to match a legacy mention
     const legacyMention = getMention(mentionText);
     const mention = getIdMention(mentionText);
     if (
-      inline &&
-      ((legacyMention && legacyMention.groups) || (mention && mention.groups))
+      (legacyMention && legacyMention.groups) ||
+      (mention && mention.groups)
     ) {
       const userId = mention?.groups?.id || legacyMention?.groups?.id;
       const userName =
@@ -122,11 +120,10 @@ const MessageBody: FC<Props> = ({ messageBody }) => {
         </span>
       );
     }
-    return !inline && match ? (
+    return match ? (
       <Highlight
-        {...defaultProps}
-        theme={vsLight}
-        code={String(codeContent).replace(/\n$/, '')}
+        theme={themes.vsLight}
+        code={String(children).replace(/\n$/, '')}
         language={match[1] as Language}
         {...props}
       >
@@ -153,19 +150,16 @@ const MessageBody: FC<Props> = ({ messageBody }) => {
         )}
       </Highlight>
     ) : (
-      <code className={classNameInit} {...props}>
-        {codeContent}
+      <code className={language} {...rest}>
+        {children}
       </code>
     );
-  };
+  }
 
   return (
     <StyledReactMarkdown
-      linkTarget="_blank"
       remarkPlugins={[remarkGfm, remarkBreaks]}
-      components={{
-        code: renderCode,
-      }}
+      components={{ code }}
     >
       {messageBody}
     </StyledReactMarkdown>

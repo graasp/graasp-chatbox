@@ -19,11 +19,11 @@ import {
   deleteMenuItemCypress,
   editMenuItemCypress,
   messageActionsButtonCypress,
-} from '@/config/selectors';
-import { LIST_ICON_MIN_WIDTH } from '@/constants';
-import { useEditingContext } from '@/context/EditingContext';
-import { DeleteMessageFunctionType } from '@/types';
-import { useChatboxTranslation } from '@/utils/utils';
+} from '../../config/selectors';
+import { LIST_ICON_MIN_WIDTH } from '../../constants';
+import { useEditingContext } from '../../context/EditingContext';
+import { DeleteMessageFunctionType } from '../../types';
+import { useChatboxTranslation } from '../../utils/utils';
 
 type Props = {
   message: ChatMessage;

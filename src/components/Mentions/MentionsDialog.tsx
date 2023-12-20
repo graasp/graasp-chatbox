@@ -5,7 +5,7 @@ import { Dialog, DialogContent, DialogTitle, styled } from '@mui/material';
 
 import { CHATBOX } from '@graasp/translations';
 
-import { useChatboxTranslation } from '@/utils/utils';
+import { useChatboxTranslation } from '../../utils/utils';
 
 const DialogTitleIcon = styled(Notifications)(({ theme }) => ({
   paddingRight: theme.spacing(1),
