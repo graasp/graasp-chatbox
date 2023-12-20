@@ -38,6 +38,8 @@ export default ({ mode }: { mode: string }): UserConfigExport => {
           'i18next',
           'react-i18next',
           'react-dom',
+          '@emotion/react',
+          '@emotion/styled',
           '@mui/material',
           '@mui/lab',
           '@mui/icons-material',
