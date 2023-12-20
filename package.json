@@ -26,6 +26,7 @@
     "test": "yarn build && yarn cypress:ci",
     "hooks:uninstall": "husky uninstall",
     "hooks:install": "husky install",
+    "prepack": "yarn build",
     "cypress:open": "cypress open",
     "cypress:ci": "cypress run --component"
   },
