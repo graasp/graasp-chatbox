@@ -8,7 +8,12 @@ jobs:
       - name: checkout
         uses: actions/checkout@v4
 
-      - name: component tests 🧪
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Component Tests 🧪
         uses: cypress-io/github-action@v5
         with:
           component: true
@@ -17,7 +22,7 @@ jobs:
       # after the test run completes
       # store videos and any screenshots
       # NOTE: screenshots will be generated only if a test failed
-      - name: upload screenshots
+      - name: Upload Screenshots
         uses: actions/upload-artifact@v3
         if: failure()
         with:
