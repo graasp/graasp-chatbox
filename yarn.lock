@@ -7873,14 +7873,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react@npm:17.0.62":
-  version: 17.0.62
-  resolution: "@types/react@npm:17.0.62"
+"@types/react@npm:17.0.74":
+  version: 17.0.74
+  resolution: "@types/react@npm:17.0.74"
   dependencies:
     "@types/prop-types": "*"
     "@types/scheduler": "*"
     csstype: ^3.0.2
-  checksum: 428a5aff44824ef504e9a9259b5894fe44a5db1c344b536990f07e132900ff5b34cbef0be77a84f30f37be1f88fc8b56dce328f568de8d65de3bfe414c05b2e1
+  checksum: 0234cee33281607db663a9d878e799458d9ab7e31f818528c75f0d0047175fb06db0672b0d2b93977ff066c07636a9a09b121178a55cbb4a4fe82ff61dae7474
   languageName: node
   linkType: hard
 
