@@ -17,7 +17,7 @@ import {
   editBannerOldTextCypress,
 } from '@/config/selectors';
 import { useEditingContext } from '@/context/EditingContext';
-import { normalizeMentions } from '@/utils/mentions';
+import { normalizeMentions } from '@/index';
 import { useChatboxTranslation } from '@/utils/utils';
 
 const Container = styled(Box)({

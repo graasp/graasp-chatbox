@@ -1,7 +1,7 @@
-import { FC, useState } from 'react';
+import { useState } from 'react';
 import { UseQueryResult } from 'react-query';
 
-import Notifications from '@mui/icons-material/Notifications';
+import { Notifications } from '@mui/icons-material';
 import { Badge, BadgeProps, IconButton, SvgIconProps } from '@mui/material';
 
 import { ChatMention, MentionStatus } from '@graasp/sdk';
@@ -22,14 +22,14 @@ type Props = {
   clearAllMentionsFunction: () => void;
 };
 
-const MentionButton: FC<Props> = ({
+const MentionButton = ({
   color = 'secondary',
   badgeColor = 'primary',
   useMentions,
   patchMentionFunction,
   deleteMentionFunction,
   clearAllMentionsFunction,
-}) => {
+}: Props): JSX.Element => {
   const { data: mentions } = useMentions();
 
   const [open, setOpen] = useState(false);

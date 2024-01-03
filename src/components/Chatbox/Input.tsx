@@ -8,13 +8,12 @@ import {
 } from 'react-mentions';
 
 import SendIcon from '@mui/icons-material/Send';
-import { Typography, styled, useTheme } from '@mui/material';
+import { Box, Typography, styled, useTheme } from '@mui/material';
 import IconButton from '@mui/material/IconButton';
 
 import { MessageBodyType } from '@graasp/sdk';
 import { CHATBOX } from '@graasp/translations';
 
-import FullWidthWrapper from '@/components/common/FullWidthWrapper';
 import {
   charCounterCypress,
   inputTextFieldCypress,
@@ -221,7 +220,8 @@ const Input: FC<Props> = ({
 
   return (
     <div>
-      <FullWidthWrapper
+      <Box
+        width="100%"
         display="flex"
         justifyContent="center"
         alignItems="flex-end"
@@ -257,7 +257,7 @@ const Input: FC<Props> = ({
         >
           <SendIcon color={isMessageTooLong ? 'disabled' : 'primary'} />
         </IconButton>
-      </FullWidthWrapper>
+      </Box>
       {renderHelperText()}
     </div>
   );

@@ -1,39 +1,35 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
-
-# dependencies
-node_modules
-/.pnp
-.pnp.js
-
-# production
-/build
-/dist
-
-# misc
-.DS_Store
-bundle-analysis.html
-
+# Logs
+logs
+*.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
 
-# environment files but not encrypted ones
-.env*
-!.env.*.encrypted
+node_modules
+dist
+dist-ssr
+*.local
 
-# cache
-.eslintcache
-
-# testing and coverage
 cypress/screenshots
 /cypress/downloads/
 cypress/videos
 /.nyc_output
 /coverage
 
-
-# jetbrains
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
 .idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+analice.html
 
 # yarn
 .yarn/*
