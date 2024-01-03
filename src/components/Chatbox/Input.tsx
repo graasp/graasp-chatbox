@@ -19,17 +19,17 @@ import {
   inputTextFieldCypress,
   inputTextFieldTextAreaCypress,
   sendButtonCypress,
-} from '../../config/selectors';
+} from '@/config/selectors';
 import {
   ALL_MEMBERS_ID,
   ALL_MEMBERS_SUGGESTION,
   GRAASP_MENTION_COLOR,
   HARD_MAX_MESSAGE_LENGTH,
-} from '../../constants';
-import { useCurrentMemberContext } from '../../context/CurrentMemberContext';
-import { useMessagesContext } from '../../context/MessagesContext';
-import { MENTION_MARKUP } from '../../utils/mentions';
-import { useChatboxTranslation } from '../../utils/utils';
+} from '@/constants';
+import { useCurrentMemberContext } from '@/context/CurrentMemberContext';
+import { useMessagesContext } from '@/context/MessagesContext';
+import { MENTION_MARKUP } from '@/utils/mentions';
+import { useChatboxTranslation } from '@/utils/utils';
 
 const HelperText = styled(Typography)(({ theme }) => ({
   whiteSpace: 'pre',

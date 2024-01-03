@@ -6,7 +6,8 @@ import { Badge, BadgeProps, IconButton, SvgIconProps } from '@mui/material';
 
 import { ChatMention, MentionStatus } from '@graasp/sdk';
 
-import { mentionButtonCypress } from '../../config/selectors';
+import { mentionButtonCypress } from '@/config/selectors';
+
 import MentionsDialog from './MentionsDialog';
 import MentionsTable from './MentionsTable';
 

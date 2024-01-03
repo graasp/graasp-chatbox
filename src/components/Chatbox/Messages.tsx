@@ -8,11 +8,12 @@ import { ChatMessage, CompleteMember } from '@graasp/sdk';
 import groupBy from 'lodash.groupby';
 import moment from 'moment';
 
-import { messagesContainerCypress } from '../../config/selectors';
-import { DEFAULT_DATE_FORMAT, SCROLL_SAFETY_MARGIN } from '../../constants';
-import { useEditingContext } from '../../context/EditingContext';
-import { useMessagesContext } from '../../context/MessagesContext';
-import type { DeleteMessageFunctionType } from '../../types';
+import { messagesContainerCypress } from '@/config/selectors';
+import { DEFAULT_DATE_FORMAT, SCROLL_SAFETY_MARGIN } from '@/constants';
+import { useEditingContext } from '@/context/EditingContext';
+import { useMessagesContext } from '@/context/MessagesContext';
+import type { DeleteMessageFunctionType } from '@/types';
+
 import Date from './Date';
 import Message from './Message';
 import MessageActions from './MessageActions';

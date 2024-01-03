@@ -68,7 +68,6 @@
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.5",
-    "path": "^0.12.7",
     "prettier": "^3.1.1",
     "rollup-plugin-visualizer": "^5.11.0",
     "stylis-plugin-rtl": "^2.1.1",

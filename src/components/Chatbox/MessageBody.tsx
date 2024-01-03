@@ -11,10 +11,10 @@ import {
   ALL_MEMBERS_ID,
   ALL_MEMBERS_MEMBER,
   UNKNOWN_USER_NAME,
-} from '../../constants';
-import { useCurrentMemberContext } from '../../context/CurrentMemberContext';
-import { useMessagesContext } from '../../context/MessagesContext';
-import { getIdMention, getMention } from '../../utils/mentions';
+} from '@/constants';
+import { useCurrentMemberContext } from '@/context/CurrentMemberContext';
+import { useMessagesContext } from '@/context/MessagesContext';
+import { getIdMention, getMention } from '@/utils/mentions';
 
 const StyledReactMarkdown = styled(ReactMarkdown)(({ theme }) => ({
   fontFamily: theme.typography.fontFamily,

@@ -4,9 +4,10 @@ import { Box } from '@mui/material';
 
 import { MessageBodyType } from '@graasp/sdk';
 
-import { useEditingContext } from '../../context/EditingContext';
-import { useMessagesContext } from '../../context/MessagesContext';
-import { EditMessageFunctionType, SendMessageFunctionType } from '../../types';
+import { useEditingContext } from '@/context/EditingContext';
+import { useMessagesContext } from '@/context/MessagesContext';
+import { EditMessageFunctionType, SendMessageFunctionType } from '@/types';
+
 import EditBanner from './EditBanner';
 import Input from './Input';
 

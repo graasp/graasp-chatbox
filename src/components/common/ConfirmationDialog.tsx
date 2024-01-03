@@ -13,8 +13,8 @@ import { Button } from '@graasp/ui';
 import {
   cancelDialogButtonCypress,
   confirmDialogButtonCypress,
-} from '../../config/selectors';
-import { useChatboxTranslation } from '../../utils/utils';
+} from '@/config/selectors';
+import { useChatboxTranslation } from '@/utils/utils';
 
 type Props = {
   open: boolean;

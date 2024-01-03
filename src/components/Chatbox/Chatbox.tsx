@@ -4,17 +4,18 @@ import { StyledEngineProvider, styled } from '@mui/material';
 
 import { ChatMessage, CompleteMember, Member } from '@graasp/sdk';
 
-import { CONTAINER_HEIGHT_SAFETY_MARGIN } from '../../constants';
-import { CurrentMemberContextProvider } from '../../context/CurrentMemberContext';
-import { EditingContextProvider } from '../../context/EditingContext';
-import { HooksContextProvider } from '../../context/HooksContext';
-import { MessagesContextProvider } from '../../context/MessagesContext';
+import { CONTAINER_HEIGHT_SAFETY_MARGIN } from '@/constants';
+import { CurrentMemberContextProvider } from '@/context/CurrentMemberContext';
+import { EditingContextProvider } from '@/context/EditingContext';
+import { HooksContextProvider } from '@/context/HooksContext';
+import { MessagesContextProvider } from '@/context/MessagesContext';
 import {
   AvatarHookType,
   DeleteMessageFunctionType,
   EditMessageFunctionType,
   SendMessageFunctionType,
-} from '../../types';
+} from '@/types';
+
 import Header from './Header';
 import InputBar from './InputBar';
 import Messages from './Messages';

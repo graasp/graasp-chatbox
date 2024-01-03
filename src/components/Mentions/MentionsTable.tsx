@@ -24,7 +24,8 @@ import {
 import { CHATBOX } from '@graasp/translations';
 import { Button } from '@graasp/ui';
 
-import { useChatboxTranslation } from '../../utils/utils';
+import { useChatboxTranslation } from '@/utils/utils';
+
 import MessageBody from '../Chatbox/MessageBody';
 import ConfirmationDialog from '../common/ConfirmationDialog';
 

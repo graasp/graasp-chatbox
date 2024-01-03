@@ -15,10 +15,10 @@ import {
   editBannerCloseButtonCypress,
   editBannerCypress,
   editBannerOldTextCypress,
-} from '../../config/selectors';
-import { useEditingContext } from '../../context/EditingContext';
-import { normalizeMentions } from '../../utils/mentions';
-import { useChatboxTranslation } from '../../utils/utils';
+} from '@/config/selectors';
+import { useEditingContext } from '@/context/EditingContext';
+import { normalizeMentions } from '@/index';
+import { useChatboxTranslation } from '@/utils/utils';
 
 const Container = styled(Box)({
   display: 'flex',

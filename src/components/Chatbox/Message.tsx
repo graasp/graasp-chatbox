@@ -12,14 +12,15 @@ import { Avatar } from '@graasp/ui';
 import truncate from 'lodash.truncate';
 import moment from 'moment';
 
-import { messageIdCyWrapper } from '../../config/selectors';
+import { messageIdCyWrapper } from '@/config/selectors';
 import {
   DEFAULT_USER_NAME,
   MAX_AVATAR_SIZE,
   MAX_USERNAME_LENGTH,
-} from '../../constants';
-import { useHooksContext } from '../../context/HooksContext';
-import { useChatboxTranslation } from '../../utils/utils';
+} from '@/constants';
+import { useHooksContext } from '@/context/HooksContext';
+import { useChatboxTranslation } from '@/utils/utils';
+
 import MessageBody from './MessageBody';
 
 const MessageWrapper = styled(Box)(({ theme }) => ({

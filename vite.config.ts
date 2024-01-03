@@ -1,6 +1,7 @@
 import react from '@vitejs/plugin-react';
 import { resolve } from 'path';
 import { visualizer } from 'rollup-plugin-visualizer';
+import { fileURLToPath } from 'url';
 import { PluginOption, UserConfigExport, defineConfig } from 'vite';
 import dts from 'vite-plugin-dts';
 
@@ -34,22 +35,30 @@ export default ({ mode }: { mode: string }): UserConfigExport => {
         // make sure to externalize deps that shouldn't be bundled
         // into your library
         external: [
-          'react',
-          'i18next',
-          'react-i18next',
-          'react-dom',
           '@emotion/react',
           '@emotion/styled',
-          '@mui/material',
-          '@mui/lab',
-          '@mui/icons-material',
-          'react-query',
-          'stylis-plugin-rtl',
-          '@graasp/ui',
           '@graasp/sdk',
           '@graasp/translations',
+          '@graasp/ui',
+          '@mui/icons-material',
+          '@mui/lab',
+          '@mui/material',
+          'i18next',
+          'react-dom',
+          'react-i18next',
+          'react-query',
+          'react',
+          'stylis-plugin-rtl',
         ],
       },
+    },
+    resolve: {
+      alias: [
+        {
+          find: '@',
+          replacement: fileURLToPath(new URL('./src', import.meta.url)),
+        },
+      ],
     },
   });
 };
