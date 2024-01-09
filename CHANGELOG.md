@@ -1,5 +1,17 @@
 # Changelog
 
+## [3.0.1](https://github.com/graasp/graasp-chatbox/compare/v3.0.0...v3.0.1) (2024-01-09)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @graasp/sdk to v2.1.0 ([#155](https://github.com/graasp/graasp-chatbox/issues/155)) ([99ab2b6](https://github.com/graasp/graasp-chatbox/commit/99ab2b68c3d2faffe4af71754edbbd2a005342ca))
+* **deps:** update dependency @graasp/translations to v1.22.0 ([#156](https://github.com/graasp/graasp-chatbox/issues/156)) ([14b6acb](https://github.com/graasp/graasp-chatbox/commit/14b6acbb66febd397623b286866c2ce68bac9114))
+* **deps:** update dependency @graasp/ui to v4.2.0 ([#157](https://github.com/graasp/graasp-chatbox/issues/157)) ([2ace4e2](https://github.com/graasp/graasp-chatbox/commit/2ace4e2b4bcc1a38c0aeb1e1231c4c88b39e63a5))
+* remove example project ([7a87d21](https://github.com/graasp/graasp-chatbox/commit/7a87d213c3b874f8652f04c4e7c0bd687e823d59))
+* udpate release-please condition ([e84c324](https://github.com/graasp/graasp-chatbox/commit/e84c324977f3ac5b1ffebb864cf02876cb9ed036))
+* update dependencies ([#144](https://github.com/graasp/graasp-chatbox/issues/144)) ([664ec81](https://github.com/graasp/graasp-chatbox/commit/664ec819a63ff5ceb69ee55ce29d86ea0bdfbcf9))
+
 ## [3.0.0](https://github.com/graasp/graasp-chatbox/compare/v2.0.1...v3.0.0) (2023-11-03)
 
 
