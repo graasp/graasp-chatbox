@@ -861,8 +861,8 @@ __metadata:
   linkType: hard
 
 "@graasp/ui@npm:^4.1.1":
-  version: 4.1.1
-  resolution: "@graasp/ui@npm:4.1.1"
+  version: 4.2.0
+  resolution: "@graasp/ui@npm:4.2.0"
   dependencies:
     "@graasp/sdk": "npm:3.3.0"
     http-status-codes: "npm:2.3.0"
@@ -883,8 +883,8 @@ __metadata:
     "@mui/icons-material": ~5.11.9 || ~5.13.0 || ~5.14.0
     "@mui/lab": ~5.0.0-alpha.120
     "@mui/material": ~5.11.9 || ~5.13.0 || ~5.14.0
-    ag-grid-community: ^28.1.1
-    ag-grid-react: ^28.1.1
+    ag-grid-community: 29.3.5
+    ag-grid-react: 29.3.5
     i18next: ^22.4.15 || ^23.0.0
     react: ^17.0.2
     react-dom: ^17.0.2
@@ -897,7 +897,7 @@ __metadata:
       optional: true
     ag-grid-react:
       optional: true
-  checksum: ce39233c447183f71c37f4d96e305004158328c61ac93c81a692b3b3a6b609b6a403a063022e7dcac0aaced5ebf546c577bcb9ccab1d5406cc60cdf316a89bf6
+  checksum: d24d8311a3823a610138abcd204c65eb818393dadcefa13458552c51f5ee89eb38a1c01fcee7f68e65bb08e540379f484162f946edb4578b15c4598eca22c727
   languageName: node
   linkType: hard
 
