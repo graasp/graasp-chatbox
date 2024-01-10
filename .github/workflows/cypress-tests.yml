@@ -18,7 +18,7 @@ jobs:
       # store videos and any screenshots
       # NOTE: screenshots will be generated only if a test failed
       - name: Upload Screenshots
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         if: failure()
         with:
           name: cypress-screenshots
