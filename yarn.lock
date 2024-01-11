@@ -866,11 +866,11 @@ __metadata:
   linkType: hard
 
 "@graasp/translations@npm:^1.21.1":
-  version: 1.22.0
-  resolution: "@graasp/translations@npm:1.22.0"
+  version: 1.22.1
+  resolution: "@graasp/translations@npm:1.22.1"
   dependencies:
-    i18next: "npm:23.7.11"
-  checksum: 30be184a077507e0e98de14e39348c7cd05a0322f7180fe20a9a2aad994f68f7dbbae44f2aa965f549fc49f7ef4f50b9d1c06095bb9a30467ed5fb098df655da
+    i18next: "npm:23.7.16"
+  checksum: 6436df868323cacfb28e1e21fc6bedda797dc2dfbc148ece7be9290a677d085a48e6c694b1a7122610b7c5824342a6e65f83424624ec9ff4917710ea13f21704
   languageName: node
   linkType: hard
 
@@ -4120,12 +4120,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"i18next@npm:23.7.11":
-  version: 23.7.11
-  resolution: "i18next@npm:23.7.11"
+"i18next@npm:23.7.16":
+  version: 23.7.16
+  resolution: "i18next@npm:23.7.16"
   dependencies:
     "@babel/runtime": "npm:^7.23.2"
-  checksum: 66f166bebbde565d4e0ed98b0f046f49d97c591fa8e4919bd9badfb6be3b1057ec137b9332beb4835b2d6714af243726dc3996d60f54949cfd23c839b0f8a3b6
+  checksum: 8e18d56970a468e0c3f38cf105d2eb22c2b275b596ecd3ac7193fe6e73a57705f3415b510ea761b702163278b975bcab6c15187f254d350fb0501baf66927168
   languageName: node
   linkType: hard
 
