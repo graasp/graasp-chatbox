@@ -43,6 +43,7 @@ export default ({ mode }: { mode: string }): UserConfigExport => {
           '@mui/icons-material',
           '@mui/lab',
           '@mui/material',
+          'date-fns',
           'i18next',
           'react-dom',
           'react-i18next',
