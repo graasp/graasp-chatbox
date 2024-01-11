@@ -852,7 +852,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@graasp/sdk@npm:3.3.0, @graasp/sdk@npm:^3.3.0":
+"@graasp/sdk@npm:3.3.0":
   version: 3.3.0
   resolution: "@graasp/sdk@npm:3.3.0"
   dependencies:
@@ -862,6 +862,19 @@ __metadata:
     uuid: "npm:9.0.1"
     validator: "npm:13.11.0"
   checksum: ad5cf6844b88b34225ce67426df0d41af00f434a6260711d42321e753497e74929c909b9cab053b92c6dd340f811612d3ed3a247bd91ad6e9dbb2059b45ad08d
+  languageName: node
+  linkType: hard
+
+"@graasp/sdk@npm:^3.3.0":
+  version: 3.4.0
+  resolution: "@graasp/sdk@npm:3.4.0"
+  dependencies:
+    "@graasp/etherpad-api": "npm:2.1.1"
+    date-fns: "npm:3.2.0"
+    js-cookie: "npm:3.0.5"
+    uuid: "npm:9.0.1"
+    validator: "npm:13.11.0"
+  checksum: 94370731bb6e1bf895a6b8c763c32cf49fb35292494ea183d4c6f40b71c7136f5d3eb4ff9ac1cffaa84437930626ba15e8c2faa1a66c7fdadd2b79508882510b
   languageName: node
   linkType: hard
 
@@ -2820,7 +2833,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"date-fns@npm:^3.2.0":
+"date-fns@npm:3.2.0, date-fns@npm:^3.2.0":
   version: 3.2.0
   resolution: "date-fns@npm:3.2.0"
   checksum: f93e987f785d7f2b7349986d150b014ce21fa6425e2e1edea6f0e01731dceef68deabf0f723689c28604e857648ac708a52b924cb7584e4321835686aa665371
