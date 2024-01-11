@@ -5,14 +5,15 @@ import Box from '@mui/material/Box';
 
 import { ChatMessage, CompleteMember } from '@graasp/sdk';
 
+import { format } from 'date-fns';
 import groupBy from 'lodash.groupby';
-import moment from 'moment';
 
 import { messagesContainerCypress } from '@/config/selectors';
 import { DEFAULT_DATE_FORMAT, SCROLL_SAFETY_MARGIN } from '@/constants';
 import { useEditingContext } from '@/context/EditingContext';
 import { useMessagesContext } from '@/context/MessagesContext';
 import type { DeleteMessageFunctionType } from '@/types';
+import { useChatboxTranslation } from '@/utils/utils';
 
 import Date from './Date';
 import Message from './Message';
@@ -55,6 +56,7 @@ const Messages: FC<Props> = ({
   isAdmin = false,
   deleteMessageFunction,
 }) => {
+  const { i18n } = useChatboxTranslation();
   const ref = useRef<HTMLDivElement>(null);
   const { open } = useEditingContext();
   const { messages, members } = useMessagesContext();
@@ -75,7 +77,7 @@ const Messages: FC<Props> = ({
     message.creator?.id === currentMember?.id;
   const messagesByDay = Object.entries(
     groupBy(messages, ({ createdAt }) =>
-      moment(createdAt).format(DEFAULT_DATE_FORMAT),
+      format(createdAt, DEFAULT_DATE_FORMAT, { locale: i18n.locale }),
     ),
   );
 

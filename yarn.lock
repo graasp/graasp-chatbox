@@ -799,12 +799,12 @@ __metadata:
     "@typescript-eslint/parser": "npm:^6.14.0"
     "@vitejs/plugin-react": "npm:^4.2.1"
     cypress: "npm:^13.6.1"
+    date-fns: "npm:^3.2.0"
     eslint: "npm:^8.55.0"
     eslint-config-prettier: "npm:^9.1.0"
     eslint-plugin-react-hooks: "npm:^4.6.0"
     eslint-plugin-react-refresh: "npm:^0.4.5"
     lodash.groupby: "npm:^4.6.0"
-    moment: "npm:^2.29.4"
     prettier: "npm:^3.1.1"
     prism-react-renderer: "npm:^2.3.1"
     react: "npm:^18.2.0"
@@ -831,6 +831,7 @@ __metadata:
     "@mui/icons-material": ^5.11.11
     "@mui/lab": ^5.0.0-alpha.121
     "@mui/material": ^5.11.11
+    date-fns: ^3.2.0
     i18next: ^23.10.0
     react: "*"
     react-dom: "*"
@@ -2816,6 +2817,13 @@ __metadata:
   dependencies:
     "@babel/runtime": "npm:^7.21.0"
   checksum: e4b521fbf22bc8c3db332bbfb7b094fd3e7627de0259a9d17c7551e2d2702608a7307a449206065916538e384f37b181565447ce2637ae09828427aed9cb5581
+  languageName: node
+  linkType: hard
+
+"date-fns@npm:^3.2.0":
+  version: 3.2.0
+  resolution: "date-fns@npm:3.2.0"
+  checksum: f93e987f785d7f2b7349986d150b014ce21fa6425e2e1edea6f0e01731dceef68deabf0f723689c28604e857648ac708a52b924cb7584e4321835686aa665371
   languageName: node
   linkType: hard
 
@@ -5555,13 +5563,6 @@ __metadata:
   bin:
     mkdirp: bin/cmd.js
   checksum: 46ea0f3ffa8bc6a5bc0c7081ffc3907777f0ed6516888d40a518c5111f8366d97d2678911ad1a6882bf592fa9de6c784fea32e1687bb94e1f4944170af48a5cf
-  languageName: node
-  linkType: hard
-
-"moment@npm:^2.29.4":
-  version: 2.29.4
-  resolution: "moment@npm:2.29.4"
-  checksum: 844c6f3ce42862ac9467c8ca4f5e48a00750078682cc5bda1bc0e50cc7ca88e2115a0f932d65a06e4a90e26cb78892be9b3ca3dd6546ca2c4d994cebb787fc2b
   languageName: node
   linkType: hard
 

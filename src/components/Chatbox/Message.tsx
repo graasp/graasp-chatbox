@@ -9,8 +9,8 @@ import { ChatMessage, CompleteMember, Member } from '@graasp/sdk';
 import { CHATBOX } from '@graasp/translations';
 import { Avatar } from '@graasp/ui';
 
+import { format } from 'date-fns';
 import truncate from 'lodash.truncate';
-import moment from 'moment';
 
 import { messageIdCyWrapper } from '@/config/selectors';
 import {
@@ -54,7 +54,7 @@ type Props = {
 };
 
 const Message: FC<Props> = ({ message, currentMember, member }) => {
-  const { t } = useChatboxTranslation();
+  const { t, i18n } = useChatboxTranslation();
   const { useAvatarUrl } = useHooksContext();
   const {
     data: avatarUrl,
@@ -69,7 +69,7 @@ const Message: FC<Props> = ({ message, currentMember, member }) => {
   const creatorName = member?.name
     ? truncate(member?.name, { length: MAX_USERNAME_LENGTH })
     : DEFAULT_USER_NAME;
-  const time = moment(message.createdAt as unknown as string).format('hh:mm a');
+  const time = format(message.createdAt, 'hh:mm aaa', { locale: i18n.locale });
 
   return (
     <MessageWrapper
