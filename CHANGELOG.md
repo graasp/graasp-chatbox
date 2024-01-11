@@ -1,5 +1,18 @@
 # Changelog
 
+## [3.0.2](https://github.com/graasp/graasp-chatbox/compare/v3.0.1...v3.0.2) (2024-01-11)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @emotion/react to v11.11.3 ([b597e01](https://github.com/graasp/graasp-chatbox/commit/b597e0172dfd9f56cb905b2aa0cca311a2498b00))
+* **deps:** update dependency @graasp/sdk to v3.4.0 ([#166](https://github.com/graasp/graasp-chatbox/issues/166)) ([1556261](https://github.com/graasp/graasp-chatbox/commit/1556261990248bd282fec931e710823855c11330))
+* **deps:** update dependency @graasp/translations to v1.22.1 ([#165](https://github.com/graasp/graasp-chatbox/issues/165)) ([61de584](https://github.com/graasp/graasp-chatbox/commit/61de584a1e873dcbd7c42fb311b7cf21cd68f48e))
+* **deps:** update dependency cypress to v13.6.2 ([d6de439](https://github.com/graasp/graasp-chatbox/commit/d6de439b6caebcfe329ee00c9fb5e4d319aff19f))
+* **deps:** update dependency react-router-dom to v6.21.1 ([e25b38f](https://github.com/graasp/graasp-chatbox/commit/e25b38f0284658e9f181e532d9633a32c12c583c))
+* remove moment ([#164](https://github.com/graasp/graasp-chatbox/issues/164)) ([4f81653](https://github.com/graasp/graasp-chatbox/commit/4f816530ff508351f6d1fe352fd8d1aac2742957))
+* remove private field in package.json ([f96d275](https://github.com/graasp/graasp-chatbox/commit/f96d275086f502a07286b9917f1dfd0b6ab15aba))
+
 ## [3.0.1](https://github.com/graasp/graasp-chatbox/compare/v3.0.0...v3.0.1) (2024-01-09)
 
 
