@@ -11,6 +11,7 @@ import Typography from '@mui/material/Typography';
 
 import { CHATBOX } from '@graasp/translations';
 
+import { useChatboxTranslation } from '@/config/i18n';
 import {
   editBannerCloseButtonCypress,
   editBannerCypress,
@@ -18,7 +19,6 @@ import {
 } from '@/config/selectors';
 import { useEditingContext } from '@/context/EditingContext';
 import { normalizeMentions } from '@/index';
-import { useChatboxTranslation } from '@/utils/utils';
 
 const Container = styled(Box)({
   display: 'flex',

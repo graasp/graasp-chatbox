@@ -10,11 +10,11 @@ import {
 import { CHATBOX } from '@graasp/translations';
 import { Button } from '@graasp/ui';
 
+import { useChatboxTranslation } from '@/config/i18n';
 import {
   cancelDialogButtonCypress,
   confirmDialogButtonCypress,
 } from '@/config/selectors';
-import { useChatboxTranslation } from '@/utils/utils';
 
 type Props = {
   open: boolean;

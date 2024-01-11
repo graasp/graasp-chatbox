@@ -8,7 +8,7 @@ import Typography from '@mui/material/Typography';
 
 import { CHATBOX } from '@graasp/translations';
 
-import { useChatboxTranslation } from '@/utils/utils';
+import { useChatboxTranslation } from '@/config/i18n';
 
 const RootContainer = styled('div')({
   flexGrow: 1,

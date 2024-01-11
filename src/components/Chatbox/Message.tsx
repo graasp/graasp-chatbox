@@ -12,6 +12,7 @@ import { Avatar } from '@graasp/ui';
 import { format } from 'date-fns';
 import truncate from 'lodash.truncate';
 
+import { getDateLocale, useChatboxTranslation } from '@/config/i18n';
 import { messageIdCyWrapper } from '@/config/selectors';
 import {
   DEFAULT_USER_NAME,
@@ -19,7 +20,6 @@ import {
   MAX_USERNAME_LENGTH,
 } from '@/constants';
 import { useHooksContext } from '@/context/HooksContext';
-import { useChatboxTranslation } from '@/utils/utils';
 
 import MessageBody from './MessageBody';
 
@@ -69,7 +69,9 @@ const Message: FC<Props> = ({ message, currentMember, member }) => {
   const creatorName = member?.name
     ? truncate(member?.name, { length: MAX_USERNAME_LENGTH })
     : DEFAULT_USER_NAME;
-  const time = format(message.createdAt, 'hh:mm aaa', { locale: i18n.locale });
+  const time = format(message.createdAt, 'HH:mm aaa', {
+    locale: getDateLocale(i18n.language),
+  });
 
   return (
     <MessageWrapper

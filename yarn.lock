@@ -804,6 +804,7 @@ __metadata:
     eslint-config-prettier: "npm:^9.1.0"
     eslint-plugin-react-hooks: "npm:^4.6.0"
     eslint-plugin-react-refresh: "npm:^0.4.5"
+    i18next: "npm:^23.7.11"
     lodash.groupby: "npm:^4.6.0"
     prettier: "npm:^3.1.1"
     prism-react-renderer: "npm:^2.3.1"
@@ -832,7 +833,7 @@ __metadata:
     "@mui/lab": ^5.0.0-alpha.121
     "@mui/material": ^5.11.11
     date-fns: ^3.2.0
-    i18next: ^23.10.0
+    i18next: ^23.7.0
     react: "*"
     react-dom: "*"
     react-i18next: ^13.0.0 || ^14.0.0
@@ -4126,6 +4127,15 @@ __metadata:
   dependencies:
     "@babel/runtime": "npm:^7.23.2"
   checksum: 66f166bebbde565d4e0ed98b0f046f49d97c591fa8e4919bd9badfb6be3b1057ec137b9332beb4835b2d6714af243726dc3996d60f54949cfd23c839b0f8a3b6
+  languageName: node
+  linkType: hard
+
+"i18next@npm:^23.7.11":
+  version: 23.7.16
+  resolution: "i18next@npm:23.7.16"
+  dependencies:
+    "@babel/runtime": "npm:^7.23.2"
+  checksum: 8e18d56970a468e0c3f38cf105d2eb22c2b275b596ecd3ac7193fe6e73a57705f3415b510ea761b702163278b975bcab6c15187f254d350fb0501baf66927168
   languageName: node
   linkType: hard
 
