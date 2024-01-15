@@ -1644,20 +1644,20 @@ __metadata:
   linkType: hard
 
 "@types/node@npm:*, @types/node@npm:^20.10.5":
-  version: 20.11.0
-  resolution: "@types/node@npm:20.11.0"
+  version: 20.11.1
+  resolution: "@types/node@npm:20.11.1"
   dependencies:
     undici-types: "npm:~5.26.4"
-  checksum: 560aa850dfccb83326f9cba125459f6c3fb0c71ec78f22c61e4d248f1df78bd25fd6792cef573dfbdc49c882f8e38bb1a82ca87e0e28ff2513629c704c2b02af
+  checksum: f665cdce28b0b6e57338d1f74e0599ee9b10eac74cff729921c8f473807398e9aba2f8cf74c74a4d3dfbc2d616c73267da7de3003ed3c8152ea366bf4c96a91a
   languageName: node
   linkType: hard
 
 "@types/node@npm:^18.17.5":
-  version: 18.19.6
-  resolution: "@types/node@npm:18.19.6"
+  version: 18.19.7
+  resolution: "@types/node@npm:18.19.7"
   dependencies:
     undici-types: "npm:~5.26.4"
-  checksum: 6cfffb738124d43bc240d21f3196270c15b9a4137644eee35a7e75460fda8df881630e350d00fcfd66caa37bf1ed80771f2da0d4c7cd0016c9f616934a2377c5
+  checksum: cdac009dae672b4ef357d6eab85bbb56e837023e5d95b19fed2d621049fe861e974574e977a18b2ba57869b2d2db7af1a96a2c7ced2fd0495058e35afbff8c0f
   languageName: node
   linkType: hard
 
@@ -1719,13 +1719,13 @@ __metadata:
   linkType: hard
 
 "@types/react@npm:*, @types/react@npm:^18.2.45":
-  version: 18.2.47
-  resolution: "@types/react@npm:18.2.47"
+  version: 18.2.48
+  resolution: "@types/react@npm:18.2.48"
   dependencies:
     "@types/prop-types": "npm:*"
     "@types/scheduler": "npm:*"
     csstype: "npm:^3.0.2"
-  checksum: e98ea1827fe60636d0f7ce206397159a29fc30613fae43e349e32c10ad3c0b7e0ed2ded2f3239e07bd5a3cba8736b6114ba196acccc39905ca4a06f56a8d2841
+  checksum: 7e89f18ea2928b1638f564b156d692894dcb9352a7e0a807873c97e858abe1f23dbd165a25dd088a991344e973fdeef88ba5724bfb64504b74072cbc9c220c3a
   languageName: node
   linkType: hard
 
@@ -4150,16 +4150,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"i18next@npm:23.7.16":
-  version: 23.7.16
-  resolution: "i18next@npm:23.7.16"
-  dependencies:
-    "@babel/runtime": "npm:^7.23.2"
-  checksum: 8e18d56970a468e0c3f38cf105d2eb22c2b275b596ecd3ac7193fe6e73a57705f3415b510ea761b702163278b975bcab6c15187f254d350fb0501baf66927168
-  languageName: node
-  linkType: hard
-
-"i18next@npm:^23.7.11":
+"i18next@npm:23.7.16, i18next@npm:^23.7.11":
   version: 23.7.16
   resolution: "i18next@npm:23.7.16"
   dependencies:
@@ -7511,8 +7502,8 @@ __metadata:
   linkType: hard
 
 "vite-plugin-dts@npm:^3.6.4":
-  version: 3.7.0
-  resolution: "vite-plugin-dts@npm:3.7.0"
+  version: 3.7.1
+  resolution: "vite-plugin-dts@npm:3.7.1"
   dependencies:
     "@microsoft/api-extractor": "npm:7.39.0"
     "@rollup/pluginutils": "npm:^5.1.0"
@@ -7526,7 +7517,7 @@ __metadata:
   peerDependenciesMeta:
     vite:
       optional: true
-  checksum: a387ac7729da0330fd5c2d5336cc3b840f8df54cdcb08085d06fd5b86dd10bd0cc2481e03ba89aa4064e58e79c558c79d22599e6f441305e55ed05aa623d63bd
+  checksum: 48e82059f7f8f4c0fb59eb1331a90e4f2157be75d321fe69b069828509224a50acc45065a5e9886548c3f15765ac5e92a10dd0e731cdcf97764907cf60f6ea7e
   languageName: node
   linkType: hard
 
