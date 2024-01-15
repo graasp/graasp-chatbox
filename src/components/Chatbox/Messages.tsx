@@ -8,12 +8,12 @@ import { ChatMessage, CompleteMember } from '@graasp/sdk';
 import { format } from 'date-fns';
 import groupBy from 'lodash.groupby';
 
+import { getDateLocale, useChatboxTranslation } from '@/config/i18n';
 import { messagesContainerCypress } from '@/config/selectors';
 import { DEFAULT_DATE_FORMAT, SCROLL_SAFETY_MARGIN } from '@/constants';
 import { useEditingContext } from '@/context/EditingContext';
 import { useMessagesContext } from '@/context/MessagesContext';
 import type { DeleteMessageFunctionType } from '@/types';
-import { useChatboxTranslation } from '@/utils/utils';
 
 import Date from './Date';
 import Message from './Message';
@@ -77,7 +77,9 @@ const Messages: FC<Props> = ({
     message.creator?.id === currentMember?.id;
   const messagesByDay = Object.entries(
     groupBy(messages, ({ createdAt }) =>
-      format(createdAt, DEFAULT_DATE_FORMAT, { locale: i18n.locale }),
+      format(createdAt, DEFAULT_DATE_FORMAT, {
+        locale: getDateLocale(i18n.language),
+      }),
     ),
   );
 

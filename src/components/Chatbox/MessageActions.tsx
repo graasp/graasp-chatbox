@@ -15,6 +15,7 @@ import {
 import { ChatMessage } from '@graasp/sdk';
 import { CHATBOX } from '@graasp/translations';
 
+import { useChatboxTranslation } from '@/config/i18n';
 import {
   deleteMenuItemCypress,
   editMenuItemCypress,
@@ -23,7 +24,6 @@ import {
 import { LIST_ICON_MIN_WIDTH } from '@/constants';
 import { useEditingContext } from '@/context/EditingContext';
 import { DeleteMessageFunctionType } from '@/types';
-import { useChatboxTranslation } from '@/utils/utils';
 
 type Props = {
   message: ChatMessage;

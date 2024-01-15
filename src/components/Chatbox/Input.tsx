@@ -14,6 +14,7 @@ import IconButton from '@mui/material/IconButton';
 import { MessageBodyType } from '@graasp/sdk';
 import { CHATBOX } from '@graasp/translations';
 
+import { useChatboxTranslation } from '@/config/i18n';
 import {
   charCounterCypress,
   inputTextFieldCypress,
@@ -29,7 +30,6 @@ import {
 import { useCurrentMemberContext } from '@/context/CurrentMemberContext';
 import { useMessagesContext } from '@/context/MessagesContext';
 import { MENTION_MARKUP } from '@/utils/mentions';
-import { useChatboxTranslation } from '@/utils/utils';
 
 const HelperText = styled(Typography)(({ theme }) => ({
   whiteSpace: 'pre',
