@@ -1,5 +1,16 @@
 # Changelog
 
+## [3.0.3](https://github.com/graasp/graasp-chatbox/compare/v3.0.2...v3.0.3) (2024-01-16)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @graasp/sdk to v3.4.1 ([#175](https://github.com/graasp/graasp-chatbox/issues/175)) ([0d72904](https://github.com/graasp/graasp-chatbox/commit/0d7290489af40cec0c59030336c46ba39bfad9d1))
+* **deps:** update dependency @graasp/ui to v4.3.0 ([#167](https://github.com/graasp/graasp-chatbox/issues/167)) ([56c1141](https://github.com/graasp/graasp-chatbox/commit/56c11411ae8f5206f7f5a0bf26c7067c94cc03bb))
+* **deps:** update dependency react-router-dom to v6.21.2 ([#169](https://github.com/graasp/graasp-chatbox/issues/169)) ([a20d37d](https://github.com/graasp/graasp-chatbox/commit/a20d37d2fe0cb2df03473d0ef01837aeef99f9f7))
+* **deps:** update mui (non-major) ([dc4a4e7](https://github.com/graasp/graasp-chatbox/commit/dc4a4e7a68b8efe09c93035eb667ecc85ce203ec))
+* use date locale with date-fns ([#168](https://github.com/graasp/graasp-chatbox/issues/168)) ([4ce843a](https://github.com/graasp/graasp-chatbox/commit/4ce843ae4615be0637d72e5792d0977d4cded901))
+
 ## [3.0.2](https://github.com/graasp/graasp-chatbox/compare/v3.0.1...v3.0.2) (2024-01-11)
 
 
