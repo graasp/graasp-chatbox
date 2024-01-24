@@ -849,7 +849,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@graasp/sdk@npm:3.4.1, @graasp/sdk@npm:^3.3.0":
+"@graasp/sdk@npm:3.4.1":
   version: 3.4.1
   resolution: "@graasp/sdk@npm:3.4.1"
   dependencies:
@@ -858,6 +858,18 @@ __metadata:
     uuid: "npm:9.0.1"
     validator: "npm:13.11.0"
   checksum: 3f5c395c907d3908b1e138b1596d5308a4a3b2f18d2e62336609862159c769174532c987f157e1798fb4205d9567476e7aa7d507acba43f9de4b4cab38aa34d6
+  languageName: node
+  linkType: hard
+
+"@graasp/sdk@npm:^3.3.0":
+  version: 3.5.0
+  resolution: "@graasp/sdk@npm:3.5.0"
+  dependencies:
+    date-fns: "npm:3.2.0"
+    js-cookie: "npm:3.0.5"
+    uuid: "npm:9.0.1"
+    validator: "npm:13.11.0"
+  checksum: 9485fc07fbd7e2557e05f16512ce08601df603fb7b5a641e804cfd12241d1b16894b2ee14ba520605f4f338f78290925ec8c7308824e582815d9c8ddfbae159f
   languageName: node
   linkType: hard
 
