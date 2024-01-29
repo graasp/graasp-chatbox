@@ -862,14 +862,15 @@ __metadata:
   linkType: hard
 
 "@graasp/sdk@npm:^3.3.0":
-  version: 3.5.0
-  resolution: "@graasp/sdk@npm:3.5.0"
+  version: 3.6.0
+  resolution: "@graasp/sdk@npm:3.6.0"
   dependencies:
-    date-fns: "npm:3.2.0"
     js-cookie: "npm:3.0.5"
-    uuid: "npm:9.0.1"
     validator: "npm:13.11.0"
-  checksum: 9485fc07fbd7e2557e05f16512ce08601df603fb7b5a641e804cfd12241d1b16894b2ee14ba520605f4f338f78290925ec8c7308824e582815d9c8ddfbae159f
+  peerDependencies:
+    date-fns: ^3
+    uuid: ^9
+  checksum: 8d160296f90fe753530107865ea446d7ff2caeb5a5093ab4f8c3a36c91ee6dd06ddb6a9b240ec923193bd0bc3c735c0c591d2402fcc119706af77514d6c6b362
   languageName: node
   linkType: hard
 
