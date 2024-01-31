@@ -849,15 +849,15 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@graasp/sdk@npm:3.4.1":
-  version: 3.4.1
-  resolution: "@graasp/sdk@npm:3.4.1"
+"@graasp/sdk@npm:3.5.0":
+  version: 3.5.0
+  resolution: "@graasp/sdk@npm:3.5.0"
   dependencies:
     date-fns: "npm:3.2.0"
     js-cookie: "npm:3.0.5"
     uuid: "npm:9.0.1"
     validator: "npm:13.11.0"
-  checksum: 10c0/3f5c395c907d3908b1e138b1596d5308a4a3b2f18d2e62336609862159c769174532c987f157e1798fb4205d9567476e7aa7d507acba43f9de4b4cab38aa34d6
+  checksum: 10c0/9485fc07fbd7e2557e05f16512ce08601df603fb7b5a641e804cfd12241d1b16894b2ee14ba520605f4f338f78290925ec8c7308824e582815d9c8ddfbae159f
   languageName: node
   linkType: hard
 
@@ -884,14 +884,13 @@ __metadata:
   linkType: hard
 
 "@graasp/ui@npm:^4.1.1":
-  version: 4.3.1
-  resolution: "@graasp/ui@npm:4.3.1"
+  version: 4.5.0
+  resolution: "@graasp/ui@npm:4.5.0"
   dependencies:
-    "@graasp/sdk": "npm:3.4.1"
+    "@graasp/sdk": "npm:3.5.0"
     http-status-codes: "npm:2.3.0"
     katex: "npm:0.16.9"
     lodash.truncate: "npm:4.4.2"
-    qs: "npm:6.11.2"
     quill-emoji: "npm:0.2.0"
     react-cookie-consent: "npm:9.0.0"
     react-quill: "npm:2.0.0-beta.4"
@@ -920,7 +919,7 @@ __metadata:
       optional: true
     ag-grid-react:
       optional: true
-  checksum: 10c0/50069307096e172ea2c33d72bf6dddcfd2ce34ed64322bd2dc5610acc2f24f40a827a6d93aca062f9a9e43fac2258644fdcc6f7baa50d3b05fade6767de7bd9e
+  checksum: 10c0/cf7729bc17f71f139eb9066b9d31a7bec8ae7ec045d41c5929dabca339f2bccf380f90bff3c339702b99e4bde192feec03807ebe727d4b991fe2d56f8a3212af
   languageName: node
   linkType: hard
 
@@ -5911,15 +5910,6 @@ __metadata:
   dependencies:
     side-channel: "npm:^1.0.4"
   checksum: 10c0/7a8c9d77968aeccb769aedd7e047c0e0109dad0cfa57cab1ad906f4069fd58f361b80abd2de5854ba9a09b4c5d06d6a2c82108766f1f1527572fe6130deaa471
-  languageName: node
-  linkType: hard
-
-"qs@npm:6.11.2":
-  version: 6.11.2
-  resolution: "qs@npm:6.11.2"
-  dependencies:
-    side-channel: "npm:^1.0.4"
-  checksum: 10c0/4f95d4ff18ed480befcafa3390022817ffd3087fc65f146cceb40fc5edb9fa96cb31f648cae2fa96ca23818f0798bd63ad4ca369a0e22702fcd41379b3ab6571
   languageName: node
   linkType: hard
 
