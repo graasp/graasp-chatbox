@@ -98,5 +98,5 @@
     "react-dom": "*",
     "react-i18next": "^13.0.0 || ^14.0.0"
   },
-  "packageManager": "yarn@4.0.2"
+  "packageManager": "yarn@4.1.0"
 }
