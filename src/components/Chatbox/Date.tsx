@@ -1,22 +1,14 @@
-import { FC } from 'react';
-
-import { styled } from '@mui/material';
-import Box from '@mui/material/Box';
-import Typography from '@mui/material/Typography';
-
-const DateContainer = styled(Box)(({ theme }) => ({
-  padding: theme.spacing(0.5, 1, 1),
-}));
+import { Box, Typography } from '@mui/material';
 
 type Props = {
   date: string;
 };
 
-const Date: FC<Props> = ({ date }) => {
+const Date = ({ date }: Props): JSX.Element => {
   return (
-    <DateContainer p={1} alignSelf="center">
+    <Box p={1} alignSelf="center">
       <Typography variant="subtitle2">{date}</Typography>
-    </DateContainer>
+    </Box>
   );
 };
 

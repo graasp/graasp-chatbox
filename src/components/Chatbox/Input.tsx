@@ -8,8 +8,7 @@ import {
 } from 'react-mentions';
 
 import SendIcon from '@mui/icons-material/Send';
-import { Box, Typography, styled, useTheme } from '@mui/material';
-import IconButton from '@mui/material/IconButton';
+import { Box, IconButton, Typography, styled, useTheme } from '@mui/material';
 
 import { MessageBodyType } from '@graasp/sdk';
 import { CHATBOX } from '@graasp/translations';

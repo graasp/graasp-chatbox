@@ -1,7 +1,6 @@
 import { FC, Fragment, useEffect, useRef } from 'react';
 
-import { styled } from '@mui/material';
-import Box from '@mui/material/Box';
+import { Box, styled } from '@mui/material';
 
 import { ChatMessage, CompleteMember } from '@graasp/sdk';
 
