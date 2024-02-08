@@ -884,8 +884,8 @@ __metadata:
   linkType: hard
 
 "@graasp/ui@npm:^4.1.1":
-  version: 4.5.0
-  resolution: "@graasp/ui@npm:4.5.0"
+  version: 4.6.1
+  resolution: "@graasp/ui@npm:4.6.1"
   dependencies:
     "@graasp/sdk": "npm:3.5.0"
     http-status-codes: "npm:2.3.0"
@@ -919,7 +919,7 @@ __metadata:
       optional: true
     ag-grid-react:
       optional: true
-  checksum: 10c0/cf7729bc17f71f139eb9066b9d31a7bec8ae7ec045d41c5929dabca339f2bccf380f90bff3c339702b99e4bde192feec03807ebe727d4b991fe2d56f8a3212af
+  checksum: 10c0/a928e14ff835404d39b5c87cb4d5a7efe1e573673a20c13a225734f01e67a93347842ca50ffd8584911b9956364efa78c04cd2cdac12efdb4a3aefb2457c6a86
   languageName: node
   linkType: hard
 
