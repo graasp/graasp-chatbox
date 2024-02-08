@@ -18,8 +18,7 @@
 import React from 'react';
 import { I18nextProvider, initReactI18next } from 'react-i18next';
 
-import { CssBaseline } from '@mui/material';
-import { ThemeProvider, createTheme } from '@mui/material/styles';
+import { CssBaseline, ThemeProvider, createTheme } from '@mui/material';
 
 import buildI18n from '@graasp/translations';
 

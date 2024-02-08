@@ -1,7 +1,4 @@
-import { FC } from 'react';
-
-import Close from '@mui/icons-material/Close';
-import Edit from '@mui/icons-material/Edit';
+import { Close, Edit } from '@mui/icons-material';
 import { styled } from '@mui/material';
 import Box from '@mui/material/Box';
 import Divider from '@mui/material/Divider';
@@ -46,7 +43,7 @@ type Props = {
   editedText: string;
 };
 
-const EditBanner: FC<Props> = ({ onClose, editedText }) => {
+const EditBanner = ({ onClose, editedText }: Props) => {
   const { open } = useEditingContext();
   const { t } = useChatboxTranslation();
   if (!open) {
