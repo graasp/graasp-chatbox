@@ -1,8 +1,6 @@
 import { FC } from 'react';
 
-import { styled } from '@mui/material';
-import Box from '@mui/material/Box';
-import Typography from '@mui/material/Typography';
+import { Box, Typography, styled } from '@mui/material';
 import grey from '@mui/material/colors/grey';
 
 import { ChatMessage, CompleteMember, Member } from '@graasp/sdk';

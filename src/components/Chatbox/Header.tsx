@@ -1,10 +1,7 @@
 import { FC } from 'react';
 
 import ChatIcon from '@mui/icons-material/Chat';
-import { styled } from '@mui/material';
-import AppBar from '@mui/material/AppBar';
-import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
+import { AppBar, Toolbar, Typography, styled } from '@mui/material';
 
 import { CHATBOX } from '@graasp/translations';
 
