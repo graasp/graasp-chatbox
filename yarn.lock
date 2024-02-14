@@ -909,8 +909,8 @@ __metadata:
   linkType: hard
 
 "@graasp/sdk@npm:^3.7.0":
-  version: 3.7.0
-  resolution: "@graasp/sdk@npm:3.7.0"
+  version: 3.8.0
+  resolution: "@graasp/sdk@npm:3.8.0"
   dependencies:
     "@faker-js/faker": "npm:8.4.0"
     js-cookie: "npm:3.0.5"
@@ -918,7 +918,7 @@ __metadata:
   peerDependencies:
     date-fns: ^3
     uuid: ^9
-  checksum: 10c0/c52b9ed43f2aceba48e6718a2ad93fa00c8eb7dc2e3af72385646d8bffe7f97f25d07fb201853ae02c5fb9f1be0637f03d242c7ff6990b85f02abba608c721fd
+  checksum: 10c0/a330abce0bbb7befc008b2a3b485481d59d9af33ccf9fb7c74e40511cb1bc837074071e1a411637f3159afcf63cbf868e3e2403f713fe0c34b6dd2ba89d5133c
   languageName: node
   linkType: hard
 
