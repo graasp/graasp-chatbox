@@ -1,5 +1,30 @@
 # Changelog
 
+## [3.0.4](https://github.com/graasp/graasp-chatbox/compare/v3.0.3...v3.0.4) (2024-02-14)
+
+
+### Bug Fixes
+
+* add license, author and contributors ([b8f06fc](https://github.com/graasp/graasp-chatbox/commit/b8f06fc8a93741b387206c4d757b74fe0fa1d623))
+* deps ([71f4e80](https://github.com/graasp/graasp-chatbox/commit/71f4e801f0905a1477b1d0733d4336d2599cae7e))
+* **deps:** update dependency @graasp/sdk to v3.5.0 ([#185](https://github.com/graasp/graasp-chatbox/issues/185)) ([ab17c29](https://github.com/graasp/graasp-chatbox/commit/ab17c2920b78355a0788fa8e796bc3eb99940e4a))
+* **deps:** update dependency @graasp/sdk to v3.6.0 ([#192](https://github.com/graasp/graasp-chatbox/issues/192)) ([21da965](https://github.com/graasp/graasp-chatbox/commit/21da9655a083177fe728f69329144099288cc4ff))
+* **deps:** update dependency @graasp/sdk to v3.7.0 ([#202](https://github.com/graasp/graasp-chatbox/issues/202)) ([e0475d1](https://github.com/graasp/graasp-chatbox/commit/e0475d1f41043f3862ea7bb00813491db181964f))
+* **deps:** update dependency @graasp/sdk to v3.8.0 ([#209](https://github.com/graasp/graasp-chatbox/issues/209)) ([9a7e61b](https://github.com/graasp/graasp-chatbox/commit/9a7e61b7a03da978151f6cca3081384e133b5464))
+* **deps:** update dependency @graasp/translations to v1.23.0 ([#193](https://github.com/graasp/graasp-chatbox/issues/193)) ([38e96f2](https://github.com/graasp/graasp-chatbox/commit/38e96f2e4f7c0cbd11bd4e075573a9d97a2c03a8))
+* **deps:** update dependency @graasp/ui to v4.3.1 ([166e702](https://github.com/graasp/graasp-chatbox/commit/166e7026876973ba0ff165e62cfcd1127a8cf361))
+* **deps:** update dependency @graasp/ui to v4.5.0 ([#190](https://github.com/graasp/graasp-chatbox/issues/190)) ([ec1d2a9](https://github.com/graasp/graasp-chatbox/commit/ec1d2a982e7d6cf5565bc9e2d14f44e0e618ae12))
+* **deps:** update dependency @graasp/ui to v4.6.1 ([#204](https://github.com/graasp/graasp-chatbox/issues/204)) ([7503dcc](https://github.com/graasp/graasp-chatbox/commit/7503dcc0251893301f85c7f459bea3912aae0eb4))
+* **deps:** update dependency cypress to v13.6.3 ([12dc28d](https://github.com/graasp/graasp-chatbox/commit/12dc28d9f8fac1da064caf3a0a868a011036cd98))
+* **deps:** update dependency cypress to v13.6.4 ([93bb4be](https://github.com/graasp/graasp-chatbox/commit/93bb4be4184ee3d784044ba20741f158cac51e83))
+* **deps:** update dependency date-fns to v3.3.1 ([#183](https://github.com/graasp/graasp-chatbox/issues/183)) ([98527b1](https://github.com/graasp/graasp-chatbox/commit/98527b12268ea76e5e1fb4336719e99bdd2b4843))
+* **deps:** update dependency react-i18next to v14.0.1 ([30cedcd](https://github.com/graasp/graasp-chatbox/commit/30cedcde52b45a05109c01ab63fb2ceca504b69c))
+* **deps:** update dependency react-router-dom to v6.21.3 ([73d15e3](https://github.com/graasp/graasp-chatbox/commit/73d15e3630a3822c71f184353639cbb199f3768a))
+* **deps:** update dependency react-router-dom to v6.22.0 ([#200](https://github.com/graasp/graasp-chatbox/issues/200)) ([fec58c6](https://github.com/graasp/graasp-chatbox/commit/fec58c639d31dd80daf10358a88a9fdfff2dda51))
+* **deps:** update mui (non-major) ([fc0e35d](https://github.com/graasp/graasp-chatbox/commit/fc0e35da5cd5b532d33239384bfa4e71aee1af25))
+* **deps:** update mui (non-major) ([054b39f](https://github.com/graasp/graasp-chatbox/commit/054b39f0c39cec6fd133307e33ce3c7133637fc9))
+* update comp ([#206](https://github.com/graasp/graasp-chatbox/issues/206)) ([4518736](https://github.com/graasp/graasp-chatbox/commit/451873636784623a80a5e17f228b2eb8b6b42367))
+
 ## [3.0.3](https://github.com/graasp/graasp-chatbox/compare/v3.0.2...v3.0.3) (2024-01-16)
 
 
