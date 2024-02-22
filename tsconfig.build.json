@@ -5,8 +5,9 @@
     "module": "NodeNext",
     "moduleResolution": "NodeNext",
     "noEmit": false,
-    "outDir": "dist"
-  }
+    "outDir": "dist",
+    "declaration": true
+  },
   // potentially exclude test files
-  // "exclude": [""]
+  "exclude": ["**/*.test.ts", "**/.*.stories.tsx"]
 }
