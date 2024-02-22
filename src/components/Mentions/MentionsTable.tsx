@@ -1,9 +1,8 @@
-import { FC, ReactElement, useState } from 'react';
+import { ReactElement, useState } from 'react';
 
-import Check from '@mui/icons-material/Check';
-import Close from '@mui/icons-material/Close';
-import FiberManualRecord from '@mui/icons-material/FiberManualRecord';
+import { Check, Close, FiberManualRecord } from '@mui/icons-material';
 import {
+  Button,
   Grid,
   IconButton,
   Table,
@@ -22,12 +21,11 @@ import {
   getIdsFromPath,
 } from '@graasp/sdk';
 import { CHATBOX } from '@graasp/translations';
-import { Button } from '@graasp/ui';
 
-import { useChatboxTranslation } from '@/config/i18n';
+import { useChatboxTranslation } from '@/config/i18n.js';
 
-import MessageBody from '../Chatbox/MessageBody';
-import ConfirmationDialog from '../common/ConfirmationDialog';
+import MessageBody from '../Chatbox/MessageBody.js';
+import ConfirmationDialog from '../common/ConfirmationDialog.js';
 
 const StyledRow = styled(TableRow)({
   '&:hover': {
@@ -43,12 +41,12 @@ type Props = {
   deleteMention: (id: string) => void;
 };
 
-const MentionsTable: FC<Props> = ({
+const MentionsTable = ({
   mentions,
   patchMention,
   deleteMention,
   clearAllMentions,
-}) => {
+}: Props): JSX.Element => {
   const [openConfirmation, setOpenConfirmation] = useState(false);
   const { t } = useChatboxTranslation();
   const markAsRead = (id: string): void => {

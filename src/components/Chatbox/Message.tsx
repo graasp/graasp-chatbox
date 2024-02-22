@@ -1,7 +1,5 @@
-import { FC } from 'react';
-
 import { Box, Typography, styled } from '@mui/material';
-import grey from '@mui/material/colors/grey';
+import { colors } from '@mui/material';
 
 import { ChatMessage, CompleteMember, Member } from '@graasp/sdk';
 import { CHATBOX } from '@graasp/translations';
@@ -10,19 +8,19 @@ import { Avatar } from '@graasp/ui';
 import { format } from 'date-fns';
 import truncate from 'lodash.truncate';
 
-import { getDateLocale, useChatboxTranslation } from '@/config/i18n';
-import { messageIdCyWrapper } from '@/config/selectors';
+import { getDateLocale, useChatboxTranslation } from '@/config/i18n.js';
+import { messageIdCyWrapper } from '@/config/selectors.js';
 import {
   DEFAULT_USER_NAME,
   MAX_AVATAR_SIZE,
   MAX_USERNAME_LENGTH,
-} from '@/constants';
-import { useHooksContext } from '@/context/HooksContext';
+} from '@/constants.js';
+import { useHooksContext } from '@/context/HooksContext.js';
 
-import MessageBody from './MessageBody';
+import MessageBody from './MessageBody.js';
 
 const MessageWrapper = styled(Box)(({ theme }) => ({
-  background: grey[100],
+  background: colors.grey[100],
   borderRadius: '5px',
   margin: theme.spacing(1, 0),
   padding: theme.spacing(0.5, 1, 0),
@@ -51,7 +49,7 @@ type Props = {
   member?: Member;
 };
 
-const Message: FC<Props> = ({ message, currentMember, member }) => {
+const Message = ({ message, currentMember, member }: Props): JSX.Element => {
   const { t, i18n } = useChatboxTranslation();
   const { useAvatarUrl } = useHooksContext();
   const {
@@ -76,7 +74,7 @@ const Message: FC<Props> = ({ message, currentMember, member }) => {
       p={1}
       sx={
         isOwnMessage
-          ? { background: grey[300], alignSelf: 'flex-end' }
+          ? { background: colors.grey[300], alignSelf: 'flex-end' }
           : undefined
       }
       data-cy={messageIdCyWrapper(message.id)}

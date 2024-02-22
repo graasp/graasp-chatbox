@@ -1,4 +1,4 @@
-import { PartialMemberDisplay } from '../types';
+import { PartialMemberDisplay } from '../types.js';
 
 /**
  * @deprecated This function is vulnerable to usernames with special characters.

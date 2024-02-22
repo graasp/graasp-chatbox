@@ -10,14 +10,14 @@ import {
 
 import { CHATBOX } from '@graasp/translations';
 
-import { useChatboxTranslation } from '@/config/i18n';
+import { useChatboxTranslation } from '@/config/i18n.js';
 import {
   editBannerCloseButtonCypress,
   editBannerCypress,
   editBannerOldTextCypress,
-} from '@/config/selectors';
-import { useEditingContext } from '@/context/EditingContext';
-import { normalizeMentions } from '@/index';
+} from '@/config/selectors.js';
+import { useEditingContext } from '@/context/EditingContext.js';
+import { normalizeMentions } from '@/index.js';
 
 const Container = styled(Box)({
   display: 'flex',

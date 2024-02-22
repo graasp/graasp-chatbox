@@ -4,21 +4,20 @@ import { StyledEngineProvider, styled } from '@mui/material';
 
 import { ChatMessage, CompleteMember, Member } from '@graasp/sdk';
 
-import { CONTAINER_HEIGHT_SAFETY_MARGIN } from '@/constants';
-import { CurrentMemberContextProvider } from '@/context/CurrentMemberContext';
-import { EditingContextProvider } from '@/context/EditingContext';
-import { HooksContextProvider } from '@/context/HooksContext';
-import { MessagesContextProvider } from '@/context/MessagesContext';
+import { CONTAINER_HEIGHT_SAFETY_MARGIN } from '@/constants.js';
+import { CurrentMemberContextProvider } from '@/context/CurrentMemberContext.js';
+import { EditingContextProvider } from '@/context/EditingContext.js';
+import { HooksContextProvider } from '@/context/HooksContext.js';
+import { MessagesContextProvider } from '@/context/MessagesContext.js';
 import {
   AvatarHookType,
   DeleteMessageFunctionType,
   EditMessageFunctionType,
   SendMessageFunctionType,
-} from '@/types';
+} from '@/types.js';
 
-import Header from './Header';
-import InputBar from './InputBar';
-import Messages from './Messages';
+import InputBar from './InputBar.js';
+import Messages from './Messages.js';
 
 const ChatboxContainer = styled('div')({
   // set height of full container
@@ -60,7 +59,6 @@ const Chatbox: FC<Props> = ({
   messages,
   isLoading,
   chatId,
-  showHeader = false,
   showAdminTools = false,
   currentMember,
   members,
@@ -80,7 +78,6 @@ const Chatbox: FC<Props> = ({
               messages={messages}
             >
               <>
-                {showHeader && <Header />}
                 <ChatboxContainer id={id}>
                   <Messages
                     currentMember={currentMember}

@@ -1,4 +1,4 @@
-import { FC, Fragment, useEffect, useRef } from 'react';
+import { Fragment, useEffect, useRef } from 'react';
 
 import { Box, styled } from '@mui/material';
 
@@ -7,16 +7,16 @@ import { ChatMessage, CompleteMember } from '@graasp/sdk';
 import { format } from 'date-fns';
 import groupBy from 'lodash.groupby';
 
-import { getDateLocale, useChatboxTranslation } from '@/config/i18n';
-import { messagesContainerCypress } from '@/config/selectors';
-import { DEFAULT_DATE_FORMAT, SCROLL_SAFETY_MARGIN } from '@/constants';
-import { useEditingContext } from '@/context/EditingContext';
-import { useMessagesContext } from '@/context/MessagesContext';
-import type { DeleteMessageFunctionType } from '@/types';
+import { getDateLocale, useChatboxTranslation } from '@/config/i18n.js';
+import { messagesContainerCypress } from '@/config/selectors.js';
+import { DEFAULT_DATE_FORMAT, SCROLL_SAFETY_MARGIN } from '@/constants.js';
+import { useEditingContext } from '@/context/EditingContext.js';
+import { useMessagesContext } from '@/context/MessagesContext.js';
+import type { DeleteMessageFunctionType } from '@/types.js';
 
-import Date from './Date';
-import Message from './Message';
-import MessageActions from './MessageActions';
+import Date from './Date.js';
+import Message from './Message.js';
+import MessageActions from './MessageActions.js';
 
 const Container = styled('div')({
   // used in accordance with the main container (input + scroll window)
@@ -50,11 +50,11 @@ type Props = {
   deleteMessageFunction?: DeleteMessageFunctionType;
 };
 
-const Messages: FC<Props> = ({
+const Messages = ({
   currentMember,
   isAdmin = false,
   deleteMessageFunction,
-}) => {
+}: Props): JSX.Element => {
   const { i18n } = useChatboxTranslation();
   const ref = useRef<HTMLDivElement>(null);
   const { open } = useEditingContext();

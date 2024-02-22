@@ -7,16 +7,17 @@ export const MEMBERS: { [key: string]: CompleteMember } = {
     email: 'anna@email.com',
     type: MemberType.Individual,
     extra: {},
-    createdAt: "2023-12-11T23:00:45.456Z",
-    updatedAt: "2023-12-11T23:00:45.456Z"
+    createdAt: '2023-12-11T23:00:45.456Z',
+    updatedAt: '2023-12-11T23:00:45.456Z',
   },
   BOB: {
     id: '1f0a2774-a965-4b97-afb4-bccc3796e060',
     name: 'bob',
-    email: 'bob@email.com',    type: MemberType.Individual,
+    email: 'bob@email.com',
+    type: MemberType.Individual,
     extra: {},
-    createdAt: "2023-12-11T23:00:45.456Z",
-    updatedAt: "2023-12-11T23:00:45.456Z"
+    createdAt: '2023-12-11T23:00:45.456Z',
+    updatedAt: '2023-12-11T23:00:45.456Z',
   },
 };
 
