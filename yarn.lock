@@ -1213,11 +1213,11 @@ __metadata:
   linkType: hard
 
 "@graasp/translations@npm:^1.23.0":
-  version: 1.23.0
-  resolution: "@graasp/translations@npm:1.23.0"
-  dependencies:
-    i18next: "npm:23.7.16"
-  checksum: 10c0/aa5ebf78287d2248bccfb00cf0b45dddc7d1c67b1a551b3ab1e397aa7b7d5be8a58b031a882cabaa7705452a6d5bac6a2f86167d6fa36a9ee5051defc9e0b1aa
+  version: 1.25.1
+  resolution: "@graasp/translations@npm:1.25.1"
+  peerDependencies:
+    i18next: ^23.8.1
+  checksum: 10c0/0cf1c403b5371c212b87e2a1be294aaa41fd947a84dff07f3b8cfb166fbc88749bdc0af6eef9b9c9de853677f742ae41cce91ff12a25c98fc0d2cdaffacd6ba5
   languageName: node
   linkType: hard
 
@@ -5709,15 +5709,6 @@ __metadata:
   version: 5.0.0
   resolution: "human-signals@npm:5.0.0"
   checksum: 10c0/5a9359073fe17a8b58e5a085e9a39a950366d9f00217c4ff5878bd312e09d80f460536ea6a3f260b5943a01fe55c158d1cea3fc7bee3d0520aeef04f6d915c82
-  languageName: node
-  linkType: hard
-
-"i18next@npm:23.7.16":
-  version: 23.7.16
-  resolution: "i18next@npm:23.7.16"
-  dependencies:
-    "@babel/runtime": "npm:^7.23.2"
-  checksum: 10c0/8e18d56970a468e0c3f38cf105d2eb22c2b275b596ecd3ac7193fe6e73a57705f3415b510ea761b702163278b975bcab6c15187f254d350fb0501baf66927168
   languageName: node
   linkType: hard
 
