@@ -7,28 +7,28 @@ import {
   SuggestionDataItem,
 } from 'react-mentions';
 
-import SendIcon from '@mui/icons-material/Send';
+import { Send as SendIcon } from '@mui/icons-material';
 import { Box, IconButton, Typography, styled, useTheme } from '@mui/material';
 
 import { MessageBodyType } from '@graasp/sdk';
 import { CHATBOX } from '@graasp/translations';
 
-import { useChatboxTranslation } from '@/config/i18n';
+import { useChatboxTranslation } from '@/config/i18n.js';
 import {
   charCounterCypress,
   inputTextFieldCypress,
   inputTextFieldTextAreaCypress,
   sendButtonCypress,
-} from '@/config/selectors';
+} from '@/config/selectors.js';
 import {
   ALL_MEMBERS_ID,
   ALL_MEMBERS_SUGGESTION,
   GRAASP_MENTION_COLOR,
   HARD_MAX_MESSAGE_LENGTH,
-} from '@/constants';
-import { useCurrentMemberContext } from '@/context/CurrentMemberContext';
-import { useMessagesContext } from '@/context/MessagesContext';
-import { MENTION_MARKUP } from '@/utils/mentions';
+} from '@/constants.js';
+import { useCurrentMemberContext } from '@/context/CurrentMemberContext.js';
+import { useMessagesContext } from '@/context/MessagesContext.js';
+import { MENTION_MARKUP } from '@/utils/mentions.js';
 
 const HelperText = styled(Typography)(({ theme }) => ({
   whiteSpace: 'pre',

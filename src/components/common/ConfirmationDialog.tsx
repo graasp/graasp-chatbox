@@ -1,6 +1,7 @@
 import { FC, ReactElement } from 'react';
 
 import {
+  Button,
   Dialog,
   DialogActions,
   DialogContent,
@@ -8,13 +9,12 @@ import {
 } from '@mui/material';
 
 import { CHATBOX } from '@graasp/translations';
-import { Button } from '@graasp/ui';
 
-import { useChatboxTranslation } from '@/config/i18n';
+import { useChatboxTranslation } from '@/config/i18n.js';
 import {
   cancelDialogButtonCypress,
   confirmDialogButtonCypress,
-} from '@/config/selectors';
+} from '@/config/selectors.js';
 
 type Props = {
   open: boolean;
@@ -45,14 +45,14 @@ const ConfirmationDialog: FC<Props> = ({
         <Button
           variant="contained"
           onClick={onCancel}
-          dataCy={cancelDialogButtonCypress}
+          data-cy={cancelDialogButtonCypress}
         >
           {cancelText || t(CHATBOX.CANCEL_BUTTON)}
         </Button>
         <Button
           variant="outlined"
           onClick={onConfirm}
-          dataCy={confirmDialogButtonCypress}
+          data-cy={confirmDialogButtonCypress}
         >
           {confirmText || t(CHATBOX.CONFIRM_BUTTON)}
         </Button>

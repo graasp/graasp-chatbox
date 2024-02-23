@@ -1,8 +1,8 @@
-import React, { FC, ReactElement } from 'react';
+import { ReactElement, createContext, useContext } from 'react';
 
-import { AvatarHookType } from '../types';
+import { AvatarHookType } from '../types.js';
 
-export const HooksContext = React.createContext({
+export const HooksContext = createContext({
   useAvatarUrl: (() => null) as unknown as AvatarHookType,
 });
 
@@ -15,7 +15,7 @@ type Props = {
   useAvatarUrl: AvatarHookType;
 };
 
-export const HooksContextProvider: FC<Props> = ({ children, useAvatarUrl }) => {
+export const HooksContextProvider = ({ children, useAvatarUrl }: Props) => {
   const value = {
     useAvatarUrl,
   };
@@ -26,4 +26,4 @@ export const HooksContextProvider: FC<Props> = ({ children, useAvatarUrl }) => {
 };
 
 export const useHooksContext = (): HooksContextType =>
-  React.useContext<HooksContextType>(HooksContext);
+  useContext<HooksContextType>(HooksContext);

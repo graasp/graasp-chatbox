@@ -1,6 +1,6 @@
-import React, { FC, ReactElement, useState } from 'react';
+import { ReactElement, createContext, useContext, useState } from 'react';
 
-import { INITIAL_EDITING_PROPS } from '../constants';
+import { INITIAL_EDITING_PROPS } from '../constants.js';
 
 type EditingProp = {
   open: boolean;
@@ -17,7 +17,7 @@ export type EditingContextType = {
   cancelEdit: () => void;
 };
 
-export const EditingContext = React.createContext<EditingContextType>({
+export const EditingContext = createContext<EditingContextType>({
   open: false,
   body: '',
   messageId: '',
@@ -30,7 +30,7 @@ type Props = {
   children: ReactElement;
 };
 
-export const EditingContextProvider: FC<Props> = ({ children }) => {
+export const EditingContextProvider = ({ children }: Props): JSX.Element => {
   const [editing, setEditing] = useState(INITIAL_EDITING_PROPS);
   const open = editing.open;
   const body = editing.body;
@@ -49,4 +49,4 @@ export const EditingContextProvider: FC<Props> = ({ children }) => {
 };
 
 export const useEditingContext = (): EditingContextType =>
-  React.useContext<EditingContextType>(EditingContext);
+  useContext<EditingContextType>(EditingContext);

@@ -1,8 +1,6 @@
-import React, { FC, useState } from 'react';
+import { MouseEvent, useState } from 'react';
 
-import Delete from '@mui/icons-material/Delete';
-import Edit from '@mui/icons-material/Edit';
-import MoreVert from '@mui/icons-material/MoreVert';
+import { Delete, Edit, MoreVert } from '@mui/icons-material';
 import {
   IconButton,
   ListItemIcon,
@@ -15,15 +13,15 @@ import {
 import { ChatMessage } from '@graasp/sdk';
 import { CHATBOX } from '@graasp/translations';
 
-import { useChatboxTranslation } from '@/config/i18n';
+import { useChatboxTranslation } from '@/config/i18n.js';
 import {
   deleteMenuItemCypress,
   editMenuItemCypress,
   messageActionsButtonCypress,
-} from '@/config/selectors';
-import { LIST_ICON_MIN_WIDTH } from '@/constants';
-import { useEditingContext } from '@/context/EditingContext';
-import { DeleteMessageFunctionType } from '@/types';
+} from '@/config/selectors.js';
+import { LIST_ICON_MIN_WIDTH } from '@/constants.js';
+import { useEditingContext } from '@/context/EditingContext.js';
+import { DeleteMessageFunctionType } from '@/types.js';
 
 type Props = {
   message: ChatMessage;
@@ -38,17 +36,17 @@ const StyledListItemIcon = styled(ListItemIcon)({
   },
 });
 
-const MessageActions: FC<Props> = ({
+const MessageActions = ({
   message,
   deleteMessageFunction,
   isOwn = false,
-}) => {
+}: Props): JSX.Element => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [menuAnchor, setMenuAnchor] = useState<HTMLElement | null>(null);
   const { t } = useChatboxTranslation();
   const { enableEdit } = useEditingContext();
 
-  const handleOnClickMenu = (e: React.MouseEvent<HTMLButtonElement>): void => {
+  const handleOnClickMenu = (e: MouseEvent<HTMLButtonElement>): void => {
     setMenuAnchor(e.currentTarget);
     setMenuOpen(!menuOpen);
   };

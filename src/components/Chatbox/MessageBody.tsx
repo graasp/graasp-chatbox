@@ -1,4 +1,3 @@
-import { FC, ReactElement } from 'react';
 import ReactMarkdown, { ExtraProps } from 'react-markdown';
 
 import { styled } from '@mui/material';
@@ -11,10 +10,10 @@ import {
   ALL_MEMBERS_ID,
   ALL_MEMBERS_MEMBER,
   UNKNOWN_USER_NAME,
-} from '@/constants';
-import { useCurrentMemberContext } from '@/context/CurrentMemberContext';
-import { useMessagesContext } from '@/context/MessagesContext';
-import { getIdMention, getMention } from '@/utils/mentions';
+} from '@/constants.js';
+import { useCurrentMemberContext } from '@/context/CurrentMemberContext.js';
+import { useMessagesContext } from '@/context/MessagesContext.js';
+import { getIdMention, getMention } from '@/utils/mentions.js';
 
 const StyledReactMarkdown = styled(ReactMarkdown)(({ theme }) => ({
   fontFamily: theme.typography.fontFamily,
@@ -84,7 +83,7 @@ type Props = {
   messageBody: string;
 };
 
-const MessageBody: FC<Props> = ({ messageBody }) => {
+const MessageBody = ({ messageBody }: Props): JSX.Element => {
   const currentMember = useCurrentMemberContext();
   const { members } = useMessagesContext();
 
@@ -127,7 +126,7 @@ const MessageBody: FC<Props> = ({ messageBody }) => {
         language={match[1] as Language}
         {...props}
       >
-        {({ className, tokens, getLineProps, getTokenProps }): ReactElement => (
+        {({ className, tokens, getLineProps, getTokenProps }): JSX.Element => (
           <div className={className}>
             {tokens.map((line, i) => (
               <div

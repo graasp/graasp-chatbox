@@ -6,10 +6,10 @@ import { Badge, BadgeProps, IconButton, SvgIconProps } from '@mui/material';
 
 import { ChatMention, MentionStatus } from '@graasp/sdk';
 
-import { mentionButtonCypress } from '@/config/selectors';
+import { mentionButtonCypress } from '@/config/selectors.js';
 
-import MentionsDialog from './MentionsDialog';
-import MentionsTable from './MentionsTable';
+import MentionsDialog from './MentionsDialog.js';
+import MentionsTable from './MentionsTable.js';
 
 type Props = {
   color?: SvgIconProps['color'];

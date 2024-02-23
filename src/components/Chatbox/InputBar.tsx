@@ -4,12 +4,12 @@ import { Box } from '@mui/material';
 
 import { MessageBodyType } from '@graasp/sdk';
 
-import { useEditingContext } from '@/context/EditingContext';
-import { useMessagesContext } from '@/context/MessagesContext';
-import { EditMessageFunctionType, SendMessageFunctionType } from '@/types';
+import { useEditingContext } from '@/context/EditingContext.js';
+import { useMessagesContext } from '@/context/MessagesContext.js';
+import { EditMessageFunctionType, SendMessageFunctionType } from '@/types.js';
 
-import EditBanner from './EditBanner';
-import Input from './Input';
+import EditBanner from './EditBanner.js';
+import Input from './Input.js';
 
 type Props = {
   sendMessageBoxId?: string;
