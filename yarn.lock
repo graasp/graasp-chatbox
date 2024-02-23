@@ -1147,7 +1147,7 @@ __metadata:
     eslint-config-prettier: "npm:^9.1.0"
     eslint-plugin-react-hooks: "npm:^4.6.0"
     eslint-plugin-react-refresh: "npm:^0.4.5"
-    i18next: "npm:23.8.2"
+    i18next: "npm:23.10.0"
     lodash.groupby: "npm:^4.6.0"
     prettier: "npm:^3.2.5"
     prism-react-renderer: "npm:^2.3.1"
@@ -5712,21 +5712,21 @@ __metadata:
   languageName: node
   linkType: hard
 
+"i18next@npm:23.10.0":
+  version: 23.10.0
+  resolution: "i18next@npm:23.10.0"
+  dependencies:
+    "@babel/runtime": "npm:^7.23.2"
+  checksum: 10c0/b6161075cfc2f3238e8e293306d70f173b5d5f4b7217d29ba15d4b70bd876911ccf15ca8fed238405c735c2a2e86e26658a17ea7cfd4040abd3100fef0a7c7d4
+  languageName: node
+  linkType: hard
+
 "i18next@npm:23.7.16":
   version: 23.7.16
   resolution: "i18next@npm:23.7.16"
   dependencies:
     "@babel/runtime": "npm:^7.23.2"
   checksum: 10c0/8e18d56970a468e0c3f38cf105d2eb22c2b275b596ecd3ac7193fe6e73a57705f3415b510ea761b702163278b975bcab6c15187f254d350fb0501baf66927168
-  languageName: node
-  linkType: hard
-
-"i18next@npm:23.8.2":
-  version: 23.8.2
-  resolution: "i18next@npm:23.8.2"
-  dependencies:
-    "@babel/runtime": "npm:^7.23.2"
-  checksum: 10c0/c16ccee81bc1e096fec8d10000de42f10137f7cd27b295eca22492cb174b364ebca72327b2e6be066c4308c79bf72c8585d1c7cde2aedf556e3f423af60cd66c
   languageName: node
   linkType: hard
 
