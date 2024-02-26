@@ -1085,12 +1085,12 @@ __metadata:
   dependencies:
     "@emotion/react": "npm:^11.11.3"
     "@emotion/styled": "npm:^11.11.0"
-    "@graasp/sdk": "github:graasp/graasp-sdk#esm-package"
+    "@graasp/sdk": "npm:^4.0.1"
     "@graasp/translations": "npm:^1.25.1"
     "@graasp/ui": "npm:^4.8.1"
-    "@mui/icons-material": "npm:^5.15.10"
+    "@mui/icons-material": "npm:^5.15.11"
     "@mui/lab": "npm:^5.0.0-alpha.157"
-    "@mui/material": "npm:^5.15.10"
+    "@mui/material": "npm:^5.15.11"
     "@trivago/prettier-plugin-sort-imports": "npm:^4.3.0"
     "@types/lodash.groupby": "npm:^4.6.9"
     "@types/lodash.truncate": "npm:^4.4.9"
@@ -1103,7 +1103,7 @@ __metadata:
     "@vitejs/plugin-react": "npm:^4.2.1"
     cypress: "npm:^13.6.6"
     date-fns: "npm:^3.3.1"
-    eslint: "npm:^8.56.0"
+    eslint: "npm:^8.57.0"
     eslint-config-prettier: "npm:^9.1.0"
     eslint-plugin-react-hooks: "npm:^4.6.0"
     eslint-plugin-react-refresh: "npm:^0.4.5"
@@ -1144,20 +1144,6 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@graasp/sdk@github:graasp/graasp-sdk#esm-package":
-  version: 3.10.0
-  resolution: "@graasp/sdk@https://github.com/graasp/graasp-sdk.git#commit=ad58235c8cbde930bbb1f165ce1be0ecc9790164"
-  dependencies:
-    "@faker-js/faker": "npm:8.4.1"
-    js-cookie: "npm:3.0.5"
-    validator: "npm:13.11.0"
-  peerDependencies:
-    date-fns: ^3
-    uuid: ^9
-  checksum: 10c0/623f853a3eee00614aefc1e74c82e628de53cf2073dc70cd9863383b13e6c8b66fa953a5a0b79173af8cd79371141b209342cac9017c2ed85ac9f67db54d7180
-  languageName: node
-  linkType: hard
-
 "@graasp/sdk@npm:3.8.3":
   version: 3.8.3
   resolution: "@graasp/sdk@npm:3.8.3"
@@ -1169,6 +1155,20 @@ __metadata:
     date-fns: ^3
     uuid: ^9
   checksum: 10c0/aae3ab4060fae6a1a5e38998278a60ee7ac180c59040dd6df4f02e330048c6a60d3ccf81be0d65fdc5e202b2d817c1704c197a0868482e6134779b7031a9e78b
+  languageName: node
+  linkType: hard
+
+"@graasp/sdk@npm:^4.0.1":
+  version: 4.0.1
+  resolution: "@graasp/sdk@npm:4.0.1"
+  dependencies:
+    "@faker-js/faker": "npm:8.4.1"
+    js-cookie: "npm:3.0.5"
+    validator: "npm:13.11.0"
+  peerDependencies:
+    date-fns: ^3
+    uuid: ^9
+  checksum: 10c0/4fa3f22875f49f8d9e8204dde6a892a8abb39cb3c3d497552713d4b72a50cdf4dc5de87a1a701dc153a559498085fd6638bcee1d9e136488eb29aa35c71e4d02
   languageName: node
   linkType: hard
 
@@ -1408,7 +1408,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@mui/icons-material@npm:^5.15.10":
+"@mui/icons-material@npm:^5.15.11":
   version: 5.15.11
   resolution: "@mui/icons-material@npm:5.15.11"
   dependencies:
@@ -1453,7 +1453,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@mui/material@npm:^5.15.10":
+"@mui/material@npm:^5.15.11":
   version: 5.15.11
   resolution: "@mui/material@npm:5.15.11"
   dependencies:
@@ -4519,7 +4519,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint@npm:^8.56.0":
+"eslint@npm:^8.57.0":
   version: 8.57.0
   resolution: "eslint@npm:8.57.0"
   dependencies:
