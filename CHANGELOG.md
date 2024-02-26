@@ -1,5 +1,16 @@
 # Changelog
 
+## [3.0.5](https://github.com/graasp/graasp-chatbox/compare/v3.0.4...v3.0.5) (2024-02-26)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @graasp/translations to v1.25.2 ([#219](https://github.com/graasp/graasp-chatbox/issues/219)) ([e8f4836](https://github.com/graasp/graasp-chatbox/commit/e8f4836a05347c66bc5c82d3df7aa02f89b9a1e1))
+* **deps:** update mui (non-major) ([#197](https://github.com/graasp/graasp-chatbox/issues/197)) ([c386ebd](https://github.com/graasp/graasp-chatbox/commit/c386ebd224fdaf75dd47c0b672d2dfb4f6c9d2d7))
+* make package ESM ([#215](https://github.com/graasp/graasp-chatbox/issues/215)) ([0391525](https://github.com/graasp/graasp-chatbox/commit/0391525d9c7663a5ea202a62762566f408faacd8))
+* update cypress actions ([edde090](https://github.com/graasp/graasp-chatbox/commit/edde09062bfedaf2a9a58f0bede380aedba31268))
+* update dependencies ([78e1276](https://github.com/graasp/graasp-chatbox/commit/78e12764e94cb3c2c5532ba2a9c7c2e2e69bc484))
+
 ## [3.0.4](https://github.com/graasp/graasp-chatbox/compare/v3.0.3...v3.0.4) (2024-02-14)
 
 
