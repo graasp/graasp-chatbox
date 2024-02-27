@@ -1,8 +1,7 @@
 /// <reference types="../cypress"/>
-import { QueryObserverResult } from 'react-query';
-
 import { ChatMention, ChatMessage, MentionStatus } from '@graasp/sdk';
 
+import { QueryObserverResult } from '@tanstack/react-query';
 import { v4 } from 'uuid';
 
 import { CHAT_MESSAGES } from './chat_messages';
