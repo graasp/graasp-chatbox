@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.1.0](https://github.com/graasp/graasp-chatbox/compare/v3.0.5...v3.1.0) (2024-02-27)
+
+
+### Features
+
+* use query 4 ([#221](https://github.com/graasp/graasp-chatbox/issues/221)) ([3e4e7d0](https://github.com/graasp/graasp-chatbox/commit/3e4e7d042df53935d40c808cf745c4f6a946cc3f))
+
 ## [3.0.5](https://github.com/graasp/graasp-chatbox/compare/v3.0.4...v3.0.5) (2024-02-26)
 
 
