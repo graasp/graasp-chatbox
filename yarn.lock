@@ -1139,8 +1139,8 @@ __metadata:
   linkType: soft
 
 "@graasp/sdk@npm:^4.0.1":
-  version: 4.0.1
-  resolution: "@graasp/sdk@npm:4.0.1"
+  version: 4.2.0
+  resolution: "@graasp/sdk@npm:4.2.0"
   dependencies:
     "@faker-js/faker": "npm:8.4.1"
     js-cookie: "npm:3.0.5"
@@ -1148,7 +1148,7 @@ __metadata:
   peerDependencies:
     date-fns: ^3
     uuid: ^9
-  checksum: 10c0/4fa3f22875f49f8d9e8204dde6a892a8abb39cb3c3d497552713d4b72a50cdf4dc5de87a1a701dc153a559498085fd6638bcee1d9e136488eb29aa35c71e4d02
+  checksum: 10c0/f5edb0a4a820b9bd611682b9a4165e54b574f85ac3f5731ebb190204ae5783d05e8560a4005dc1ab9cd88728df883b4dbb6f145cc30d1f9a6d2fc65bab8dd7c4
   languageName: node
   linkType: hard
 
@@ -1162,8 +1162,8 @@ __metadata:
   linkType: hard
 
 "@graasp/ui@npm:^4.8.1":
-  version: 4.8.3
-  resolution: "@graasp/ui@npm:4.8.3"
+  version: 4.11.0
+  resolution: "@graasp/ui@npm:4.11.0"
   dependencies:
     "@ag-grid-community/client-side-row-model": "npm:31.1.1"
     "@ag-grid-community/react": "npm:^31.1.1"
@@ -1195,7 +1195,7 @@ __metadata:
     react-router-dom: ^6.11.0
     stylis: ^4.1.3
     stylis-plugin-rtl: ^2.1.1
-  checksum: 10c0/7a89d2413e58a2ec29f086c506c5fe253c7dda566c2f025ab5db3e012c149df21ce5e30ea7d7b22c29c7ace2e5f67042dd396f579b29d2b7d559ef081cb7c45f
+  checksum: 10c0/13017c2c76f565cea82c72c037e9af6bd01bb01ce3925a9e0272ead0c0fb5dd88dbec4c8a3759687f9fc1aef4f8365dc01b08646c7d5ce3fd41ed32e5664924f
   languageName: node
   linkType: hard
 
@@ -3815,8 +3815,8 @@ __metadata:
   linkType: hard
 
 "cypress@npm:^13.6.6":
-  version: 13.6.6
-  resolution: "cypress@npm:13.6.6"
+  version: 13.7.0
+  resolution: "cypress@npm:13.7.0"
   dependencies:
     "@cypress/request": "npm:^3.0.0"
     "@cypress/xvfb": "npm:^1.2.4"
@@ -3862,7 +3862,7 @@ __metadata:
     yauzl: "npm:^2.10.0"
   bin:
     cypress: bin/cypress
-  checksum: 10c0/1f152ac3708fc35c822b6fe428c0856b568c9b2d3f03a22de0526b9f21d6c345139061ae3515a652538a9570a2a632516e4548b29b39843865b9c88288b2d668
+  checksum: 10c0/de0921b5da521fb5be96ddfd2fe693ecdfe17c00fc764ebb92a9d1b35b9476e9a3f8a648533736421b5cc640ccf9b42b9e7d0fc4554ab9c8a29ea0837d544f08
   languageName: node
   linkType: hard
 
@@ -3876,9 +3876,9 @@ __metadata:
   linkType: hard
 
 "date-fns@npm:^3.3.1":
-  version: 3.3.1
-  resolution: "date-fns@npm:3.3.1"
-  checksum: 10c0/e04ff79244010e03b912d791cd3250af5f18866ce868604958d76bd87e5fb0b79f0a810b8e7066248452b41779b288c4fd21de1cac2cd4b6d384e9dd931c9674
+  version: 3.4.0
+  resolution: "date-fns@npm:3.4.0"
+  checksum: 10c0/e4395adcdf10b1784c6479b9d715ed9a1cb06c9d99b95607ad6db43b18371e22314d3e9e5509a378da1c5a6b34b313049bf82897b7f263f413e051f59e0ea5c2
   languageName: node
   linkType: hard
 
@@ -8037,8 +8037,8 @@ __metadata:
   linkType: hard
 
 "react-i18next@npm:^14.0.5":
-  version: 14.0.5
-  resolution: "react-i18next@npm:14.0.5"
+  version: 14.1.0
+  resolution: "react-i18next@npm:14.1.0"
   dependencies:
     "@babel/runtime": "npm:^7.23.9"
     html-parse-stringify: "npm:^3.0.1"
@@ -8050,7 +8050,7 @@ __metadata:
       optional: true
     react-native:
       optional: true
-  checksum: 10c0/60e3bedc6889689cfb96005b134da79d50097d3ff088284b35f213820aacedbdad1ff32e97b8447db70834c16d472ded829675e05c2a099baea9fd96b3a5b72f
+  checksum: 10c0/d3e2d1e5183068a7a23f2fefc432d61546baef0afef176929a1a7b33489e5b3a2a892745a4424327c4bd3ab02ee3a6a4e450b57c2598393032a1efdbe57f8841
   languageName: node
   linkType: hard
 
@@ -9282,7 +9282,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript@npm:5.3.3, typescript@npm:^5.3.3":
+"typescript@npm:5.3.3":
   version: 5.3.3
   resolution: "typescript@npm:5.3.3"
   bin:
@@ -9292,13 +9292,33 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript@patch:typescript@npm%3A5.3.3#optional!builtin<compat/typescript>, typescript@patch:typescript@npm%3A^5.3.3#optional!builtin<compat/typescript>":
+"typescript@npm:^5.3.3":
+  version: 5.4.2
+  resolution: "typescript@npm:5.4.2"
+  bin:
+    tsc: bin/tsc
+    tsserver: bin/tsserver
+  checksum: 10c0/583ff68cafb0c076695f72d61df6feee71689568179fb0d3a4834dac343df6b6ed7cf7b6f6c801fa52d43cd1d324e2f2d8ae4497b09f9e6cfe3d80a6d6c9ca52
+  languageName: node
+  linkType: hard
+
+"typescript@patch:typescript@npm%3A5.3.3#optional!builtin<compat/typescript>":
   version: 5.3.3
   resolution: "typescript@patch:typescript@npm%3A5.3.3#optional!builtin<compat/typescript>::version=5.3.3&hash=e012d7"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver
   checksum: 10c0/1d0a5f4ce496c42caa9a30e659c467c5686eae15d54b027ee7866744952547f1be1262f2d40de911618c242b510029d51d43ff605dba8fb740ec85ca2d3f9500
+  languageName: node
+  linkType: hard
+
+"typescript@patch:typescript@npm%3A^5.3.3#optional!builtin<compat/typescript>":
+  version: 5.4.2
+  resolution: "typescript@patch:typescript@npm%3A5.4.2#optional!builtin<compat/typescript>::version=5.4.2&hash=5adc0c"
+  bin:
+    tsc: bin/tsc
+    tsserver: bin/tsserver
+  checksum: 10c0/fcf6658073d07283910d9a0e04b1d5d0ebc822c04dbb7abdd74c3151c7aa92fcddbac7d799404e358197222006ccdc4c0db219d223d2ee4ccd9e2b01333b49be
   languageName: node
   linkType: hard
 
