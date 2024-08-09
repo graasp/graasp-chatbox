@@ -1,11 +1,11 @@
 import React, { FC, PropsWithChildren } from 'react';
 
-import { ChatMessage, Member } from '@graasp/sdk';
+import { Account, ChatMessage } from '@graasp/sdk';
 
 export type MessagesContextType = {
   messages?: ChatMessage[];
   chatId: string;
-  members: Member[];
+  members: Account[];
 };
 
 export const MessagesContext = React.createContext<MessagesContextType>({
@@ -16,7 +16,7 @@ export const MessagesContext = React.createContext<MessagesContextType>({
 type Props = {
   messages?: ChatMessage[];
   chatId: string;
-  members?: Member[];
+  members?: Account[];
 };
 
 export const MessagesContextProvider: FC<PropsWithChildren<Props>> = ({

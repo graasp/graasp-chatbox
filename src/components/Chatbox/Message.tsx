@@ -1,7 +1,7 @@
 import { Box, Typography, styled } from '@mui/material';
 import { colors } from '@mui/material';
 
-import { ChatMessage, CompleteMember, Member } from '@graasp/sdk';
+import { Account, ChatMessage, CompleteMember } from '@graasp/sdk';
 import { CHATBOX } from '@graasp/translations';
 import { Avatar } from '@graasp/ui';
 
@@ -46,7 +46,7 @@ const AvatarContainer = styled(Box)({
 type Props = {
   message: ChatMessage;
   currentMember?: CompleteMember | null;
-  member?: Member;
+  member?: Account;
 };
 
 const Message = ({ message, currentMember, member }: Props): JSX.Element => {

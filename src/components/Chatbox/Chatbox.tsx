@@ -1,6 +1,6 @@
 import { StyledEngineProvider, styled } from '@mui/material';
 
-import { Account, ChatMessage, CompleteMember, Member } from '@graasp/sdk';
+import { Account, ChatMessage, CompleteMember } from '@graasp/sdk';
 
 import { CONTAINER_HEIGHT_SAFETY_MARGIN } from '@/constants.js';
 import { CurrentMemberContextProvider } from '@/context/CurrentMemberContext.js';
