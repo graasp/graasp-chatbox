@@ -1,4 +1,4 @@
-import { Box, Typography, styled } from '@mui/material';
+import { Box, Stack, Typography, styled } from '@mui/material';
 import { colors } from '@mui/material';
 
 import { Account, ChatMessage, CompleteMember } from '@graasp/sdk';
@@ -33,14 +33,6 @@ const MessageWrapper = styled(Box)(({ theme }) => ({
 
 const TimeText = styled(Typography)({
   float: 'right',
-});
-
-const AvatarContainer = styled(Box)({
-  display: 'flex',
-  flexDirection: 'row',
-  alignItems: 'center',
-  justifyContent: 'flex-start',
-  width: '100%',
 });
 
 type Props = {
@@ -80,7 +72,13 @@ const Message = ({ message, currentMember, member }: Props): JSX.Element => {
       data-cy={messageIdCyWrapper(message.id)}
     >
       {!isOwnMessage && (
-        <AvatarContainer>
+        <Stack
+          direction="row"
+          alignItems="center"
+          justifyContent="flex-start"
+          width="100%"
+          gap={1}
+        >
           {member?.id && (
             <Avatar
               variant={'circular'}
@@ -90,15 +88,10 @@ const Message = ({ message, currentMember, member }: Props): JSX.Element => {
               url={avatarUrl}
               maxHeight={MAX_AVATAR_SIZE}
               maxWidth={MAX_AVATAR_SIZE}
-              sx={{
-                mr: 1,
-                maxHeight: MAX_AVATAR_SIZE,
-                maxWidth: MAX_AVATAR_SIZE,
-              }}
             />
           )}
-          <Typography variant="subtitle2">{`${creatorName}`}</Typography>
-        </AvatarContainer>
+          <Typography variant="subtitle2">{creatorName}</Typography>
+        </Stack>
       )}
       <MessageBody messageBody={message.body} />
       <TimeText variant="caption">
