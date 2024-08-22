@@ -16,6 +16,8 @@ jobs:
 
       - name: Yarn Install and Cache
         uses: graasp/graasp-deploy/.github/actions/yarn-install-and-cache@v1
+        with:
+          cypress: true
 
       - name: Build
         run: yarn build
