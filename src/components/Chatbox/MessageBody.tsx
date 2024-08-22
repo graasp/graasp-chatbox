@@ -85,7 +85,7 @@ type Props = {
 
 const MessageBody = ({ messageBody }: Props): JSX.Element => {
   const currentMember = useCurrentMemberContext();
-  const { members } = useMessagesContext();
+  const { members = [] } = useMessagesContext();
 
   function code(
     props: JSX.IntrinsicElements['code'] & ExtraProps,
