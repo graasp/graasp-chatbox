@@ -1,4 +1,4 @@
-import React, { FC, ReactElement } from 'react';
+import React, { ReactNode } from 'react';
 
 import { CompleteMember } from '@graasp/sdk';
 
@@ -8,14 +8,14 @@ export const CurrentMemberContext =
   React.createContext<CurrentMemberContextType>(null);
 
 type Props = {
-  children: ReactElement | ReactElement[];
+  children: ReactNode;
   currentMember?: CompleteMember | null;
 };
 
-export const CurrentMemberContextProvider: FC<Props> = ({
+export const CurrentMemberContextProvider = ({
   children,
   currentMember,
-}) => {
+}: Props): JSX.Element => {
   return (
     <CurrentMemberContext.Provider value={currentMember}>
       {children}

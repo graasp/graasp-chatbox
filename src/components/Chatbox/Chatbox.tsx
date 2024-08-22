@@ -1,8 +1,6 @@
-import { FC } from 'react';
-
 import { StyledEngineProvider, styled } from '@mui/material';
 
-import { ChatMessage, CompleteMember, Member } from '@graasp/sdk';
+import { Account, ChatMessage, CompleteMember } from '@graasp/sdk';
 
 import { CONTAINER_HEIGHT_SAFETY_MARGIN } from '@/constants.js';
 import { CurrentMemberContextProvider } from '@/context/CurrentMemberContext.js';
@@ -43,13 +41,12 @@ type Props = {
   editMessageFunction?: EditMessageFunctionType;
   useAvatarUrl: AvatarHookType;
   chatId: string;
-  showHeader?: boolean;
   showAdminTools?: boolean;
   currentMember?: CompleteMember | null;
-  members?: Member[];
+  members?: Account[];
 };
 
-const Chatbox: FC<Props> = ({
+const Chatbox = ({
   id,
   sendMessageBoxId,
   sendMessageFunction,
@@ -62,7 +59,7 @@ const Chatbox: FC<Props> = ({
   showAdminTools = false,
   currentMember,
   members,
-}) => {
+}: Props): JSX.Element | null => {
   if (isLoading) {
     return null;
   }
@@ -77,22 +74,20 @@ const Chatbox: FC<Props> = ({
               members={members}
               messages={messages}
             >
-              <>
-                <ChatboxContainer id={id}>
-                  <Messages
-                    currentMember={currentMember}
-                    isAdmin={showAdminTools}
-                    deleteMessageFunction={deleteMessageFunction}
+              <ChatboxContainer id={id}>
+                <Messages
+                  currentMember={currentMember}
+                  isAdmin={showAdminTools}
+                  deleteMessageFunction={deleteMessageFunction}
+                />
+                <InputContainer>
+                  <InputBar
+                    sendMessageBoxId={sendMessageBoxId}
+                    sendMessageFunction={sendMessageFunction}
+                    editMessageFunction={editMessageFunction}
                   />
-                  <InputContainer>
-                    <InputBar
-                      sendMessageBoxId={sendMessageBoxId}
-                      sendMessageFunction={sendMessageFunction}
-                      editMessageFunction={editMessageFunction}
-                    />
-                  </InputContainer>
-                </ChatboxContainer>
-              </>
+                </InputContainer>
+              </ChatboxContainer>
             </MessagesContextProvider>
           </CurrentMemberContextProvider>
         </HooksContextProvider>
