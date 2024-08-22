@@ -1,5 +1,15 @@
 # Changelog
 
+## [3.2.1](https://github.com/graasp/graasp-chatbox/compare/v3.2.0...v3.2.1) (2024-08-22)
+
+
+### Bug Fixes
+
+* add cypress in cache ([728552a](https://github.com/graasp/graasp-chatbox/commit/728552a779bb9d8d13bcc80a90b4676fdfb6e966))
+* release please workflow ([f981a66](https://github.com/graasp/graasp-chatbox/commit/f981a66f8fa3fd1a2fb85f59af6a86b2c1900b93))
+* udpate test script to have install script and cache ([9d0a2e3](https://github.com/graasp/graasp-chatbox/commit/9d0a2e3a2dbdaf27d6089d87a4e8637d476d23b2))
+* updare build config to remove errors ([4a0fe62](https://github.com/graasp/graasp-chatbox/commit/4a0fe627e4117c6d56679894455b25efe1fb7b54))
+
 ## [3.2.0](https://github.com/graasp/graasp-chatbox/compare/v3.1.0...v3.2.0) (2024-08-22)
 
 
