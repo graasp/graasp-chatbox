@@ -14,12 +14,16 @@ jobs:
       - name: checkout
         uses: actions/checkout@v4
 
+      - name: Yarn Install and Cache
+        uses: graasp/graasp-deploy/.github/actions/yarn-install-and-cache@v1
+
       - name: Build
         run: yarn build
 
       - name: Component Tests 🧪
         uses: cypress-io/github-action@v6
         with:
+          install: false
           component: true
           browser: chrome
 
