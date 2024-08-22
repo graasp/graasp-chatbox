@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.2.0](https://github.com/graasp/graasp-chatbox/compare/v3.1.0...v3.2.0) (2024-08-22)
+
+
+### Features
+
+* update packages for item login ([#252](https://github.com/graasp/graasp-chatbox/issues/252)) ([f634bcb](https://github.com/graasp/graasp-chatbox/commit/f634bcb25293b0d7b920f01436877a87e2d0a186))
+
 ## [3.1.0](https://github.com/graasp/graasp-chatbox/compare/v3.0.5...v3.1.0) (2024-02-27)
 
 
