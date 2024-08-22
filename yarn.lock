@@ -1339,7 +1339,7 @@ __metadata:
     lucide-react: "*"
     react: "*"
     react-dom: "*"
-    react-i18next: ^13.0.0 || ^14.0.0
+    react-i18next: ^13.0.0 || ^14.0.0 || ^15.0.0
   languageName: unknown
   linkType: soft
 
