@@ -1306,6 +1306,7 @@ __metadata:
     eslint-plugin-react-refresh: "npm:^0.4.10"
     i18next: "npm:23.14.0"
     lodash.groupby: "npm:^4.6.0"
+    lucide-react: "npm:^0.429.0"
     prettier: "npm:^3.3.3"
     prism-react-renderer: "npm:^2.3.1"
     react: "npm:^18.3.1"
@@ -1335,6 +1336,7 @@ __metadata:
     "@tanstack/react-query": ^4
     date-fns: ^3.2.0
     i18next: ^23.7.0
+    lucide-react: "*"
     react: "*"
     react-dom: "*"
     react-i18next: ^13.0.0 || ^14.0.0
@@ -6501,6 +6503,15 @@ __metadata:
   dependencies:
     yallist: "npm:^4.0.0"
   checksum: 10c0/cb53e582785c48187d7a188d3379c181b5ca2a9c78d2bce3e7dee36f32761d1c42983da3fe12b55cb74e1779fa94cdc2e5367c028a9b35317184ede0c07a30a9
+  languageName: node
+  linkType: hard
+
+"lucide-react@npm:^0.429.0":
+  version: 0.429.0
+  resolution: "lucide-react@npm:0.429.0"
+  peerDependencies:
+    react: ^16.5.1 || ^17.0.0 || ^18.0.0 || ^19.0.0-rc
+  checksum: 10c0/256d18dce24114fe705755030ab57b6be698f275f3a75565678f8b1de1ce85075f16aed0950b0a762d25be02176f4eb0650cf34bd934ace44fc60fd222bd6b70
   languageName: node
   linkType: hard
 
