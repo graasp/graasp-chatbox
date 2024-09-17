@@ -51,7 +51,7 @@
     "@graasp/query-client": "^3.22.2",
     "@graasp/sdk": "^4.26.0",
     "@graasp/translations": "^1.35.1",
-    "@graasp/ui": "^4.26.0",
+    "@graasp/ui": "^5.0.0",
     "@mui/icons-material": "^5.16.7",
     "@mui/lab": "^5.0.0-alpha.157",
     "@mui/material": "^5.16.7",
