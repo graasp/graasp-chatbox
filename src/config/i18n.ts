@@ -17,7 +17,7 @@ export const getDateLocale = (locale: string) => {
   if (locale in dateLocales) {
     return dateLocales[locale];
   } else {
-    dateLocales.en;
+    return dateLocales.en;
   }
 };
 

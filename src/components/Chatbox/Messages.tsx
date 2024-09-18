@@ -2,7 +2,7 @@ import { Fragment, useEffect, useRef } from 'react';
 
 import { Box, styled } from '@mui/material';
 
-import { ChatMessage, CompleteMember } from '@graasp/sdk';
+import { ChatMessage, CurrentAccount } from '@graasp/sdk';
 
 import { format } from 'date-fns';
 import groupBy from 'lodash.groupby';
@@ -45,7 +45,7 @@ const SingleMessageContainer = styled(Box)({
 });
 
 type Props = {
-  currentMember?: CompleteMember | null;
+  currentMember?: CurrentAccount | null;
   isAdmin?: boolean;
   deleteMessageFunction?: DeleteMessageFunctionType;
 };

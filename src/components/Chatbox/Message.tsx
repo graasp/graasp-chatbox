@@ -1,7 +1,6 @@
-import { Box, Stack, Typography, styled } from '@mui/material';
-import { colors } from '@mui/material';
+import { Box, Stack, Typography, colors, styled } from '@mui/material';
 
-import { Account, ChatMessage, CompleteMember } from '@graasp/sdk';
+import { Account, ChatMessage, CurrentAccount } from '@graasp/sdk';
 import { CHATBOX } from '@graasp/translations';
 import { Avatar } from '@graasp/ui';
 
@@ -37,7 +36,7 @@ const TimeText = styled(Typography)({
 
 type Props = {
   message: ChatMessage;
-  currentMember?: CompleteMember | null;
+  currentMember?: CurrentAccount | null;
   member?: Account;
 };
 
