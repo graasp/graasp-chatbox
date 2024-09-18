@@ -1,6 +1,6 @@
 import { StyledEngineProvider, styled } from '@mui/material';
 
-import { Account, ChatMessage, CompleteMember } from '@graasp/sdk';
+import { Account, ChatMessage, CurrentAccount } from '@graasp/sdk';
 
 import { CONTAINER_HEIGHT_SAFETY_MARGIN } from '@/constants.js';
 import { CurrentMemberContextProvider } from '@/context/CurrentMemberContext.js';
@@ -42,7 +42,7 @@ type Props = {
   useAvatarUrl: AvatarHookType;
   chatId: string;
   showAdminTools?: boolean;
-  currentMember?: CompleteMember | null;
+  currentMember?: CurrentAccount | null;
   members?: Account[];
 };
 

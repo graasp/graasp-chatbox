@@ -1,15 +1,15 @@
 import React, { ReactNode } from 'react';
 
-import { CompleteMember } from '@graasp/sdk';
+import { CurrentAccount } from '@graasp/sdk';
 
-export type CurrentMemberContextType = CompleteMember | null | undefined;
+export type CurrentMemberContextType = CurrentAccount | null | undefined;
 
 export const CurrentMemberContext =
   React.createContext<CurrentMemberContextType>(null);
 
 type Props = {
   children: ReactNode;
-  currentMember?: CompleteMember | null;
+  currentMember?: CurrentAccount | null;
 };
 
 export const CurrentMemberContextProvider = ({
