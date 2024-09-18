@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.3.0](https://github.com/graasp/graasp-chatbox/compare/v3.2.1...v3.3.0) (2024-09-18)
+
+
+### Features
+
+* update sdk ([#263](https://github.com/graasp/graasp-chatbox/issues/263)) ([9a34e5e](https://github.com/graasp/graasp-chatbox/commit/9a34e5e442d23ccacb82d591a0b09c7e2e1350e3))
+
 ## [3.2.1](https://github.com/graasp/graasp-chatbox/compare/v3.2.0...v3.2.1) (2024-08-22)
 
 
