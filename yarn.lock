@@ -1180,10 +1180,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@faker-js/faker@npm:9.0.0":
-  version: 9.0.0
-  resolution: "@faker-js/faker@npm:9.0.0"
-  checksum: 10c0/08a9c504b981da1c5da67ee6ba1f576351924047f0ff385abe0c596a91340bca60947d0b9e3703b95d8eaa685e0a463c815f2d300f64591a8ec1be5c2ba5ae61
+"@faker-js/faker@npm:9.0.1":
+  version: 9.0.1
+  resolution: "@faker-js/faker@npm:9.0.1"
+  checksum: 10c0/ca800e49857e42b95ab5a94c64d13de17bb188d0c9b43243b7afec2eb11d47b76af2211ec371ff7a1dd1c855e12403d071569c3eb82d15e7b8f5124007826763
   languageName: node
   linkType: hard
 
@@ -1297,33 +1297,33 @@ __metadata:
   linkType: soft
 
 "@graasp/query-client@npm:^3.22.2":
-  version: 3.22.2
-  resolution: "@graasp/query-client@npm:3.22.2"
+  version: 3.22.4
+  resolution: "@graasp/query-client@npm:3.22.4"
   dependencies:
     "@tanstack/react-query": "npm:4.36.1"
     "@tanstack/react-query-devtools": "npm:4.36.1"
-    axios: "npm:1.7.4"
+    axios: "npm:1.7.7"
     http-status-codes: "npm:2.3.0"
   peerDependencies:
     "@graasp/sdk": ^4.0.0
     "@graasp/translations": "*"
     react: ^18.0.0
-  checksum: 10c0/4eac9ac0eae59f786a9bce1afec44174e5c932a46f8f298b31f4924859d53bd9e559b56309ed0378620e1f45a71fe04faa8c8db12fea252dccff075800303db8
+  checksum: 10c0/2d615342bb002e27bba1a2352d0df01729e174d3245bf8be3e80a0dcff25e889f6411b7352393d019bb5e3060401d7c9935da58926d1d75db1b90b15e59ecdae
   languageName: node
   linkType: hard
 
 "@graasp/sdk@npm:^4.29.0":
-  version: 4.29.0
-  resolution: "@graasp/sdk@npm:4.29.0"
+  version: 4.29.1
+  resolution: "@graasp/sdk@npm:4.29.1"
   dependencies:
-    "@faker-js/faker": "npm:9.0.0"
+    "@faker-js/faker": "npm:9.0.1"
     filesize: "npm:10.1.6"
     js-cookie: "npm:3.0.5"
     validator: "npm:13.12.0"
   peerDependencies:
-    date-fns: ^3
+    date-fns: ^3 || ^4.0.0
     uuid: ^9 || ^10
-  checksum: 10c0/1b06f45ded848d3869f9ee82d17e48fdbeb8680c59978d291bb697216d105f7c13ba72654c2be46d7f7a648255586186f4d2af83d2dce102bbf31095e3b0a181
+  checksum: 10c0/5f10371cd1d626f1b6878d8685899218fee17696ca4c38c95ddc0ad0da803ed2876ded30fd3a64b1828e80f52c6b0d96c231865afa1ae6571b40a3b812566f53
   languageName: node
   linkType: hard
 
@@ -3386,14 +3386,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"axios@npm:1.7.4":
-  version: 1.7.4
-  resolution: "axios@npm:1.7.4"
+"axios@npm:1.7.7":
+  version: 1.7.7
+  resolution: "axios@npm:1.7.7"
   dependencies:
     follow-redirects: "npm:^1.15.6"
     form-data: "npm:^4.0.0"
     proxy-from-env: "npm:^1.1.0"
-  checksum: 10c0/5ea1a93140ca1d49db25ef8e1bd8cfc59da6f9220159a944168860ad15a2743ea21c5df2967795acb15cbe81362f5b157fdebbea39d53117ca27658bab9f7f17
+  checksum: 10c0/4499efc89e86b0b49ffddc018798de05fab26e3bf57913818266be73279a6418c3ce8f9e934c7d2d707ab8c095e837fc6c90608fb7715b94d357720b5f568af7
   languageName: node
   linkType: hard
 
