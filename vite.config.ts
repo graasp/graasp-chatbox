@@ -1,5 +1,5 @@
 import { fileURLToPath } from 'url';
-import { defineConfig } from 'vitest/config';
+import { defineConfig } from 'vite';
 
 export default () => {
   return defineConfig({
