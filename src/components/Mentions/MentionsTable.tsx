@@ -3,7 +3,7 @@ import { ReactElement, useState } from 'react';
 import { Check, Close, FiberManualRecord } from '@mui/icons-material';
 import {
   Button,
-  Grid,
+  Grid2 as Grid,
   IconButton,
   Table,
   TableBody,
@@ -87,7 +87,7 @@ const MentionsTable = ({
         <TableCell>{m.message.creator?.name}</TableCell>
         <TableCell>
           <Grid container direction="row">
-            <Grid item>
+            <Grid>
               <Tooltip title={t(CHATBOX.MARK_AS_READ)}>
                 <IconButton
                   onClick={(e): void => {
@@ -99,7 +99,7 @@ const MentionsTable = ({
                 </IconButton>
               </Tooltip>
             </Grid>
-            <Grid item>
+            <Grid>
               <Tooltip title={t(CHATBOX.DELETE_TOOLTIP)}>
                 <IconButton
                   onClick={(e): void => {
@@ -119,7 +119,7 @@ const MentionsTable = ({
 
   return (
     <Grid container direction="column">
-      <Grid container item direction="row" justifyContent="space-between">
+      <Grid container direction="row" justifyContent="space-between">
         <Button
           variant="outlined"
           onClick={(): void => {
@@ -149,7 +149,7 @@ const MentionsTable = ({
           onCancel={(): void => setOpenConfirmation(false)}
         />
       </Grid>
-      <Grid item>
+      <Grid>
         <Table>
           <TableHead>
             <TableRow>
