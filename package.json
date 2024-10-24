@@ -71,7 +71,7 @@
     "date-fns": "^4.1.0",
     "eslint": "^8.57.1",
     "eslint-config-prettier": "^9.1.0",
-    "eslint-plugin-react-hooks": "^4.6.2",
+    "eslint-plugin-react-hooks": "^5.0.0",
     "eslint-plugin-react-refresh": "^0.4.13",
     "i18next": "23.16.2",
     "lucide-react": "^0.453.0",
