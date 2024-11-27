@@ -1,11 +1,11 @@
 import { useState } from 'react';
 
-import { Notifications } from '@mui/icons-material';
-import { Badge, BadgeProps, IconButton, SvgIconProps } from '@mui/material';
+import { Badge, BadgeProps, IconButton } from '@mui/material';
 
 import { ChatMention, MentionStatus } from '@graasp/sdk';
 
 import { UseQueryResult } from '@tanstack/react-query';
+import { BellIcon } from 'lucide-react';
 
 import { mentionButtonCypress } from '@/config/selectors.js';
 
@@ -13,7 +13,7 @@ import MentionsDialog from './MentionsDialog.js';
 import MentionsTable from './MentionsTable.js';
 
 type Props = {
-  color?: SvgIconProps['color'];
+  color?: string;
   badgeColor?: BadgeProps['color'];
   useMentions: (
     options?: { getUpdates?: boolean | undefined } | undefined,
@@ -24,7 +24,7 @@ type Props = {
 };
 
 const MentionButton = ({
-  color = 'secondary',
+  color = 'white',
   badgeColor = 'primary',
   useMentions,
   patchMentionFunction,
@@ -50,7 +50,7 @@ const MentionButton = ({
               ?.length || 0
           }
         >
-          <Notifications color={color} />
+          <BellIcon color={color} />
         </Badge>
       </IconButton>
       <MentionsDialog
