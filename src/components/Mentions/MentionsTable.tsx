@@ -5,6 +5,7 @@ import {
   Button,
   Grid2 as Grid,
   IconButton,
+  Stack,
   Table,
   TableBody,
   TableCell,
@@ -118,8 +119,8 @@ const MentionsTable = ({
   };
 
   return (
-    <Grid container direction="column">
-      <Grid container direction="row" justifyContent="space-between">
+    <Stack direction="column">
+      <Stack direction="row" justifyContent="space-between" gap={2}>
         <Button
           variant="outlined"
           onClick={(): void => {
@@ -148,21 +149,19 @@ const MentionsTable = ({
           }}
           onCancel={(): void => setOpenConfirmation(false)}
         />
-      </Grid>
-      <Grid>
-        <Table>
-          <TableHead>
-            <TableRow>
-              <TableCell>{t(CHATBOX.COL_STATUS)}</TableCell>
-              <TableCell>{t(CHATBOX.COL_MESSAGE)}</TableCell>
-              <TableCell>{t(CHATBOX.COL_BY)}</TableCell>
-              <TableCell>{t(CHATBOX.COL_ACTIONS)}</TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>{renderMentionTableContent()}</TableBody>
-        </Table>
-      </Grid>
-    </Grid>
+      </Stack>
+      <Table>
+        <TableHead>
+          <TableRow>
+            <TableCell>{t(CHATBOX.COL_STATUS)}</TableCell>
+            <TableCell>{t(CHATBOX.COL_MESSAGE)}</TableCell>
+            <TableCell>{t(CHATBOX.COL_BY)}</TableCell>
+            <TableCell>{t(CHATBOX.COL_ACTIONS)}</TableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>{renderMentionTableContent()}</TableBody>
+      </Table>
+    </Stack>
   );
 };
 
