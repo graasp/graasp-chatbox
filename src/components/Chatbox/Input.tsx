@@ -105,9 +105,6 @@ const Input: FC<Props> = ({
         borderRadius: inputRadius,
       },
       item: {
-        // display: {
-        //   // change the style of the suggestions
-        // },
         padding: theme.spacing(0.5, 2),
         '&focused': {
           backgroundColor: '#b9b9ed',
