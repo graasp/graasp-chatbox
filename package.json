@@ -49,7 +49,7 @@
     "@emotion/react": "^11.13.5",
     "@emotion/styled": "^11.13.5",
     "@graasp/query-client": "^5.6.1",
-    "@graasp/sdk": "^4.35.0",
+    "@graasp/sdk": "^5.0.0",
     "@graasp/stylis-plugin-rtl": "^2.2.0",
     "@graasp/translations": "^1.42.0",
     "@graasp/ui": "^5.4.2",

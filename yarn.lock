@@ -1014,7 +1014,7 @@ __metadata:
     "@emotion/react": "npm:^11.13.5"
     "@emotion/styled": "npm:^11.13.5"
     "@graasp/query-client": "npm:^5.6.1"
-    "@graasp/sdk": "npm:^4.35.0"
+    "@graasp/sdk": "npm:^5.0.0"
     "@graasp/stylis-plugin-rtl": "npm:^2.2.0"
     "@graasp/translations": "npm:^1.42.0"
     "@graasp/ui": "npm:^5.4.2"
@@ -1094,9 +1094,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@graasp/sdk@npm:^4.35.0":
-  version: 4.35.0
-  resolution: "@graasp/sdk@npm:4.35.0"
+"@graasp/sdk@npm:^5.0.0":
+  version: 5.3.1
+  resolution: "@graasp/sdk@npm:5.3.1"
   dependencies:
     "@faker-js/faker": "npm:9.2.0"
     filesize: "npm:10.1.6"
@@ -1104,7 +1104,7 @@ __metadata:
   peerDependencies:
     date-fns: ^3 || ^4.0.0
     uuid: ^9 || ^10 || ^11.0.0
-  checksum: 10c0/6876da2aeaeeff0f54c3c9c4ae5a31aa1489b2207c870791c80caa6c31b799dd1dd1db3aa3b4da47b006849966a4452daff7dc22129c011eeb665404d8284f4a
+  checksum: 10c0/3568493213750a5e4959d42ac82ae3bd7c9e60ef4869503c38f40358939f115917d574e9bf103012dcb0c87a2f731b972f6299dc64934471b50569331c5a0e10
   languageName: node
   linkType: hard
 
