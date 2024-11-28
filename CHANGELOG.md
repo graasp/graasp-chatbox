@@ -1,5 +1,14 @@
 # Changelog
 
+## [3.3.1](https://github.com/graasp/graasp-chatbox/compare/v3.3.0...v3.3.1) (2024-11-28)
+
+
+### Bug Fixes
+
+* update color ([#275](https://github.com/graasp/graasp-chatbox/issues/275)) ([825d948](https://github.com/graasp/graasp-chatbox/commit/825d9487d8eb407fe0d4feb8898bb3a376e684ea))
+* update deps ([209430d](https://github.com/graasp/graasp-chatbox/commit/209430dfd65453f8c415967908c0f389c1edec21))
+* update to mui v6 ([#266](https://github.com/graasp/graasp-chatbox/issues/266)) ([0adc55d](https://github.com/graasp/graasp-chatbox/commit/0adc55d8c06526e0695a3bf97b718ab957f9b332))
+
 ## [3.3.0](https://github.com/graasp/graasp-chatbox/compare/v3.2.1...v3.3.0) (2024-09-18)
 
 
