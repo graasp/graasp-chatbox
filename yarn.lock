@@ -1089,8 +1089,8 @@ __metadata:
   linkType: hard
 
 "@graasp/ui@npm:^5.4.2":
-  version: 5.4.2
-  resolution: "@graasp/ui@npm:5.4.2"
+  version: 5.4.4
+  resolution: "@graasp/ui@npm:5.4.4"
   dependencies:
     http-status-codes: "npm:2.3.0"
     interweave: "npm:13.1.0"
@@ -1111,7 +1111,7 @@ __metadata:
     "@mui/icons-material": ^6
     "@mui/lab": ^6
     "@mui/material": ^6
-    i18next: ^22.4.15 || ^23.0.0
+    i18next: ^22.4.15 || ^23.0.0 || ^24.0.0
     katex: 0.16.11
     lucide-react: ^0
     react: ^18.0.0
@@ -1119,7 +1119,7 @@ __metadata:
     react-i18next: ^15.0.0
     react-router-dom: ^6.11.0
     stylis: ^4.1.3
-  checksum: 10c0/f23cdbd94db42b9100ec4f910693672fd31388622e9cae4945f73f2a9ea0fe81f6278d77beedf2c3d89628507ad0101c214a8dc88a37cfb2ff200b79419d8601
+  checksum: 10c0/fb865bff2333ac5ed6d93dfad49f5b55cf54a6ec7811fd9e990e9819b18d16cee339b210e9e813905dc330a68760a302d18ec7e1b7132e67f355fa096df0688a
   languageName: node
   linkType: hard
 
