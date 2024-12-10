@@ -1055,8 +1055,8 @@ __metadata:
   linkType: hard
 
 "@graasp/sdk@npm:^5.0.0":
-  version: 5.3.1
-  resolution: "@graasp/sdk@npm:5.3.1"
+  version: 5.4.0
+  resolution: "@graasp/sdk@npm:5.4.0"
   dependencies:
     "@faker-js/faker": "npm:9.2.0"
     filesize: "npm:10.1.6"
@@ -1064,7 +1064,7 @@ __metadata:
   peerDependencies:
     date-fns: ^3 || ^4.0.0
     uuid: ^9 || ^10 || ^11.0.0
-  checksum: 10c0/3568493213750a5e4959d42ac82ae3bd7c9e60ef4869503c38f40358939f115917d574e9bf103012dcb0c87a2f731b972f6299dc64934471b50569331c5a0e10
+  checksum: 10c0/2d81329e5ce187f5b5808223607626a9915d20a7b89fb6af28cec6c23122a47091e3149d4a06be383ad4d2212a6b5fbcc3529b329cbe83c1340ec58121dd9a32
   languageName: node
   linkType: hard
 
@@ -1080,11 +1080,11 @@ __metadata:
   linkType: hard
 
 "@graasp/translations@npm:^1.42.0":
-  version: 1.42.0
-  resolution: "@graasp/translations@npm:1.42.0"
+  version: 1.43.0
+  resolution: "@graasp/translations@npm:1.43.0"
   peerDependencies:
     i18next: ^23.8.1
-  checksum: 10c0/5039f303f0104a3290200efed49f5ce12470367a9c9219ba4b0ad9673cb4040a408a5946cf6def5a10db1de5f2edbdef7a51fc0eadbd72e0fb03061ff52be09f
+  checksum: 10c0/e67891bf3013a48235f8064fac20a27e8658dc56c4dcb4a6bd24e9ef785aab5f82f55dd49f83c5771a2e995b45cf82e906a445616fb3465afa8393535d828da9
   languageName: node
   linkType: hard
 
