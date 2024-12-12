@@ -1089,8 +1089,8 @@ __metadata:
   linkType: hard
 
 "@graasp/ui@npm:^5.4.2":
-  version: 5.4.2
-  resolution: "@graasp/ui@npm:5.4.2"
+  version: 5.4.7
+  resolution: "@graasp/ui@npm:5.4.7"
   dependencies:
     http-status-codes: "npm:2.3.0"
     interweave: "npm:13.1.0"
@@ -1102,24 +1102,24 @@ __metadata:
     react-rnd: "npm:10.4.13"
     uuid: "npm:11.0.3"
   peerDependencies:
-    "@emotion/cache": ~11.10.7 || ~11.11.0 || ~11.13.0
-    "@emotion/react": ~11.10.6 || ~11.11.0 || ~11.13.0
-    "@emotion/styled": ~11.10.6 || ~11.11.0 || ~11.13.0
+    "@emotion/cache": ~11.10.7 || ~11.11.0 || ~11.13.0 || ~11.14.0
+    "@emotion/react": ~11.10.6 || ~11.11.0 || ~11.13.0 || ~11.14.0
+    "@emotion/styled": ~11.10.6 || ~11.11.0 || ~11.13.0 || ~11.14.0
     "@graasp/sdk": ^4.29.0 || ^5.0.0
     "@graasp/stylis-plugin-rtl": ^2
     "@graasp/translations": ^1.23.0
     "@mui/icons-material": ^6
     "@mui/lab": ^6
     "@mui/material": ^6
-    i18next: ^22.4.15 || ^23.0.0
-    katex: 0.16.11
+    i18next: ^22.4.15 || ^23.0.0 || ^24.0.0
+    katex: 0.16.15
     lucide-react: ^0
     react: ^18.0.0
     react-dom: ^18.0.0
     react-i18next: ^15.0.0
     react-router-dom: ^6.11.0
     stylis: ^4.1.3
-  checksum: 10c0/f23cdbd94db42b9100ec4f910693672fd31388622e9cae4945f73f2a9ea0fe81f6278d77beedf2c3d89628507ad0101c214a8dc88a37cfb2ff200b79419d8601
+  checksum: 10c0/5897eec404675ede62301cbc6d029501e828f991f0e6c6d44b06e4da4550882a9f448e189067babb9b927c41d4f98c1f877a3ca2de315d492c3c3829f13f23e6
   languageName: node
   linkType: hard
 
