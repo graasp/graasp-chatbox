@@ -1039,24 +1039,24 @@ __metadata:
   linkType: soft
 
 "@graasp/query-client@npm:^5.6.1":
-  version: 5.6.1
-  resolution: "@graasp/query-client@npm:5.6.1"
+  version: 5.7.1
+  resolution: "@graasp/query-client@npm:5.7.1"
   dependencies:
-    "@tanstack/react-query": "npm:5.61.0"
-    "@tanstack/react-query-devtools": "npm:5.61.0"
-    axios: "npm:1.7.7"
+    "@tanstack/react-query": "npm:5.61.5"
+    "@tanstack/react-query-devtools": "npm:5.61.5"
+    axios: "npm:1.7.8"
     http-status-codes: "npm:2.3.0"
   peerDependencies:
     "@graasp/sdk": ^4.0.0 || ^5.0.0
     "@graasp/translations": "*"
     react: ^18.0.0
-  checksum: 10c0/ed96574d214fed05e0ad9b9282948ba93fb363d45a786ca0c9988a174cfe13e981b78b64e3e544164d9aff81b8770c14327095b11d98d5fcf66cc70d6d1b56ee
+  checksum: 10c0/cd38e742406f39a3e20f35eb2fabed56b364bbe109b469d7729e3a7d22a61672eec77407ab8b22e4009df49db387e37dcd827dfb4a324ebfca2d19a7ab24cc36
   languageName: node
   linkType: hard
 
 "@graasp/sdk@npm:^5.0.0":
-  version: 5.3.1
-  resolution: "@graasp/sdk@npm:5.3.1"
+  version: 5.7.0
+  resolution: "@graasp/sdk@npm:5.7.0"
   dependencies:
     "@faker-js/faker": "npm:9.2.0"
     filesize: "npm:10.1.6"
@@ -1064,7 +1064,7 @@ __metadata:
   peerDependencies:
     date-fns: ^3 || ^4.0.0
     uuid: ^9 || ^10 || ^11.0.0
-  checksum: 10c0/3568493213750a5e4959d42ac82ae3bd7c9e60ef4869503c38f40358939f115917d574e9bf103012dcb0c87a2f731b972f6299dc64934471b50569331c5a0e10
+  checksum: 10c0/b4a7ad24a19b11797e3586298b7c25940e2272007b85c4fc467f938c71c92939255ed3fe73734878e8ec8473baa59ecb578557063ece7da4ee0ec7ecb57f9f89
   languageName: node
   linkType: hard
 
@@ -1080,17 +1080,17 @@ __metadata:
   linkType: hard
 
 "@graasp/translations@npm:^1.42.0":
-  version: 1.42.0
-  resolution: "@graasp/translations@npm:1.42.0"
+  version: 1.43.0
+  resolution: "@graasp/translations@npm:1.43.0"
   peerDependencies:
     i18next: ^23.8.1
-  checksum: 10c0/5039f303f0104a3290200efed49f5ce12470367a9c9219ba4b0ad9673cb4040a408a5946cf6def5a10db1de5f2edbdef7a51fc0eadbd72e0fb03061ff52be09f
+  checksum: 10c0/e67891bf3013a48235f8064fac20a27e8658dc56c4dcb4a6bd24e9ef785aab5f82f55dd49f83c5771a2e995b45cf82e906a445616fb3465afa8393535d828da9
   languageName: node
   linkType: hard
 
 "@graasp/ui@npm:^5.4.2":
-  version: 5.4.2
-  resolution: "@graasp/ui@npm:5.4.2"
+  version: 5.5.1
+  resolution: "@graasp/ui@npm:5.5.1"
   dependencies:
     http-status-codes: "npm:2.3.0"
     interweave: "npm:13.1.0"
@@ -1102,24 +1102,24 @@ __metadata:
     react-rnd: "npm:10.4.13"
     uuid: "npm:11.0.3"
   peerDependencies:
-    "@emotion/cache": ~11.10.7 || ~11.11.0 || ~11.13.0
-    "@emotion/react": ~11.10.6 || ~11.11.0 || ~11.13.0
-    "@emotion/styled": ~11.10.6 || ~11.11.0 || ~11.13.0
+    "@emotion/cache": ~11.10.7 || ~11.11.0 || ~11.13.0 || ~11.14.0
+    "@emotion/react": ~11.10.6 || ~11.11.0 || ~11.13.0 || ~11.14.0
+    "@emotion/styled": ~11.10.6 || ~11.11.0 || ~11.13.0 || ~11.14.0
     "@graasp/sdk": ^4.29.0 || ^5.0.0
     "@graasp/stylis-plugin-rtl": ^2
     "@graasp/translations": ^1.23.0
     "@mui/icons-material": ^6
     "@mui/lab": ^6
     "@mui/material": ^6
-    i18next: ^22.4.15 || ^23.0.0
-    katex: 0.16.11
+    i18next: ^22.4.15 || ^23.0.0 || ^24.0.0
+    katex: 0.16.15
     lucide-react: ^0
     react: ^18.0.0
     react-dom: ^18.0.0
     react-i18next: ^15.0.0
     react-router-dom: ^6.11.0
     stylis: ^4.1.3
-  checksum: 10c0/f23cdbd94db42b9100ec4f910693672fd31388622e9cae4945f73f2a9ea0fe81f6278d77beedf2c3d89628507ad0101c214a8dc88a37cfb2ff200b79419d8601
+  checksum: 10c0/a8ed7533d166c84d79bdaa0a86709eaa4a282171b2e82c657434e51af026f65c9fe3a4208545a837239c3995b4f548ad879141ec37da06a3de5652390faace83
   languageName: node
   linkType: hard
 
@@ -1789,13 +1789,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@tanstack/query-core@npm:5.60.6":
-  version: 5.60.6
-  resolution: "@tanstack/query-core@npm:5.60.6"
-  checksum: 10c0/3339c637b00b38b704dfdde26bc475e6d1b46d130b2b22383e73012e791c8747ebebb8c72dd645e214691fcdbd2f09138d7f5b61e5c1fe64955850ddbbe32e11
-  languageName: node
-  linkType: hard
-
 "@tanstack/query-core@npm:5.61.5":
   version: 5.61.5
   resolution: "@tanstack/query-core@npm:5.61.5"
@@ -1803,33 +1796,22 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@tanstack/query-devtools@npm:5.59.20":
-  version: 5.59.20
-  resolution: "@tanstack/query-devtools@npm:5.59.20"
-  checksum: 10c0/e90008af9c5754bacb19b78b54bbbb60b4ef4aeae8ff46349cbf8596f50a49b7a66db5b9c5fc4e5d9eba6d1fe4991f0178c1c4eacdc3bee5b8f4b48f50997174
+"@tanstack/query-devtools@npm:5.61.4":
+  version: 5.61.4
+  resolution: "@tanstack/query-devtools@npm:5.61.4"
+  checksum: 10c0/44886dbf92849d17729bf779a184a3fd304711d8ce8061c1deccc089a65d168ed8f0cf0da43b59a9a22a9afb7b25fba99de8af47fe44479ac3082d852dcaaf53
   languageName: node
   linkType: hard
 
-"@tanstack/react-query-devtools@npm:5.61.0":
-  version: 5.61.0
-  resolution: "@tanstack/react-query-devtools@npm:5.61.0"
+"@tanstack/react-query-devtools@npm:5.61.5":
+  version: 5.61.5
+  resolution: "@tanstack/react-query-devtools@npm:5.61.5"
   dependencies:
-    "@tanstack/query-devtools": "npm:5.59.20"
+    "@tanstack/query-devtools": "npm:5.61.4"
   peerDependencies:
-    "@tanstack/react-query": ^5.61.0
+    "@tanstack/react-query": ^5.61.5
     react: ^18 || ^19
-  checksum: 10c0/be984f8d4095526dbcd249f018b16b1a69c6bdfef6dc2d2dfb80999889d397c6515fe9833cecffc9aaf5bbd81749c8ca0a03d2060b6a83833b54a88d840dc97b
-  languageName: node
-  linkType: hard
-
-"@tanstack/react-query@npm:5.61.0":
-  version: 5.61.0
-  resolution: "@tanstack/react-query@npm:5.61.0"
-  dependencies:
-    "@tanstack/query-core": "npm:5.60.6"
-  peerDependencies:
-    react: ^18 || ^19
-  checksum: 10c0/b65477a8bda401dbde0daae002c4a42ce8581d749eaec723634cdeb378f5a8eb609f00d2010060a05db995adb8e20e50b2540a560e782878f4b6db132e13c140
+  checksum: 10c0/62c7d105e6d5bc635cd0545654ebf7b6d95856d51423a3db686b86abc1c102b0bbe4d9d83f2a7b5111dc8f07a83b32b821cc37562ee9c3e45d74d5d1b198a06c
   languageName: node
   linkType: hard
 
@@ -2659,14 +2641,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"axios@npm:1.7.7":
-  version: 1.7.7
-  resolution: "axios@npm:1.7.7"
+"axios@npm:1.7.8":
+  version: 1.7.8
+  resolution: "axios@npm:1.7.8"
   dependencies:
     follow-redirects: "npm:^1.15.6"
     form-data: "npm:^4.0.0"
     proxy-from-env: "npm:^1.1.0"
-  checksum: 10c0/4499efc89e86b0b49ffddc018798de05fab26e3bf57913818266be73279a6418c3ce8f9e934c7d2d707ab8c095e837fc6c90608fb7715b94d357720b5f568af7
+  checksum: 10c0/23ae2d0105aea9170c34ac9b6f30d9b2ab2fa8b1370205d2f7ce98b9f9510ab420148c13359ee837ea5a4bf2fb028ff225bd2fc92052fb0c478c6b4a836e2d5f
   languageName: node
   linkType: hard
 
